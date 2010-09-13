@@ -2,7 +2,7 @@
 
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
-class Example extends PHPUnit_Extensions_SeleniumTestCase
+class DoeSearchTest extends PHPUnit_Extensions_SeleniumTestCase
 {
   protected function setUp()
   {
