@@ -10,7 +10,7 @@ class DoeSearchTest extends PHPUnit_Extensions_SeleniumTestCase
     $this->setBrowserUrl("http://opus4web.zib.de");
   }
 
-  public function testMyTestCase()
+  public function testDoeSearch()
   {
     $this->open("/opus4-selenium/home");
     try {
