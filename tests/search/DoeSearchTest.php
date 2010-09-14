@@ -18,9 +18,7 @@ class DoeSearchTest extends PHPUnit_Extensions_SeleniumTestCase
     } catch (PHPUnit_Framework_AssertionFailedError $e) {
         array_push($this->verificationErrors, $e->toString());
     }
-    $this->setSleep(5);
     $this->type("query", "doe");
-    $this->setSleep(5);
     $this->click("//input[@value='Search']");
     $this->waitForPageToLoad("30000");
     try {
@@ -33,7 +31,6 @@ class DoeSearchTest extends PHPUnit_Extensions_SeleniumTestCase
     } catch (PHPUnit_Framework_AssertionFailedError $e) {
         array_push($this->verificationErrors, $e->toString());
     }
-    $this->setSleep(5);
   }
 }
 ?>
