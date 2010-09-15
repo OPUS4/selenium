@@ -12,7 +12,7 @@ class TestDepositInstitute extends PHPUnit_Extensions_SeleniumTestCase
 
   public function testDepositInstitute()
   {
-    $this->open("/opus4-matheon/publish");
+    $this->open("/opus4-selenium/publish");
     $this->click("send");
     $this->type("PersonAuthor1FirstName", "Susanne");
     $this->type("PersonAuthor1LastName", "Gottwald");
