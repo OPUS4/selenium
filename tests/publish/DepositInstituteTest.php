@@ -2,7 +2,7 @@
 
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
-class TestDepositInstitute extends PHPUnit_Extensions_SeleniumTestCase
+class DepositInstituteTest extends PHPUnit_Extensions_SeleniumTestCase
 {
   protected function setUp()
   {
