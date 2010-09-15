@@ -14,7 +14,7 @@ class InvalidMSCTest extends PHPUnit_Extensions_SeleniumTestCase
   {
     $this->open("/opus4-matheon/home");
     $this->click("link=Publish");
-    $this->select("documentType", "label=Preprint");
+    $this->waitForPageToLoad("30000");
     $this->click("send");
     $this->type("PersonAuthor1FirstName", "Susanne");
     $this->type("PersonAuthor1LastName", "Gottwald");

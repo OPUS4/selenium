@@ -15,7 +15,6 @@ class DepositInstituteTest extends PHPUnit_Extensions_SeleniumTestCase
     $this->open("/opus4-matheon/home");
     $this->click("link=Publish");
     $this->waitForPageToLoad("30000");
-    $this->select("documentType", "label=Preprint");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->type("PersonAuthor1FirstName", "Susanne");
