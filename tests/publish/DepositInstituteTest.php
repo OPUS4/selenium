@@ -13,6 +13,9 @@ class TestDepositInstitute extends PHPUnit_Extensions_SeleniumTestCase
   public function testDepositInstitute()
   {
     $this->open("/opus4-selenium/publish");
+    $this->type("documentType", "preprint");
+    $this->type("documentId", "");
+    $this->type("fulltext", "0");
     $this->click("send");
     $this->type("PersonAuthor1FirstName", "Susanne");
     $this->type("PersonAuthor1LastName", "Gottwald");
