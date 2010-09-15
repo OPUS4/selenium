@@ -12,7 +12,6 @@ class EmptyDocTypeTest extends PHPUnit_Extensions_SeleniumTestCase
 
   public function testDepositInstitute()
   {
-  {
     $this->open("/opus4-selenium/home");
     $this->click("link=Publish");
     $this->waitForPageToLoad("30000");
