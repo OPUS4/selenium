@@ -2,7 +2,7 @@
 
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
-class Example extends PHPUnit_Extensions_SeleniumTestCase
+class TestDepositInstitute extends PHPUnit_Extensions_SeleniumTestCase
 {
   protected function setUp()
   {
@@ -12,7 +12,7 @@ class Example extends PHPUnit_Extensions_SeleniumTestCase
 
   public function testDepositInstitute()
   {
-    $this->open("/opus4-devel/publish");
+    $this->open("/opus4-matheon/publish");
     $this->click("send");
     $this->type("PersonAuthor1FirstName", "Susanne");
     $this->type("PersonAuthor1LastName", "Gottwald");
