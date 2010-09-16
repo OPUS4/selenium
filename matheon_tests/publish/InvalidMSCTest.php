@@ -2,7 +2,7 @@
 
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
-class InvalidMSCTest extends PHPUnit_Extensions_SeleniumTestCase
+class InvalidMscTest extends PHPUnit_Extensions_SeleniumTestCase
 {
   protected function setUp()
   {
@@ -10,12 +10,13 @@ class InvalidMSCTest extends PHPUnit_Extensions_SeleniumTestCase
     $this->setBrowserUrl("http://opus4web.zib.de/");
   }
 
-  public function testInvalidMSCCase()
+  public function testInvalidMscCase()
   {
     $this->open("/opus4-matheon/home");
     $this->click("link=Publish");
     $this->waitForPageToLoad("30000");
     $this->click("send");
+    $this->waitForPageToLoad("30000");
     $this->type("PersonAuthor1FirstName", "Susanne");
     $this->type("PersonAuthor1LastName", "Gottwald");
     $this->select("Institute1", "label=Zuse Institute Berlin (ZIB)");
