@@ -52,6 +52,7 @@ class InvalidMscTest extends PHPUnit_Extensions_SeleniumTestCase
     }
     $this->type("SubjectMSC1", "00A09");
     $this->click("send");
+    $this->waitForPageToLoad("30000");
     try {
         $this->assertTrue($this->isTextPresent("Publishing document successful"));
     } catch (PHPUnit_Framework_AssertionFailedError $e) {
