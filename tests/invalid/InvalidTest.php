@@ -14,7 +14,7 @@ class InvalidTest extends PHPUnit_Extensions_SeleniumTestCase
     $this->setBrowserUrl("http://opus4web.zib.de");
   }
 
-  public function testDoeSearch()
+  public function testOpus5()
   {
     $this->open("/opus4-selenium/home");
     $this->assertTrue($this->isTextPresent("Opus 5"));
