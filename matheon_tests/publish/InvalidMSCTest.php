@@ -26,6 +26,7 @@ class InvalidMscTest extends PHPUnit_Extensions_SeleniumTestCase
     $this->select("Project1", "label=A1");
     $this->type("SubjectMSC1", "00A0");
     $this->click("send");
+    $this->waitForPageToLoad("30000");
     try {
         $this->assertTrue($this->isTextPresent("Errors occurred. Please check the error messages beside the form fields."));
     } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -38,6 +39,7 @@ class InvalidMscTest extends PHPUnit_Extensions_SeleniumTestCase
     }
     $this->type("SubjectMSC1", "00A09");
     $this->click("send");
+    $this->waitForPageToLoad("30000");
     try {
         $this->assertTrue($this->isTextPresent("Please check your data."));
     } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -45,6 +47,7 @@ class InvalidMscTest extends PHPUnit_Extensions_SeleniumTestCase
     }
     $this->type("SubjectMSC1", "00A0");
     $this->click("send");
+    $this->waitForPageToLoad("30000");
     try {
         $this->assertTrue($this->isTextPresent("is not a valid MSC class."));
     } catch (PHPUnit_Framework_AssertionFailedError $e) {
