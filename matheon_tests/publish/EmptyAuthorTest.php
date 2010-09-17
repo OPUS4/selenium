@@ -14,8 +14,7 @@ class EmptyAuthorTest extends PHPUnit_Extensions_SeleniumTestCase
   {
     $this->open("/opus4-matheon/publish/form/check");
     $this->click("link=Publish");
-    $this->waitForPageToLoad("30000");
-    $this->select("documentType", "label=Preprint");
+    $this->waitForPageToLoad("30000");    
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->type("PersonAuthor1FirstName", "Susanne");
