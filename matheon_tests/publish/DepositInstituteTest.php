@@ -32,7 +32,7 @@ class DepositInstituteTest extends PHPUnit_Extensions_SeleniumTestCase
     $this->click("send");
     $this->waitForPageToLoad("30000");
     try {
-        $this->assertFalse($this->isTextPresent("( ! ) Notice: Undefined offset: 0 in D:\\opus4server\\modules\\publish\\models\\Deposit.php on line 448"));
+        $this->assertFalse($this->isTextPresent("( ! ) Notice: Undefined offset: 0 "));
     } catch (PHPUnit_Framework_AssertionFailedError $e) {
         array_push($this->verificationErrors, $e->toString());
     }
