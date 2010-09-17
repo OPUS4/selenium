@@ -20,6 +20,7 @@ class EmptyAuthorTest extends PHPUnit_Extensions_SeleniumTestCase
     $this->type("PersonAuthor1FirstName", "Susanne");
     $this->type("PersonAuthor1LastName", "Gottwald");
     $this->click("addMorePersonAuthor");
+    $this->waitForPageToLoad("30000");
     $this->select("Institute1", "label=Zuse Institute Berlin (ZIB)");
     $this->select("Language", "label=English");
     $this->type("TitleMain1", "Entenhausen");
@@ -33,6 +34,7 @@ class EmptyAuthorTest extends PHPUnit_Extensions_SeleniumTestCase
         array_push($this->verificationErrors, $e->toString());
     }
     $this->click("deleteMorePersonAuthor");
+    $this->waitForPageToLoad("30000");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     try {
