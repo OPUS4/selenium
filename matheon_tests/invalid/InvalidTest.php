@@ -16,7 +16,7 @@ class InvalidTest extends PHPUnit_Extensions_SeleniumTestCase
 
   public function testOpus5()
   {
-    //$this->markTestSkipped('only used for demonstration purpose');
+    $this->markTestSkipped('only used for demonstration purpose');
     $this->open("/opus4-matheon/home");
     $this->assertTrue($this->isTextPresent("Opus 5"));
   }
