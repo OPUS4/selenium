@@ -1,14 +1,9 @@
 <?php
 
-require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
+require_once 'TestCase.php';
 
-class DoeSearchTest extends PHPUnit_Extensions_SeleniumTestCase
+class DoeSearchTest extends TestCase
 {
-  protected function setUp()
-  {
-    $this->setBrowser("*firefox");
-    $this->setBrowserUrl("http://opus4web.zib.de");
-  }
 
   public function testDoeSearch()
   {
