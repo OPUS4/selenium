@@ -1,19 +1,9 @@
 <?php
 
-require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
+require_once 'TestCase.php';
 
-class InvalidTest extends PHPUnit_Extensions_SeleniumTestCase
+class InvalidTest extends TestCase
 {
-  protected $captureScreenshotOnFailure = TRUE;
-  protected $screenshotPath = '/home/opus4ci/cruisecontrol/webapps/screenshots';
-  protected $screenshotUrl = 'http://opus4ci.zib.de:8080/screenshots';
- 
-  protected function setUp()
-  {
-    $this->setBrowser("*firefox");
-    $this->setBrowserUrl("http://opus4web.zib.de");
-  }
-
   public function testOpus5()
   {
     $this->markTestSkipped('only used for demonstration purpose');

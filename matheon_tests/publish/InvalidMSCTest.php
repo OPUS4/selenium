@@ -1,15 +1,9 @@
 <?php
 
-require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
+require_once 'TestCase.php';
 
-class InvalidMscTest extends PHPUnit_Extensions_SeleniumTestCase
+class InvalidMscTest extends TestCase
 {
-  protected function setUp()
-  {
-    $this->setBrowser("*firefox");
-    $this->setBrowserUrl("http://opus4web.zib.de/");
-  }
-
   public function testInvalidMscCase()
   {
     $this->open("/opus4-matheon/home");
