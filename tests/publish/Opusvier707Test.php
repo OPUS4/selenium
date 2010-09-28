@@ -7,6 +7,8 @@ class Opusvier707Test extends TestCase
   
   public function testDeutscheSprachversion()
   {
+    $this->open("/opus4-selenium");
+    $this->waitForPageToLoad("30000");
     $this->open("/opus4-selenium/home/index/language/language/de");
     $this->waitForPageToLoad("30000");
     $this->open("/opus4-selenium/publish");
@@ -30,6 +32,8 @@ class Opusvier707Test extends TestCase
 
   public function testEnglishLanguageVersion()
   {
+    $this->open("/opus4-selenium");
+    $this->waitForPageToLoad("30000");
     $this->open("/opus4-selenium/home/index/language/language/en");
     $this->waitForPageToLoad("30000");
     $this->open("/opus4-selenium/publish");
