@@ -21,7 +21,7 @@ class TonTest extends TestCase
     $this->type("PersonAuthorFirstName1", "Donald");
     $this->type("PersonAuthorLastName1", "Trump");
     $this->type("CompletedDate", "28.09.2010");
-    $this->select("Language", "label=Deutsch");
+    $this->select("Language", "label=German");
     $this->select("Licence", "label=Creative Commons - Namensnennung");
     $this->click("send");
     $this->waitForPageToLoad("30000");
