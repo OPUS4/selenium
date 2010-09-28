@@ -15,18 +15,18 @@ class DepositInstituteTest extends TestCase
     $this->type("PersonAuthorFirstName1", "Susanne");
     $this->type("PersonAuthorLastName1", "Gottwald");
     $this->select("Institute1", "label=Zuse Institute Berlin (ZIB)");
-    //$this->select("Language", "label=English");
-    $this->type("Language", "English");
+    $this->select("Language", "label=English");
     $this->type("TitleMain1", "Entenhausen");
     $this->select("TitleMainLanguage1", "label=English");
     $this->select("Project1", "label=A10");
     $this->type("SubjectMSC1", "00A09");
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    $this->type("SubjectMSC1", "00A0");
+    //$this->type("SubjectMSC1", "00A0");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertFalse($this->isTextPresent("( ! ) Notice: Undefined offset: 0 "));
+    $this->assertTrue($this->isTextPresent("Publishing document successful"));
   }
 }
 ?>
