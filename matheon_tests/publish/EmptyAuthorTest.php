@@ -7,7 +7,7 @@ class EmptyAuthorTest extends TestCase
 
   public function testEmptyAuthorsCase()
   {
-    $this->open("/opus4-matheon/publish/form/check");
+    $this->open("/opus4-matheon/publish");
     $this->click("link=Publish");
     $this->waitForPageToLoad("30000");    
     $this->click("send");
