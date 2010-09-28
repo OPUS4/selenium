@@ -2,10 +2,10 @@
 
 require_once 'TestCase.php';
 
-class TonTest extends TestCase
+class DocTypeSoundTest extends TestCase
 {
   
-  public function testDocTypeTon()
+  public function testDocTypeSound()
   {
     $this->open("/opus4-selenium/publish");
     $this->waitForPageToLoad("30000");
