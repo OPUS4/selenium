@@ -12,31 +12,23 @@ class EmptyAuthorTest extends TestCase
     $this->waitForPageToLoad("30000");    
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    $this->type("PersonAuthor1FirstName", "Susanne");
-    $this->type("PersonAuthor1LastName", "Gottwald");
+    $this->type("PersonAuthorFirstName1", "Susanne");
+    $this->type("PersonAuthorLastName1", "Gottwald");
     $this->click("addMorePersonAuthor");
     $this->waitForPageToLoad("30000");
     $this->select("Institute1", "label=Zuse Institute Berlin (ZIB)");
     $this->select("Language", "label=English");
     $this->type("TitleMain1", "Entenhausen");
-    $this->select("TitleMain1Language", "label=English");
+    $this->select("TitleMainLanguage1", "label=English");
     $this->type("SubjectMSC1", "00A09");
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    try {
-        $this->assertTrue($this->isTextPresent("Value is required and can't be empty"));
-    } catch (PHPUnit_Framework_AssertionFailedError $e) {
-        array_push($this->verificationErrors, $e->toString());
-    }
+    $this->assertTrue($this->isTextPresent("Value is required and can't be empty"));
     $this->click("deleteMorePersonAuthor");
     $this->waitForPageToLoad("30000");
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    try {
-        $this->assertTrue($this->isTextPresent("Please check your data."));
-    } catch (PHPUnit_Framework_AssertionFailedError $e) {
-        array_push($this->verificationErrors, $e->toString());
-    }
+    $this->assertTrue($this->isTextPresent("Please check your data."));
   }
 }
 ?>
