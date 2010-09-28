@@ -7,11 +7,9 @@ class TonTest extends TestCase
   
   public function testDocTypeTon()
   {
-    $this->open("/opus4-selenium/home");
+    $this->open("/opus4-selenium/publish");
     $this->waitForPageToLoad("30000");
-	$this->click("//li[@id='primary-nav-publish']/a/span");
-    $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Veröffentlichen"));
+	$this->assertTrue($this->isTextPresent("Veröffentlichen"));
     $this->select("documentType", "label=Ton");
     $this->click("send");
     $this->waitForPageToLoad("30000");
