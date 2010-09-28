@@ -15,10 +15,10 @@ class DepositInstituteTest extends TestCase
     $this->type("PersonAuthorFirstName1", "Susanne");
     $this->type("PersonAuthorLastName1", "Gottwald");
     $this->select("Institute1", "label=Zuse Institute Berlin (ZIB)");
-    $this->select("Language", "label=English");
+    //$this->select("Language", "label=English");
+    $this->type("Language", "English");
     $this->type("TitleMain1", "Entenhausen");
     $this->select("TitleMainLanguage1", "label=English");
-    $this->select("TitleAbstractLanguage1", "label=English");
     $this->select("Project1", "label=A10");
     $this->type("SubjectMSC1", "00A09");
     $this->click("send");
