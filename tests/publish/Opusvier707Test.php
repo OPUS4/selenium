@@ -27,7 +27,7 @@ class Opusvier707Test extends TestCase
     $this->select("Licence", "label=Creative Commons - Namensnennung");
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Fehler: 28.09.2010 scheint kein gültiges Datum zu sein."));
+    $this->assertTrue($this->isTextPresent("Bitte ändern Sie 28.09.2010 in das Datumsformat ."));
   }
 
   public function testEnglishLanguageVersion()
