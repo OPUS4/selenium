@@ -9,15 +9,15 @@ class TonTest extends TestCase
   {
     $this->open("/opus4-selenium/publish");
     $this->waitForPageToLoad("30000");
-	$this->assertTrue($this->isTextPresent("Veröffentlichen"));
-    $this->select("documentType", "label=Ton");
+    $this->assertTrue($this->isTextPresent("Publish"));
+    $this->select("documentType", "label=Sound");
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Ton"));
+    $this->assertTrue($this->isTextPresent("Sound"));
     $this->type("PersonSubmitterFirstName1", "Donald");
     $this->type("PersonSubmitterLastName1", "Trump");
     $this->type("TitleMain1", "Millionär gesucht");
-    $this->select("TitleMainLanguage1", "label=Deutsch");
+    $this->select("TitleMainLanguage1", "label=German");
     $this->type("PersonAuthorFirstName1", "Donald");
     $this->type("PersonAuthorLastName1", "Trump");
     $this->type("CompletedDate", "28.09.2010");
@@ -25,10 +25,10 @@ class TonTest extends TestCase
     $this->select("Licence", "label=Creative Commons - Namensnennung");
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Bitte überprüfen Sie Ihre Eingaben."));
+    $this->assertTrue($this->isTextPresent("Please check your data."));
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Das Dokument wurde erfolgreich gespeichert."));
+    $this->assertTrue($this->isTextPresent("Publishing document successful."));
   }
 }
 ?>
