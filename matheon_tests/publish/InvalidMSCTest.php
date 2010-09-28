@@ -22,16 +22,11 @@ class InvalidMscTest extends TestCase
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Errors occurred. Please check the error messages beside the form fields."));
-    $this->assertTrue($this->isTextPresent("is not a valid MSC class."));
+    $this->assertTrue($this->isTextPresent("The value 00A0 is not a valid MSC class."));
     $this->type("SubjectMSC1", "00A09");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Please check your data."));
-    $this->type("SubjectMSC1", "00A0");
-    $this->click("send");
-    $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("is not a valid MSC class."));
-    $this->type("SubjectMSC1", "00A09");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Publishing document successful"));
