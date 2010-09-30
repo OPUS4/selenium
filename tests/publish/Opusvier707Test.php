@@ -32,6 +32,9 @@ class Opusvier707Test extends TestCase
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Bitte überprüfen Sie Ihre Eingaben."));
+    $this->click("send");
+    $this->waitForPageToLoad("30000");
+    $this->assertTrue($this->isTextPresent("Das Dokument wurde erfolgreich gespeichert."));
   }
 
   public function testEnglishLanguageVersion()
