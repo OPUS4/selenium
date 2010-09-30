@@ -28,7 +28,7 @@ class Opusvier707Test extends TestCase
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Bitte ändern Sie 2010/09/28 in das Datumsformat DD.MM.YYYY."));
-    $this->type("PublishedDate", "28.09.2010");
+    $this->type("CompletedDate", "28.09.2010");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Bitte überprüfen Sie Ihre Eingaben."));
