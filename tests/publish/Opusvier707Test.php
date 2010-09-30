@@ -22,12 +22,16 @@ class Opusvier707Test extends TestCase
     $this->type("PersonSubmitterLastName1", "bar");
     $this->type("TitleMain1", "baz");
     $this->select("TitleMainLanguage1", "label=Deutsch");
-    $this->type("CompletedDate", "28.09.2010");
+    $this->type("CompletedDate", "2010/09/28");
     $this->select("Language", "label=Deutsch");
     $this->select("Licence", "label=Creative Commons - Namensnennung");
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Bitte ändern Sie 28.09.2010 in das Datumsformat ."));
+    $this->assertTrue($this->isTextPresent("Bitte ändern Sie 2010/09/28 in das Datumsformat DD.MM.YYYY."));
+    $this->type("PublishedDate", "28.09.2010");
+    $this->click("send");
+    $this->waitForPageToLoad("30000");
+    $this->assertTrue($this->isTextPresent("Bitte überprüfen Sie Ihre Eingaben."));
   }
 
   public function testEnglishLanguageVersion()
@@ -47,9 +51,13 @@ class Opusvier707Test extends TestCase
     $this->type("PersonSubmitterLastName1", "bar");
     $this->type("TitleMain1", "baz");
     $this->select("TitleMainLanguage1", "label=German");
-    $this->type("CompletedDate", "09/28/2010");
+    $this->type("CompletedDate", "28.09.2010");
     $this->select("Language", "label=German");
     $this->select("Licence", "label=Creative Commons - Namensnennung");
+    $this->click("send");
+    $this->waitForPageToLoad("30000");
+    $this->assertTrue($this->isTextPresent("Please change 28.09.2010 to fit the date format YYYY/MM/DD."));
+    $this->type("CompletedDate", "2010/09/28");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Please check your data."));
