@@ -20,7 +20,7 @@ class DocTypeSoundTest extends TestCase
     $this->select("TitleMainLanguage1", "label=German");
     $this->type("PersonAuthorFirstName1", "Donald");
     $this->type("PersonAuthorLastName1", "Trump");
-    $this->type("CompletedDate", "12.03.2004");
+    $this->type("CompletedDate", "2004/03/24");
     $this->select("Language", "label=German");
     $this->select("Licence", "label=Creative Commons - Namensnennung");
     $this->click("send");

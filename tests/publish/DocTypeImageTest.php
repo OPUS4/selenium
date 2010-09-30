@@ -20,7 +20,7 @@ class ImageTest extends TestCase
     $this->type("PersonSubmitterLastName1", "Duck");
     $this->type("TitleMain1", "The Tales of Entenhausen");
     $this->select("TitleMainLanguage1", "label=English");
-    $this->type("CompletedDate", "12.03.2004");
+    $this->type("CompletedDate", "2004/03/12");
     $this->select("Language", "label=English");
     $this->select("Licence", "label=Creative Commons - Namensnennung");
     $this->click("send");
