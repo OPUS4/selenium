@@ -26,7 +26,7 @@ class DepositInstituteTest extends TestCase
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertFalse($this->isTextPresent("( ! ) Notice: Undefined offset: 0 "));
-    $this->assertTrue($this->isTextPresent("Publishing document successful"));
+    $this->assertTrue($this->isTextPresent("Your document was successfully stored."));
   }
 }
 ?>
