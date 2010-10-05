@@ -28,7 +28,7 @@ class DocTypeSoundTest extends TestCase
     $this->assertTrue($this->isTextPresent("Please check your data."));
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Publishing document successful"));
+    $this->assertTrue($this->isTextPresent("Your document was successfully stored."));
   }
 }
 ?>
