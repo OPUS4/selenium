@@ -7,6 +7,7 @@ class EmptyAuthorTest extends TestCase
 
   public function testEmptyAuthorsCase()
   {
+    $this->markTestSkipped('how to managed file upload?');
     $this->open("/opus4-matheon/publish");
     $this->click("link=Publish");
     $this->waitForPageToLoad("30000");    
