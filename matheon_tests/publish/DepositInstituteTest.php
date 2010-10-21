@@ -12,6 +12,14 @@ class DepositInstituteTest extends TestCase
     $this->waitForPageToLoad("30000");
     $this->click("send");
     $this->waitForPageToLoad("30000");
+    $this->assertTrue($this->isTextPresent("Value is required and can't be empty."));
+    $this->assertTrue($this->isTextPresent("Please upload at least one file."));
+    $this->select("documentType", "label=preprintmatheon");
+    $this->type("fileupload-0", "D:\\Meine Daten\\Dokumente\\Info Vermoegen.pdf");
+    $this->click("send");
+    $this->waitForPageToLoad("30000");
+    $this->assertTrue($this->isTextPresent("exact:Fields that are marked with * have to be filled."));
+
     $this->type("PersonAuthorFirstName1", "Susanne");
     $this->type("PersonAuthorLastName1", "Gottwald");
     $this->select("Institute1", "label=Zuse Institute Berlin (ZIB)");
@@ -20,9 +28,9 @@ class DepositInstituteTest extends TestCase
     $this->select("TitleMainLanguage1", "label=English");
     $this->select("Project1", "label=A10");
     $this->type("SubjectMSC1", "00A09");
+    $this->type("CompletedDate", "");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
-    //$this->type("SubjectMSC1", "00A0");
+    $this->waitForPageToLoad("30000");   
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertFalse($this->isTextPresent("( ! ) Notice: Undefined offset: 0 "));
