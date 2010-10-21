@@ -17,7 +17,7 @@ class DepositInstituteTest extends TestCase
     $this->type("fileupload-0", "D:\\Meine Daten\\Dokumente\\Info Vermoegen.pdf");
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("exact:Fields that are marked with * have to be filled."));
+    $this->assertTrue($this->isTextPresent("Fields that are marked with * have to be filled."));
 
     $this->type("PersonAuthorFirstName1", "Susanne");
     $this->type("PersonAuthorLastName1", "Gottwald");
