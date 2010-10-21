@@ -14,7 +14,7 @@ class DepositInstituteTest extends TestCase
     $this->waitForPageToLoad("30000");    
     $this->assertTrue($this->isTextPresent("Please upload at least one file."));
     $this->select("documentType", "label=preprintmatheon");
-    $this->type("fileupload-0", "D:\\Meine Daten\\Dokumente\\Info Vermoegen.pdf");
+    $this->type("fileupload-0", "Info Vermoegen.pdf");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Fields that are marked with * have to be filled."));
