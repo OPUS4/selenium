@@ -18,6 +18,7 @@ class ImageTest extends TestCase
     $this->assertTrue($this->isTextPresent("Image"));
     $this->type("PersonSubmitterFirstName1", "Donald");
     $this->type("PersonSubmitterLastName1", "Duck");
+    $this->type("PersonSubmitterEmail1", "test@mail.com");
     $this->type("TitleMain1", "The Tales of Entenhausen");
     $this->select("TitleMainLanguage1", "label=English");
     $this->type("CompletedDate", "2004/03/12");

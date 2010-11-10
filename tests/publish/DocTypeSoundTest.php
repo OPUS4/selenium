@@ -16,6 +16,7 @@ class DocTypeSoundTest extends TestCase
     $this->assertTrue($this->isTextPresent("Sound"));
     $this->type("PersonSubmitterFirstName1", "Donald");
     $this->type("PersonSubmitterLastName1", "Trump");
+    $this->type("PersonSubmitterEmail1", "test@mail.com");
     $this->type("TitleMain1", "Millionär gesucht");
     $this->select("TitleMainLanguage1", "label=German");
     $this->type("PersonAuthorFirstName1", "Donald");

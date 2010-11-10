@@ -20,6 +20,7 @@ class Opusvier707Test extends TestCase
     $this->assertTrue($this->isTextPresent("Ton"));
     $this->type("PersonSubmitterFirstName1", "foo");
     $this->type("PersonSubmitterLastName1", "bar");
+    $this->type("PersonSubmitterEmail1", "test@mail.com");
     $this->type("TitleMain1", "baz");
     $this->select("TitleMainLanguage1", "label=Deutsch");
     $this->type("CompletedDate", "2010/09/28");
@@ -52,6 +53,7 @@ class Opusvier707Test extends TestCase
     $this->assertTrue($this->isTextPresent("Sound"));
     $this->type("PersonSubmitterFirstName1", "foo");
     $this->type("PersonSubmitterLastName1", "bar");
+    $this->type("PersonSubmitterEmail1", "test@mail.com");
     $this->type("TitleMain1", "baz");
     $this->select("TitleMainLanguage1", "label=German");
     $this->type("CompletedDate", "28.09.2010");
