@@ -12,6 +12,7 @@ class ImageTest extends TestCase
     $this->assertTrue($this->isTextPresent("Publish"));
     $this->assertTrue($this->isTextPresent("Choose document type and file"));
     $this->select("documentType", "label=Image");
+    $this->click("rights");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Publish"));

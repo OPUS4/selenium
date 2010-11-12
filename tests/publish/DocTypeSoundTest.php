@@ -11,6 +11,7 @@ class DocTypeSoundTest extends TestCase
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Publish"));
     $this->select("documentType", "label=Sound");
+    $this->click("rights");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Sound"));

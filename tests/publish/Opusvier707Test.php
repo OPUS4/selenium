@@ -15,6 +15,7 @@ class Opusvier707Test extends TestCase
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Veröffentlichen"));
     $this->select("documentType", "label=Ton");
+    $this->click("rights");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Ton"));
@@ -48,6 +49,7 @@ class Opusvier707Test extends TestCase
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Publish"));
     $this->select("documentType", "label=Sound");
+    $this->click("rights");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Sound"));
