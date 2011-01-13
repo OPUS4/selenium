@@ -36,7 +36,8 @@ class Opusvier707Test extends TestCase
     $this->assertTrue($this->isTextPresent("Bitte überprüfen Sie Ihre Eingaben."));
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Das Dokument wurde erfolgreich gespeichert."));
+    $this->assertTrue($this->isTextPresent("Dokument "));
+    $this->assertTrue($this->isTextPresent(" wurde erfolgreich gespeichert."));
   }
 
   public function testEnglishLanguageVersion()
@@ -70,7 +71,7 @@ class Opusvier707Test extends TestCase
     $this->assertTrue($this->isTextPresent("Please check your data."));
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Your document was successfully stored."));
+    $this->assertTrue($this->isTextPresent("Document "));
+    $this->assertTrue($this->isTextPresent(" was successfully published."));
   }
 }
-?>
