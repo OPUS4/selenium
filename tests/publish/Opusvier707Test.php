@@ -38,6 +38,7 @@ class Opusvier707Test extends TestCase
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Dokument "));
     $this->assertTrue($this->isTextPresent(" wurde erfolgreich gespeichert."));
+    $this->assertFalse($this->isTextPresent("Dokument betrachten."));
   }
 
   public function testEnglishLanguageVersion()
@@ -73,5 +74,6 @@ class Opusvier707Test extends TestCase
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isTextPresent("Document "));
     $this->assertTrue($this->isTextPresent(" was successfully published."));
+    $this->assertFalse($this->isTextPresent("View document"));
   }
 }
