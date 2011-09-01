@@ -35,35 +35,30 @@
 
 require_once 'TestCase.php';
 
-class InvalidMscTest extends TestCase
+class WrongAbstractLanguage extends TestCase
 {
-  public function testInvalidMscCase()
+
+  public function testWrongAbstractLanguage()
   {
-    $this->markTestSkipped('how to managed file upload?');
-    $this->open("/opus4-matheon/home");
-    $this->click("link=Publish");
+    $this->open("/opus4-selenium");
     $this->waitForPageToLoad("30000");
-    $this->click("send");
+    $this->open("/opus4-selenium/home/index/language/language/de");
     $this->waitForPageToLoad("30000");
-    $this->type("PersonAuthorFirstName1", "Susanne");
-    $this->type("PersonAuthorLastName1", "Gottwald");
-    $this->select("Institute1", "label=Zuse Institute Berlin (ZIB)");
-    $this->select("Language", "label=English");
-    $this->type("TitleMain1", "Entenhausen");
-    $this->select("TitleMainLanguage1", "label=English");
-    $this->select("Project1", "label=A1");
-    $this->type("SubjectMSC1", "00A0");
-    $this->click("send");
+    $this->open("/opus4-selenium/publish");
+    $this->click("//li[@id='primary-nav-publish']/a/em/span");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Errors occurred. Please check the error messages beside the form fields."));
-    $this->assertTrue($this->isTextPresent("The value 00A0 is not a valid MSC class."));
-    $this->type("SubjectMSC1", "00A09");
-    $this->click("send");
+    $this->select("id=documentType", "label=Preprint für MATHEON");
+    $this->click("id=rights");
+    $this->click("id=send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Please check your data."));
-    $this->click("send");
+    $this->type("id=PersonAuthorFirstName1", "Susi");
+    $this->type("id=PersonAuthorLastName1", "Gottwald");
+    $this->type("id=TitleMain1", "Entenhausen");
+    $this->type("id=TitleAbstract1", "Testabstract");
+    $this->select("id=TitleAbstractLanguage1", "label=Französisch");
+    $this->click("id=send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Your document was successfully stored."));
+    $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
   }
 }
 ?>
