@@ -35,36 +35,30 @@
 
 require_once 'TestCase.php';
 
-class DocTypeSoundTest extends TestCase
+class WrongAbstractLanguage extends TestCase
 {
-  
-  public function testDocTypeSound()
+
+  public function testWrongAbstractLanguage()
   {
+    $this->open("/opus4-selenium");
+    $this->waitForPageToLoad("30000");
+    $this->open("/opus4-selenium/home/index/language/language/de");
+    $this->waitForPageToLoad("30000");
     $this->open("/opus4-selenium/publish");
+    $this->click("//li[@id='primary-nav-publish']/a/em/span");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Publish"));
-    $this->select("documentType", "label=Sound");
-    $this->click("rights");
-    $this->click("send");
+    $this->select("id=documentType", "label=Preprint für MATHEON");
+    $this->click("id=rights");
+    $this->click("id=send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Sound"));
-    $this->type("PersonSubmitterFirstName1", "Donald");
-    $this->type("PersonSubmitterLastName1", "Trump");
-    $this->type("PersonSubmitterEmail1", "test@mail.com");
-    $this->type("TitleMain1", "Millionär gesucht");
-    $this->select("TitleMainLanguage1", "label=German");
-    $this->type("PersonAuthorFirstName1", "Donald");
-    $this->type("PersonAuthorLastName1", "Trump");
-    $this->type("PersonAuthorEmail1", "doe@example.org");
-    $this->type("CompletedDate", "2004/03/24");
-    $this->select("Language", "label=German");
-    $this->select("Licence", "label=Creative Commons - Namensnennung");
-    $this->click("send");
+    $this->type("id=PersonAuthorFirstName1", "Susi");
+    $this->type("id=PersonAuthorLastName1", "Gottwald");
+    $this->type("id=TitleMain1", "Entenhausen");
+    $this->type("id=TitleAbstract1", "Testabstract");
+    $this->select("id=TitleAbstractLanguage1", "label=Französisch");
+    $this->click("id=send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Please check your data."));
-    $this->click("send");
-    $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Document "));
-    $this->assertTrue($this->isTextPresent(" was successfully published."));
+    $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
   }
 }
+?>
