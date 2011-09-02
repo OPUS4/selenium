@@ -37,7 +37,7 @@ require_once 'TestCase.php';
 
 class BrowseCollectionDdcTest extends TestCase {
 
-    public function testBrowseCollectionDdc() {
+    public function testAllDocumentType() {
         $this->open("/opus4-selenium");
         $this->waitForPageToLoad("30000");
         $this->open("/opus4-selenium/home/index/language/language/de");
@@ -61,13 +61,18 @@ class BrowseCollectionDdcTest extends TestCase {
             if ($second >= 60)
                 $this->fail("timeout");
             try {
-                if ($this->isTextPresent("05"))
+                if ($this->isTextPresent("05 Zeitschriften, fortlaufende Sammelwerke"))
                     break;
             } catch (Exception $e) {
                 
             }
             sleep(1);
         }
+
+        $this->assertTrue($this->isElementPresent("//div[@id='form-table-check']/fieldset"));
+        $this->click("send");
+        $this->waitForPageToLoad("30000");
+        $this->assertTrue($this->isTextPresent("erfolgreich gespeichert"));
     }
 
 }
