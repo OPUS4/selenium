@@ -46,13 +46,13 @@ class seriesCollectionVisibilityTest extends TestCase {
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad("30000");
 
-        $this->type("login", "admin");
-        $this->type("password", "adminadmin");
-        $this->click("SubmitCredentials");
-        $this->waitForPageToLoad("30000");
-        $this->click("link=Veröffentlichen");
-        $this->waitForPageToLoad("30000");
-        $this->assertTrue($this->isElementPresent("link=English"));
+//        $this->type("login", "admin");
+//        $this->type("password", "adminadmin");
+//        $this->click("SubmitCredentials");
+//        $this->waitForPageToLoad("30000");
+//        $this->click("link=Veröffentlichen");
+//        $this->waitForPageToLoad("30000");
+//        $this->assertTrue($this->isElementPresent("link=English"));
         
         $this->click("link=Administration");
         $this->waitForPageToLoad("30000");
