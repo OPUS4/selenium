@@ -188,7 +188,7 @@ class PublishAllFieldsTest extends TestCase
     $this->waitForPageToLoad("30000");
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isElementPresent("link=View document."));
+    $this->assertTrue($this->isElementPresent("link=Go to publish form"));
   }
 }
 ?>
