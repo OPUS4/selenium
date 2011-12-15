@@ -6,6 +6,10 @@ class PublishAllFieldsTest extends TestCase
 {
   public function testMyTestCase()
   {
+    $this->open("/opus4-selenium");
+    $this->waitForPageToLoad("30000");
+    $this->open("/opus4-selenium/home/index/language/language/en");
+    $this->waitForPageToLoad("30000");
     $this->open("/opus4-selenium/publish");
     $this->assertTrue($this->isElementPresent("documentType"));
     $this->select("documentType", "label=All fields (testing documenttype)");
