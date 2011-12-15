@@ -177,7 +177,7 @@ class PublishAllFieldsTest extends TestCase
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->type("PersonAuthorDateOfBirth1", "1965/01/01");
-    $this->type("ThesisDateAccepted", ".2008/03/19");
+    $this->type("ThesisDateAccepted", "2008/03/19");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->type("PublishedDate", "2010/08/15");
