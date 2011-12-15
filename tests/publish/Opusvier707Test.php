@@ -62,7 +62,7 @@ class Opusvier707Test extends TestCase
     $this->select("Licence", "label=Creative Commons - Namensnennung");
     $this->click("send");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isTextPresent("Bitte ändern Sie 2010/09/28 in das Datumsformat TT.MM.JJJJ."));
+    $this->assertTrue($this->isTextPresent('Bitte ändern Sie 2010/09/28 in das Datumsformat TT.MM.JJJJ.'));
     $this->type("CompletedDate", "28.09.2010");
     $this->click("send");
     $this->waitForPageToLoad("30000");
