@@ -183,6 +183,7 @@ class PublishAllFieldsTest extends TestCase
     $this->type("PublishedDate", "2010/08/15");
     $this->click("send");
     $this->waitForPageToLoad("30000");
+    $this->assertTrue($this->isElementPresent('back'));
     $this->click("back");
     $this->waitForPageToLoad("30000");
     $this->type("ThesisDateAccepted", "2008/03/19");
