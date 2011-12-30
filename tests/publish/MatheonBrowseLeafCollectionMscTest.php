@@ -57,8 +57,8 @@ class MatheonBrowseLeafCollectionMscTest extends TestCase {
         $this->click("send");
         $this->waitForPageToLoad("30000");
         $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
-        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupInstitute']/div[3]/div/div[@class='form-errors']"));
-        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[3]/div/div[@class='form-errors']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupInstitute']/div[2]/div/div[@class='form-errors']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
         $this->select("Institute1", "label=Technische Universität Hamburg-Harburg");
         $this->click("browseDownInstitute");
         $this->waitForPageToLoad("30000");
@@ -69,12 +69,12 @@ class MatheonBrowseLeafCollectionMscTest extends TestCase {
         $this->click("send");
         $this->waitForPageToLoad("30000");
         $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
-        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[3]/div/div[@class='form-errors']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
         $this->select("SubjectMSC1", "label=00-XX GENERAL");
         $this->click("send");
         $this->waitForPageToLoad("30000");
         $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
-        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[3]/div/div[@class='form-errors']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
         $this->click("browseDownSubjectMSC");
         $this->waitForPageToLoad("30000");
         $this->select("collId2SubjectMSC1", "label=00-02 Research exposition (monographs, survey articles)");
