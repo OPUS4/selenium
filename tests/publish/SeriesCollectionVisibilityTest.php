@@ -27,7 +27,6 @@
  *
  * @category    Application
  * @package     Module_Publish
- * @package     Module_Publish Selenium Test MATHEON
  * @author      Susanne Gottwald <gottwald@zib.de>
  * @copyright   Copyright (c) 2008-2011, OPUS 4 development team
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
@@ -35,7 +34,7 @@
  */
 require_once 'TestCase.php';
 
-class seriesCollectionVisibilityTest extends TestCase {
+class SeriesCollectionVisibilityTest extends TestCase {
 
     public function testSeriesCollectionVisibility() {
         $this->open("/opus4-selenium");

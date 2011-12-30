@@ -27,7 +27,6 @@
  *
  * @category    Application
  * @package     Module_Publish
- * @package     Module_Publish Selenium Test MATHEON
  * @author      Susanne Gottwald <gottwald@zib.de>
  * @copyright   Copyright (c) 2008-2011, OPUS 4 development team
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
@@ -35,9 +34,9 @@
  */
 require_once 'TestCase.php';
 
-class disabledTextFieldForLeafCollectionNodeTest extends TestCase {
+class DisabledTextFieldForSeriesCollectionTest extends TestCase {
 
-    public function testdisabledTextFieldForLeafCollectionNode() {
+    public function testdisabledTextFieldForSeriesCollection() {
         $this->open("/opus4-selenium");
         $this->waitForPageToLoad("30000");
         $this->open("/opus4-selenium/home/index/language/language/de");
@@ -46,22 +45,16 @@ class disabledTextFieldForLeafCollectionNodeTest extends TestCase {
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad("30000");
 
-        $this->select("id=documentType", "label=Preprint für MATHEON");
+        $this->select("documentType", "label=Alle Felder (Testdokumenttyp)");
         $this->click("rights");
         $this->click("send");
         $this->waitForPageToLoad("30000");
-        $this->type("PersonAuthorFirstName1", "Susi");
-        $this->type("PersonAuthorLastName1", "Gottwald");
-        $this->type("TitleMain1", "Entenhausen");
-        $this->type("TitleAbstract1", "bla");
-        $this->select("SubjectMSC1", "label=00-XX GENERAL");
-        $this->click("browseDownSubjectMSC");
-        $this->waitForPageToLoad("30000");
-        $this->click("browseDownSubjectMSC");
-        $this->waitForPageToLoad("30000");
-        $this->assertTrue($this->isTextPresent("Sie haben das Ende dieser Sammlung erreicht."));
-        $this->assertTrue($this->isEditable("collId2SubjectMSC1"));
-        $this->assertFalse($this->isElementPresent("collId3SubjectMSC1"));
+        $this->select("Series1", "label=TUHH Spektrum");
+        $this->assertFalse($this->isElementPresent("browseDownSeries"));
+        $this->assertFalse($this->isElementPresent("collId2Series11"));
+        $this->assertTrue($this->isEditable("Series1"));
+        $this->assertFalse($this->isElementPresent("browseUpSeries"));
+        
     }
 
 }
