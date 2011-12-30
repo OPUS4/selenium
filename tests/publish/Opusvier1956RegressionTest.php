@@ -82,32 +82,32 @@ class Opusvier1956RegressionTest extends TestCase
     // TitleMain related checks
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/input[@id='TitleMain1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/input[@id='TitleMainLanguage1']"));
+    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/select[@id='TitleMainLanguage1']"));
     $this->assertFalse($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple even']"));
 
     $this->click("addMoreTitleMain");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/input[@id='TitleMain1]"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/input[@id='TitleMainLanguage1']"));
+    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/select[@id='TitleMainLanguage1']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple even']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple even']/div/input[@id='TitleMain2']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple even']/div/input[@id='TitleMainLanguage2']"));
+    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple even']/div/select[@id='TitleMainLanguage2']"));
 
     // TitleAbstract related checks
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/input[@id='TitleAbstract1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/input[@id='TitleAbstractLanguage1']"));
+    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/select[@id='TitleAbstractLanguage1']"));
     $this->assertFalse($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple even']"));
 
     $this->click("addMoreTitleAbstract");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/input[@id='TitleAbstract1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/input[@id='TitleAbstractLanguage1']"));
+    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/select[@id='TitleAbstractLanguage1']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple even']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple even']/div/input[@id='TitleAbstract2']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple even']/div/input[@id='TitleAbstractLanguage2']"));
+    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple even']/div/select[@id='TitleAbstractLanguage2']"));
 
   }
 }
