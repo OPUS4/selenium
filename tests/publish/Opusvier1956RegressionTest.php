@@ -62,12 +62,6 @@ class Opusvier1956RegressionTest extends TestCase
 
     $this->click("addMorePersonAuthor");
     $this->waitForPageToLoad("30000");
-    $this->assertTrue($this->isElementPresent("PersonSubmitterFirstName2"));
-    $this->assertTrue($this->isElementPresent("PersonAuthorLastName2"));
-    $this->assertTrue($this->isElementPresent("PersonAuthorEmail2"));
-    $this->assertTrue($this->isElementPresent("PersonAuthorAllowEmailContact2"));
-    $this->assertTrue($this->isElementPresent("PersonAuthorDateOfBirth2"));
-    $this->assertTrue($this->isElementPresent("PersonAuthorPlaceOfBirth2"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorFirstName1']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorLastName1']"));
