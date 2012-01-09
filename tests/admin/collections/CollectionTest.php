@@ -40,12 +40,13 @@ class CollectionTest extends TestCase {
      * Regression test for OPUSVIER-2172.
      */
     public function testFieldsOaiSubsetAndNumberAreShownForValue0() {
+        // make sure logged out
+        $this->open('/opus4-selenium/auth/logout');
         // login
         $this->open('/opus4-selenium/auth/login');
         $this->waitForPageToLoad('30000');
         $this->type('login', 'admin');
         $this->type('password', 'adminadmin');
-        $this->waitForPageToLoad('30000');
         $this->click('SubmitCredentials');
         $this->waitForPageToLoad('30000');
 
