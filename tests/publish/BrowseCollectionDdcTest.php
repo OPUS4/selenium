@@ -51,7 +51,6 @@ class BrowseCollectionDdcTest extends TestCase {
         $this->click("send");
         $this->waitForPageToLoad("30000");
         $this->select("SubjectDDC1", "label=0 Informatik, Informationswissenschaft, allgemeine Werke");
-        $this->click("EnrichmentLegalNotices");
         $this->click("browseDownSubjectDDC");
         $this->waitForPageToLoad("30000");
         $this->select("collId2SubjectDDC1", "label=05 Zeitschriften, fortlaufende Sammelwerke");

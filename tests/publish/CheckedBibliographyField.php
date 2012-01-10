@@ -56,7 +56,6 @@ class CheckedBibliographieFieldTest extends TestCase {
         $this->click("id=rights");
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
-        $this->click("id=EnrichmentLegalNotices");
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
         $this->assertTrue($this->isTextPresent("Dokument wird zur Bibliographie hinzugefügt."));
