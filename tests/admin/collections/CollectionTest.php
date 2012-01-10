@@ -53,8 +53,8 @@ class CollectionTest extends TestCase {
         // check output
         $this->open('/opus4-selenium/admin/collection/edit/id/3');
         $this->waitForPageToLoad('30000');
-        $this->assertElementValueNotEquals('id:Opus_Model_Filter-Number-1', '');
-        $this->assertElementValueNotEquals('id:Opus_Model_Filter-OaiSubset-1', '');
+        $this->assertElementValueNotEquals('Opus_Model_Filter-Number-1', '');
+        $this->assertElementValueNotEquals('Opus_Model_Filter-OaiSubset-1', '');
     }
 
 }
