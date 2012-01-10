@@ -37,6 +37,8 @@ require_once 'TestCase.php';
 class SeriesCollectionVisibilityTest extends TestCase {
 
     public function testSeriesCollectionVisibility() {
+        $this->markTestSkipped('has to be redesigned for new series concept');
+        
         $this->open("/opus4-selenium");
         $this->waitForPageToLoad("30000");
         $this->open("/opus4-selenium/home/index/language/language/de");
