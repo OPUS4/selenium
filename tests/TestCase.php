@@ -15,7 +15,8 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase
 
     protected function login($user = 'admin', $password = 'adminadmin') {
         // make sure logged out
-        $this->open('/opus4-selenium/auth/logout');
+	$this->logout();
+
         // login
         $this->open('/opus4-selenium/auth/login');
         $this->waitForPageToLoad('30000');
@@ -23,6 +24,10 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase
         $this->type('password', 'adminadmin');
         $this->click('SubmitCredentials');
         $this->waitForPageToLoad('30000');
+    }
+
+    public function logout() {
+	$this->open('/opus4-selenium/auth/logout');
     }
 
 }
