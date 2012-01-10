@@ -34,19 +34,24 @@
 
 require_once 'TestCase.php';
 
-class CollectionTest extends TestCase {
+class TitleTest extends TestCase {
 
     /**
-     * Regression test for OPUSVIER-2172.
+     * Test for OPUSVIER-2172.
      */
-    public function testFieldsOaiSubsetAndNumberAreShownForValue0() {
+    public function testCreatingTitleWithValue0() {
         $this->login();
 
         // check output
-        $this->open('/opus4-selenium/admin/collection/edit/id/3');
+        $this->open('/opus4-selenium/admin/document/add/id/30/section/titles');
         $this->waitForPageToLoad('30000');
-        $this->assertElementValueNotEquals('Opus_Model_Filter-Number-1', '');
-        $this->assertElementValueNotEquals('Opus_Model_Filter-OaiSubset-1', '');
+        $this->select('Opus_Title-Language', 'value=deu');
+        $this->select('Opus_Title-Type', 'value=main');
+        $this->type('Opus_Title-Value', '0');
+        $this->click('Opus_Title-submit_add');
+        $this->waitForPageToLoad(30000);
+        $this->assertElementValueNotEquals('TitleMain[1][Value]', '');
+        $this->assertElementValueEquals('TitleMain[1][Value]', '0');
     }
 
 }
