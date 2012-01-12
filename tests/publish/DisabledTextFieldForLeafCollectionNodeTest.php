@@ -59,7 +59,7 @@ class DisabledTextFieldForLeafCollectionNodeTest extends TestCase {
         $this->click("browseDownSubjectMSC");
         $this->waitForPageToLoad("30000");
         $this->assertTrue($this->isTextPresent("Sie haben das Ende dieser Sammlung erreicht."));
-        $this->assertTrue($this->isEditable("collId2SubjectMSC1"));
+        $this->assertFalse($this->isEditable("collId2SubjectMSC1"));
         $this->assertFalse($this->isElementPresent("collId3SubjectMSC1"));
     }
 
