@@ -95,8 +95,6 @@ class PublishAllFieldsTest extends TestCase
     $this->click("browseDownSubjectJEL");
     $this->waitForPageToLoad("30000");
     $this->assertTrue($this->isElementPresent("collId3SubjectJEL1"));
-    $this->assertTrue($this->isElementPresent("Series1"));
-    $this->select("Series1", "label=Jahresbericht des Präsidenten");
     $this->assertTrue($this->isElementPresent("PageNumber"));
     $this->type("PageNumber", "465");
     $this->assertTrue($this->isElementPresent("PageFirst"));
