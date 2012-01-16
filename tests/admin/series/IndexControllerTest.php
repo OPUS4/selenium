@@ -58,6 +58,7 @@ class Admin_Series_IndexControllerTest extends TestCase {
         $this->assertElementPresent('//a[@href=\'/admin/documents/index/seriesid/2\']');
         $this->assertElementNotPresent('//a[@href=\'/admin/documents/index/seriesid/3\']');
         $this->assertElementNotPresent('//a[@href=\'/admin/documents/index/seriesid/4\']');
+        $this->assertElementPresent('//a[@href=\'/admin/documents/index/seriesid/5\']');
     }
 
 }
