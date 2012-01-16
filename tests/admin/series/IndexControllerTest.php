@@ -54,10 +54,10 @@ class Admin_Series_IndexControllerTest extends TestCase {
 
         $this->open('/opus4-selenium/admin/series');
 
-        $this->assertTextPresent('/admin/documents/index/seriesid/1');
-        $this->assertTextPresent('/admin/documents/index/seriesid/2');
-        $this->assertTextNotPresent('/admin/documents/index/seriesid/3');
-        $this->assertTextNotPresent('/admin/documents/index/seriesid/4');
+        $this->assertElementPresent('//a[@href=\'/admin/documents/index/seriesid/1\']');
+        $this->assertElementPresent('//a[@href=\'/admin/documents/index/seriesid/2\']');
+        $this->assertElementNotPresent('//a[@href=\'/admin/documents/index/seriesid/3\']');
+        $this->assertElementNotPresent('//a[@href=\'/admin/documents/index/seriesid/4\']');
     }
 
 }
