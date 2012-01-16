@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of OPUS. The software OPUS has been originally developed
  * at the University of Stuttgart with funding from the German Research Net,
@@ -25,7 +24,7 @@
  * along with OPUS; if not, write to the Free Software Foundation, Inc., 51
  * Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
- * @category    Unit Test
+ * @category    Selenium Test
  * @package     Module_Admin
  * @author      Jens Schwidder <schwidder@zib.de>
  * @copyright   Copyright (c) 2008-2011, OPUS 4 development team
@@ -40,7 +39,7 @@ class Regression2204Test extends TestCase {
     /**
      * Regression test for OPUSVIER-2204.
      */
-    public function testEnteringValueThatExceedsMaxValueLengthInDB() {
+    public function testSavingValueThatExceedsMaxValueLengthInDB() {
         $this->markTestSkipped('Regression test for OPUSVIER-2204 (not yet fixed).');
         $this->login();
 
