@@ -40,7 +40,7 @@ class Regression2204Test extends TestCase {
     /**
      * Regression test for OPUSVIER-2204.
      */
-    public function testSavinPageAttributesWithValue0() {
+    public function testEnteringValueThatExceedsMaxValueLengthInDB() {
         $this->login();
 
         // check output
@@ -49,8 +49,10 @@ class Regression2204Test extends TestCase {
         $this->type('Opus_Document-Edition', '0123456789012345678901234e');
         $this->click('save');
         $this->waitForPageToLoad(30000);
-        $this->assertElementNotPresent('//div[@class=\'stacktrace\']');
-        $this->assertTextNotPresent('Opus_Model_DbTruncateException');
+        $this->assertElementNotPresent('//div[@class=\'exceptionMessage\']');
+        $this->assertTextNotPresent('Application error');
+        $this->assertTextNotPresent('Anwendungsfehler');
+        $this->assertTextNotPresent('truncated');
     }
 
 }
