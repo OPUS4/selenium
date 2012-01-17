@@ -36,12 +36,12 @@ require_once 'TestCase.php';
 
 class Admin_Series_IndexControllerTest extends TestCase {
 
-    protected function setUp() {
+    public function setUp() {
 	parent::setUp();
 	$this->login();
     }
 
-    protected function tearDown() {
+    public function tearDown() {
 	$this->logout();
 	parent::tearDown();
     }
