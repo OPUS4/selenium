@@ -41,6 +41,11 @@ class Admin_Series_IndexControllerTest extends TestCase {
 	$this->login();
     }
 
+    protected function tearDown() {
+	$this->logout();
+	parent::tearDown();
+    }
+
     public function testShowSeries() {
         $this->open('/opus4-selenium/admin/series/show/id/1');
         $this->waitForPageToLoad('30000');
