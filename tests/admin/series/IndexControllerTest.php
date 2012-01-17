@@ -36,29 +36,30 @@ require_once 'TestCase.php';
 
 class Admin_Series_IndexControllerTest extends TestCase {
 
-    public function testShowSeries() {
-        $this->markTestIncomplete();
-        $this->login();
+    protected function setUp() {
+	parent::setUp();
+	$this->login();
+    }
 
-        // check output
+    public function testShowSeries() {
         $this->open('/opus4-selenium/admin/series/show/id/1');
         $this->waitForPageToLoad('30000');
-//        $this->assertElementPresent('//div[@class=\'Id\']');
-//        $this->assertElementPresent('//div[@class=\'Title\']');
-//        $this->assertElementPresent('//div[@class=\'Visible\']');
-//        $this->assertElementPresent('//div[@class=\'Id\']');
+
+        $this->assertElementPresent("//div[@class='Id']");
+        $this->assertElementPresent("//div[@class='Title']");
+        $this->assertElementPresent("//div[@class='Visible']");
+        $this->assertElementPresent("//div[@class='Infobox']");
     }
 
     public function testHideDocumentsLinkForSeriesWithoutDocuments() {
-        $this->login();
-
         $this->open('/opus4-selenium/admin/series');
+        $this->waitForPageToLoad('30000');
 
-        $this->assertElementPresent('//a[@href=\'/admin/documents/index/seriesid/1\']');
-        $this->assertElementPresent('//a[@href=\'/admin/documents/index/seriesid/2\']');
-        $this->assertElementNotPresent('//a[@href=\'/admin/documents/index/seriesid/3\']');
-        $this->assertElementNotPresent('//a[@href=\'/admin/documents/index/seriesid/4\']');
-        $this->assertElementPresent('//a[@href=\'/admin/documents/index/seriesid/5\']');
+        $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/1']");
+        $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/2']");
+        $this->assertElementNotPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/3']");
+        $this->assertElementNotPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/4']");
+        $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/5']");
     }
 
 }
