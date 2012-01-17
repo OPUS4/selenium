@@ -36,6 +36,7 @@ require_once 'TestCase.php';
 
 class Admin_Series_IndexControllerTest extends TestCase {
 
+    /*
     public function setUp() {
 	parent::setUp();
 	$this->login();
@@ -45,8 +46,10 @@ class Admin_Series_IndexControllerTest extends TestCase {
 	$this->logout();
 	parent::tearDown();
     }
+    */
 
     public function testShowSeries() {
+	$this->login();
         $this->open('/opus4-selenium/admin/series/show/id/1');
         $this->waitForPageToLoad('30000');
 
@@ -54,9 +57,12 @@ class Admin_Series_IndexControllerTest extends TestCase {
         $this->assertElementPresent("//div[@class='Title']");
         $this->assertElementPresent("//div[@class='Visible']");
         $this->assertElementPresent("//div[@class='Infobox']");
+
+	$this->logout();
     }
 
     public function testHideDocumentsLinkForSeriesWithoutDocuments() {
+	$this->login();
         $this->open('/opus4-selenium/admin/series');
         $this->waitForPageToLoad('30000');
 
@@ -65,6 +71,8 @@ class Admin_Series_IndexControllerTest extends TestCase {
         $this->assertElementNotPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/3']");
         $this->assertElementNotPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/4']");
         $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/5']");
+
+	$this->logout();
     }
 
 }
