@@ -45,7 +45,7 @@ class storePageNumberTest extends TestCase {
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad("30000");
-        $this->click("LegalNotices");
+        
         $this->select("id=documentType", "label=Alle Felder (Testdokumenttyp)");
         $this->click("id=rights");
         $this->click("id=send");
@@ -53,7 +53,7 @@ class storePageNumberTest extends TestCase {
         $this->type("id=PageNumber", "Seite 786");
         $this->type("id=PageFirst", "S. 7");
         $this->type("id=PageLast", "S. 786");
-        
+        $this->click("id=LegalNotices");
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
         $this->click("id=send");

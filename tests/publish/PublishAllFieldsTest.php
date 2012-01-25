@@ -171,7 +171,7 @@ class PublishAllFieldsTest extends TestCase
     $this->type("Note", "Test Test...");
     $this->assertTrue($this->isElementPresent("Licence"));
     $this->select("Licence", "label=Creative Commons - Namensnennung");
-    $this->click("LegalNotices");
+    $this->click("id=LegalNotices");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->type("PersonAuthorDateOfBirth1", "1965/01/01");

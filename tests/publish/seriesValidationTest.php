@@ -56,7 +56,7 @@ class seriesValidationTest extends TestCase {
         $this->waitForPageToLoad("30000");
         $this->type("id=SeriesNumber2", "B");
         $this->select("id=Series2", "label=OPUS Series");
-        $this->click("LegalNotices");
+        $this->click("id=LegalNotices");
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
         $this->verifyTextPresent("Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.");
