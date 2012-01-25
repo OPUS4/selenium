@@ -35,9 +35,9 @@
  */
 require_once 'TestCase.php';
 
-class WrongAbstractLanguageTest extends TestCase {
+class storePageNumberTest extends TestCase {
 
-    public function testWrongAbstractLanguage() {
+    public function testStorePageFieldsAsVarchar() {
         $this->open("/opus4-selenium");
         $this->waitForPageToLoad("30000");
         $this->open("/opus4-selenium/home/index/language/language/de");
@@ -45,18 +45,20 @@ class WrongAbstractLanguageTest extends TestCase {
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad("30000");
-        $this->select("id=documentType", "label=Preprint für MATHEON");
+        $this->click("LegalNotices");
+        $this->select("id=documentType", "label=Alle Felder (Testdokumenttyp)");
         $this->click("id=rights");
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
-        $this->type("id=PersonAuthorFirstName1", "Susi");
-        $this->type("id=PersonAuthorLastName1", "Gottwald");
-        $this->type("id=TitleMain1", "Entenhausen");
-        $this->type("id=TitleAbstract1", "Testabstract");
-        $this->select("id=TitleAbstractLanguage1", "label=Französisch");
+        $this->type("id=PageNumber", "Seite 786");
+        $this->type("id=PageFirst", "S. 7");
+        $this->type("id=PageLast", "S. 786");
+        
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
-        $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
+        $this->click("id=send");
+        $this->waitForPageToLoad("30000");
+        $this->verifyTextPresent("wurde erfolgreich gespeichert");
     }
 
 }
