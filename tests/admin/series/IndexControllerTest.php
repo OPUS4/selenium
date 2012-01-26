@@ -71,7 +71,9 @@ class Admin_Series_IndexControllerTest extends TestCase {
         $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/3']");
         $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/4']");
         $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/5']");
+        $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/6']");
         $this->assertElementNotPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/7']");
+        $this->assertElementNotPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/8']");
 
 	$this->logout();
     }
