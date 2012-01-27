@@ -55,14 +55,12 @@ class seriesValidationTest extends TestCase {
         $this->click("id=addMoreSeries");
         $this->waitForPageToLoad("30000");
         $this->type("id=SeriesNumber2", "B");
-        $this->select("id=Series2", "label=OPUS Series");
-        $this->click("id=LegalNotices");
+        $this->select("id=Series2", "label=OPUS Series");        
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
         $this->verifyTextPresent("Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.");
         $this->verifyTextPresent("Diese Bandnummer wurde in der gewählten Schriftenreihe bereits vergeben. Bitte wählen Sie eine andere Nummer.");
         $this->verifyTextPresent("Ein Dokument darf einer Schriftenreihe nur einmal zugeordnet werden. Bitte wählen Sie eine andere Schriftenreihe aus.");
-
         $this->type("id=SeriesNumber1", "5");
         $this->type("id=SeriesNumber2", "6");
         $this->select("id=Series2", "label=MySeries");

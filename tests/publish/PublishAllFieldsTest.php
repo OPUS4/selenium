@@ -170,7 +170,7 @@ class PublishAllFieldsTest extends TestCase
     $this->assertTrue($this->isElementPresent("Note"));
     $this->type("Note", "Test Test...");
     $this->assertTrue($this->isElementPresent("Licence"));
-    $this->select("Licence", "label=Creative Commons - Namensnennung");
+    $this->select("Licence", "label=Creative Commons - Namensnennung");    
     $this->click("id=LegalNotices");
     $this->click("send");
     $this->waitForPageToLoad("30000");
@@ -185,6 +185,7 @@ class PublishAllFieldsTest extends TestCase
     $this->click("back");
     $this->waitForPageToLoad("30000");
     $this->type("ThesisDateAccepted", "2008/03/19");
+    $this->click("id=LegalNotices");
     $this->click("send");
     $this->waitForPageToLoad("30000");
     $this->click("send");
