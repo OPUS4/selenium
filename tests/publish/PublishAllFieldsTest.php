@@ -171,21 +171,28 @@ class PublishAllFieldsTest extends TestCase
     $this->type("Note", "Test Test...");
     $this->assertTrue($this->isElementPresent("Licence"));
     $this->select("Licence", "label=Creative Commons - Namensnennung");    
+    $this->click("LegalNotices");
     $this->click("send");
     $this->waitForPageToLoad("30000");
+
+    // @TODO add assertion that checks if error message is displayed
     $this->type("PersonAuthorDateOfBirth1", "1965/01/01");
     $this->type("ThesisDateAccepted", "2008/03/19");
     $this->click("send");
     $this->waitForPageToLoad("30000");
+
+    // @TODO add assertion that checks if error message is displayed
     $this->type("PublishedDate", "2010/08/15");
     $this->click("send");
     $this->waitForPageToLoad("30000");
+
     $this->assertTrue($this->isElementPresent('back'));
     $this->click("back");
     $this->waitForPageToLoad("30000");
+    
     $this->type("ThesisDateAccepted", "2008/03/19");
-    $this->click("id=LegalNotices");
     $this->click("send");
+
     $this->waitForPageToLoad("30000");
     $this->click("send");
     $this->waitForPageToLoad("30000");
