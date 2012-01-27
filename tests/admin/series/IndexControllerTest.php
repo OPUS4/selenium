@@ -78,4 +78,18 @@ class Admin_Series_IndexControllerTest extends TestCase {
 	$this->logout();
     }
 
+    public function testSeriesVisibilityIsDisplayedCorrectly() {
+        $this->login();
+        $this->open('/opus4-selenium/admin/series');
+        $this->waitForPageToLoad('30000');
+	foreach (array(1, 2, 4, 5, 6, 8) as $visibleId) {
+	   $this->assertElementPresent('//td[@class="visible"]/a[@href="/opus4-selenium/admin/series/show/id/' . $visibleId . '"]');
+	}
+	foreach (array(3, 7) as $unvisibleId) {
+           $this->assertElementPresent('//td[@class="unvisible"]/a[@href="/opus4-selenium/admin/series/show/id/' . $unvisibleId . '"]');
+	}
+
+        $this->logout();
+    }
+
 }
