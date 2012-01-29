@@ -96,6 +96,8 @@ class Opusvier2332Test extends TestCase {
     $this->assertElementPresent('back');
     $this->click("send");
     $this->waitForPageToLoad("30000");
+
+    $this->assertTextPresent("/opus4-selenium/frontdoor/index/index/docId/");
   }
 }
 ?>
