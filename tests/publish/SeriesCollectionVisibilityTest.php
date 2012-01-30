@@ -40,62 +40,62 @@ class SeriesCollectionVisibilityTest extends TestCase {
         $this->markTestSkipped('has to be redesigned for new series concept');
         
         $this->open("/opus4-selenium");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
 
         $this->open("http://opus4web.zib.de/opus4-selenium/auth/login");
         $this->type("login", "admin");
         $this->type("password", "adminadmin");
         $this->click("SubmitCredentials");
-        $this->waitForPageToLoad("30000");        
+        $this->waitForPageToLoad();
         $this->assertTrue($this->isElementPresent("link=English"));
         
         $this->click("link=Administration");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("link=Sammlungen verwalten");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("link=Schriftenreihen");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("link=Hamburger Berichte zur Siedlungswasserwirtschaft");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("link=Einblenden");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         
         $this->click("//li[@id='primary-nav-publish']/a/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->select("documentType", "label=Alle Felder (Testdokumenttyp)");
         $this->click("rights");
         $this->click("send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->select("Series1", "label=Hamburger Berichte zur Siedlungswasserwirtschaft");
         $this->click("browseDownSeries");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->assertTrue($this->isElementPresent("browseUpSeries"));
         $this->assertFalse($this->isElementPresent("browseDownSeries"));
         
         $this->click("//li[@id='primary-nav-administration']/a/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("link=Sammlungen verwalten");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("link=Schriftenreihen");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("link=Hamburger Berichte zur Siedlungswasserwirtschaft");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("link=Ausblenden");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("//li[@id='primary-nav-publish']/a/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->select("documentType", "label=Alle Felder (Testdokumenttyp)");
         $this->click("rights");
         $this->click("send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->assertFalse($this->isElementPresent("browseUpSeries"));
         $this->click("link=Logout (admin)");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
     }
 
 }

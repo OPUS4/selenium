@@ -39,15 +39,15 @@ class Opusvier1956RegressionTest extends TestCase
   public function testMyTestCase()
   {
     $this->open("/opus4-selenium");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->open("/opus4-selenium/home/index/language/language/en");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->open("/opus4-selenium/publish");
     $this->assertTrue($this->isElementPresent("documentType"));
     $this->select("documentType", "label=All fields (testing documenttype)");
     $this->click("rights");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     // PersonAuthor releated checks
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']"));
@@ -61,7 +61,7 @@ class Opusvier1956RegressionTest extends TestCase
     $this->assertFalse($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']"));
 
     $this->click("addMorePersonAuthor");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorFirstName1']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorLastName1']"));
@@ -86,7 +86,7 @@ class Opusvier1956RegressionTest extends TestCase
     $this->assertFalse($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple even']"));
 
     $this->click("addMoreTitleMain");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/input[@id='TitleMain1']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/select[@id='TitleMainLanguage1']"));
@@ -101,7 +101,7 @@ class Opusvier1956RegressionTest extends TestCase
     $this->assertFalse($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple even']"));
 
     $this->click("addMoreTitleAbstract");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/textarea[@id='TitleAbstract1']"));
     $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/select[@id='TitleAbstractLanguage1']"));

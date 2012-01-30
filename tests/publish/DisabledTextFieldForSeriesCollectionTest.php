@@ -40,17 +40,17 @@ class DisabledTextFieldForSeriesCollectionTest extends TestCase {
         $this->markTestSkipped('has to be redesigned for new series concept');
         
         $this->open("/opus4-selenium");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
 
         $this->select("documentType", "label=Alle Felder (Testdokumenttyp)");
         $this->click("rights");
         $this->click("send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->select("Series1", "label=TUHH Spektrum");
         $this->assertFalse($this->isElementPresent("browseDownSeries"));
         $this->assertFalse($this->isElementPresent("collId2Series11"));

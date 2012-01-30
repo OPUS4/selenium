@@ -51,7 +51,7 @@ class Admin_Series_IndexControllerTest extends TestCase {
     public function testShowSeries() {
 	$this->login();
         $this->open('/opus4-selenium/admin/series/show/id/1');
-        $this->waitForPageToLoad('30000');
+        $this->waitForPageToLoad();
 
         $this->assertElementPresent("//div[@class='Id']");
         $this->assertElementPresent("//div[@class='Title']");
@@ -64,7 +64,7 @@ class Admin_Series_IndexControllerTest extends TestCase {
     public function testHideDocumentsLinkForSeriesWithoutDocuments() {
 	$this->login();
         $this->open('/opus4-selenium/admin/series');
-        $this->waitForPageToLoad('30000');
+        $this->waitForPageToLoad();
 
         $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/1']");
         $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/2']");
@@ -81,7 +81,7 @@ class Admin_Series_IndexControllerTest extends TestCase {
     public function testSeriesVisibilityIsDisplayedCorrectly() {
         $this->login();
         $this->open('/opus4-selenium/admin/series');
-        $this->waitForPageToLoad('30000');
+        $this->waitForPageToLoad();
 	foreach (array(1, 2, 4, 5, 6, 8) as $visibleId) {
 	   $this->assertElementPresent('//td[@class="visible"]/a[@href="/opus4-selenium/admin/series/show/id/' . $visibleId . '"]');
 	}

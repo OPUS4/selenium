@@ -39,17 +39,17 @@ class regression2236Test extends TestCase {
 
     public function testEnrichmentLanguageKeys() {
         $this->open("/opus4-selenium");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
 
         $this->select("id=documentType", "label=Alle Felder (Testdokumenttyp)");
         $this->click("id=rights");
         $this->click("id=send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         try {
             $this->assertFalse($this->isTextPresent("header_LegalNotices"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {

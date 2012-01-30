@@ -39,16 +39,16 @@ class Regression1944Test extends TestCase {
 
     public function testImpossibleCollectionChange() {
         $this->open("/opus4-selenium");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->select("id=documentType", "label=Preprint für MATHEON");
         $this->click("id=rights");
         $this->click("id=send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
 
         $this->type("id=PersonAuthorFirstName1", "tester");
         $this->type("id=PersonAuthorLastName1", "test");
@@ -56,21 +56,21 @@ class Regression1944Test extends TestCase {
         $this->type("id=TitleAbstract1", "drltk-jzrkld5zhjkls");
         $this->select("id=Institute1", "label=Technische Universität Hamburg-Harburg");
         $this->click("id=browseDownInstitute");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("id=browseDownInstitute");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->select("id=SubjectMSC1", "label=03-XX MATHEMATICAL LOGIC AND FOUNDATIONS");
         $this->click("id=browseDownSubjectMSC");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->verifyTextPresent("03-00 General reference works (handbooks, dictionaries, bibliographies, etc.) 03-01 Instructional exposition (textbooks, tutorial papers, etc.) 03-02 Research exposition (monographs, survey articles) 03-03 Historical (must also be assigned at least one classification number from Section 01) 03-04 Explicit machine computation and programs (not the theory of computation or programming) 03-06 Proceedings, conferences, collections, etc. 03Axx Philosophical aspects of logic and foundations 03Bxx General logic 03Cxx Model theory 03Dxx Computability and recursion theory 03Exx Set theory 03Fxx Proof theory and constructive mathematics 03Gxx Algebraic logic 03Hxx Nonstandard models [See also 03C62]");
         $this->click("id=browseUpSubjectMSC");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->select("id=SubjectMSC1", "label=22-XX TOPOLOGICAL GROUPS, LIE GROUPS (For transformation groups, see 54H15, 57Sxx, 58-XX. For abstract harmonic analysis, see 43-XX)");
         $this->click("id=browseDownSubjectMSC");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->verifyTextPresent("22-00 General reference works (handbooks, dictionaries, bibliographies, etc.) 22-01 Instructional exposition (textbooks, tutorial papers, etc.) 22-02 Research exposition (monographs, survey articles) 22-03 Historical (must also be assigned at least one classification number from Section 01) 22-04 Explicit machine computation and programs (not the theory of computation or programming) 22-06 Proceedings, conferences, collections, etc. 22Axx Topological and differentiable algebraic systems (For topological rings and fields, see 12Jxx, 13Jxx, 16W80) 22Bxx Locally compact abelian groups (LCA groups) 22Cxx Compact groups 22Dxx Locally compact groups and their algebras 22Exx Lie groups (For the topology of Lie groups and homogeneous spaces, see 57Sxx, 57Txx; for analysis thereon, see 43A80, 43A85, 43A90) 22Fxx Noncompact transformation groups");
         $this->click("id=send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
     }
 
 }

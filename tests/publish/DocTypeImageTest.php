@@ -41,13 +41,13 @@ class ImageTest extends TestCase
   public function testDocTypImage()
   {
     $this->open("/opus4-selenium/publish");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isTextPresent("Publish"));
     $this->assertTrue($this->isTextPresent("Choose document type and file"));
     $this->select("documentType", "label=Image");
     $this->click("rights");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isTextPresent("Publish"));
     $this->assertTrue($this->isTextPresent("Image"));
     $this->type("PersonSubmitterFirstName1", "Donald");
@@ -59,10 +59,10 @@ class ImageTest extends TestCase
     $this->select("Language", "label=English");
     $this->select("Licence", "label=Creative Commons - Namensnennung");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isTextPresent("Please check your data."));
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isTextPresent("Document "));
     $this->assertTrue($this->isTextPresent(" was successfully published."));
   }

@@ -43,59 +43,59 @@ class Opusvier2332Test extends TestCase {
     $this->select("documentType", "value=all");
     $this->click("rights");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     $this->assertNotChecked("id=LegalNotices");
     $this->click("addMoreTitleAbstract");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     $this->assertNotChecked("id=LegalNotices");
     $this->click("id=LegalNotices");
     $this->assertChecked("id=LegalNotices");
     $this->click("deleteMoreTitleAbstract");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     $this->assertChecked("id=LegalNotices");
     $this->click("id=LegalNotices");
     $this->assertNotChecked("id=LegalNotices");
     $this->click("addMoreTitleMain");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     $this->assertNotChecked("id=LegalNotices");
     $this->click("id=LegalNotices");
     $this->assertChecked("id=LegalNotices");
     $this->click("deleteMoreTitleMain");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     $this->assertChecked("id=LegalNotices");
     $this->click("id=LegalNotices");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     $this->assertElementPresent('//div[@class="form-hint form-errors"]');
     $this->assertNotChecked("id=LegalNotices");
     $this->click("id=LegalNotices");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     $this->assertElementPresent('back');
     $this->click("back");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     $this->assertChecked("id=LegalNotices");
     $this->click("id=LegalNotices");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     $this->assertElementPresent('//div[@class="form-hint form-errors"]');
     $this->assertNotChecked("id=LegalNotices");
     $this->click("id=LegalNotices");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     $this->assertElementPresent('back');
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     $this->assertTextPresent("/opus4-selenium/frontdoor/index/index/docId/");
   }

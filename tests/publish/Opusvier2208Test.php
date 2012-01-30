@@ -39,21 +39,21 @@ class Opusvier2208Test extends TestCase
   
   public function testDocTypeDemoInvalid() {
     $this->open("/opus4-selenium/publish");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->select("documentType", "label=demo_invalid");
     $this->click("rights");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isTextPresent("given xml document type definition for document type demo_invalid is not valid"));
   }
 
   public function testDocTypeDemoInvalidfieldname() {
     $this->open("/opus4-selenium/publish");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->select("documentType", "label=demo_invalidfieldname");
     $this->click("rights");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isTextPresent("given xml document type definition for document type demo_invalidfieldname is not valid"));
   }
 

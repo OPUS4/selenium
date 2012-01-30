@@ -39,22 +39,22 @@ class MissingErrorWithRequiredCollectionTest extends TestCase {
 
     public function testMissingErrorWithRequiredCollection() {
         $this->open("/opus4-selenium");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->select("id=documentType", "label=Preprint für MATHEON");
         $this->click("id=rights");
         $this->click("id=send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->type("id=PersonAuthorFirstName1", "Susi");
         $this->type("id=PersonAuthorLastName1", "Gottwald");
         $this->type("id=TitleMain1", "Entenhausen");
         $this->type("id=TitleAbstract1", "Testabstract");
         $this->click("id=send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
     }
 

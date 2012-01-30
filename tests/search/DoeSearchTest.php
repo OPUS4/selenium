@@ -10,7 +10,7 @@ class DoeSearchTest extends TestCase
     $this->open("/opus4-selenium/solrsearch");
     $this->type("query", "doe");
     $this->click("//input[@value='Search']");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isTextPresent("6 search hits"));
     $this->assertTrue($this->isTextPresent("1 to 6"));
   }

@@ -40,9 +40,9 @@ class EmptyDocTypeTest extends TestCase {
     public function testDepositInstitute() {
         $this->open("/opus4-selenium/home");
         $this->click("link=Publish");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->assertTrue($this->isTextPresent("Value is required and can't be empty"));
     }
 

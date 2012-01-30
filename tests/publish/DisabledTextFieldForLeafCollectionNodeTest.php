@@ -38,26 +38,26 @@ class DisabledTextFieldForLeafCollectionNodeTest extends TestCase {
 
     public function testdisabledTextFieldForLeafCollectionNode() {
         $this->open("/opus4-selenium");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
 
         $this->select("id=documentType", "label=Preprint für MATHEON");
         $this->click("rights");
         $this->click("send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->type("PersonAuthorFirstName1", "Susi");
         $this->type("PersonAuthorLastName1", "Gottwald");
         $this->type("TitleMain1", "Entenhausen");
         $this->type("TitleAbstract1", "bla");
         $this->select("SubjectMSC1", "label=00-XX GENERAL");
         $this->click("browseDownSubjectMSC");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("browseDownSubjectMSC");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->assertTrue($this->isTextPresent("Sie haben das Ende dieser Sammlung erreicht."));
         $this->assertFalse($this->isEditable("collId2SubjectMSC1"));
         $this->assertFalse($this->isElementPresent("collId3SubjectMSC1"));

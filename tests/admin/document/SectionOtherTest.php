@@ -44,12 +44,12 @@ class SectionOtherTest extends TestCase {
 
         // check output
         $this->open('/opus4-selenium/admin/document/edit/id/30/section/other');
-        $this->waitForPageToLoad('30000');
+        $this->waitForPageToLoad();
         $this->type('Opus_Document-PageFirst', '0');
         $this->type('Opus_Document-PageLast', '0');
         $this->type('Opus_Document-PageNumber', '0');
         $this->click('save');
-        $this->waitForPageToLoad(30000);
+        $this->waitForPageToLoad();
         $this->assertElementValueNotEquals('Opus_Document-PageFirst', '');
         $this->assertElementValueEquals('Opus_Document-PageFirst', '0');
         $this->assertElementValueNotEquals('Opus_Document-PageLast', '');

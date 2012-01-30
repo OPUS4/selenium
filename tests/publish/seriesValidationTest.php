@@ -38,26 +38,26 @@ class seriesValidationTest extends TestCase {
 
     public function testUnavailableNumberAndDuplicateSeries() {
         $this->open("/opus4-selenium");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
 
         $this->select("id=documentType", "label=Alle Felder (Testdokumenttyp)");
         $this->click("id=rights");
         $this->click("id=send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
 
         $this->select("id=Series1", "label=OPUS Series");
         $this->type("id=SeriesNumber1", "A");
         $this->click("id=addMoreSeries");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->type("id=SeriesNumber2", "B");
         $this->select("id=Series2", "label=OPUS Series");        
         $this->click("id=send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->verifyTextPresent("Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.");
         $this->verifyTextPresent("Diese Bandnummer wurde in der gewählten Schriftenreihe bereits vergeben. Bitte wählen Sie eine andere Nummer.");
         $this->verifyTextPresent("Ein Dokument darf einer Schriftenreihe nur einmal zugeordnet werden. Bitte wählen Sie eine andere Schriftenreihe aus.");
@@ -67,10 +67,10 @@ class seriesValidationTest extends TestCase {
 	$this->click("LegalNotices");
         $this->click("id=send");
 
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("id=send");
 
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->verifyTextPresent("wurde erfolgreich gespeichert");
     }
 

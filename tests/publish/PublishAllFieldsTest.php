@@ -7,15 +7,15 @@ class PublishAllFieldsTest extends TestCase
   public function testMyTestCase()
   {
     $this->open("/opus4-selenium");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->open("/opus4-selenium/home/index/language/language/en");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->open("/opus4-selenium/publish");
     $this->assertTrue($this->isElementPresent("documentType"));
     $this->select("documentType", "label=All fields (testing documenttype)");
     $this->click("rights");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("PersonSubmitterFirstName1"));
     $this->type("PersonAuthorFirstName1", "Steffi");
     $this->assertTrue($this->isElementPresent("PersonAuthorLastName1"));
@@ -33,7 +33,7 @@ class PublishAllFieldsTest extends TestCase
     $this->type("TitleMain1", "Testdokument mit allen Feldern");
     $this->assertTrue($this->isElementPresent("TitleMainLanguage1"));
     $this->click("addMoreTitleMain");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("TitleMain2"));
     $this->type("TitleMain2", "Document for Testing with all Fields");
     $this->assertTrue($this->isElementPresent("TitleMainLanguage2"));
@@ -43,7 +43,7 @@ class PublishAllFieldsTest extends TestCase
     $this->assertTrue($this->isElementPresent("TitleAbstractLanguage1"));
     $this->assertTrue($this->isElementPresent("addMoreTitleAbstract"));
     $this->click("addMoreTitleAbstract");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("TitleAbstract2"));
     $this->type("TitleAbstract2", "A Document with all Fields.");
     $this->assertTrue($this->isElementPresent("TitleAbstractLanguage2"));
@@ -61,39 +61,39 @@ class PublishAllFieldsTest extends TestCase
     $this->assertTrue($this->isElementPresent("SubjectMSC1"));
     $this->select("SubjectMSC1", "label=00-XX GENERAL");
     $this->click("browseDownSubjectMSC");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("browseUpSubjectMSC"));
     $this->click("browseDownSubjectMSC");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("SubjectDDC1"));
     $this->select("SubjectDDC1", "label=0 Informatik, Informationswissenschaft, allgemeine Werke");
     $this->click("browseDownSubjectDDC");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("browseUpSubjectDDC"));
     $this->click("browseDownSubjectDDC");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("collId3SubjectDDC1"));
     $this->assertTrue($this->isElementPresent("SubjectCCS1"));
     $this->select("SubjectCCS1", "label=A. General Literature");
     $this->click("browseDownSubjectCCS");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->click("browseDownSubjectCCS");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("collId3SubjectCCS1"));
     $this->assertTrue($this->isElementPresent("SubjectPACS1"));
     $this->select("SubjectPACS1", "label=00.00.00 GENERAL");
     $this->click("browseDownSubjectPACS");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("collId2SubjectPACS1"));
     $this->click("browseDownSubjectPACS");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->select("SubjectJEL1", "label=D Microeconomics");
     $this->assertTrue($this->isElementPresent("SubjectJEL1"));
     $this->click("browseDownSubjectJEL");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("collId2SubjectJEL1"));
     $this->click("browseDownSubjectJEL");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("collId3SubjectJEL1"));
     $this->assertTrue($this->isElementPresent("PageNumber"));
     $this->type("PageNumber", "465");
@@ -110,10 +110,10 @@ class PublishAllFieldsTest extends TestCase
     $this->assertTrue($this->isElementPresent("Institute1"));
     $this->select("Institute1", "label=Technische Universität Hamburg-Harburg");
     $this->click("browseDownInstitute");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("collId2Institute1"));
     $this->click("browseDownInstitute");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("collId3Institute1"));
     $this->assertTrue($this->isElementPresent("PublishedYear"));
     $this->type("PublishedYear", "2010");
@@ -173,29 +173,29 @@ class PublishAllFieldsTest extends TestCase
     $this->select("Licence", "label=Creative Commons - Namensnennung");    
     $this->click("LegalNotices");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     // @TODO add assertion that checks if error message is displayed
     $this->type("PersonAuthorDateOfBirth1", "1965/01/01");
     $this->type("ThesisDateAccepted", "2008/03/19");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     // @TODO add assertion that checks if error message is displayed
     $this->type("PublishedDate", "2010/08/15");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
 
     $this->assertTrue($this->isElementPresent('back'));
     $this->click("back");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     
     $this->type("ThesisDateAccepted", "2008/03/19");
     $this->click("send");
 
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isElementPresent("link=Go to publish form"));
   }
 }

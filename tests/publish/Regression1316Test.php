@@ -39,19 +39,19 @@ class Regression1316Test extends TestCase {
   public function testDisabledCollectionFieldWithoutSelection()
   {
         $this->open("/opus4-selenium");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         
         $this->select("id=documentType", "label=Preprint für MATHEON");
         $this->click("id=rights");
         $this->click("id=send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("id=browseDownInstitute");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->assertTrue($this->isEditable("Institute1"));
    }
 }

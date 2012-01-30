@@ -39,31 +39,31 @@ class BrowseCollectionDdcTest extends TestCase {
 
     public function testAllDocumentType() {
         $this->open("/opus4-selenium");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->assertTrue($this->isElementPresent("link=English"));
         $this->select("documentType", "label=Alle Felder (Testdokumenttyp)");
         $this->click("rights");
         $this->click("send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
 
         $this->select("SubjectDDC1", "label=0 Informatik, Informationswissenschaft, allgemeine Werke");
         $this->click("browseDownSubjectDDC");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
 
         $this->select("collId2SubjectDDC1", "label=05 Zeitschriften, fortlaufende Sammelwerke");        
 	$this->click("LegalNotices");
         $this->click("send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
 
 	$this->assertTextPresent("05 Zeitschriften, fortlaufende Sammelwerke");
         $this->assertTrue($this->isElementPresent("//div[@id='form-table-check']/fieldset"));
         $this->click("send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->assertTrue($this->isTextPresent("erfolgreich gespeichert"));
     }
 

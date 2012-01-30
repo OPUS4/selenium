@@ -39,17 +39,17 @@ class checkCollectionFieldsStartLabelTest extends TestCase {
 
     public function testCollectionSelectionLabel() {
         $this->open("/opus4-selenium");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
 
         $this->select("id=documentType", "label=collections");
         $this->click("id=rights");
         $this->click("id=send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->verifyTextPresent("Bitte wählen Sie eine MSC Klasse");
         $this->verifyTextPresent("Bitte wählen Sie eine DDC Klasse");
         $this->verifyTextPresent("Bitte wählen Sie eine PACS Klasse");

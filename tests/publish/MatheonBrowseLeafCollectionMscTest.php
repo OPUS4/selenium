@@ -39,47 +39,47 @@ class MatheonBrowseLeafCollectionMscTest extends TestCase {
 
     public function testMscAndInstituteLeafCollectionBrowsingAndCheckPage() {
         $this->open("/opus4-selenium");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->assertTrue($this->isElementPresent("link=English"));
         $this->select("documentType", "label=Preprint für MATHEON");
         $this->click("rights");
         $this->click("send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->type("PersonAuthorFirstName1", "Susi");
         $this->type("PersonAuthorLastName1", "Gottwald");
         $this->type("TitleMain1", "Entenhausen");
         $this->type("TitleAbstract1", "Testabstract");
         $this->click("send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
         $this->assertTrue($this->isElementPresent("//fieldset[@id='groupInstitute']/div[2]/div/div[@class='form-errors']"));
         $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
         $this->select("Institute1", "label=Technische Universität Hamburg-Harburg");
         $this->click("browseDownInstitute");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->select("collId2Institute1", "label=Bauwesen");
         $this->click("browseDownInstitute");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->select("collId3Institute1", "label=Abwasserwirtschaft und Gewässerschutz B-2");
         $this->click("send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
         $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
         $this->select("SubjectMSC1", "label=00-XX GENERAL");
         $this->click("send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
         $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
         $this->click("browseDownSubjectMSC");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->select("collId2SubjectMSC1", "label=00-02 Research exposition (monographs, survey articles)");
         $this->click("send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         try {
             $this->assertTrue($this->isTextPresent("00-02"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -87,7 +87,7 @@ class MatheonBrowseLeafCollectionMscTest extends TestCase {
         }
         $this->assertTrue($this->isElementPresent("//div[@id='form-table-check']/fieldset"));
         $this->click("send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->assertTrue($this->isTextPresent("erfolgreich gespeichert"));
     }
 

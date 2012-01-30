@@ -39,24 +39,24 @@ class storePageNumberTest extends TestCase {
 
     public function testStorePageFieldsAsVarchar() {
         $this->open("/opus4-selenium");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
 
         $this->select("id=documentType", "label=Alle Felder (Testdokumenttyp)");
         $this->click("id=rights");
         $this->click("id=send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->type("id=PageNumber", "Seite 786");
         $this->type("id=PageFirst", "S. 7");
         $this->type("id=PageLast", "S. 786");
         $this->click("id=send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->click("id=send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->verifyTextPresent("wurde erfolgreich gespeichert");
     }
 

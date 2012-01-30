@@ -41,12 +41,12 @@ class DocTypeSoundTest extends TestCase
   public function testDocTypeSound()
   {
     $this->open("/opus4-selenium/publish");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isTextPresent("Publish"));
     $this->select("documentType", "label=Sound");
     $this->click("rights");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isTextPresent("Sound"));
     $this->type("PersonSubmitterFirstName1", "Donald");
     $this->type("PersonSubmitterLastName1", "Trump");
@@ -60,10 +60,10 @@ class DocTypeSoundTest extends TestCase
     $this->select("Language", "label=German");
     $this->select("Licence", "label=Creative Commons - Namensnennung");
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isTextPresent("Please check your data."));
     $this->click("send");
-    $this->waitForPageToLoad("30000");
+    $this->waitForPageToLoad();
     $this->assertTrue($this->isTextPresent("Document "));
     $this->assertTrue($this->isTextPresent(" was successfully published."));
   }

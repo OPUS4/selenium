@@ -39,17 +39,17 @@ class seriesVisibilityTest extends TestCase {
 
     public function testVisibilityCheckOfSeries() {
         $this->open("/opus4-selenium");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         
         $this->select("id=documentType", "label=Alle Felder (Testdokumenttyp)");
         $this->click("id=rights");
         $this->click("id=send");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad();
         $this->assertFalse($this->isElementPresent("css=#Series1 > option[value=\"ID:3\"]"));
         $this->assertTrue($this->isElementPresent("css=#Series1 > option[value=\"ID:4\"]"));
     }
