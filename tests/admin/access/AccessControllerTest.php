@@ -47,8 +47,7 @@ class Admin_AccessControllerTest extends TestCase {
         $this->waitForPageToLoad('30000');
 
         // Check
-        $this->assertTextNotPresent('admin_access_store');
-        $this->assertTitleNotEquals('OPUS 4 | admin_access_store');
+        $this->assertElementNotContainsText('/html/head/title[1]', 'OPUS 4 | admin_access_store');
 
 	$this->logout();
     }
