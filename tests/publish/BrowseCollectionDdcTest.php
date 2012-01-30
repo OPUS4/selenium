@@ -50,24 +50,17 @@ class BrowseCollectionDdcTest extends TestCase {
         $this->click("rights");
         $this->click("send");
         $this->waitForPageToLoad("30000");
+
         $this->select("SubjectDDC1", "label=0 Informatik, Informationswissenschaft, allgemeine Werke");
         $this->click("browseDownSubjectDDC");
         $this->waitForPageToLoad("30000");
+
         $this->select("collId2SubjectDDC1", "label=05 Zeitschriften, fortlaufende Sammelwerke");        
+	$this->click("LegalNotices");
         $this->click("send");
         $this->waitForPageToLoad("30000");
-        for ($second = 0;; $second++) {
-            if ($second >= 60)
-                $this->fail("timeout");
-            try {
-                if ($this->isTextPresent("05 Zeitschriften, fortlaufende Sammelwerke"))
-                    break;
-            } catch (Exception $e) {
-                
-            }
-            sleep(1);
-        }
 
+	$this->assertTextPresent("05 Zeitschriften, fortlaufende Sammelwerke");
         $this->assertTrue($this->isElementPresent("//div[@id='form-table-check']/fieldset"));
         $this->click("send");
         $this->waitForPageToLoad("30000");
