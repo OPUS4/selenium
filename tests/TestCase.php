@@ -38,7 +38,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
     protected $captureScreenshotOnFailure = TRUE;
     protected $screenshotPath = '/home/opus4ci/cruisecontrol/webapps/screenshots';
     protected $screenshotUrl = 'http://opus4ci.zib.de:8080/screenshots';
-    protected $defaultPeriodToWait = '10000';
+    protected $defaultMaxPeriodToWait = '30000';
 
     protected function setUp() {
         $this->setBrowser("*firefox");
@@ -64,7 +64,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
 
     public function waitForPageToLoad($period = null) {
         if (is_null($period)) {
-            $this->waitForPageToLoad($this->defaultPeriodToWait);
+            $this->waitForPageToLoad($this->defaultMaxPeriodToWait);
         }
         else {
             parent::waitForPageToLoad($period);

@@ -38,66 +38,69 @@ class Opusvier2332Test extends TestCase {
 
   public function testLegalNoticesChoice() {
 
-    $this->open("/opus4-selenium/publish");
-    $this->assertTrue($this->isElementPresent("documentType"));
-    $this->select("documentType", "value=all");
-    $this->click("rights");
-    $this->click("send");
+    $this->open('/opus4-selenium/publish');
+    $this->assertTrue($this->isElementPresent('documentType'));
+    $this->select('documentType', 'value=all');
+    $this->click('rights');
+    $this->click('send');
     $this->waitForPageToLoad();
 
-    $this->assertNotChecked("id=LegalNotices");
-    $this->click("addMoreTitleAbstract");
+    $this->assertNotChecked('id=LegalNotices');
+    $this->click('addMoreTitleAbstract');
     $this->waitForPageToLoad();
 
-    $this->assertNotChecked("id=LegalNotices");
-    $this->click("id=LegalNotices");
-    $this->assertChecked("id=LegalNotices");
-    $this->click("deleteMoreTitleAbstract");
+    $this->assertNotChecked('id=LegalNotices');
+    $this->click('id=LegalNotices');
+    $this->assertChecked('id=LegalNotices');
+    $this->click('deleteMoreTitleAbstract');
     $this->waitForPageToLoad();
 
-    $this->assertChecked("id=LegalNotices");
-    $this->click("id=LegalNotices");
-    $this->assertNotChecked("id=LegalNotices");
-    $this->click("addMoreTitleMain");
+    $this->assertChecked('id=LegalNotices');
+    $this->click('id=LegalNotices');
+    $this->assertNotChecked('id=LegalNotices');
+    $this->click('addMoreTitleMain');
     $this->waitForPageToLoad();
 
-    $this->assertNotChecked("id=LegalNotices");
-    $this->click("id=LegalNotices");
-    $this->assertChecked("id=LegalNotices");
-    $this->click("deleteMoreTitleMain");
+    $this->assertNotChecked('id=LegalNotices');
+    $this->click('id=LegalNotices');
+    $this->assertChecked('id=LegalNotices');
+    $this->click('deleteMoreTitleMain');
     $this->waitForPageToLoad();
 
-    $this->assertChecked("id=LegalNotices");
-    $this->click("id=LegalNotices");
-    $this->click("send");
-    $this->waitForPageToLoad();
-
-    $this->assertElementPresent('//div[@class="form-hint form-errors"]');
-    $this->assertNotChecked("id=LegalNotices");
-    $this->click("id=LegalNotices");
-    $this->click("send");
-    $this->waitForPageToLoad();
-
-    $this->assertElementPresent('back');
-    $this->click("back");
-    $this->waitForPageToLoad();
-
-    $this->assertChecked("id=LegalNotices");
-    $this->click("id=LegalNotices");
-    $this->click("send");
+    $this->assertChecked('id=LegalNotices');
+    $this->click('id=LegalNotices');
+    $this->click('send');
     $this->waitForPageToLoad();
 
     $this->assertElementPresent('//div[@class="form-hint form-errors"]');
-    $this->assertNotChecked("id=LegalNotices");
-    $this->click("id=LegalNotices");
-    $this->click("send");
+    $this->assertNotChecked('id=LegalNotices');
+    $this->click('id=LegalNotices');
+    $this->click('send');
     $this->waitForPageToLoad();
 
     $this->assertElementPresent('back');
-    $this->click("send");
+    $this->click('back');
     $this->waitForPageToLoad();
 
-    $this->assertTextPresent("/opus4-selenium/frontdoor/index/index/docId/");
+    $this->assertChecked('id=LegalNotices');
+    $this->click('id=LegalNotices');
+    $this->click('send');
+    $this->waitForPageToLoad();
+
+    $this->assertElementPresent('//div[@class="form-hint form-errors"]');
+    $this->assertNotChecked('id=LegalNotices');
+    $this->click('id=LegalNotices');
+    $this->click('send');
+    $this->waitForPageToLoad();
+
+    $this->assertElementPresent('back');
+    $this->assertElementPresent('send');
+    $this->click('send');
+    $this->waitForPageToLoad();
+
+    $this->assertElementNotPresent('back');
+    $this->assertElementNotPresent('send');
+    $this->assertElementNotPresent('//div[@class="form-hint form-errors"]');
   }
 }
 ?>
