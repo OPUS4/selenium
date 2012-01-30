@@ -67,7 +67,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
             $this->waitForPageToLoad($this->defaultPeriodToWait);
         }
         else {
-            $this->waitForPageToLoad($period);
+            parent::waitForPageToLoad($period);
         }
     }
 
