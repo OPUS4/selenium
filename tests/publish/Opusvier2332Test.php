@@ -52,19 +52,19 @@ class Opusvier2332Test extends TestCase {
     $this->assertNotChecked("id=LegalNotices");
     $this->click("id=LegalNotices");
     $this->assertChecked("id=LegalNotices");
-    $this->click("addMoreTitleAbstract");
+    $this->click("deleteMoreTitleAbstract");
     $this->waitForPageToLoad("30000");
 
     $this->assertChecked("id=LegalNotices");
     $this->click("id=LegalNotices");
     $this->assertNotChecked("id=LegalNotices");
-    $this->click("addMoreTitleAbstract");
+    $this->click("addMoreTitleMain");
     $this->waitForPageToLoad("30000");
 
     $this->assertNotChecked("id=LegalNotices");
     $this->click("id=LegalNotices");
     $this->assertChecked("id=LegalNotices");
-    $this->click("addMoreTitleAbstract");
+    $this->click("deleteMoreTitleMain");
     $this->waitForPageToLoad("30000");
 
     $this->assertChecked("id=LegalNotices");
