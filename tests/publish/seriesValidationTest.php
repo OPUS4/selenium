@@ -26,8 +26,7 @@
  * Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
  * @category    Application
- * @package     Module_Publish
- * @package     Module_Publish Selenium Test MATHEON
+ * @package     Module_Publish Selenium Test
  * @author      Susanne Gottwald <gottwald@zib.de>
  * @copyright   Copyright (c) 2008-2012, OPUS 4 development team
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
@@ -50,6 +49,7 @@ class seriesValidationTest extends TestCase {
         $this->click("id=rights");
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
+
         $this->select("id=Series1", "label=OPUS Series");
         $this->type("id=SeriesNumber1", "A");
         $this->click("id=addMoreSeries");
@@ -64,9 +64,12 @@ class seriesValidationTest extends TestCase {
         $this->type("id=SeriesNumber1", "5");
         $this->type("id=SeriesNumber2", "6");
         $this->select("id=Series2", "label=MySeries");
+	$this->click("LegalNotices");
         $this->click("id=send");
+
         $this->waitForPageToLoad("30000");
         $this->click("id=send");
+
         $this->waitForPageToLoad("30000");
         $this->verifyTextPresent("wurde erfolgreich gespeichert");
     }
