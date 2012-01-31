@@ -49,7 +49,7 @@ class Admin_AccessControllerTest extends TestCase {
 
         // Check
         $this->assertTextPresent('Operation complete');
-        $this->assertElementNotContainsText('//html/head/title', 'OPUS 4 | admin_access_store');
+        $this->assertElementNotContainsText('//html/head/title', 'admin_access_store');
 
 	$this->logout();
     }
