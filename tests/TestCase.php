@@ -60,6 +60,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
 
     public function logout() {
         $this->open('/opus4-selenium/auth/logout');
+        $this->waitForPageToLoad();
     }
 
     public function waitForPageToLoad($period = null) {
@@ -67,6 +68,22 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
             $period = $this->defaultMaxPeriodToWait;
         }
         parent::waitForPageToLoad($period);
+    }
+
+    /**
+     * Changes language to English.
+     */
+    public function switchToEnglish() {
+        $this->open('/opus4-selenium/home/index/language/language/en');
+        $this->waitForPageToLoad();
+    }
+
+    /**
+     * Changes language to German.
+     */
+    public function switchToGerman() {
+        $this->open('/opus4-selenium/home/index/language/language/de');
+        $this->waitForPageToLoad();
     }
 
 }
