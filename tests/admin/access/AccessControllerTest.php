@@ -44,10 +44,10 @@ class Admin_AccessControllerTest extends TestCase {
         // Preparation
         $this->assertElementPresent('save_button');
         $this->click('save_button');
-        $this->waitForPageToLoad('30000');
+        $this->waitForPageToLoad();
 
         // Check
-        $this->assertElementNotContainsText('/html/head/title[1]', 'OPUS 4 | admin_access_store');
+        $this->assertElementNotContainsText('/html/head/title', 'OPUS 4 | admin_access_store');
 
 	$this->logout();
     }
