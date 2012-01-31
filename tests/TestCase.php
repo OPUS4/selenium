@@ -64,11 +64,9 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
 
     public function waitForPageToLoad($period = null) {
         if (is_null($period)) {
-            $this->waitForPageToLoad($this->defaultMaxPeriodToWait);
+            $period = $this->defaultMaxPeriodToWait;
         }
-        else {
-            parent::waitForPageToLoad($period);
-        }
+        parent::waitForPageToLoad($period);
     }
 
 }
