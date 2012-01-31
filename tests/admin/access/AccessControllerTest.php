@@ -37,6 +37,7 @@ require_once 'TestCase.php';
 class Admin_AccessControllerTest extends TestCase {
 
     public function testRegression2281TranslationAdminAccessStore() {
+        $this->switchToEnglish();
 	$this->login();
         $this->open('/opus4-selenium/admin/access/listmodule/roleid/1');
         $this->waitForPageToLoad('30000');
@@ -47,7 +48,8 @@ class Admin_AccessControllerTest extends TestCase {
         $this->waitForPageToLoad();
 
         // Check
-        $this->assertElementNotContainsText('/html/head/title', 'OPUS 4 | admin_access_store');
+        $this->assertTextPresent('Operation complete');
+        $this->assert('//html/head/title', 'OPUS 4 | admin_access_store');
 
 	$this->logout();
     }
