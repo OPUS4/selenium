@@ -45,7 +45,7 @@ class TitleTest extends TestCase {
         // check output
         $this->open('/opus4-selenium/admin/document/add/id/30/section/titles');
         $this->waitForPageToLoad();
-        $this->select('Opus_Title-Language', 'value=deu');
+        $this->select('Opus_Title-Language', 'value=eng');
         $this->select('Opus_Title-Type', 'value=main');
         $this->type('Opus_Title-Value', '0');
         $this->click('Opus_Title-submit_add');
