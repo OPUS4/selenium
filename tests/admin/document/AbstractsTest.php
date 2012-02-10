@@ -99,4 +99,51 @@ class AbstractsTest extends TestCase {
         $this->logout();
     }
 
+    public function testEditingAbstractsDuplicateLanguage() {
+        $this->switchToEnglish();
+        $this->login();
+
+        $this->open('opus4-selenium/admin/document/edit/id/146/section/abstracts');
+        $this->waitForPageToLoad();
+        $this->select('TitleAbstract-1-Language', 'value=deu');
+        $this->click('save');
+        $this->waitForPageToLoad();
+
+        $this->assertElementPresent('css=ul.errors');
+        $this->assertTextPresent('The same language has been selected for more than one abstract.');
+
+        $this->logout();
+    }
+
+    public function testEditingAbstracts() {
+        $this->switchToEnglish();
+        $this->login();
+
+        $this->open('opus4-selenium/admin/document/edit/id/146/section/abstracts');
+        $this->waitForPageToLoad();
+
+        $this->select('TitleAbstract-0-Language', 'value=eng');
+        $this->type('TitleAbstract-0-Value', 'Abstract 1');
+        $this->select('TitleAbstract-1-Language', 'value=deu');
+        $this->type('TitleAbstract-1-Value', 'Abstract 2');
+        $this->click('save');
+        $this->waitForPageToLoad();
+
+        $this->assertElementNotPresent('css=ul.errors');
+        $this->assertTextNotPresent('The same language has been selected for more than one abstract.');
+        $this->assertElementValueEquals('TitleAbstract-0-Language', 'eng');
+        $this->assertElementValueEquals('TitleAbstract-0-Value', 'Abtract 1');
+        $this->assertElementValueEquals('TitleAbstract-1-Language', 'deu');
+        $this->assertElementValueEquals('TitleAbstract-1-Value', 'Abstract 2');
+
+        $this->select('TitleAbstract-0-Language', 'value=deu');
+        $this->type('TitleAbstract-0-Value', 'Die KOBV-Zentrale in Berlin-Dahlem.');
+        $this->select('TitleAbstract-1-Language', 'value=eng');
+        $this->type('TitleAbstract-1-Value', 'Lorem impsum.');
+        $this->click('save');
+        $this->waitForPageToLoad();
+
+        $this->logout();
+    }
+
 }
