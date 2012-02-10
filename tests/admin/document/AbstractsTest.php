@@ -54,4 +54,22 @@ class AbstractsTest extends TestCase {
         $this->logout();
     }
 
+    public function testTryAddingAbstractWithExistingLanguage() {
+        $this->switchToEnglish();
+        $this->login();
+
+        $this->open('opus4-selenium/admin/document/add/id/146/section/abstracts');
+        $this->waitForPageToLoad();
+        $this->select('Opus_TitleAbstract-Language', 'value=deu');
+        $this->type('Opus_TitleAbstract-Value', 'Deutscher Abstrakt');
+        $this->click('Opus_TitleAbstract-submit_add');
+        $this->waitForPageToLoad();
+
+        $this->assertElementPresent('css=div.form-errors');
+        $this->assertTextPresent('The form input is not valid.');
+        $this->assertTextPresent('An entry with that language already exists.');
+
+        $this->logout();
+    }
+
 }
