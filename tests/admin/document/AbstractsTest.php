@@ -72,4 +72,30 @@ class AbstractsTest extends TestCase {
         $this->logout();
     }
 
+    public function testAddingAndRemovingAbstract() {
+        $this->switchToEnglish();
+        $this->login();
+
+        $this->open('opus4-selenium/admin/document/add/id/91/section/abstracts');
+        $this->waitForPageToLoad();
+        $this->select('Opus_TitleAbstract-Language', 'value=deu');
+        $this->type('Opus_TitleAbstract-Value', 'Deutscher Abstrakt');
+        $this->click('Opus_TitleAbstract-submit_add');
+
+        $this->assertElementNotPresent('css=div.form-errors');
+        $this->assertTextNotPresent('The form input is not valid.');
+        $this->assertTextNotPresent('An entry with that language already exists.');
+        $this->assertElementValueEquals('TitleAbstract-1-Language', 'deu');
+        $this->assertElementValueEquals('TitleAbstract-1-Value', 'Deutscher Abstrakt');
+        $this->click('TitleAbstract-1-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertElementNotPresent('css=div.form-errors');
+        $this->assertElementNotPresent('TitleAbstract-1-Language');
+        $this->assertElementNotPresent('TitleAbstract-1-Value');
+        $this->assertElementNotPresent('TitleAbstract-1-remove');
+
+        $this->logout();
+    }
+
 }
