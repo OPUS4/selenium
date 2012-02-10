@@ -81,6 +81,7 @@ class AbstractsTest extends TestCase {
         $this->select('Opus_TitleAbstract-Language', 'value=rus');
         $this->type('Opus_TitleAbstract-Value', 'Russian abstract');
         $this->click('Opus_TitleAbstract-submit_add');
+        $this->waitForPageToLoad();
 
         $this->assertElementNotPresent('css=div.form-errors');
         $this->assertTextNotPresent('The form input is not valid.');
