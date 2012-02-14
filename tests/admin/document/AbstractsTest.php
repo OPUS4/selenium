@@ -132,7 +132,7 @@ class AbstractsTest extends TestCase {
         $this->assertElementNotPresent('css=ul.errors');
         $this->assertTextNotPresent('The same language has been selected for more than one abstract.');
         $this->assertElementValueEquals('TitleAbstract-0-Language', 'eng');
-        $this->assertElementValueEquals('TitleAbstract-0-Value', 'Abtract 1');
+        $this->assertElementValueEquals('TitleAbstract-0-Value', 'Abstract 1');
         $this->assertElementValueEquals('TitleAbstract-1-Language', 'deu');
         $this->assertElementValueEquals('TitleAbstract-1-Value', 'Abstract 2');
 
