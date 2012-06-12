@@ -50,11 +50,11 @@ class ImageTest extends TestCase
     $this->waitForPageToLoad();
     $this->assertTrue($this->isTextPresent("Publish"));
     $this->assertTrue($this->isTextPresent("Image"));
-    $this->type("PersonSubmitterFirstName1", "Donald");
-    $this->type("PersonSubmitterLastName1", "Duck");
-    $this->type("PersonSubmitterEmail1", "test@mail.com");
-    $this->type("TitleMain1", "The Tales of Entenhausen");
-    $this->select("TitleMainLanguage1", "label=English");
+    $this->type("PersonSubmitterFirstName_1", "Donald");
+    $this->type("PersonSubmitterLastName_1", "Duck");
+    $this->type("PersonSubmitterEmail_1", "test@mail.com");
+    $this->type("TitleMain_1", "The Tales of Entenhausen");
+    $this->select("TitleMainLanguage_1", "label=English");
     $this->type("CompletedDate", "2004/03/12");
     $this->select("Language", "label=English");
     $this->select("Licence", "label=Creative Commons - Namensnennung");
