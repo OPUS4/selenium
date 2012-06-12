@@ -45,7 +45,7 @@ class moreThan10AuthorsTest extends TestCase {
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();
-        
+
         $this->select("id=documentType", "label=Arbeitspapier");
         $this->click("id=rights");
         $this->click("id=send");
@@ -90,6 +90,19 @@ class moreThan10AuthorsTest extends TestCase {
         $this->waitForPageToLoad("30000");
         $this->click("link=Dokument betrachten.");
         $this->waitForPageToLoad("30000");
+
+        $this->verifyTextPresent("exact:Verfasserangaben:");
+        $this->verifyTextPresent("nachname 1");
+        $this->verifyTextPresent("nachname 2");
+        $this->verifyTextPresent("nachname 3");
+        $this->verifyTextPresent("nachname 4");
+        $this->verifyTextPresent("nachname 5");
+        $this->verifyTextPresent("nachname 6");
+        $this->verifyTextPresent("nachname 7");
+        $this->verifyTextPresent("nachname 8");
+        $this->verifyTextPresent("nachname 9");
+        $this->verifyTextPresent("nachname 10");
+        $this->verifyTextPresent("nachname 11");
     }
 
 }
