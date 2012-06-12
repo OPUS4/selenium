@@ -46,6 +46,13 @@ class moreThan10AuthorsTest extends TestCase {
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();
 
+        $this->open("http://opus4web.zib.de/opus4-selenium/auth/login");
+        $this->type("login", "admin");
+        $this->type("password", "adminadmin");
+        $this->click("SubmitCredentials");
+        $this->waitForPageToLoad();
+        $this->assertTrue($this->isElementPresent("link=English"));
+
         $this->select("id=documentType", "label=Arbeitspapier");
         $this->click("id=rights");
         $this->click("id=send");
@@ -103,6 +110,9 @@ class moreThan10AuthorsTest extends TestCase {
         $this->verifyTextPresent("nachname 9");
         $this->verifyTextPresent("nachname 10");
         $this->verifyTextPresent("nachname 11");
+        
+        $this->click("link=Logout (admin)");
+	$this->waitForPageToLoad("30000");
     }
 
 }

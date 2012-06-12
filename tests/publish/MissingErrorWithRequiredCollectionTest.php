@@ -49,10 +49,10 @@ class MissingErrorWithRequiredCollectionTest extends TestCase {
         $this->click("id=rights");
         $this->click("id=send");
         $this->waitForPageToLoad();
-        $this->type("id=PersonAuthorFirstName1", "Susi");
-        $this->type("id=PersonAuthorLastName1", "Gottwald");
-        $this->type("id=TitleMain1", "Entenhausen");
-        $this->type("id=TitleAbstract1", "Testabstract");
+        $this->type("id=PersonAuthorFirstName_1", "Susi");
+        $this->type("id=PersonAuthorLastName_1", "Gottwald");
+        $this->type("id=TitleMain_1", "Entenhausen");
+        $this->type("id=TitleAbstract_1", "Testabstract");
         $this->click("id=send");
         $this->waitForPageToLoad();
         $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));

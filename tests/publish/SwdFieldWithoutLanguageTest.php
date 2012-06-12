@@ -51,13 +51,13 @@ class SwdFieldWithoutLanguageTest extends TestCase {
         $this->click("send");
         $this->waitForPageToLoad();
         
-        $this->assertTrue($this->isElementPresent("SubjectSwd1"));
+        $this->assertTrue($this->isElementPresent("SubjectSwd_1"));
         
-        $this->assertFalse($this->isElementPresent("SubjectSwdLanguage1"));
+        $this->assertFalse($this->isElementPresent("SubjectSwdLanguage_1"));
         
-        $this->assertTrue($this->isElementPresent("SubjectUncontrolled1"));
+        $this->assertTrue($this->isElementPresent("SubjectUncontrolled_1"));
         
-        $this->assertTrue($this->isElementPresent("SubjectUncontrolledLanguage1"));
+        $this->assertTrue($this->isElementPresent("SubjectUncontrolledLanguage_1"));
     }
 
 }

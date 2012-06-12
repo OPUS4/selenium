@@ -49,18 +49,18 @@ class DisabledTextFieldForLeafCollectionNodeTest extends TestCase {
         $this->click("rights");
         $this->click("send");
         $this->waitForPageToLoad();
-        $this->type("PersonAuthorFirstName1", "Susi");
-        $this->type("PersonAuthorLastName1", "Gottwald");
-        $this->type("TitleMain1", "Entenhausen");
-        $this->type("TitleAbstract1", "bla");
-        $this->select("SubjectMSC1", "label=00-XX GENERAL");
+        $this->type("PersonAuthorFirstName_1", "Susi");
+        $this->type("PersonAuthorLastName_1", "Gottwald");
+        $this->type("TitleMain_1", "Entenhausen");
+        $this->type("TitleAbstract_1", "bla");
+        $this->select("SubjectMSC_1", "label=00-XX GENERAL");
         $this->click("browseDownSubjectMSC");
         $this->waitForPageToLoad();
         $this->click("browseDownSubjectMSC");
         $this->waitForPageToLoad();
         $this->assertTrue($this->isTextPresent("Sie haben das Ende dieser Sammlung erreicht."));
-        $this->assertFalse($this->isEditable("collId2SubjectMSC1"));
-        $this->assertFalse($this->isElementPresent("collId3SubjectMSC1"));
+        $this->assertFalse($this->isEditable("collId2SubjectMSC_1"));
+        $this->assertFalse($this->isElementPresent("collId3SubjectMSC_1"));
     }
 
 }

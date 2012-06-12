@@ -50,8 +50,8 @@ class seriesVisibilityTest extends TestCase {
         $this->click("id=rights");
         $this->click("id=send");
         $this->waitForPageToLoad();
-        $this->assertFalse($this->isElementPresent("css=#Series1 > option[value=\"ID:3\"]"));
-        $this->assertTrue($this->isElementPresent("css=#Series1 > option[value=\"ID:4\"]"));
+        $this->assertFalse($this->isElementPresent("css=#Series_1 > option[value=\"ID:3\"]"));
+        $this->assertTrue($this->isElementPresent("css=#Series_1 > option[value=\"ID:4\"]"));
     }
 
 }

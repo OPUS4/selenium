@@ -52,7 +52,7 @@ class Regression1316Test extends TestCase {
         $this->waitForPageToLoad();
         $this->click("id=browseDownInstitute");
         $this->waitForPageToLoad();
-        $this->assertTrue($this->isEditable("Institute1"));
+        $this->assertTrue($this->isEditable("Institute_1"));
    }
 }
 ?>
