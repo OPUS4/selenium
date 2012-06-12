@@ -48,7 +48,7 @@ class IpRangesTest extends TestCase {
         $this->waitForPageToLoad();
 
         $description = 'My IP Range (1)'; // contains spaces and brackets
-        $iprange = '127.0.0.3';
+        $iprange = '127.0.0.1';
 
         $this->type('name', $description);
         $this->type('startingip', $iprange);
@@ -62,6 +62,64 @@ class IpRangesTest extends TestCase {
 
         // Test for positive result
         $this->assertElementContainsText('//html/head/title', 'Manage IP Ranges');
+
+        $this->logout();
+    }
+
+    /**
+     * Regression test for OPUSVIER-2441.
+     */
+    public function testNoHostnameInput() {
+        $this->login();
+        $this->switchToEnglish();
+
+        $this->open('/opus4-selenium/admin/iprange/new');
+        $this->waitForPageToLoad();
+
+        $description = 'My IP Range'; // contains spaces and brackets
+        $iprange = 'www.foobar.com';
+
+        $this->type('name', $description);
+        $this->type('startingip', $iprange);
+
+        $this->click('submit');
+        $this->waitForPageToLoad();
+
+        // Test for negative result
+        $this->assertElementNotPresent('css=div.exceptionMessage');
+        $this->assertTextNotPresent('Startingip	\'www.foobar.com\' appears');
+
+        // Test for positive result
+        $this->assertElementNotPresent('css=ul.errors');
+        $this->assertTextNotPresent('\'www.foobar.com\' appears to');
+
+        $this->logout();
+    }
+
+    /**
+     *
+     */
+    public function testAddingSingleIpRange() {
+        $this->login();
+        $this->switchToEnglish();
+
+        // check output
+        $this->open('/opus4-selenium/admin/iprange/new');
+        $this->waitForPageToLoad();
+
+        $description = 'My IP Range (3)'; // contains spaces and brackets
+        $iprange = '127.0.0.3';
+
+        $this->type('name', $description);
+        $this->type('startingip', $iprange);
+
+        $this->click('submit');
+        $this->waitForPageToLoad();
+
+        // Test for positive result
+        $this->assertElementContainsText('//html/head/title', 'Manage IP Ranges');
+        $this->assertTextPresent('My IP Range (3)');
+        $this->assertTextPresent('127.0.0.3 - 127.0.0.3');
 
         $this->logout();
     }
