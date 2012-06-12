@@ -90,8 +90,8 @@ class IpRangesTest extends TestCase {
         $this->assertTextNotPresent('Startingip	\'www.foobar.com\' appears');
 
         // Test for positive result
-        $this->assertElementNotPresent('css=ul.errors');
-        $this->assertTextNotPresent('\'www.foobar.com\' appears to');
+        $this->assertElementPresent('css=ul.errors');
+        $this->assertTextPresent('\'www.foobar.com\' appears to');
 
         $this->logout();
     }
