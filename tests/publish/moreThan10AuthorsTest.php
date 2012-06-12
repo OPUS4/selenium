@@ -52,7 +52,9 @@ class moreThan10AuthorsTest extends TestCase {
         $this->click("SubmitCredentials");
         $this->waitForPageToLoad();
         $this->assertTrue($this->isElementPresent("link=English"));
-
+        
+        $this->click("//li[@id='primary-nav-publish']/a/span");
+        $this->waitForPageToLoad();
         $this->select("id=documentType", "label=Arbeitspapier");
         $this->click("id=rights");
         $this->click("id=send");

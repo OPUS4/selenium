@@ -16,7 +16,7 @@ class PublishAllFieldsTest extends TestCase
     $this->click("rights");
     $this->click("send");
     $this->waitForPageToLoad();
-    $this->assertTrue($this->isElementPresent("PersonSubmitterFirstName1"));
+    $this->assertTrue($this->isElementPresent("PersonSubmitterFirstName_1"));
     $this->type("PersonAuthorFirstName_1", "Steffi");
     $this->assertTrue($this->isElementPresent("PersonAuthorLastName_1"));
     $this->type("PersonAuthorLastName_1", "Conrad-Rempel");
