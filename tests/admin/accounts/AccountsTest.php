@@ -37,9 +37,9 @@ require_once 'TestCase.php';
 class AccountsTest extends TestCase {
 
     /**
-     * Regression test for OPUSVIER-1770.
+     * Regression test for OPUSVIER-2413.
      */
-    public function testRedirectToIndexForShowWithoutSelectedYear() {
+    public function testDoNotLowerCaseUserNameReg2413() {
         $this->login();
         $this->switchToEnglish();
 
@@ -52,16 +52,13 @@ class AccountsTest extends TestCase {
 
         $this->type('username', $username);
         $this->type('password', $password);
-        $this->type('confirmPassword', $password);
 
+        // Submit is supposed to fail
         $this->click('submit');
         $this->waitForPageToLoad();
 
-        $this->assertElementContainsText('//html/head/title', 'Accounts');
-
-        // Test for form elements on 'index' page
-        $this->assertTextPresent('Add Account');
-        $this->assertTextPresent($username);
+        $this->assertElementContainsText('//html/head/title', 'New Account');
+        $this->assertElementValueEquals('username', $username);
 
         $this->logout();
     }
