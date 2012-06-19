@@ -53,6 +53,9 @@ class Regression2540Test extends TestCase {
         $this->assertTextPresent("Sammlung 'foo' wurde erfolgreich angelegt.");
     }
 
+    /**
+     * @depends testCreateCollectionRole
+     */
     public function testCreateCollection() {
         $this->login();
 
@@ -72,6 +75,9 @@ class Regression2540Test extends TestCase {
         $this->assertTextPresent("Sammlungseintrag 'collfoobar' wurde erfolgreich angelegt.");
     }
 
+    /**
+     * @depends testCreateCollection
+     */
     public function testEditCollectionRole() {
         $this->login();
 
@@ -87,6 +93,9 @@ class Regression2540Test extends TestCase {
         $this->assertTextPresent("Sammlung 'foo' wurde erfolgreich bearbeitet.");
     }
 
+    /**
+     * @depends testEditCollectionRole
+     */   
     public function testEditCollection() {
         $this->login();
 
@@ -103,6 +112,9 @@ class Regression2540Test extends TestCase {
         $this->assertTextPresent("Sammlungseintrag 'collfoobar' wurde erfolgreich bearbeitet.");
     }
 
+    /**
+     * @depends testEditCollection
+     */   
     public function testDeleteCollection() {
         $this->login();
 
@@ -117,6 +129,9 @@ class Regression2540Test extends TestCase {
         $this->assertTextPresent("Sammlungseintrag 'collfoobar' wurde erfolgreich gelöscht.");
     }
 
+    /**
+     * @depends testDeleteCollection
+     */
     public function testDeleteCollectionRole() {
         $this->login();
 
