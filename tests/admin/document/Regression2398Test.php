@@ -29,15 +29,15 @@
  * @author      Sascha Szott <szott@zib.de>
  * @copyright   Copyright (c) 2008-2012, OPUS 4 development team
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
- * @version     $Id$
+ * @version     $$
  */
 
 require_once 'TestCase.php';
 
-class Regression2393Test extends TestCase {
+class Regression2398Test extends TestCase {
 
     /**
-     * Regression test for OPUSVIER-2393
+     * Regression test for OPUSVIER-2398
      */
     public function testSuccessMessageIsTranslatedAfterCollectionRoleDocumentAssignment() {
         $this->login();
@@ -65,7 +65,7 @@ class Regression2393Test extends TestCase {
     }
 
     /**
-     * Regression test for OPUSVIER-2393
+     * Regression test for OPUSVIER-2398
      */
     public function testSuccessMessageIsTranslatedAfterCollectionDocumentAssignment() {
         $this->login();
