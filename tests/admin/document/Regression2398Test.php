@@ -29,7 +29,7 @@
  * @author      Sascha Szott <szott@zib.de>
  * @copyright   Copyright (c) 2008-2012, OPUS 4 development team
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
- * @version     $$
+ * @version     $Id$
  */
 
 require_once 'TestCase.php';
@@ -53,12 +53,13 @@ class Regression2398Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextPresent("Die Verknüpfung des Dokuments zur Sammlung 'ddc' wurde erfolgreich erstellt.");
+        $this->assertTextNotPresent('Document successfully assigned to collection "ddc".');
 
         // Zuweisung wieder entfernen
         $this->open("/opus4-selenium/admin/document/edit/id/92/section/collections");
         $this->waitForPageToLoad();
 
-        $this->open("/opus4-selenium/admin/document/unlinkcollection/id/92/section/collections/role/2/collection/2");
+        $this->click("//form[@action='/opus4-selenium/admin/document/unlinkcollection/id/92/section/collections/role/2/collection/2']/input");
         $this->waitForPageToLoad();
 
         $this->assertTextPresent("Die Verknüpfung des Dokuments zur Sammlung 'ddc' wurde erfolgreich entfernt.");
@@ -81,12 +82,13 @@ class Regression2398Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextPresent("Die Verknüpfung des Dokuments zur Sammlung '1 Philosophie und Psychologie' wurde erfolgreich erstellt.");
+        $this->assertTextNotPresent('Document successfully assigned to collection "1 Philosophie und Psychologie".');
 
         // Zuweisung wieder entfernen
         $this->open("/opus4-selenium/admin/document/edit/id/92/section/collections");
         $this->waitForPageToLoad();
 
-        $this->open("/opus4-selenium/admin/document/unlinkcollection/id/92/section/collections/role/2/collection/4");
+        $this->click("//form[@action='/opus4-selenium/admin/document/unlinkcollection/id/92/section/collections/role/2/collection/4']/input");
         $this->waitForPageToLoad();
 
         $this->assertTextPresent("Die Verknüpfung des Dokuments zur Sammlung '1 Philosophie und Psychologie' wurde erfolgreich entfernt.");
