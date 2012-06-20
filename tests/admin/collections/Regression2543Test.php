@@ -119,7 +119,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertText("Sichtbarkeit des Sammlungseintrags 'collbaz' wurde erfolgreich geändert.");
+        $this->assertTextPresent("Sichtbarkeit des Sammlungseintrags 'collbaz' wurde erfolgreich geändert.");
     }
 
     /**
@@ -139,7 +139,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertText("Sichtbarkeit des Sammlungseintrags 'collbaz' wurde erfolgreich geändert.");
+        $this->assertTextPresent("Sichtbarkeit des Sammlungseintrags 'collbaz' wurde erfolgreich geändert.");
     }
 
     /**
@@ -193,7 +193,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertText("Sammlungseintrag 'collfoobar' wurde erfolgreich verschoben.");
+        $this->assertTextPresent("Sammlungseintrag 'collfoobar' wurde erfolgreich verschoben.");
     }
 
     /**
@@ -213,7 +213,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertText("Sammlungseintrag 'collfoobar' wurde erfolgreich verschoben.");
+        $this->assertTextPresent("Sammlungseintrag 'collfoobar' wurde erfolgreich verschoben.");
     }   
 
     /**
