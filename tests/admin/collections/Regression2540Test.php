@@ -38,9 +38,7 @@ class Regression2540Test extends TestCase {
 
     public function testCreateCollectionRole() {
         $this->login();
-
-        $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad();
+        $this->switchToGerman();
 
         $this->open("/opus4-selenium/admin/collectionroles/new");
         $this->waitForPageToLoad();
@@ -48,6 +46,7 @@ class Regression2540Test extends TestCase {
         $this->type("id=Opus_Model_Filter-Name-1", "foobar");
         $this->type("id=Opus_Model_Filter-OaiName-1", "foobar");
         $this->click("submit");
+        $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Collection role 'foobar' successfully created.");
         $this->assertTextPresent("Sammlung 'foo' wurde erfolgreich angelegt.");
@@ -59,9 +58,7 @@ class Regression2540Test extends TestCase {
     public function testCreateCollection() {
         return;
         $this->login();
-
-        $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad();
+        $this->switchToGerman();
 
         // TODO do not hard-code collection id
         $this->open("/opus4-selenium/admin/collection/new/id/16202/type/child");
@@ -82,9 +79,7 @@ class Regression2540Test extends TestCase {
     public function testEditCollectionRole() {
         return;
         $this->login();
-
-        $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad();
+        $this->switchToGerman();
 
         $this->open("/opus4-selenium/admin/collectionroles/edit/roleid/18");
         $this->waitForPageToLoad();
@@ -101,9 +96,7 @@ class Regression2540Test extends TestCase {
     public function testEditCollection() {
         return;
         $this->login();
-
-        $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad();
+        $this->switchToGerman();
 
         // TODO do not hard-code collection id
         $this->open("/opus4-selenium/admin/collection/edit/id/16203");
@@ -121,9 +114,7 @@ class Regression2540Test extends TestCase {
     public function testDeleteCollection() {
         return;
         $this->login();
-
-        $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad();
+        $this->switchToGerman();
 
         // TODO do not hard-code collection id
         $this->open("/opus4-selenium/admin/collection/delete/id/16203");
@@ -139,9 +130,7 @@ class Regression2540Test extends TestCase {
     public function testDeleteCollectionRole() {
         return;
         $this->login();
-
-        $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad();
+        $this->switchToGerman();
 
         // TODO do not hard-code collection id
         $this->open("/opus4-selenium/admin/collectionroles/delete/roleid/18");
