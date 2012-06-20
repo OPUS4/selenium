@@ -119,7 +119,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertText("Sichtbarkeit des Sammlungseintrags 'baz' wurde erfolgreich geändert.");
+        $this->assertText("Sichtbarkeit des Sammlungseintrags 'collbaz' wurde erfolgreich geändert.");
     }
 
     /**
@@ -139,7 +139,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertText("Sichtbarkeit des Sammlungseintrags 'baz' wurde erfolgreich geändert.");
+        $this->assertText("Sichtbarkeit des Sammlungseintrags 'collbaz' wurde erfolgreich geändert.");
     }
 
     /**
