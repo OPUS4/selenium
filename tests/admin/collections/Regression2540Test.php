@@ -40,11 +40,12 @@ class Regression2540Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open("/opus4-selenium/admin/collectionroles/new");
+        $this->open('/opus4-selenium/admin/collectionroles/new');
         $this->waitForPageToLoad();
 
         $this->type("id=Opus_Model_Filter-Name-1", "foobar");
         $this->type("id=Opus_Model_Filter-OaiName-1", "foobar");
+        $this->select("id=Opus_Model_Filter-Position-1", "0");
         $this->click("submit");
         $this->waitForPageToLoad();
 
@@ -59,8 +60,13 @@ class Regression2540Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        // TODO do not hard-code collection id
-        $this->open("/opus4-selenium/admin/collection/new/id/16202/type/child");
+        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->waitForPageToLoad();
+
+        $this->click("//table[class='collections']/tbody/tr/td/a");     
+        $this->waitForPageToLoad();
+
+        $this->click("//table/tbody/tr/td/a");
         $this->waitForPageToLoad();
 
         $this->type("id=Opus_Model_Filter-Name-1", "collfoobar");
@@ -80,7 +86,10 @@ class Regression2540Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open("/opus4-selenium/admin/collectionroles/edit/roleid/18");
+        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->waitForPageToLoad();
+
+        $this->click("//table[class='collections']/tbody/tr/td[2]/a");
         $this->waitForPageToLoad();
 
         $this->click("submit");
@@ -97,8 +106,13 @@ class Regression2540Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        // TODO do not hard-code collection id
-        $this->open("/opus4-selenium/admin/collection/edit/id/16203");
+        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->waitForPageToLoad();
+
+        $this->click("//table[class='collections']/tbody/tr/td/a");
+        $this->waitForPageToLoad();
+
+        $this->open("//table/tbody/tr[2]/td[2]/a");
         $this->waitForPageToLoad();
 
         $this->click("submit");
@@ -115,8 +129,14 @@ class Regression2540Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        // TODO do not hard-code collection id
-        $this->open("/opus4-selenium/admin/collection/delete/id/16203");
+        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->waitForPageToLoad();
+
+        $this->click("//table[class='collections']/tbody/tr/td/a");
+        $this->waitForPageToLoad();
+
+        $this->chooseOkOnNextConfirmation();
+        $this->click("//table/tbody/tr[2]/td[7]/a");        
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent('Operation completed successfully.');
@@ -130,12 +150,15 @@ class Regression2540Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        // TODO do not hard-code collection id
-        $this->open("/opus4-selenium/admin/collectionroles/delete/roleid/18");
+        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->waitForPageToLoad();
+
+        $this->chooseOkOnNextConfirmation();
+        $this->click("//table/tbody/tr/td[7]/a");        
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent('Operation completed successfully.');
-        $this->assertTextPresent("Sammlung 'foo' wurde erfolgreich gelöscht.");
+        $this->assertTextPresent("Sammlung 'foobar' wurde erfolgreich gelöscht.");
     }
 
 }
