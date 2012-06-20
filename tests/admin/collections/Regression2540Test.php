@@ -47,7 +47,7 @@ class Regression2540Test extends TestCase {
 
         $this->type("id=Opus_Model_Filter-Name-1", "foobar");
         $this->type("id=Opus_Model_Filter-OaiName-1", "foobar");
-        $this->click("id=submit");
+        $this->click("submit");
 
         $this->assertTextNotPresent("Collection role 'foobar' successfully created.");
         $this->assertTextPresent("Sammlung 'foo' wurde erfolgreich angelegt.");
