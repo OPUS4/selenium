@@ -50,7 +50,7 @@ class Regression2540Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Collection role 'foobar' successfully created.");
-        $this->assertTextPresent("Sammlung 'foo' wurde erfolgreich angelegt.");
+        $this->assertTextPresent("Sammlung 'foobar' wurde erfolgreich angelegt.");
     }
 
     /**
@@ -96,7 +96,7 @@ class Regression2540Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Collection role 'foobar' successfully edited.");
-        $this->assertTextPresent("Sammlung 'foo' wurde erfolgreich bearbeitet.");
+        $this->assertTextPresent("Sammlung 'foobar' wurde erfolgreich bearbeitet.");
     }
 
     /**
