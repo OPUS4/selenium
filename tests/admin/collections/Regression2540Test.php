@@ -56,7 +56,6 @@ class Regression2540Test extends TestCase {
      * @depends testCreateCollectionRole
      */
     public function testCreateCollection() {
-        return;
         $this->login();
         $this->switchToGerman();
 
@@ -67,7 +66,8 @@ class Regression2540Test extends TestCase {
         $this->type("id=Opus_Model_Filter-Name-1", "collfoobar");
         $this->type("id=Opus_Model_Filter-Number-1", "12345");
         $this->type("id=Opus_Model_Filter-OaiSubset-1", "collfoobar");
-        $this->click("id=submit");
+        $this->click("submit");
+        $this->waitForPageToLoad();
 
         $this->assertTextNotPresent('Insert successful');
         $this->assertTextPresent("Sammlungseintrag 'collfoobar' wurde erfolgreich angelegt.");
@@ -77,14 +77,14 @@ class Regression2540Test extends TestCase {
      * @depends testCreateCollection
      */
     public function testEditCollectionRole() {
-        return;
         $this->login();
         $this->switchToGerman();
 
         $this->open("/opus4-selenium/admin/collectionroles/edit/roleid/18");
         $this->waitForPageToLoad();
 
-        $this->click("id=submit");
+        $this->click("submit");
+        $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Collection role 'foobar' successfully edited.");
         $this->assertTextPresent("Sammlung 'foo' wurde erfolgreich bearbeitet.");
@@ -93,8 +93,7 @@ class Regression2540Test extends TestCase {
     /**
      * @depends testEditCollectionRole
      */   
-    public function testEditCollection() {
-        return;
+    public function testEditCollection() {        
         $this->login();
         $this->switchToGerman();
 
@@ -102,7 +101,8 @@ class Regression2540Test extends TestCase {
         $this->open("/opus4-selenium/admin/collection/edit/id/16203");
         $this->waitForPageToLoad();
 
-        $this->click("id=submit");
+        $this->click("submit");
+        $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Edit successful");
         $this->assertTextPresent("Sammlungseintrag 'collfoobar' wurde erfolgreich bearbeitet.");
@@ -112,7 +112,6 @@ class Regression2540Test extends TestCase {
      * @depends testEditCollection
      */   
     public function testDeleteCollection() {
-        return;
         $this->login();
         $this->switchToGerman();
 
@@ -128,7 +127,6 @@ class Regression2540Test extends TestCase {
      * @depends testDeleteCollection
      */
     public function testDeleteCollectionRole() {
-        return;
         $this->login();
         $this->switchToGerman();
 
