@@ -156,7 +156,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertTextPresent("Sichtbarkeit der Sammlung 'foo' wurde erfolgreich geändert.");
+        $this->assertTextPresent("Sichtbarkeit der Sammlung 'foobar' wurde erfolgreich geändert.");
     }
 
     /**
@@ -173,7 +173,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertTextPresent("Sichtbarkeit der Sammlung 'foo' wurde erfolgreich geändert.");
+        $this->assertTextPresent("Sichtbarkeit der Sammlung 'foobar' wurde erfolgreich geändert.");
     }
 
     /**
@@ -193,7 +193,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertText("Sammlungseintrag 'foobar' wurde erfolgreich verschoben.");
+        $this->assertText("Sammlungseintrag 'collfoobar' wurde erfolgreich verschoben.");
     }
 
     /**
@@ -213,7 +213,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertText("Sammlungseintrag 'foobar' wurde erfolgreich verschoben.");
+        $this->assertText("Sammlungseintrag 'collfoobar' wurde erfolgreich verschoben.");
     }   
 
     /**
@@ -230,7 +230,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertTextPresent("Sammlung 'foo' wurde erfolgreich verschoben.");
+        $this->assertTextPresent("Sammlung 'foobar' wurde erfolgreich verschoben.");
     }
 
     /**
@@ -247,7 +247,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertTextPresent("Sammlung 'foo' wurde erfolgreich verschoben.");
+        $this->assertTextPresent("Sammlung 'foobar' wurde erfolgreich verschoben.");
     }
 
     /**
