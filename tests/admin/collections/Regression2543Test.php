@@ -119,10 +119,31 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
+        $this->assertText("Sichtbarkeit des Sammlungseintrags 'baz' wurde erfolgreich geändert.");
     }
 
     /**
      * @depends testMakeCollectionInvisible
+     */
+    public function testMakeCollectionVisible() {
+        $this->login();
+        $this->switchToGerman();
+
+        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->waitForPageToLoad();
+
+        $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
+        $this->waitForPageToLoad();
+
+        $this->click("xpath=//table[@class='collections']/tbody/tr[2]/td[3]/a");
+        $this->waitForPageToLoad();
+
+        $this->assertTextNotPresent("Operation completed successfully.");
+        $this->assertText("Sichtbarkeit des Sammlungseintrags 'baz' wurde erfolgreich geändert.");
+    }
+
+    /**
+     * @depends testMakeCollectionVisible
      */
     public function testMakeCollectionRoleInvisible() {
         $this->login();
@@ -135,10 +156,28 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
+        $this->assertTextPresent("Sichtbarkeit der Sammlung 'foo' wurde erfolgreich geändert.");
     }
 
     /**
      * @depends testMakeCollectionRoleInvisible
+     */
+    public function testMakeCollectionRoleVisible() {
+        $this->login();
+        $this->switchToGerman();
+
+        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->waitForPageToLoad();
+
+        $this->click("xpath=//table[@class='collections']/tbody/tr/td[3]/a");
+        $this->waitForPageToLoad();
+
+        $this->assertTextNotPresent("Operation completed successfully.");
+        $this->assertTextPresent("Sichtbarkeit der Sammlung 'foo' wurde erfolgreich geändert.");
+    }
+
+    /**
+     * @depends testMakeCollectionRoleVisible
      */
     public function testMoveUpCollection() {
         $this->login();
@@ -154,6 +193,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
+        $this->assertText("Sammlungseintrag 'foobar' wurde erfolgreich verschoben.");
     }
 
     /**
@@ -173,6 +213,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
+        $this->assertText("Sammlungseintrag 'foobar' wurde erfolgreich verschoben.");
     }   
 
     /**
@@ -189,6 +230,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
+        $this->assertTextPresent("Sammlung 'foo' wurde erfolgreich verschoben.");
     }
 
     /**
@@ -205,6 +247,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
+        $this->assertTextPresent("Sammlung 'foo' wurde erfolgreich verschoben.");
     }
 
     /**
