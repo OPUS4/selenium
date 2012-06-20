@@ -112,7 +112,7 @@ class Regression2540Test extends TestCase {
         $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
         $this->waitForPageToLoad();
 
-        $this->open("//table[@class='collections']/tbody/tr[2]/td[2]/a");
+        $this->click("//table[@class='collections']/tbody/tr[2]/td[2]/a");
         $this->waitForPageToLoad();
 
         $this->click("submit");
