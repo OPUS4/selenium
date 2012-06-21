@@ -11,8 +11,8 @@ class DoeSearchTest extends TestCase
     $this->type("query", "doe");
     $this->click("//input[@value='Search']");
     $this->waitForPageToLoad();
-    $this->assertTrue($this->isTextPresent("6 search hits"));
-    $this->assertTrue($this->isTextPresent("1 to 6"));
+    $this->assertTrue($this->isTextPresent("7 search hits"));
+    $this->assertTrue($this->isTextPresent("1 to 7"));
   }
 }
 ?>
