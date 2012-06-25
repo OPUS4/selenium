@@ -90,8 +90,7 @@ class AccountsTest extends TestCase {
         $this->assertElementContainsText('//html/head/title', 'Accounts');
 
         // Check that user name is present
-        // TODO remove strtolower (added to prove case-sensitivity)
-        $this->assertTextPresent(strtolower($username));
+        $this->assertTextPresent($username);
 
         $this->logout();
     }
