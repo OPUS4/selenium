@@ -63,4 +63,37 @@ class AccountsTest extends TestCase {
         $this->logout();
     }
 
+    /**
+     *
+     */
+    public function testAddAccount() {
+        $this->login();
+        $this->switchToEnglish();
+
+        $this->open('/opus4-selenium/admin/account/new');
+        $this->waitForPageToLoad();
+
+        $username = 'UpperCaseUser';
+        $password = 'dummypwd';
+
+        $this->type('username', $username);
+        $this->type('password', $password);
+        $this->type('confirmPassword', $password);
+
+        $this->click('submit');
+        $this->waitForPageToLoad();
+
+        // Check that submit went through
+        $this->assertElementNotPresent('username');
+        $this->assertElementNotPresent('password');
+        $this->assertElementNotPresent('submit');
+        $this->assertElementContainsText('//html/head/title', 'Accounts');
+
+        // Check that user name is present
+        // TODO remove strtolower (added to prove case-sensitivity)
+        $this->assertTextPresent(strtolower($username));
+
+        $this->logout();
+    }
+
 }
