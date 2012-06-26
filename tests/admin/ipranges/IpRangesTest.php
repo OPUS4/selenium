@@ -91,7 +91,7 @@ class IpRangesTest extends TestCase {
 
         // Test for positive result
         $this->assertElementPresent('css=ul.errors');
-        $this->assertTextPresent('\'www.foobar.com\' appears to');
+        $this->assertTextPresent('\'www.foobar.com\' does not appear to be a valid IP address');
 
         $this->logout();
     }
