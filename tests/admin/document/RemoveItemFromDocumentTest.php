@@ -47,7 +47,7 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->waitForPageToLoad();
 
         // Check correct page is shown
-        $this->assertElementValueEquals('PersonAuthor-0-email', 'doe@example.org');
+        $this->assertElementValueEquals('PersonAuthor-0-Email', 'doe@example.org');
 
         $this->click("PersonAuthor-0-remove");
         $this->waitForPageToLoad();
@@ -67,7 +67,7 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         // Check that no author element is present
         $this->assertElementNotPresent('PersonAuthor-0-remove');
-        $this->assertElementNotPresent('PersonAuthor-0-email');
+        $this->assertElementNotPresent('PersonAuthor-0-Email');
     }
 
     /**
@@ -100,7 +100,6 @@ class RemoveItemFromDocumentTest extends TestCase {
         // Check correct page
         $this->assertTextPresent("'Person' was not removed (cancelled by user).");
         $this->assertTextPresent('Edit Persons');
-        $this->assertElementValueEquals('PersonAuthor-0-email', 'doe@example.org');
 
         // Check correct values
         $this->assertElementValueEquals('PersonSubmitter-0-AcademicTitle', 'PhD');
