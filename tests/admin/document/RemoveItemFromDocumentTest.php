@@ -196,4 +196,50 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->assertElementValueEquals('TitleAbstract-0-Value', 'Die KOBV-Zentrale in Berlin-Dahlem.');
     }
 
+    public function testRemoveIdentifier() {
+        $this->openAndWait('/admin/document/edit/id/200/section/identifiers');
+
+        $this->assertTextPresent('Edit Identifiers');
+        $this->assertElementValueEquals('Identifier-1-Type', 'serial');
+        $this->assertElementValueEquals('Identifier-1-Value', '123');
+
+        $this->click('Identifier-1-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Identifier' from document");
+        $this->assertTextPresent('serial');
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureyes');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent('Edit Identifiers');
+        $this->assertElementValueEquals('Identifier-1-Type', 'uuid');
+        $this->assertElementValueEquals('Identifier-1-Value', '123');
+    }
+
+    public function testCancelRemoveIdentifier() {
+        $this->openAndWait('/admin/document/edit/id/200/section/identifiers');
+
+        $this->assertTextPresent('Edit Identifiers');
+        $this->assertElementValueEquals('Identifier-0-Type', 'old');
+        $this->assertElementValueEquals('Identifier-0-Value', '123');
+
+        $this->click('Identifier-0-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Identifier' from document");
+        $this->assertTextPresent('old');
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureno');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent('Edit Identifiers');
+        $this->assertElementValueEquals('Identifier-0-Type', 'old');
+        $this->assertElementValueEquals('Identifier-0-Value', '123');
+    }
+
 }
