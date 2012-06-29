@@ -47,7 +47,7 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->waitForPageToLoad();
 
         // Check correct page is shown
-        $this->assertElementValueEquals('PersonEmai-0-email', 'doe@example.org');
+        $this->assertElementValueEquals('PersonAuthor-0-email', 'doe@example.org');
 
         $this->click("PersonAuthor-0-remove");
         $this->waitForPageToLoad();
@@ -84,23 +84,28 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->assertElementValueEquals('PersonSubmitter-0-AcademicTitle', 'PhD');
         $this->assertTextPresent('Edit Persons');
 
-        $this->click("PersonAuthor-0-remove");
+        $this->click("PersonSubmitter-0-remove");
         $this->waitForPageToLoad();
 
         // check confirmation page is shown
         $this->assertTextPresent("Remove 'Person' from document");
-        $this->assertTextPresent('John');
+        $this->assertTextPresent('Jane');
         $this->assertTextPresent('Doe');
-        $this->assertTextPresent('doe@example.org');
         $this->assertElementPresent('sureyes');
         $this->assertElementPresent('sureno');
 
         $this->click('sureno');
         $this->waitForPageToLoad();
 
+        // Check correct page
         $this->assertTextPresent("'Person' was not removed (cancelled by user).");
         $this->assertTextPresent('Edit Persons');
-        $this->assertElementValueEquals('PersonEmai-0-email', 'doe@example.org');
+        $this->assertElementValueEquals('PersonAuthor-0-email', 'doe@example.org');
+
+        // Check correct values
+        $this->assertElementValueEquals('PersonSubmitter-0-AcademicTitle', 'PhD');
+        $this->assertElementValueEquals('PersonSubmitter-0-FirstName', 'Jane');
+        $this->assertElementValueEquals('PersonSubmitter-0-LastName', 'Doe');
     }
 
 }
