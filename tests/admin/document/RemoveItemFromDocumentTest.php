@@ -43,8 +43,7 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->switchToEnglish();
         $this->login();
 
-        $this->open('/opus4-selenium/admin/document/edit/id/200/section/persons');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/document/edit/id/200/section/persons');
 
         // Check correct page is shown
         $this->assertElementValueEquals('PersonAuthor-0-Email', 'doe@example.org');
@@ -77,8 +76,7 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->switchToEnglish();
         $this->login();
 
-        $this->open('/opus4-selenium/admin/document/edit/id/200/section/persons');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/document/edit/id/200/section/persons');
 
         // Check correct page is shown
         $this->assertElementValueEquals('PersonSubmitter-0-AcademicTitle', 'PhD');
@@ -105,6 +103,55 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->assertElementValueEquals('PersonSubmitter-0-AcademicTitle', 'PhD');
         $this->assertElementValueEquals('PersonSubmitter-0-FirstName', 'Jane');
         $this->assertElementValueEquals('PersonSubmitter-0-LastName', 'Doe');
+    }
+
+    public function testRemoveTitle() {
+        $this->switchToEnglish();
+        $this->login();
+
+        $this->openAndWait('/admin/document/edit/id/200/section/titles');
+
+        $this->assertTextPresent('Edit Titles');
+        $this->assertElementValueEquals('TitleMain-0-Value', 'KOBV');
+
+        $this->click('TitleMain-0-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Title' from document");
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureyes');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("'Title' was successfully removed.");
+        $this->assertTextPresent('Edit Titles');
+
+        $this->assertElementValueEquals('TitleMain-0-Value', 'COLN');
+    }
+
+    public function testCancelRemoveTitle() {
+        $this->switchToEnglish();
+        $this->login();
+
+        $this->openAndWait('/admin/document/edit/id/200/section/titles');
+
+        $this->assertTextPresent('Edit Titles');
+        $this->assertElementValueEquals('TitleParent-0-Value', 'Parent title');
+
+        $this->click('TitleParent-0-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Title' from document");
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+        $this->asssertTextPresent('Parent Title');
+
+        $this->click('sureno');
+        $this->waitForPageToLoad();
+        
+        $this->assertTextPresent('Edit Titles');
+        $this->assertElementValueEquals('TitleParent-0-Value', 'Parent title');
     }
 
 }
