@@ -36,13 +36,21 @@ require_once 'TestCase.php';
 
 class RemoveItemFromDocumentTest extends TestCase {
 
+    public function setUp() {
+        parent::setUp();
+        $this->switchToEnglish();
+        $this->login();
+    }
+
+    public function tearDown() {
+        parent::tearDown();
+        $this->logout();
+    }
+
     /**
      * Uses person 0.
      */
     public function testRemoveAuthor() {
-        $this->switchToEnglish();
-        $this->login();
-
         $this->openAndWait('/admin/document/edit/id/200/section/persons');
 
         // Check correct page is shown
@@ -73,9 +81,6 @@ class RemoveItemFromDocumentTest extends TestCase {
      * Uses person 1.
      */
     public function testCancelRemoveAuthor() {
-        $this->switchToEnglish();
-        $this->login();
-
         $this->openAndWait('/admin/document/edit/id/200/section/persons');
 
         // Check correct page is shown
@@ -106,9 +111,6 @@ class RemoveItemFromDocumentTest extends TestCase {
     }
 
     public function testRemoveTitle() {
-        $this->switchToEnglish();
-        $this->login();
-
         $this->openAndWait('/admin/document/edit/id/200/section/titles');
 
         $this->assertTextPresent('Edit Titles');
@@ -131,9 +133,6 @@ class RemoveItemFromDocumentTest extends TestCase {
     }
 
     public function testCancelRemoveTitle() {
-        $this->switchToEnglish();
-        $this->login();
-
         $this->openAndWait('/admin/document/edit/id/200/section/titles');
 
         $this->assertTextPresent('Edit Titles');
@@ -149,9 +148,52 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->click('sureno');
         $this->waitForPageToLoad();
-        
+
         $this->assertTextPresent('Edit Titles');
-        $this->assertElementValueEquals('TitleParent-0-Value', 'Parent title');
+        $this->assertElementValueEquals('TitleParent-0-Value', 'Parent Title');
+    }
+
+    public function testRemoveAbstract() {
+        $this->openAndWait('/admin/document/edit/id/200/section/abstracts');
+
+        $this->assertTextPresent('Edit Abstracts');
+
+        $this->click('TitleAbstract-1-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Abstract' from document");
+        $this->assertTextPresent('Lorem impsum.');
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureyes');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("'Abstract' was successfully removed.");
+        $this->assertElementNotPresen('TitleAbstract-1-Value');
+        $this->assertElementNotPresen('TitleAbstract-1-remove');
+    }
+
+    public function testCancelRemoveAbstract() {
+        $this->openAndWait('/admin/document/edit/id/200/section/abstracts');
+
+        $this->assertTextPresent('Edit Abstracts');
+        $this->assertElementValueEquals('TitleAbstract-0-Value', 'Die KOBV-Zentrale in Berlin-Dahlem.');
+
+        $this->click('TitleAbstract-0-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Abstract' from document");
+        $this->assertTextPresent('Die KOBV-Zentrale in Berlin-Dahlem.');
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureno');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("'Abstract' was not removed (cancelled by user).");
+        $this->assertTextPresent('Edit Abstracts');
+        $this->assertElementValueEquals('TitleAbstract-0-Value', 'Die KOBV-Zentrale in Berlin-Dahlem.');
     }
 
 }
