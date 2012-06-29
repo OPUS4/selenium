@@ -35,6 +35,8 @@ require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
 class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
 
+    protected $baseUrl = '/opus4-selenium';
+
     protected $captureScreenshotOnFailure = TRUE;
     protected $screenshotPath = '/home/opus4ci/cruisecontrol/webapps/screenshots';
     protected $screenshotUrl = 'http://opus4ci.zib.de:8080/screenshots';
@@ -83,6 +85,11 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
      */
     public function switchToGerman() {
         $this->open('/opus4-selenium/home/index/language/language/de');
+        $this->waitForPageToLoad();
+    }
+
+    public function openAndWait($path) {
+        $this->open($this->baseUrl . $path);
         $this->waitForPageToLoad();
     }
 
