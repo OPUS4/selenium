@@ -148,7 +148,7 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->openAndWait('/admin/document/edit/id/200/section/titles');
 
         $this->assertTextPresent('Edit Titles');
-        $this->assertElementValueEquals('TitleParent-0-Value', 'Parent title');
+        $this->assertElementValueEquals('TitleParent-0-Value', 'Parent Title');
 
         $this->click('TitleParent-0-remove');
         $this->waitForPageToLoad();
@@ -186,8 +186,8 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextPresent("'Abstract' was successfully removed.");
-        $this->assertElementNotPresen('TitleAbstract-1-Value');
-        $this->assertElementNotPresen('TitleAbstract-1-remove');
+        $this->assertElementNotPresent('TitleAbstract-1-Value');
+        $this->assertElementNotPresent('TitleAbstract-1-remove');
 
         $this->afterTest();
     }
