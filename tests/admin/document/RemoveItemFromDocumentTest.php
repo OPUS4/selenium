@@ -36,14 +36,12 @@ require_once 'TestCase.php';
 
 class RemoveItemFromDocumentTest extends TestCase {
 
-    public function setUp() {
-        parent::setUp();
+    public function beforeTest() {
         $this->switchToEnglish();
         $this->login();
     }
 
-    public function tearDown() {
-        parent::tearDown();
+    public function afterTest() {
         $this->logout();
     }
 
@@ -51,6 +49,8 @@ class RemoveItemFromDocumentTest extends TestCase {
      * Uses person 0.
      */
     public function testRemoveAuthor() {
+        $this->beforeTest();
+
         $this->openAndWait('/admin/document/edit/id/200/section/persons');
 
         // Check correct page is shown
@@ -75,12 +75,16 @@ class RemoveItemFromDocumentTest extends TestCase {
         // Check that no author element is present
         $this->assertElementNotPresent('PersonAuthor-0-remove');
         $this->assertElementNotPresent('PersonAuthor-0-Email');
+
+        $this->afterTest();
     }
 
     /**
      * Uses person 1.
      */
     public function testCancelRemoveAuthor() {
+        $this->beforeTest();
+
         $this->openAndWait('/admin/document/edit/id/200/section/persons');
 
         // Check correct page is shown
@@ -108,9 +112,13 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->assertElementValueEquals('PersonSubmitter-0-AcademicTitle', 'PhD');
         $this->assertElementValueEquals('PersonSubmitter-0-FirstName', 'Jane');
         $this->assertElementValueEquals('PersonSubmitter-0-LastName', 'Doe');
+
+        $this->afterTest();
     }
 
     public function testRemoveTitle() {
+        $this->beforeTest();
+
         $this->openAndWait('/admin/document/edit/id/200/section/titles');
 
         $this->assertTextPresent('Edit Titles');
@@ -130,9 +138,13 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->assertTextPresent('Edit Titles');
 
         $this->assertElementValueEquals('TitleMain-0-Value', 'COLN');
+
+        $this->afterTest();
     }
 
     public function testCancelRemoveTitle() {
+        $this->beforeTest();
+
         $this->openAndWait('/admin/document/edit/id/200/section/titles');
 
         $this->assertTextPresent('Edit Titles');
@@ -151,9 +163,13 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->assertTextPresent('Edit Titles');
         $this->assertElementValueEquals('TitleParent-0-Value', 'Parent Title');
+
+        $this->afterTest();
     }
 
     public function testRemoveAbstract() {
+        $this->beforeTest();
+
         $this->openAndWait('/admin/document/edit/id/200/section/abstracts');
 
         $this->assertTextPresent('Edit Abstracts');
@@ -172,9 +188,13 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->assertTextPresent("'Abstract' was successfully removed.");
         $this->assertElementNotPresen('TitleAbstract-1-Value');
         $this->assertElementNotPresen('TitleAbstract-1-remove');
+
+        $this->afterTest();
     }
 
     public function testCancelRemoveAbstract() {
+        $this->beforeTest();
+
         $this->openAndWait('/admin/document/edit/id/200/section/abstracts');
 
         $this->assertTextPresent('Edit Abstracts');
@@ -194,9 +214,13 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->assertTextPresent("'Abstract' was not removed (cancelled by user).");
         $this->assertTextPresent('Edit Abstracts');
         $this->assertElementValueEquals('TitleAbstract-0-Value', 'Die KOBV-Zentrale in Berlin-Dahlem.');
+
+        $this->afterTest();
     }
 
     public function testRemoveIdentifier() {
+        $this->beforeTest();
+
         $this->openAndWait('/admin/document/edit/id/200/section/identifiers');
 
         $this->assertTextPresent('Edit Identifiers');
@@ -217,9 +241,13 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->assertTextPresent('Edit Identifiers');
         $this->assertElementValueEquals('Identifier-1-Type', 'uuid');
         $this->assertElementValueEquals('Identifier-1-Value', '123');
+
+        $this->afterTest();
     }
 
     public function testCancelRemoveIdentifier() {
+        $this->beforeTest();
+
         $this->openAndWait('/admin/document/edit/id/200/section/identifiers');
 
         $this->assertTextPresent('Edit Identifiers');
@@ -240,6 +268,8 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->assertTextPresent('Edit Identifiers');
         $this->assertElementValueEquals('Identifier-0-Type', 'old');
         $this->assertElementValueEquals('Identifier-0-Value', '123');
+
+        $this->afterTest();
     }
 
 }

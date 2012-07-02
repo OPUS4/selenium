@@ -54,8 +54,8 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
         // login
         $this->open('/opus4-selenium/auth/login');
         $this->waitForPageToLoad();
-        $this->type('login', 'admin');
-        $this->type('password', 'adminadmin');
+        $this->type('login', $user);
+        $this->type('password', $password);
         $this->click('SubmitCredentials');
         $this->waitForPageToLoad();
     }
