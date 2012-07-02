@@ -156,7 +156,7 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->assertTextPresent("Remove 'Title' from document");
         $this->assertElementPresent('sureyes');
         $this->assertElementPresent('sureno');
-        $this->asssertTextPresent('Parent Title');
+        $this->assertTextPresent('Parent Title');
 
         $this->click('sureno');
         $this->waitForPageToLoad();
