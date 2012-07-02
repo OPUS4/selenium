@@ -39,7 +39,7 @@ class AccountsTest extends TestCase {
     /**
      * Regression test for OPUSVIER-2413.
      */
-    public function testDoNotLowerCaseUserNameReg2413() {
+    public function testDoNotAllowUpperCaseCharacters() {
         $this->login();
         $this->switchToEnglish();
 
@@ -57,8 +57,8 @@ class AccountsTest extends TestCase {
         $this->click('submit');
         $this->waitForPageToLoad();
 
-        $this->assertElementContainsText('//html/head/title', 'New Account');
-        $this->assertElementValueEquals('username', $username);
+        $this->assertElementPresent('css=ul.errors');
+        $this->assertTextPresent("'$username' does not match against pattern");
 
         $this->logout();
     }
@@ -73,7 +73,7 @@ class AccountsTest extends TestCase {
         $this->open('/opus4-selenium/admin/account/new');
         $this->waitForPageToLoad();
 
-        $username = 'UpperCaseUser';
+        $username = 'newuser';
         $password = 'dummypwd';
 
         $this->type('username', $username);
