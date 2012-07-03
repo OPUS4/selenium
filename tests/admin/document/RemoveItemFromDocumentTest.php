@@ -238,6 +238,7 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->click('sureyes');
         $this->waitForPageToLoad();
 
+        $this->assertTextPresent("'Identifier' was successfully removed.");
         $this->assertTextPresent('Edit Identifiers');
         $this->assertElementValueEquals('Identifier-1-Type', 'uuid');
         $this->assertElementValueEquals('Identifier-1-Value', '123');
@@ -265,9 +266,300 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->click('sureno');
         $this->waitForPageToLoad();
 
+        $this->assertTextPresent("'Identifier' was not removed (cancelled by user).");
         $this->assertTextPresent('Edit Identifiers');
         $this->assertElementValueEquals('Identifier-0-Type', 'old');
         $this->assertElementValueEquals('Identifier-0-Value', '123');
+
+        $this->afterTest();
+    }
+
+    public function testRemoveSubject() {
+        $this->beforeTest();
+
+        $this->openAndWait('/admin/document/edit/id/200/section/subjects');
+
+        $this->assertTextPresent('Edit Subjects');
+        $this->assertElementValueEquals('Subject-1-Type', 'uncontrolled');
+        $this->assertElementValueEquals('Subject-1-Value', 'Palmöl');
+
+        $this->click('Subject-1-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Subject' from document");
+        $this->assertTextPresent('German');
+        $this->assertTextPresent('uncontrolled');
+        $this->assertTextPresent('Palmöl');
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureyes');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("'Subject' was successfully removed.");
+        $this->assertTextPresent('Edit Subjects');
+        $this->assertElementNotPresent('Subject-1-Type');
+        $this->assertElementNotPresent('Subject-1-remove');
+
+        $this->afterTest();
+    }
+
+    public function testCancelRemoveSubject() {
+        $this->beforeTest();
+
+        $this->openAndWait('/admin/document/edit/id/200/section/subjects');
+
+        $this->assertTextPresent('Edit Subjects');
+        $this->assertElementValueEquals('Subject-0-Type', 'swd');
+        $this->assertElementValueEquals('Subject-0-Value', 'Berlin');
+
+        $this->click('Subject-0-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Subject' from document");
+        $this->assertTextPresent('German');
+        $this->assertTextPresent('swd');
+        $this->assertTextPresent('Berlin');
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureno');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("'Subject' was not removed (cancelled by user).");
+        $this->assertTextPresent('Edit Subjects');
+        $this->assertElementValueEquals('Subject-0-Type', 'swd');
+        $this->assertElementValueEquals('Subject-0-Value', 'Berlin');
+
+        $this->afterTest();
+    }
+
+    public function testRemoveSeries() {
+        $this->beforeTest();
+
+        $this->openAndWait('/admin/document/edit/id/200/section/series');
+
+        $this->assertTextPresent('Edit Series');
+        $this->assertElementValueEquals('Series-1-Series', '4');
+        $this->assertElementValueEquals('Series-1-Number', '6/6');
+
+        $this->click('Series-1-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Series' from document");
+        $this->assertTextPresent('Visible Series');
+        $this->assertTextPresent('6/6');
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureyes');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("'Series' was successfully removed.");
+        $this->assertTextPresent('Edit Series');
+        $this->assertElementNotPresent('Series-1-Series');
+        $this->assertElementNotPresent('Series-1-Number');
+
+        $this->afterTest();
+    }
+
+    public function testCancelRemoveSeries() {
+        $this->beforeTest();
+
+        $this->openAndWait('/admin/document/edit/id/200/section/series');
+
+        $this->assertTextPresent('Edit Series');
+        $this->assertElementValueEquals('Series-0-Series', '1');
+        $this->assertElementValueEquals('Series-0-Number', '6/6');
+
+        $this->click('Series-0-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Series' from document");
+        $this->assertTextPresent('MySeries');
+        $this->assertTextPresent('6/6');
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureno');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("'Series' was not removed (cancelled by user).");
+        $this->assertTextPresent('Edit Series');
+        $this->assertElementValueEquals('Series-0-Series', '1');
+        $this->assertElementValueEquals('Series-0-Number', '6/6');
+
+        $this->afterTest();
+    }
+
+    public function testRemovePatent() {
+        $this->beforeTest();
+
+        $this->openAndWait('/admin/document/edit/id/200/section/patents');
+
+        $this->assertTextPresent('Edit Patents');
+        $this->assertElementValueEquals('Patent-1-Number', '4321');
+
+        $this->click('Patent-1-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Patent' from document");
+        $this->assertTextPresent('4321');
+        $this->assertTextPresent('The bar machine.');
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureyes');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("'Patent' was successfully removed.");
+        $this->assertTextPresent('Edit Patents');
+        $this->assertElementNotPresent('Patent-1-Number');
+        $this->assertElementNotPresent('Patent-1-Application');
+
+        $this->afterTest();
+    }
+
+    public function testCancelRemovePatent() {
+        $this->beforeTest();
+
+        $this->openAndWait('/admin/document/edit/id/200/section/patents');
+
+        $this->assertTextPresent('Edit Patents');
+        $this->assertElementValueEquals('Patent-0-Number', '1234');
+
+        $this->click('Patent-0-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Patent' from document");
+        $this->assertTextPresent('1234');
+        $this->assertTextPresent('The foo machine.');
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureno');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("'Patent' was not removed (cancelled by user).");
+        $this->assertTextPresent('Edit Patents');
+        $this->assertElementValueEquals('Patent-0-Number', '1234');
+        $this->assertElementValueEquals('Patent-0-Application', 'The foo machine.');
+
+        $this->afterTest();
+    }
+
+    public function testRemoveNote() {
+        $this->beforeTest();
+
+        $this->openAndWait('/admin/document/edit/id/200/section/notes');
+
+        $this->assertTextPresent('Edit Notes');
+        $this->assertElementValueEquals('Note-1-Message', 'Für den Admin');
+        $this->assertElementValueEquals('Note-1-Visibility', 'private');
+
+        $this->click('Note-1-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Note' from document");
+        $this->assertTextPresent('private');
+        $this->assertTextPresent('Für den Admin');
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureyes');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("'Note' was successfully removed.");
+        $this->assertTextPresent('Edit Notes');
+        $this->assertElementNotPresent('Note-1-Visibility');
+        $this->assertElementNotPresent('Note-1-remove');
+
+        $this->afterTest();
+    }
+
+    public function testCancelRemoveNote() {
+        $this->beforeTest();
+
+        $this->openAndWait('/admin/document/edit/id/200/section/notes');
+
+        $this->assertTextPresent('Edit Notes');
+        $this->assertElementValueEquals('Note-0-Message', 'Für die Öffentlichkeit');
+        $this->assertElementValueEquals('Note-0-Visibility', 'public');
+
+        $this->click('Note-0-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Note' from document");
+        $this->assertTextPresent('public');
+        $this->assertTextPresent('Für die Öffentlichkeit');
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureno');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("'Note' was not removed (cancelled by user).");
+        $this->assertTextPresent('Edit Notes');
+        $this->assertElementValueEquals('Note-0-Message', 'Für die Öffentlichkeit');
+        $this->assertElementValueEquals('Note-0-Visibility', 'public');
+
+        $this->afterTest();
+    }
+
+    public function testRemoveEnrichment() {
+        $this->beforeTest();
+
+        $this->openAndWait('/admin/document/edit/id/200/section/enrichments');
+
+        $this->assertTextPresent('Edit Enrichments');
+        $this->assertElementValueEquals('Enrichment-1-Value', 'Berlin');
+        $this->assertElementValueEquals('Enrichment-1-KeyName', 'validtestkey');
+
+        $this->click('Enrichment-1-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Enrichment' from document");
+        $this->assertTextPresent('Berlin');
+        $this->assertTextPresent('validtestkey');
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureyes');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("'Enrichment' was successfully removed.");
+        $this->assertTextPresent('Edit Enrichments');
+        $this->assertElementNotPresent('Enrichment-1-Value');
+        $this->assertElementNotPresent('Enrichment-1-KeyName');
+
+        $this->afterTest();
+    }
+
+    public function testCancelRemoveEnrichment() {
+        $this->beforeTest();
+
+        $this->openAndWait('/admin/document/edit/id/200/section/enrichments');
+
+        $this->assertTextPresent('Edit Enrichments');
+        $this->assertElementValueEquals('Enrichment-0-Value', 'Köln');
+        $this->assertElementValueEquals('Enrichment-0-KeyName', 'validtestkey');
+
+        $this->click('Enrichment-0-remove');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("Remove 'Enrichment' from document");
+        $this->assertTextPresent('validtestkey');
+        $this->assertTextPresent('Köln');
+        $this->assertElementPresent('sureyes');
+        $this->assertElementPresent('sureno');
+
+        $this->click('sureno');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent("'Enrichment' was not removed (cancelled by user).");
+        $this->assertTextPresent('Edit Enrichment');
+        $this->assertElementValueEquals('Enrichment-0-Value', 'Köln');
+        $this->assertElementValueEquals('Enrichment-0-KeyName', 'validtestkey');
 
         $this->afterTest();
     }
