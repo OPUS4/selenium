@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of OPUS. The software OPUS has been originally developed
  * at the University of Stuttgart with funding from the German Research Net,
@@ -32,39 +33,38 @@
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
  * @version     $Id$
  */
-
 require_once 'TestCase.php';
 
-class DocTypeSoundTest extends TestCase
-{
-  
-  public function testDocTypeSound()
-  {
-    $this->open("/opus4-selenium/publish");
-    $this->waitForPageToLoad();
-    $this->assertTrue($this->isTextPresent("Publish"));
-    $this->select("documentType", "label=Sound");
-    $this->click("rights");
-    $this->click("send");
-    $this->waitForPageToLoad();
-    $this->assertTrue($this->isTextPresent("Sound"));
-    $this->type("PersonSubmitterFirstName_1", "Donald");
-    $this->type("PersonSubmitterLastName_1", "Trump");
-    $this->type("PersonSubmitterEmail_1", "test@mail.com");
-    $this->type("TitleMain_1", "Millionär gesucht");
-    $this->select("TitleMainLanguage_1", "label=German");
-    $this->type("PersonAuthorFirstName_1", "Donald");
-    $this->type("PersonAuthorLastName_1", "Trump");
-    $this->type("PersonAuthorEmail_1", "doe@example.org");
-    $this->type("CompletedDate", "2004/03/24");
-    $this->select("Language", "label=German");
-    $this->select("Licence", "label=Creative Commons - Namensnennung");
-    $this->click("send");
-    $this->waitForPageToLoad();
-    $this->assertTrue($this->isTextPresent("Please check your data."));
-    $this->click("send");
-    $this->waitForPageToLoad();
-    $this->assertTrue($this->isTextPresent("Document "));
-    $this->assertTrue($this->isTextPresent(" was successfully published."));
-  }
+class DocTypeSoundTest extends TestCase {
+
+    public function testDocTypeSound() {
+        $this->switchToEnglish();
+        $this->open("/opus4-selenium/publish");
+        $this->waitForPageToLoad();
+        $this->assertTrue($this->isTextPresent("Publish"));
+        $this->select("documentType", "label=Sound");
+        $this->click("rights");
+        $this->click("send");
+        $this->waitForPageToLoad();
+        $this->assertTrue($this->isTextPresent("Sound"));
+        $this->type("PersonSubmitterFirstName_1", "Donald");
+        $this->type("PersonSubmitterLastName_1", "Trump");
+        $this->type("PersonSubmitterEmail_1", "test@mail.com");
+        $this->type("TitleMain_1", "Millionär gesucht");
+        $this->select("TitleMainLanguage_1", "label=German");
+        $this->type("PersonAuthorFirstName_1", "Donald");
+        $this->type("PersonAuthorLastName_1", "Trump");
+        $this->type("PersonAuthorEmail_1", "doe@example.org");
+        $this->type("CompletedDate", "2004/03/24");
+        $this->select("Language", "label=German");
+        $this->select("Licence", "label=Creative Commons - Namensnennung");
+        $this->click("send");
+        $this->waitForPageToLoad();
+        $this->assertTrue($this->isTextPresent("Please check your data."));
+        $this->click("send");
+        $this->waitForPageToLoad();
+        $this->assertTrue($this->isTextPresent("Document "));
+        $this->assertTrue($this->isTextPresent(" was successfully published."));
+    }
+
 }

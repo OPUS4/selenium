@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of OPUS. The software OPUS has been originally developed
  * at the University of Stuttgart with funding from the German Research Net,
@@ -32,38 +33,37 @@
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
  * @version     $Id$
  */
-
 require_once 'TestCase.php';
 
-class ImageTest extends TestCase
-{
-  
-  public function testDocTypImage()
-  {
-    $this->open("/opus4-selenium/publish");
-    $this->waitForPageToLoad();
-    $this->assertTrue($this->isTextPresent("Publish"));
-    $this->assertTrue($this->isTextPresent("Choose document type and file"));
-    $this->select("documentType", "label=Image");
-    $this->click("rights");
-    $this->click("send");
-    $this->waitForPageToLoad();
-    $this->assertTrue($this->isTextPresent("Publish"));
-    $this->assertTrue($this->isTextPresent("Image"));
-    $this->type("PersonSubmitterFirstName_1", "Donald");
-    $this->type("PersonSubmitterLastName_1", "Duck");
-    $this->type("PersonSubmitterEmail_1", "test@mail.com");
-    $this->type("TitleMain_1", "The Tales of Entenhausen");
-    $this->select("TitleMainLanguage_1", "label=English");
-    $this->type("CompletedDate", "2004/03/12");
-    $this->select("Language", "label=English");
-    $this->select("Licence", "label=Creative Commons - Namensnennung");
-    $this->click("send");
-    $this->waitForPageToLoad();
-    $this->assertTrue($this->isTextPresent("Please check your data."));
-    $this->click("send");
-    $this->waitForPageToLoad();
-    $this->assertTrue($this->isTextPresent("Document "));
-    $this->assertTrue($this->isTextPresent(" was successfully published."));
-  }
+class ImageTest extends TestCase {
+
+    public function testDocTypImage() {
+        $this->switchToEnglish();
+        $this->open("/opus4-selenium/publish");
+        $this->waitForPageToLoad();
+        $this->assertTrue($this->isTextPresent("Publish"));
+        $this->assertTrue($this->isTextPresent("Choose document type and file"));
+        $this->select("documentType", "label=Image");
+        $this->click("rights");
+        $this->click("send");
+        $this->waitForPageToLoad();
+        $this->assertTrue($this->isTextPresent("Publish"));
+        $this->assertTrue($this->isTextPresent("Image"));
+        $this->type("PersonSubmitterFirstName_1", "Donald");
+        $this->type("PersonSubmitterLastName_1", "Duck");
+        $this->type("PersonSubmitterEmail_1", "test@mail.com");
+        $this->type("TitleMain_1", "The Tales of Entenhausen");
+        $this->select("TitleMainLanguage_1", "label=English");
+        $this->type("CompletedDate", "2004/03/12");
+        $this->select("Language", "label=English");
+        $this->select("Licence", "label=Creative Commons - Namensnennung");
+        $this->click("send");
+        $this->waitForPageToLoad();
+        $this->assertTrue($this->isTextPresent("Please check your data."));
+        $this->click("send");
+        $this->waitForPageToLoad();
+        $this->assertTrue($this->isTextPresent("Document "));
+        $this->assertTrue($this->isTextPresent(" was successfully published."));
+    }
+
 }
