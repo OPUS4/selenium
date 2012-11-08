@@ -31,84 +31,80 @@
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
  * @version     $Id$
  */
-
 require_once 'TestCase.php';
 
-class Opusvier1956RegressionTest extends TestCase
-{
-  public function testMyTestCase()
-  {
-    $this->open("/opus4-selenium");
-    $this->waitForPageToLoad();
-    $this->open("/opus4-selenium/home/index/language/language/en");
-    $this->waitForPageToLoad();
-    $this->open("/opus4-selenium/publish");
-    $this->assertTrue($this->isElementPresent("documentType"));
-    $this->select("documentType", "label=All fields (testing documenttype)");
-    $this->click("rights");
-    $this->click("send");
-    $this->waitForPageToLoad();
+class Opusvier1956RegressionTest extends TestCase {
 
-    // PersonAuthor releated checks
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorFirstName_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorLastName_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorAcademicTitle_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorEmail_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorAllowEmailContact_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorDateOfBirth_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorPlaceOfBirth_1']"));
-    $this->assertFalse($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']"));
+    public function testMyTestCase() {
+        $this->switchToEnglish();
+        $this->open("/opus4-selenium/publish");
+        $this->assertTrue($this->isElementPresent("documentType"));
+        $this->select("documentType", "label=All fields (testing documenttype)");
+        $this->click("rights");
+        $this->click("send");
+        $this->waitForPageToLoad();
 
-    $this->click("addMorePersonAuthor");
-    $this->waitForPageToLoad();
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorFirstName_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorLastName_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorAcademicTitle_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorEmail_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorAllowEmailContact_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorDateOfBirth_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorPlaceOfBirth_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']/div/input[@id='PersonAuthorFirstName_2']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']/div/input[@id='PersonAuthorLastName_2']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']/div/input[@id='PersonAuthorAcademicTitle_2']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']/div/input[@id='PersonAuthorEmail_2']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']/div/input[@id='PersonAuthorAllowEmailContact_2']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']/div/input[@id='PersonAuthorDateOfBirth_2']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']/div/input[@id='PersonAuthorPlaceOfBirth_2']"));
+        // PersonAuthor releated checks
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorFirstName_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorLastName_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorAcademicTitle_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorEmail_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorAllowEmailContact_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorDateOfBirth_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorPlaceOfBirth_1']"));
+        $this->assertFalse($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']"));
 
-    // TitleMain related checks
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/input[@id='TitleMain_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/select[@id='TitleMainLanguage_1']"));
-    $this->assertFalse($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple even']"));
+        $this->click("addMorePersonAuthor");
+        $this->waitForPageToLoad();
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorFirstName_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorLastName_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorAcademicTitle_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorEmail_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorAllowEmailContact_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorDateOfBirth_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple odd']/div/input[@id='PersonAuthorPlaceOfBirth_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']/div/input[@id='PersonAuthorFirstName_2']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']/div/input[@id='PersonAuthorLastName_2']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']/div/input[@id='PersonAuthorAcademicTitle_2']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']/div/input[@id='PersonAuthorEmail_2']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']/div/input[@id='PersonAuthorAllowEmailContact_2']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']/div/input[@id='PersonAuthorDateOfBirth_2']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupPersonAuthor']/div[@class='form-multiple even']/div/input[@id='PersonAuthorPlaceOfBirth_2']"));
 
-    $this->click("addMoreTitleMain");
-    $this->waitForPageToLoad();
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/input[@id='TitleMain_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/select[@id='TitleMainLanguage_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple even']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple even']/div/input[@id='TitleMain_2']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple even']/div/select[@id='TitleMainLanguage_2']"));
+        // TitleMain related checks
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/input[@id='TitleMain_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/select[@id='TitleMainLanguage_1']"));
+        $this->assertFalse($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple even']"));
 
-    // TitleAbstract related checks
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/textarea[@id='TitleAbstract_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/select[@id='TitleAbstractLanguage_1']"));
-    $this->assertFalse($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple even']"));
+        $this->click("addMoreTitleMain");
+        $this->waitForPageToLoad();
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/input[@id='TitleMain_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple odd']/div/select[@id='TitleMainLanguage_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple even']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple even']/div/input[@id='TitleMain_2']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleMain']/div[@class='form-multiple even']/div/select[@id='TitleMainLanguage_2']"));
 
-    $this->click("addMoreTitleAbstract");
-    $this->waitForPageToLoad();
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/textarea[@id='TitleAbstract_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/select[@id='TitleAbstractLanguage_1']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple even']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple even']/div/textarea[@id='TitleAbstract_2']"));
-    $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple even']/div/select[@id='TitleAbstractLanguage_2']"));
+        // TitleAbstract related checks
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/textarea[@id='TitleAbstract_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/select[@id='TitleAbstractLanguage_1']"));
+        $this->assertFalse($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple even']"));
 
-  }
+        $this->click("addMoreTitleAbstract");
+        $this->waitForPageToLoad();
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/textarea[@id='TitleAbstract_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple odd']/div/select[@id='TitleAbstractLanguage_1']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple even']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple even']/div/textarea[@id='TitleAbstract_2']"));
+        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupTitleAbstract']/div[@class='form-multiple even']/div/select[@id='TitleAbstractLanguage_2']"));
+    }
+
 }
+
 ?>

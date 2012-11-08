@@ -31,30 +31,30 @@
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
  * @version     $Id$
  */
-
 require_once 'TestCase.php';
 
-class Opusvier2208Test extends TestCase
-{
-  
-  public function testDocTypeDemoInvalid() {
-    $this->open("/opus4-selenium/publish");
-    $this->waitForPageToLoad();
-    $this->select("documentType", "label=demo_invalid");
-    $this->click("rights");
-    $this->click("send");
-    $this->waitForPageToLoad();
-    $this->assertTrue($this->isTextPresent("given xml document type definition for document type demo_invalid is not valid"));
-  }
+class Opusvier2208Test extends TestCase {
 
-  public function testDocTypeDemoInvalidfieldname() {
-    $this->open("/opus4-selenium/publish");
-    $this->waitForPageToLoad();
-    $this->select("documentType", "label=demo_invalidfieldname");
-    $this->click("rights");
-    $this->click("send");
-    $this->waitForPageToLoad();
-    $this->assertTrue($this->isTextPresent("given xml document type definition for document type demo_invalidfieldname is not valid"));
-  }
+    public function testDocTypeDemoInvalid() {
+        $this->switchToEnglish();
+        $this->open("/opus4-selenium/publish");
+        $this->waitForPageToLoad();
+        $this->select("documentType", "label=demo_invalid");
+        $this->click("rights");
+        $this->click("send");
+        $this->waitForPageToLoad();
+        $this->assertTrue($this->isTextPresent("given xml document type definition for document type demo_invalid is not valid"));
+    }
+
+    public function testDocTypeDemoInvalidfieldname() {
+        $this->switchToEnglish();
+        $this->open("/opus4-selenium/publish");
+        $this->waitForPageToLoad();
+        $this->select("documentType", "label=demo_invalidfieldname");
+        $this->click("rights");
+        $this->click("send");
+        $this->waitForPageToLoad();
+        $this->assertTrue($this->isTextPresent("given xml document type definition for document type demo_invalidfieldname is not valid"));
+    }
 
 }

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of OPUS. The software OPUS has been originally developed
  * at the University of Stuttgart with funding from the German Research Net,
@@ -38,10 +37,7 @@ require_once 'TestCase.php';
 class MatheonBrowseLeafCollectionMscTest extends TestCase {
 
     public function testMscAndInstituteLeafCollectionBrowsingAndCheckPage() {
-        $this->open("/opus4-selenium");
-        $this->waitForPageToLoad();
-        $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad();
+        $this->switchToGerman();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();

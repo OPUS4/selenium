@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of OPUS. The software OPUS has been originally developed
  * at the University of Stuttgart with funding from the German Research Net,
@@ -27,7 +26,6 @@
  *
  * @category    Application
  * @package     Module_Publish
- * @package     Module_Publish Selenium Test MATHEON
  * @author      Susanne Gottwald <gottwald@zib.de>
  * @copyright   Copyright (c) 2008-2011, OPUS 4 development team
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
@@ -39,11 +37,7 @@ require_once 'TestCase.php';
 class UncheckedBibliographieFieldTest extends TestCase {
 
     public function testUncheckedBibliographieField() {
-        
-        $this->open("/opus4-selenium");
-        $this->waitForPageToLoad();
-        $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad();
+        $this->switchToGerman();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();

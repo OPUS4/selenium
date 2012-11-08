@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of OPUS. The software OPUS has been originally developed
  * at the University of Stuttgart with funding from the German Research Net,
@@ -26,7 +25,7 @@
  * Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
  * @category    Application
- * @package     Module_Publish Selenium Test
+ * @package     Module_Publish
  * @author      Susanne Gottwald <gottwald@zib.de>
  * @copyright   Copyright (c) 2008-2012, OPUS 4 development team
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
@@ -37,10 +36,7 @@ require_once 'TestCase.php';
 class seriesValidationTest extends TestCase {
 
     public function testUnavailableNumberAndDuplicateSeries() {
-        $this->open("/opus4-selenium");
-        $this->waitForPageToLoad();
-        $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad();
+        $this->switchToGerman();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();

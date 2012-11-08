@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of OPUS. The software OPUS has been originally developed
  * at the University of Stuttgart with funding from the German Research Net,
@@ -38,11 +37,8 @@ class DisabledTextFieldForSeriesCollectionTest extends TestCase {
 
     public function testdisabledTextFieldForSeriesCollection() {
         $this->markTestSkipped('has to be redesigned for new series concept');
-        
-        $this->open("/opus4-selenium");
-        $this->waitForPageToLoad();
-        $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad();
+
+        $this->switchToGerman();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();

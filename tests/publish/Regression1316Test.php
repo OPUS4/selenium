@@ -1,5 +1,4 @@
 <?php
-
 /** This file is part of OPUS. The software OPUS has been originally developed
  * at the University of Stuttgart with funding from the German Research Net,
  * the Federal Department of Higher Education and Research and the Ministry
@@ -30,22 +29,17 @@
  * @copyright   Copyright (c) 2008-2012, OPUS 4 development team
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
  * @version     $Id$
- **/
-
+ * */
 require_once 'TestCase.php';
 
 class Regression1316Test extends TestCase {
-  
-  public function testDisabledCollectionFieldWithoutSelection()
-  {
-        $this->open("/opus4-selenium");
-        $this->waitForPageToLoad();
-        $this->open("/opus4-selenium/home/index/language/language/de");
-        $this->waitForPageToLoad();
+
+    public function testDisabledCollectionFieldWithoutSelection() {
+        $this->switchToGerman();
         $this->open("/opus4-selenium/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();
-        
+
         $this->select("id=documentType", "label=Preprint für MATHEON");
         $this->click("id=rights");
         $this->click("id=send");
@@ -53,6 +47,8 @@ class Regression1316Test extends TestCase {
         $this->click("id=browseDownInstitute");
         $this->waitForPageToLoad();
         $this->assertTrue($this->isEditable("Institute_1"));
-   }
+    }
+
 }
+
 ?>
