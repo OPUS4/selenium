@@ -76,7 +76,7 @@ class Regression2540Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent('Insert successful');
-        $this->assertTextPresent("Sammlungseintrag 'collfoobar' wurde erfolgreich angelegt.");
+        $this->assertTextPresent("Sammlungseintrag '12345 collfoobar' wurde erfolgreich angelegt.");
     }
 
     /**
@@ -119,7 +119,7 @@ class Regression2540Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Edit successful");
-        $this->assertTextPresent("Sammlungseintrag 'collfoobar' wurde erfolgreich bearbeitet.");
+        $this->assertTextPresent("Sammlungseintrag '12345 collfoobar' wurde erfolgreich bearbeitet.");
     }
 
     /**
@@ -142,7 +142,7 @@ class Regression2540Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent('Operation completed successfully.');
-        $this->assertTextPresent("Sammlungseintrag 'collfoobar' wurde erfolgreich gelöscht.");
+        $this->assertTextPresent("Sammlungseintrag '12345 collfoobar' wurde erfolgreich gelöscht.");
     }
 
     /**
