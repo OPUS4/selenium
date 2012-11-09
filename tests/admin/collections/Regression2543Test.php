@@ -74,7 +74,7 @@ class Regression2543Test extends TestCase {
         $this->click("submit");
         $this->waitForPageToLoad();
 
-        $this->assertTextPresent("Sammlungseintrag 'collfoobar' wurde erfolgreich angelegt.");
+        $this->assertTextPresent("Sammlungseintrag '12345 collfoobar' wurde erfolgreich angelegt.");
     }
 
     /**
@@ -99,7 +99,7 @@ class Regression2543Test extends TestCase {
         $this->click("submit");
         $this->waitForPageToLoad();
 
-        $this->assertTextPresent("Sammlungseintrag 'collbaz' wurde erfolgreich angelegt.");
+        $this->assertTextPresent("Sammlungseintrag '56789 collbaz' wurde erfolgreich angelegt.");
     }
 
     /**
@@ -119,7 +119,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertTextPresent("Sichtbarkeit des Sammlungseintrags 'collbaz' wurde erfolgreich geändert.");
+        $this->assertTextPresent("Sichtbarkeit des Sammlungseintrags '56789 collbaz' wurde erfolgreich geändert.");
     }
 
     /**
@@ -139,7 +139,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertTextPresent("Sichtbarkeit des Sammlungseintrags 'collbaz' wurde erfolgreich geändert.");
+        $this->assertTextPresent("Sichtbarkeit des Sammlungseintrags '56789 collbaz' wurde erfolgreich geändert.");
     }
 
     /**
@@ -193,7 +193,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertTextPresent("Sammlungseintrag 'collfoobar' wurde erfolgreich verschoben.");
+        $this->assertTextPresent("Sammlungseintrag '12345 collfoobar' wurde erfolgreich verschoben.");
     }
 
     /**
@@ -213,7 +213,7 @@ class Regression2543Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent("Operation completed successfully.");
-        $this->assertTextPresent("Sammlungseintrag 'collfoobar' wurde erfolgreich verschoben.");
+        $this->assertTextPresent("Sammlungseintrag '12345 collfoobar' wurde erfolgreich verschoben.");
     }   
 
     /**
