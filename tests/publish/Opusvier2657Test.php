@@ -65,7 +65,7 @@ class Opusvier2657Test extends TestCase {
         $this->assertFalse($this->isTextPresent("Wählen Sie eine weitere Datei zum Hochladen"));
         $this->assertTrue($this->isTextPresent("Dokumenttyp und Datei wählen"));
         $this->assertTrue($this->isTextPresent("Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern."));
-        $this->assertTrue($this->isTextPresent("Der Wert wird benötigt und darf nicht leer bleiben."));
+        $this->assertTrue($this->isTextPresent("Fehler: Dokumenttyp fehlt!"));
     }
 
     public function testUploadActionWithoutDoctypeAndRightsSelection() {
@@ -80,7 +80,7 @@ class Opusvier2657Test extends TestCase {
         $this->assertFalse($this->isTextPresent("Wählen Sie eine weitere Datei zum Hochladen"));
         $this->assertTrue($this->isTextPresent("Dokumenttyp und Datei wählen"));
         $this->assertTrue($this->isTextPresent("Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern."));
-        $this->assertTrue($this->isTextPresent("Der Wert wird benötigt und darf nicht leer bleiben."));
+        $this->assertTrue($this->isTextPresent("Fehler: Dokumenttyp fehlt!"));
         $this->assertTrue($this->isTextPresent("Fehler: Bestätigen Sie bitte unsere rechtlichen Hinweise."));
     }
 
