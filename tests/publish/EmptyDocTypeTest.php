@@ -38,14 +38,16 @@ class EmptyDocTypeTest extends TestCase {
 
     public function testDepositInstitute() {
         $this->switchToEnglish();
+
         $this->open("/opus4-selenium/home");
         $this->click("link=Publish");
         $this->waitForPageToLoad();
+
         $this->click("send");
         $this->waitForPageToLoad();
-        $this->assertTrue($this->isTextPresent("Value is required and can't be empty"));
+        
+        $this->assertTrue($this->isTextPresent("Error: missing document type!"));
     }
-
 }
 
 ?>
