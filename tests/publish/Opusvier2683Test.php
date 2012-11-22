@@ -48,18 +48,18 @@ class Opusvier2683Test extends TestCase {
         $this->click('rights');
         $this->click("send");
         $this->waitForPageToLoad();
-
-        $this->assertTrue($this->isTextPresent("Tragen Sie bitte eine JEL Klasse ein."));
+      
+        $this->assertTrue(false !== strpos($this->getBodyText(), 'title="Tragen Sie bitte eine JEL Klasse ein."'));
         $this->select("id=SubjectJEL_1", "label=A General Economics and Teaching");
         $this->click("id=browseDownSubjectJEL");
         $this->waitForPageToLoad();
 
-        $this->assertFalse($this->isTextPresent("hint_collId2SubjectJEL"));
+        $this->assertTrue(false === strpos($this->getBodyText(), 'title="hint_collId2SubjectJEL"'));
         $this->select("id=collId2SubjectJEL_1", "label=A3 Collective Works");
         $this->click("id=browseDownSubjectJEL");
         $this->waitForPageToLoad();
 
-        $this->assertFalse($this->isTextPresent("hint_collId3SubjectJEL"));
+        $this->assertTrue(false === strpos($this->getBodyText(), 'title="hint_collId3SubjectJEL"'));
         $this->click("LegalNotices");
         $this->click("send");
         $this->waitForPageToLoad();
