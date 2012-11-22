@@ -35,6 +35,9 @@ require_once 'TestCase.php';
 
 class PublishFirstForm extends TestCase {
 
+    /**
+     * Regression Test for OPUSVIER-2676
+     */
     public function testMissingRightsInFirstFormStep() {
         $this->switchToGerman();
 
@@ -44,17 +47,22 @@ class PublishFirstForm extends TestCase {
         $this->select("documentType", "value=all");
         $this->click("send");
         $this->waitForPageToLoad();
-       
+
+        $this->assertTrue($this->isTextPresent("Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern."));
         $this->assertTrue($this->isTextPresent("Fehler: Bestätigen Sie bitte unsere rechtlichen Hinweise."));
+        $this->assertTrue($this->isTextPresent("Dokumenttyp und Datei wählen"));
 
         $this->click('rights');
         $this->click("send");
         $this->waitForPageToLoad();
-
-        $this->assertTrue($this->isTextPresent("Alle Felder (Testdokumenttyp)"));
+        
+        $this->assertTrue($this->isTextPresent("Kontaktdaten des Einstellers"));
         $this->assertFalse($this->isTextPresent("Dokumenttyp und Datei wählen"));
     }
 
+    /**
+     * Regression Test for OPUSVIER-2676
+     */
     public function testMissingDoctypeInFirstFormStep() {
         $this->switchToGerman();
 
@@ -65,16 +73,21 @@ class PublishFirstForm extends TestCase {
         $this->click("send");
         $this->waitForPageToLoad();
 
+        $this->assertTrue($this->isTextPresent("Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern."));
         $this->assertTrue($this->isTextPresent("Fehler: Dokumenttyp fehlt!"));
+        $this->assertTrue($this->isTextPresent("Dokumenttyp und Datei wählen"));
 
         $this->select("documentType", "value=all");
         $this->click("send");
         $this->waitForPageToLoad();
 
-        $this->assertTrue($this->isTextPresent("Alle Felder (Testdokumenttyp)"));
+        $this->assertTrue($this->isTextPresent("Kontaktdaten des Einstellers"));
         $this->assertFalse($this->isTextPresent("Dokumenttyp und Datei wählen"));
     }
 
+    /**
+     * Regression Test for OPUSVIER-2676
+     */
     public function testMissingRightsAndDoctypeInFirstFormStep() {
         $this->switchToGerman();
 
@@ -84,15 +97,17 @@ class PublishFirstForm extends TestCase {
         $this->click("send");
         $this->waitForPageToLoad();
 
+        $this->assertTrue($this->isTextPresent("Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern."));
         $this->assertTrue($this->isTextPresent("Fehler: Dokumenttyp fehlt!"));
         $this->assertTrue($this->isTextPresent("Fehler: Bestätigen Sie bitte unsere rechtlichen Hinweise."));
+        $this->assertTrue($this->isTextPresent("Dokumenttyp und Datei wählen"));
 
         $this->select("documentType", "value=all");
         $this->click('rights');
         $this->click("send");
         $this->waitForPageToLoad();
 
-        $this->assertTrue($this->isTextPresent("Alle Felder (Testdokumenttyp)"));
+        $this->assertTrue($this->isTextPresent("Kontaktdaten des Einstellers"));
         $this->assertFalse($this->isTextPresent("Dokumenttyp und Datei wählen"));
     }
 
