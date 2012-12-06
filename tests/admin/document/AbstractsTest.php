@@ -58,7 +58,7 @@ class AbstractsTest extends TestCase {
         $this->switchToEnglish();
         $this->login();
 
-        $this->open('opus4-selenium/admin/document/add/id/146/section/abstracts');
+        $this->open('/admin/document/add/id/146/section/abstracts');
         $this->waitForPageToLoad();
         $this->select('Opus_TitleAbstract-Language', 'value=deu');
         $this->type('Opus_TitleAbstract-Value', 'Deutscher Abstrakt');
@@ -76,7 +76,7 @@ class AbstractsTest extends TestCase {
         $this->switchToEnglish();
         $this->login();
 
-        $this->open('opus4-selenium/admin/document/add/id/91/section/abstracts');
+        $this->open('/admin/document/add/id/91/section/abstracts');
         $this->waitForPageToLoad();
         $this->select('Opus_TitleAbstract-Language', 'value=rus');
         $this->type('Opus_TitleAbstract-Value', 'Russian abstract');
@@ -103,7 +103,7 @@ class AbstractsTest extends TestCase {
         $this->switchToEnglish();
         $this->login();
 
-        $this->open('opus4-selenium/admin/document/edit/id/146/section/abstracts');
+        $this->open('/admin/document/edit/id/146/section/abstracts');
         $this->waitForPageToLoad();
         $this->select('TitleAbstract-1-Language', 'value=deu');
         $this->click('save');
@@ -119,7 +119,7 @@ class AbstractsTest extends TestCase {
         $this->switchToEnglish();
         $this->login();
 
-        $this->open('opus4-selenium/admin/document/edit/id/146/section/abstracts');
+        $this->open('/admin/document/edit/id/146/section/abstracts');
         $this->waitForPageToLoad();
 
         $this->select('TitleAbstract-0-Language', 'value=eng');
