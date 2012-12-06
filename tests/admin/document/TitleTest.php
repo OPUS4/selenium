@@ -43,7 +43,7 @@ class TitleTest extends TestCase {
         $this->login();
 
         // check output
-        $this->open('/opus4-selenium/admin/document/add/id/30/section/titles');
+        $this->open('/admin/document/add/id/30/section/titles');
         $this->waitForPageToLoad();
         $this->select('Opus_Title-Language', 'value=eng');
         $this->select('Opus_Title-Type', 'value=main');

@@ -42,24 +42,24 @@ class Regression2398Test extends TestCase {
     public function testSuccessMessageIsTranslatedAfterCollectionRoleDocumentAssignment() {
         $this->login();
 
-        $this->open("/opus4-selenium/home/index/language/language/de");
+        $this->open("/home/index/language/language/de");
         $this->waitForPageToLoad();
 
-        $this->open('/opus4-selenium/admin/collection/assign/document/92');
+        $this->open('/admin/collection/assign/document/92');
         $this->waitForPageToLoad();
 
         // Zuweisung zur DDC-Root-Collection
-        $this->click("//form[@action='/opus4-selenium/admin/collection/assign/id/2/document/92']/input");
+        $this->click("//form[@action='{$this->baseUrl}/admin/collection/assign/id/2/document/92']/input");
         $this->waitForPageToLoad();
 
         $this->assertTextPresent("Die Verknüpfung des Dokuments zur Sammlung 'ddc' wurde erfolgreich erstellt.");
         $this->assertTextNotPresent('Document successfully assigned to collection "ddc".');
 
         // Zuweisung wieder entfernen
-        $this->open("/opus4-selenium/admin/document/edit/id/92/section/collections");
+        $this->open("/admin/document/edit/id/92/section/collections");
         $this->waitForPageToLoad();
 
-        $this->click("//form[@action='/opus4-selenium/admin/document/unlinkcollection/id/92/section/collections/role/2/collection/2']/input");
+        $this->click("//form[@action='{$this->baseUrl}/admin/document/unlinkcollection/id/92/section/collections/role/2/collection/2']/input");
         $this->waitForPageToLoad();
 
         $this->assertTextPresent("Die Verknüpfung des Dokuments zur Sammlung 'ddc' wurde erfolgreich entfernt.");
@@ -71,24 +71,24 @@ class Regression2398Test extends TestCase {
     public function testSuccessMessageIsTranslatedAfterCollectionDocumentAssignment() {
         $this->login();
 
-        $this->open("/opus4-selenium/home/index/language/language/de");
+        $this->open("/home/index/language/language/de");
         $this->waitForPageToLoad();
 
-        $this->open('/opus4-selenium/admin/collection/assign/id/2/document/92');
+        $this->open('/admin/collection/assign/id/2/document/92');
         $this->waitForPageToLoad();
 
         // Zuweisung zur DDC-Collection 1
-        $this->click("//form[@action='/opus4-selenium/admin/collection/assign/id/4/document/92']/input");
+        $this->click("//form[@action='{$this->baseUrl}/admin/collection/assign/id/4/document/92']/input");
         $this->waitForPageToLoad();
 
         $this->assertTextPresent("Die Verknüpfung des Dokuments zur Sammlung '1 Philosophie und Psychologie' wurde erfolgreich erstellt.");
         $this->assertTextNotPresent('Document successfully assigned to collection "1 Philosophie und Psychologie".');
 
         // Zuweisung wieder entfernen
-        $this->open("/opus4-selenium/admin/document/edit/id/92/section/collections");
+        $this->open("/admin/document/edit/id/92/section/collections");
         $this->waitForPageToLoad();
 
-        $this->click("//form[@action='/opus4-selenium/admin/document/unlinkcollection/id/92/section/collections/role/2/collection/4']/input");
+        $this->click("//form[@action='{$this->baseUrl}/admin/document/unlinkcollection/id/92/section/collections/role/2/collection/4']/input");
         $this->waitForPageToLoad();
 
         $this->assertTextPresent("Die Verknüpfung des Dokuments zur Sammlung '1 Philosophie und Psychologie' wurde erfolgreich entfernt.");

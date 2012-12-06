@@ -43,7 +43,7 @@ class SectionOtherTest extends TestCase {
         $this->login();
 
         // check output
-        $this->open('/opus4-selenium/admin/document/edit/id/30/section/other');
+        $this->open('/admin/document/edit/id/30/section/other');
         $this->waitForPageToLoad();
         $this->type('Opus_Document-PageFirst', '0');
         $this->type('Opus_Document-PageLast', '0');

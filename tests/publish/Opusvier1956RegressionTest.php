@@ -37,7 +37,7 @@ class Opusvier1956RegressionTest extends TestCase {
 
     public function testMyTestCase() {
         $this->switchToEnglish();
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->assertTrue($this->isElementPresent("documentType"));
         $this->select("documentType", "label=All fields (testing documenttype)");
         $this->click("rights");

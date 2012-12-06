@@ -39,7 +39,7 @@ class Admin_AccessControllerTest extends TestCase {
     public function testRegression2281TranslationAdminAccessStore() {
         $this->switchToEnglish();
 	$this->login();
-        $this->open('/opus4-selenium/admin/access/listmodule/roleid/1');
+        $this->open('/admin/access/listmodule/roleid/1');
         $this->waitForPageToLoad('30000');
 
         // Preparation

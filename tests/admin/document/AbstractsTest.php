@@ -44,7 +44,7 @@ class AbstractsTest extends TestCase {
         $this->login();
 
         // check output
-        $this->open('/opus4-selenium/admin/document/edit/id/92/section/abstracts');
+        $this->open('/admin/document/edit/id/92/section/abstracts');
         $this->waitForPageToLoad();
         $this->assertTextNotPresent('Application error');
         $this->assertTextNotPresent('Anwendungsfehler');

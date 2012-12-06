@@ -44,7 +44,7 @@ class StatisticsTest extends TestCase {
         $this->switchToEnglish();
 
         // check output
-        $this->open('/opus4-selenium/admin/statistic/show');
+        $this->open('/admin/statistic/show');
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent('Undefined index: selectedYear');

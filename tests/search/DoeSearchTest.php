@@ -38,7 +38,7 @@ class DoeSearchTest extends TestCase {
 
     public function testDoeSearch() {
         $this->switchToEnglish();
-        $this->open("/opus4-selenium/solrsearch");
+        $this->open("/solrsearch");
         $this->type("query", "doe");
         $this->click("//input[@value='Search']");
         $this->waitForPageToLoad();

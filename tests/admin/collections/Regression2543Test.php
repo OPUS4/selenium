@@ -40,7 +40,7 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/opus4-selenium/admin/collectionroles/new');
+        $this->open('/admin/collectionroles/new');
         $this->waitForPageToLoad();
 
         $this->type("id=Opus_Model_Filter-Name-1", "foobar");
@@ -59,7 +59,7 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->open('/admin/collectionroles');
         $this->waitForPageToLoad();
 
         $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
@@ -84,7 +84,7 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->open('/admin/collectionroles');
         $this->waitForPageToLoad();
 
         $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
@@ -109,7 +109,7 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->open('/admin/collectionroles');
         $this->waitForPageToLoad();
 
         $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
@@ -129,7 +129,7 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->open('/admin/collectionroles');
         $this->waitForPageToLoad();
 
         $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
@@ -149,7 +149,7 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->open('/admin/collectionroles');
         $this->waitForPageToLoad();
 
         $this->click("xpath=//table[@class='collections']/tbody/tr/td[3]/a");
@@ -166,7 +166,7 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->open('/admin/collectionroles');
         $this->waitForPageToLoad();
 
         $this->click("xpath=//table[@class='collections']/tbody/tr/td[3]/a");
@@ -183,7 +183,7 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->open('/admin/collectionroles');
         $this->waitForPageToLoad();
 
         $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
@@ -203,7 +203,7 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->open('/admin/collectionroles');
         $this->waitForPageToLoad();
 
         $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
@@ -223,7 +223,7 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->open('/admin/collectionroles');
         $this->waitForPageToLoad();
 
         $this->click("xpath=//table[@class='collections']/tbody/tr/td[5]/a");
@@ -240,7 +240,7 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->open('/admin/collectionroles');
         $this->waitForPageToLoad();
 
         $this->click("xpath=//table[@class='collections']/tbody/tr[2]/td[4]/a");
@@ -257,7 +257,7 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/opus4-selenium/admin/collectionroles');
+        $this->open('/admin/collectionroles');
         $this->waitForPageToLoad();
 
         $this->chooseOkOnNextConfirmation();

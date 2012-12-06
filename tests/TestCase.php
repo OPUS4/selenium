@@ -35,6 +35,7 @@ require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
 class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
 
+    protected $browserUrl = 'http://opus4web.zib.de';
     protected $baseUrl = '/opus4-selenium';
 
     protected $captureScreenshotOnFailure = TRUE;
@@ -43,8 +44,17 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
     protected $defaultMaxPeriodToWait = '30000';
 
     public function setUp() {
+        if(is_file('config.ini') && is_readable('config.ini')) {
+            $config = parse_ini_file('config.ini');
+            $this->browserUrl = $config['browserUrl'];
+            $this->baseUrl = $config['baseUrl'];
+            $this->captureScreenshotOnFailure = $config['captureScreenshotOnFailure'];
+            $this->screenshotPath = $config['screenshotPath'];
+            $this->screenshotUrl = $config['screenshotUrl'];
+            $this->defaultMaxPeriodToWait = $config['defaultMaxPeriodToWait'];
+        }
         $this->setBrowser("*firefox");
-        $this->setBrowserUrl("http://opus4web.zib.de");
+        $this->setBrowserUrl($this->browserUrl);
     }
 
     public function login($user = 'admin', $password = 'adminadmin') {
@@ -52,7 +62,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
         $this->logout();
 
         // login
-        $this->open('/opus4-selenium/auth/login');
+        $this->open('/auth/login');
         $this->waitForPageToLoad();
         $this->type('login', $user);
         $this->type('password', $password);
@@ -61,7 +71,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function logout() {
-        $this->open('/opus4-selenium/auth/logout');
+        $this->open('/auth/logout');
         $this->waitForPageToLoad();
     }
 
@@ -76,7 +86,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
      * Changes language to English.
      */
     public function switchToEnglish() {
-        $this->open('/opus4-selenium/home/index/language/language/en');
+        $this->open('/home/index/language/language/en');
         $this->waitForPageToLoad();
     }
 
@@ -84,12 +94,16 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
      * Changes language to German.
      */
     public function switchToGerman() {
-        $this->open('/opus4-selenium/home/index/language/language/de');
+        $this->open('/home/index/language/language/de');
         $this->waitForPageToLoad();
     }
 
+    public function open($path) {
+        parent::open($this->baseUrl . $path);
+    }
+
     public function openAndWait($path) {
-        $this->open($this->baseUrl . $path);
+        $this->open($path);
         $this->waitForPageToLoad();
     }
 

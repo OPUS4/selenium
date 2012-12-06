@@ -38,7 +38,7 @@ class Opusvier2657Test extends TestCase {
     public function testUploadActionWithDoctypeSelection() {
         $this->switchToGerman();
 
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->waitForPageToLoad();
 
         $this->select("documentType", "value=all");
@@ -55,7 +55,7 @@ class Opusvier2657Test extends TestCase {
     public function testUploadActionWithRightsSelection() {
         $this->switchToGerman();
 
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->waitForPageToLoad();
 
         $this->click('rights');
@@ -71,7 +71,7 @@ class Opusvier2657Test extends TestCase {
     public function testUploadActionWithoutDoctypeAndRightsSelection() {
         $this->switchToGerman();
 
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->waitForPageToLoad();
 
         $this->click("send");

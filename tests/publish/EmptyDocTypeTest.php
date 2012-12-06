@@ -39,7 +39,7 @@ class EmptyDocTypeTest extends TestCase {
     public function testDepositInstitute() {
         $this->switchToEnglish();
 
-        $this->open("/opus4-selenium/home");
+        $this->open("/home");
         $this->click("link=Publish");
         $this->waitForPageToLoad();
 

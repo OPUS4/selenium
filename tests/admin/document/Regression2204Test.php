@@ -44,7 +44,7 @@ class Regression2204Test extends TestCase {
         $this->login();
 
         // check output
-        $this->open('/opus4-selenium/admin/document/edit/id/96/section/other');
+        $this->open('/admin/document/edit/id/96/section/other');
         $this->waitForPageToLoad();
         $this->type('Opus_Document-Edition', '0123456789012345678901234e');
         $this->click('save');

@@ -42,7 +42,7 @@ class Admin_Document_SeriesTest extends TestCase {
         $this->login();
 
         // check output
-        $this->open('/opus4-selenium/admin/document/add/id/50/section/series');
+        $this->open('/admin/document/add/id/50/section/series');
         $this->waitForPageToLoad('30000');
         $this->type('Opus_Series-Number', 'III');
         $this->type('Opus_Series-SortOrder', '8');
@@ -80,7 +80,7 @@ class Admin_Document_SeriesTest extends TestCase {
     public function testRegression2355ModifySortOrderForDocument() {
         $this->login();
 
-        $this->open('/opus4-selenium/admin/document/edit/id/92/section/series');
+        $this->open('/admin/document/edit/id/92/section/series');
         $this->waitForPageToLoad('30000');
         $this->assertElementValueEquals('Series-2-SortOrder', '1');
         $this->type('Series-2-SortOrder', '2');

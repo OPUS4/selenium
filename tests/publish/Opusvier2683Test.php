@@ -41,7 +41,7 @@ class Opusvier2683Test extends TestCase {
     public function testClassificationHintsTranslated() {
         $this->switchToGerman();
 
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->waitForPageToLoad();
 
         $this->select("documentType", "value=all");

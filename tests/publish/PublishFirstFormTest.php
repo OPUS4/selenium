@@ -41,7 +41,7 @@ class PublishFirstFormTest extends TestCase {
     public function testMissingRightsInFirstFormStep() {
         $this->switchToGerman();
 
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->waitForPageToLoad();
 
         $this->select("documentType", "value=all");
@@ -66,7 +66,7 @@ class PublishFirstFormTest extends TestCase {
     public function testMissingDoctypeInFirstFormStep() {
         $this->switchToGerman();
 
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->waitForPageToLoad();
 
         $this->click('rights');
@@ -91,7 +91,7 @@ class PublishFirstFormTest extends TestCase {
     public function testMissingRightsAndDoctypeInFirstFormStep() {
         $this->switchToGerman();
 
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->waitForPageToLoad();
         
         $this->click("send");

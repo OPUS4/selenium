@@ -39,11 +39,11 @@ class SeriesCollectionVisibilityTest extends TestCase {
         $this->markTestSkipped('has to be redesigned for new series concept');
 
         $this->switchToGerman();
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();
 
-        $this->open("http://opus4web.zib.de/opus4-selenium/auth/login");
+        $this->open("/auth/login");
         $this->type("login", "admin");
         $this->type("password", "adminadmin");
         $this->click("SubmitCredentials");

@@ -43,7 +43,7 @@ class CollectionTest extends TestCase {
         $this->login();
 
         // check output
-        $this->open('/opus4-selenium/admin/collection/edit/id/3');
+        $this->open('/admin/collection/edit/id/3');
         $this->waitForPageToLoad();
         $this->assertElementValueNotEquals('Opus_Model_Filter-Number-1', '');
         $this->assertElementValueNotEquals('Opus_Model_Filter-OaiSubset-1', '');

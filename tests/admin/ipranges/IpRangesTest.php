@@ -44,7 +44,7 @@ class IpRangesTest extends TestCase {
         $this->switchToEnglish();
 
         // check output
-        $this->open('/opus4-selenium/admin/iprange/new');
+        $this->open('/admin/iprange/new');
         $this->waitForPageToLoad();
 
         $description = 'My IP Range (1)'; // contains spaces and brackets
@@ -73,7 +73,7 @@ class IpRangesTest extends TestCase {
         $this->login();
         $this->switchToEnglish();
 
-        $this->open('/opus4-selenium/admin/iprange/new');
+        $this->open('/admin/iprange/new');
         $this->waitForPageToLoad();
 
         $description = 'My IP Range'; // contains spaces and brackets
@@ -104,7 +104,7 @@ class IpRangesTest extends TestCase {
         $this->switchToEnglish();
 
         // check output
-        $this->open('/opus4-selenium/admin/iprange/new');
+        $this->open('/admin/iprange/new');
         $this->waitForPageToLoad();
 
         $description = 'My IP Range (3)'; // contains spaces and brackets

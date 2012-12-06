@@ -37,7 +37,7 @@ class Opusvier2208Test extends TestCase {
 
     public function testDocTypeDemoInvalid() {
         $this->switchToEnglish();
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->waitForPageToLoad();
         $this->select("documentType", "label=demo_invalid");
         $this->click("rights");
@@ -48,7 +48,7 @@ class Opusvier2208Test extends TestCase {
 
     public function testDocTypeDemoInvalidfieldname() {
         $this->switchToEnglish();
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->waitForPageToLoad();
         $this->select("documentType", "label=demo_invalidfieldname");
         $this->click("rights");

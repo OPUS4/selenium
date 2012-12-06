@@ -43,10 +43,10 @@ class Regression2401Test extends TestCase {
         $this->login();
 
         // check output
-        $this->open('/opus4-selenium/admin/documents');
+        $this->open('/admin/documents');
         $this->waitForPageToLoad();
-        $this->assertElementPresent('//a[@href=\'/opus4-selenium/admin/documents/index/state/published\']');
-        $this->assertElementPresent('//a[@href=\'/opus4-selenium/admin/documents/index/state/audited\']');
+        $this->assertElementPresent("//a[@href='{$this->baseUrl}/admin/documents/index/state/published']");
+        $this->assertElementPresent("//a[@href='{$this->baseUrl}/admin/documents/index/state/audited']");
 
         $this->logout();
     }

@@ -37,7 +37,7 @@ class storePageNumberTest extends TestCase {
 
     public function testStorePageFieldsAsVarchar() {
         $this->switchToGerman();
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();
         

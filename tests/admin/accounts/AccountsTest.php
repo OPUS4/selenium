@@ -44,7 +44,7 @@ class AccountsTest extends TestCase {
         $this->switchToEnglish();
 
         // check output
-        $this->open('/opus4-selenium/admin/account/new');
+        $this->open('/admin/account/new');
         $this->waitForPageToLoad();
 
         $username = 'DummYuser';
@@ -70,7 +70,7 @@ class AccountsTest extends TestCase {
         $this->login();
         $this->switchToEnglish();
 
-        $this->open('/opus4-selenium/admin/account/new');
+        $this->open('/admin/account/new');
         $this->waitForPageToLoad();
 
         $username = 'newuser';

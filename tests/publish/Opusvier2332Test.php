@@ -38,7 +38,7 @@ class Opusvier2332Test extends TestCase {
 
   public function testLegalNoticesChoice() {
 
-    $this->open('/opus4-selenium/publish');
+    $this->open('/publish');
     $this->assertTrue($this->isElementPresent('documentType'));
     $this->select('documentType', 'value=all');
     $this->click('rights');

@@ -37,11 +37,11 @@ class BrowseCollectionDdcTest extends TestCase {
 
     public function testAllDocumentType() {
         $this->switchToGerman();
-        $this->open("/opus4-selenium");
+        $this->open("");
         $this->waitForPageToLoad();
-        $this->open("/opus4-selenium/home/index/language/language/de");
+        $this->open("/home/index/language/language/de");
         $this->waitForPageToLoad();
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();
         $this->assertTrue($this->isElementPresent("link=English"));

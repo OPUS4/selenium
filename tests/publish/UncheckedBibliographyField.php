@@ -38,7 +38,7 @@ class UncheckedBibliographieFieldTest extends TestCase {
 
     public function testUncheckedBibliographieField() {
         $this->switchToGerman();
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();
         $this->assertTrue($this->isElementPresent("link=English"));

@@ -37,7 +37,7 @@ class ImageTest extends TestCase {
 
     public function testDocTypImage() {
         $this->switchToEnglish();
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->waitForPageToLoad();
         $this->assertTrue($this->isTextPresent("Publish"));
         $this->assertTrue($this->isTextPresent("Choose document type and file"));

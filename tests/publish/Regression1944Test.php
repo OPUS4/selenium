@@ -37,7 +37,7 @@ class Regression1944Test extends TestCase {
 
     public function testImpossibleCollectionChange() {
         $this->switchToGerman();
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();
         $this->select("id=documentType", "label=Preprint für MATHEON");

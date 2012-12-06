@@ -37,7 +37,7 @@ class Opusvier707Test extends TestCase {
 
     public function testDeutscheSprachversion() {
         $this->switchToGerman();
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->waitForPageToLoad();
         $this->assertTrue($this->isTextPresent("Veröffentlichen"));
         $this->select("documentType", "label=Ton");
@@ -69,7 +69,7 @@ class Opusvier707Test extends TestCase {
 
     public function testEnglishLanguageVersion() {
         $this->switchToEnglish();
-        $this->open("/opus4-selenium/publish");
+        $this->open("/publish");
         $this->waitForPageToLoad();
         $this->assertTrue($this->isTextPresent("Publish"));
         $this->select("documentType", "label=Sound");

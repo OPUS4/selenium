@@ -50,7 +50,7 @@ class Admin_Series_IndexControllerTest extends TestCase {
 
     public function testShowSeries() {
 	$this->login();
-        $this->open('/opus4-selenium/admin/series/show/id/1');
+        $this->open('/admin/series/show/id/1');
         $this->waitForPageToLoad();
 
         $this->assertElementPresent("//div[@class='Id']");
@@ -63,30 +63,30 @@ class Admin_Series_IndexControllerTest extends TestCase {
 
     public function testHideDocumentsLinkForSeriesWithoutDocuments() {
 	$this->login();
-        $this->open('/opus4-selenium/admin/series');
+        $this->open('/admin/series');
         $this->waitForPageToLoad();
 
-        $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/1']");
-        $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/2']");
-        $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/3']");
-        $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/4']");
-        $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/5']");
-        $this->assertElementPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/6']");
-        $this->assertElementNotPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/7']");
-        $this->assertElementNotPresent("//a[@href='/opus4-selenium/admin/documents/index/seriesid/8']");
+        $this->assertElementPresent("//a[@href='{$this->baseUrl}/admin/documents/index/seriesid/1']");
+        $this->assertElementPresent("//a[@href='{$this->baseUrl}/admin/documents/index/seriesid/2']");
+        $this->assertElementPresent("//a[@href='{$this->baseUrl}/admin/documents/index/seriesid/3']");
+        $this->assertElementPresent("//a[@href='{$this->baseUrl}/admin/documents/index/seriesid/4']");
+        $this->assertElementPresent("//a[@href='{$this->baseUrl}/admin/documents/index/seriesid/5']");
+        $this->assertElementPresent("//a[@href='{$this->baseUrl}/admin/documents/index/seriesid/6']");
+        $this->assertElementNotPresent("//a[@href='{$this->baseUrl}/admin/documents/index/seriesid/7']");
+        $this->assertElementNotPresent("//a[@href='{$this->baseUrl}/admin/documents/index/seriesid/8']");
 
 	$this->logout();
     }
 
     public function testSeriesVisibilityIsDisplayedCorrectly() {
         $this->login();
-        $this->open('/opus4-selenium/admin/series');
+        $this->open('/admin/series');
         $this->waitForPageToLoad();
 	foreach (array(1, 2, 4, 5, 6, 8) as $visibleId) {
-	   $this->assertElementPresent('//td[@class="visible"]/a[@href="/opus4-selenium/admin/series/show/id/' . $visibleId . '"]');
+	   $this->assertElementPresent('//td[@class="visible"]/a[@href="'.$this->baseUrl.'/admin/series/show/id/' . $visibleId . '"]');
 	}
 	foreach (array(3, 7) as $unvisibleId) {
-           $this->assertElementPresent('//td[@class="unvisible"]/a[@href="/opus4-selenium/admin/series/show/id/' . $unvisibleId . '"]');
+           $this->assertElementPresent('//td[@class="unvisible"]/a[@href="'.$this->baseUrl.'/admin/series/show/id/' . $unvisibleId . '"]');
 	}
 
         $this->logout();
