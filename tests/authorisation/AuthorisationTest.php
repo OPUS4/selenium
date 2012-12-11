@@ -42,9 +42,9 @@ class AuthorisationTest extends TestCaseAuthorisation {
     
     public function testAuthoriseGuestForAdminDocuments() {
         $this->switchToEnglish();
-        $this->openAndWait('/admin/documents');
-        $this->assertTextPresent('You must be logged in to access this page.');
         $this->openAndWait('/admin/account');
+        $this->assertTextPresent('You must be logged in to access this page.');
+        $this->openAndWait('/admin/documents');
         $this->assertTextPresent('You must be logged in to access this page.');
         $this->toggleAccess(2, array('admin', 'resource_documents'));
         $this->openAndWait('/admin/documents');
@@ -61,9 +61,6 @@ class AuthorisationTest extends TestCaseAuthorisation {
         $this->openAndWait('/admin/documents');
         $this->assertTextPresent('You need another identity to access this page.');
         $this->removeUser('administrator');
-
     }
 
 }
-
-?>
