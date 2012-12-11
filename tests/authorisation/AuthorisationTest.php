@@ -53,7 +53,7 @@ class AuthorisationTest extends TestCaseAuthorisation {
     public function testGuestNoAccessAccountAdministration() {
         $this->switchToEnglish();
         $this->openAndWait('/admin/account');
-        $this->assertTextPresent('You must be logged in to access this page.');
+        $this->assertElementContainsText('//html/head/title', 'User Login');
     }
 
     public function testAllowUserNameLikeRoleName() {

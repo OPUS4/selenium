@@ -79,7 +79,8 @@ class LicencesAdminTest extends TestCaseAuthorisation {
         $this->switchToEnglish();
         $this->login("security2", "security2pwd");
         $this->openAndWait('/admin/documents');
-        $this->assertElementContainsText('//html/body', 'You need another identity to access this page.');
+        $this->assertElementContainsText('//html/head/title', 'Login');
+        $this->assertElementContainsText('//html/body', 'Logout security2');
     }
 
 }
