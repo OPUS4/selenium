@@ -38,7 +38,7 @@ require_once 'authorisation/TestCaseAuthorisation.php';
 /**
  * 
  */
-class AuthorisationTest extends TestCaseAuthorisation {
+class LicencesAdminTest extends TestCaseAuthorisation {
     
     /**
      * Prüft, ob nur die erlaubten Einträge im Admin Menu angezeigt werden.
@@ -83,5 +83,3 @@ class AuthorisationTest extends TestCaseAuthorisation {
     }
 
 }
-
-?>
