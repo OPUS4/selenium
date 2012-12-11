@@ -53,7 +53,7 @@ class AuthorisationTest extends TestCaseAuthorisation {
     public function testGuestNoAccessAccountAdministration() {
         $this->switchToEnglish();
         $this->openAndWait('/admin/account');
-        $this->assertElementContainsText('//html/head/title', 'User Login');
+        $this->assertElementContainsText('//html/head/title', 'Login');
     }
 
     public function testAllowUserNameLikeRoleName() {
