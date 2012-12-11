@@ -48,7 +48,7 @@ class LicencesAdminTest extends TestCaseAuthorisation {
         $this->login("security2", "security2pwd");
         $this->openAndWait('/admin');
         $this->assertTextPresent('Licence types');
-        $this->assertTextPresent('OAK Link Information');
+        $this->assertTextPresent('OAI Link Information');
         $this->assertTextNotPresent('Manage Documents');
         $this->assertTextNotPresent('Review');
         $this->assertTextNotPresent('Accounts');
@@ -79,7 +79,7 @@ class LicencesAdminTest extends TestCaseAuthorisation {
         $this->switchToEnglish();
         $this->login("security2", "security2pwd");
         $this->openAndWait('/admin/documents');
-        $this->assertElementNotContainsText('//html/body', 'You need another identity to access this page.');
+        $this->assertElementContainsText('//html/body', 'You need another identity to access this page.');
     }
 
 }
