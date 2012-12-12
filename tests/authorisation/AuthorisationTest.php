@@ -43,10 +43,10 @@ class AuthorisationTest extends TestCaseAuthorisation {
     public function testAuthoriseGuestForAdminDocuments() {
         $this->switchToEnglish();
         $this->openAndWait('/admin/documents');
-        $this->assertTextPresent('You must be logged in to access this page.');
+        $this->assertElementContainsText('//html/head/title', 'Login');
         $this->toggleAccess(2, array('admin', 'resource_documents'));
         $this->openAndWait('/admin/documents');
-        $this->assertTextNotPresent('You must be logged in to access this page.');
+        $this->assertElementContainsText('//html/head/title', 'Administration of Documents');
         $this->toggleAccess(2, array('admin', 'resource_documents'));
     }
     

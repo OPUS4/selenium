@@ -82,5 +82,16 @@ class LicencesAdminTest extends TestCaseAuthorisation {
         $this->assertElementContainsText('//html/head/title', 'Login');
         $this->assertElementContainsText('//html/body', 'Logout security2');
     }
+    
+        /**
+     * Prüft, ob fuer Nutzer mit vollem Zugriff auf Admin Modul der Edit Link in der Frontdoor angezeigt wird.
+     */
+    public function testEditLinkInFrontdoorNotPresent() {
+        $this->switchToEnglish();
+        $this->login("security2", "security2pwd");
+        $this->openAndWait('/frontdoor/index/index/docId/92');
+        $this->assertElementNotContainsText('//html/body', 'Edit this document');
+    }
+
 
 }
