@@ -38,80 +38,43 @@ require_once 'authorisation/TestCaseAuthorisation.php';
 /**
  * 
  */
-class LicencesAdminTest extends TestCaseAuthorisation {
+class CollectionsAdminTest extends TestCaseAuthorisation {
     
     /**
      * Prüft, ob nur die erlaubten Einträge im Admin Menu angezeigt werden.
      */
     public function testAdminMenuFiltering() {
         $this->switchToEnglish();
-        $this->login("security2", "security2pwd");
+        $this->login("security9", "security9pwd");
         $this->openAndWait('/admin');
-        $this->assertTextPresent('Licence types');
+        $this->assertTextPresent('Manage Collections');
         $this->assertTextPresent('OAI Link Information');
         $this->assertTextNotPresent('Manage Documents');
-        $this->assertTextNotPresent('Review');
+        $this->assertTextNotPresent('Licence types');
         $this->assertTextNotPresent('Accounts');
         $this->assertTextNotPresent('Access Control');
-        $this->assertTextNotPresent('Manage Collections');
         $this->assertTextNotPresent('Manage Series');
         $this->assertTextNotPresent('Languages');
         $this->assertTextNotPresent('Publication statistics');
         $this->assertTextNotPresent('Institution (dispersive body)');
         $this->assertTextNotPresent('Manage Enrichmentkeys');
         $this->assertTextNotPresent('System Information');
+        $this->assertTextNotPresent('Review');
     }
     
-    /**
-     * Prüft, ob auf die Seite zur Verwaltung von Lizenzen zugegriffen werden kann.
-     */
-    public function testAccessLicenceController() {
+    public function testAccessCollectionControllerShowAction() {
         $this->switchToEnglish();
-        $this->login("security2", "security2pwd");
-        $this->openAndWait('/admin/licence');
-        $this->assertElementContainsText('//html/head/title', 'Admin Licences');
+        $this->login("security9", "security9pwd");
+        $this->openAndWait('/admin/collection/show/id/4');
+        $this->assertElementContainsText('//html/head/title', 'List Collection Entries');
+        $this->assertElementContainsText('//html/body', 'Manage Collections');
     }
     
-    /**
-     * Prüft, das nicht auf die Seite zur Verwaltung von Dokumenten zugegriffen werden kann.
-     */
-    public function testNoAccessDocumentsController() {
+    public function testNoAccessCollectionControllerAssignAction() {
         $this->switchToEnglish();
-        $this->login("security2", "security2pwd");
-        $this->openAndWait('/admin/documents');
-        $this->assertElementContainsText('//html/head/title', 'Login');
-        $this->assertElementContainsText('//html/body', 'Logout security2');
-    }
-    
-        /**
-     * Prüft, ob fuer Nutzer mit vollem Zugriff auf Admin Modul der Edit Link in der Frontdoor angezeigt wird.
-     */
-    public function testEditLinkInFrontdoorNotPresent() {
-        $this->switchToEnglish();
-        $this->login("security2", "security2pwd");
-        $this->openAndWait('/frontdoor/index/index/docId/92');
-        $this->assertElementNotContainsText('//html/body', 'Edit this document');
-    }
-    
-    public function testNoAccessFilebrowserController() {
-        $this->switchToEnglish();
-        $this->login("security2", "security2pwd");
-        $this->openAndWait('/admin/filebrowser/index/docId/92');
+        $this->login("security9", "security9pwd");
+        $this->openAndWait('/admin/collection/assign/document/92');
         $this->assertElementContainsText('//html/head/title', 'Login');
     }
     
-    public function testNoAccessWorkflowController() {
-        $this->switchToEnglish();
-        $this->login("security2", "security2pwd");
-        $this->openAndWait('/admin/workflow/changestate/docId/300/targetState/deleted');
-        $this->assertElementContainsText('//html/head/title', 'Login');
-    }
-    
-    public function testNoAccessAccessController() {
-        $this->switchToEnglish();
-        $this->login("security2", "security2pwd");
-        $this->openAndWait('/admin/access/listmodule/roleid/2');
-        $this->assertElementContainsText('//html/head/title', 'Login');
-    }
-
 }
