@@ -56,10 +56,12 @@ class FullAndPartialAdminTest extends TestCaseAuthorisation {
         $this->assertTextPresent('Manage Series');
         $this->assertTextPresent('Languages');
         $this->assertTextPresent('Publication statistics');
-        $this->assertTextPresent('Institution (dispersive body)');
+        $this->assertElementPresent('//a[contains(@href, "/admin/dnbinstitute")]');
         $this->assertTextPresent('Manage Enrichmentkeys');
         $this->assertTextPresent('System Information');
         $this->assertTextNotPresent('Review');
+        
+        //*[@id="adminMenuContainer"]/dl/dt[10]/a
     }
     
     /**
