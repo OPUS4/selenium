@@ -34,9 +34,13 @@
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
 class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
+    
+    // public $name = "test";
 
     protected $browserUrl = 'http://opus4web.zib.de';
     protected $baseUrl = '/opus4-selenium';
+    
+    protected $clientIp = '130.73.63.60';
 
     protected $captureScreenshotOnFailure = TRUE;
     protected $screenshotPath = '/home/opus4ci/cruisecontrol/webapps/screenshots';
@@ -48,6 +52,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
             $config = parse_ini_file('config.ini');
             $this->browserUrl = $config['browserUrl'];
             $this->baseUrl = $config['baseUrl'];
+            $this->clientIp = $config['clientIp'];
             $this->captureScreenshotOnFailure = $config['captureScreenshotOnFailure'];
             $this->screenshotPath = $config['screenshotPath'];
             $this->screenshotUrl = $config['screenshotUrl'];

@@ -87,8 +87,8 @@ class IpRangeTest extends TestCaseAuthorisation {
     private function createIpRange($role = 'fulladmin') {
         $this->login();
         $this->openAndWait('/admin/iprange/new');
-        $this->type('id=name', 'localhost');
-        $this->type('id=startingip', '127.0.0.1');
+        $this->type('id=name', 'clienthost');
+        $this->type('id=startingip', $this->clientIp);
         $this->click("id=role$role");
         $this->clickAndWait('id=submit');
         $this->logout();
@@ -97,7 +97,7 @@ class IpRangeTest extends TestCaseAuthorisation {
     private function removeIpRange() {
         $this->login();
         $this->openAndWait('/admin/iprange');
-        $this->clickAndWait('//table/tbody/tr/td/div/a[text()="localhost"]/../../../td/a[text()="Delete"]');
+        $this->clickAndWait('//table/tbody/tr/td/div/a[text()="clienthost"]/../../../td/a[text()="Delete"]');
         $this->logout();
     }
     

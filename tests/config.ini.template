@@ -31,6 +31,8 @@
 
 browserUrl = 'http://localhost'
 baseUrl = '/opus4-devel'
+; IP Adresse der Client Machine fuer IP Range Tests
+clientIp = 127.0.0.1
 captureScreenshotOnFailure = false
 screenshotPath =
 screenshotUrl =
