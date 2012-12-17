@@ -61,7 +61,8 @@ class AuthorisationTest extends TestCaseAuthorisation {
         $this->createUser('administrator', 'adminadmin');
         $this->login('administrator', 'adminadmin');
         $this->openAndWait('/admin/documents');
-        $this->assertTextPresent('You need another identity to access this page.');
+        $this->assertElementContainsText('//html/head/title', 'Login');
+        $this->assertElementContainsText('//html/body', 'Logout administrator');
         $this->removeUser('administrator');
     }
     
