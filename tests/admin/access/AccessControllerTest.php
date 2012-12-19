@@ -53,5 +53,172 @@ class Admin_AccessControllerTest extends TestCase {
 
 	$this->logout();
     }
+    
+    public function testListModuleAction() {
+        $this->switchToEnglish();
+        $this->login();
+        $this->openAndWait('/admin/access/listmodule/roleid/16');
+        
+        // check granted permissions
+        $this->assertElementContainsText('//html/head/title', 'Edit user roles - access control');
+        $this->assertElementContainsText('//*[@id="content"]/div[2]/h1', 'accesstest');
+        $this->assertChecked('//input[@name="set_account"]');
+        $this->assertChecked('//input[@name="set_admin"]');
+        $this->assertChecked('//input[@name="set_resource_collections"]');
+        $this->assertChecked('//input[@name="set_workflow_unpublished_published"]');
+        
+        // check permissions not granted
+        $this->assertNotChecked('//input[@name="set_review"]');
+        $this->assertNotChecked('//input[@name="set_resource_languages"]');
+        $this->assertNotChecked('//input[@name="set_workflow_published_restricted"]');
 
+        // select new permissions
+        $this->click('//input[@name="set_review"]');
+        $this->click('//input[@name="set_resource_languages"]');
+        $this->click('//input[@name="set_workflow_published_restricted"]');
+        
+        // store
+        $this->click('save_button');
+        $this->waitForPageToLoad();
+
+        // check success
+        $this->assertElementContainsText('//html/body', 'Operation complete');
+        
+        $this->click('done_button');
+        $this->waitForPageToLoad();
+        
+        $this->assertElementContainsText('//html/head/title', 'Role');
+        $this->assertElementContainsText('//html/body', 'accesstest');
+        
+        $this->openAndWait('/admin/access/listmodule/roleid/16');
+        
+        $this->assertElementContainsText('//html/head/title', 'Edit user roles - access control');
+        $this->assertElementContainsText('//*[@id="content"]/div[2]/h1', 'accesstest');
+        $this->assertChecked('//input[@name="set_account"]');
+        $this->assertChecked('//input[@name="set_admin"]');
+        $this->assertChecked('//input[@name="set_resource_collections"]');
+        $this->assertChecked('//input[@name="set_workflow_unpublished_published"]');
+        $this->assertChecked('//input[@name="set_review"]');
+        $this->assertChecked('//input[@name="set_resource_languages"]');
+        $this->assertChecked('//input[@name="set_workflow_published_restricted"]');
+        
+        // remove permissions again
+        
+        // select new permissions
+        $this->click('//input[@name="set_review"]');
+        $this->click('//input[@name="set_resource_languages"]');
+        $this->click('//input[@name="set_workflow_published_restricted"]');
+        
+        // store
+        $this->click('save_button');
+        $this->waitForPageToLoad();
+        
+        // check success
+        $this->assertElementContainsText('//html/body', 'Operation complete');
+        
+        $this->openAndWait('/admin/access/listmodule/roleid/16');
+        
+        $this->assertElementContainsText('//html/head/title', 'Edit user roles - access control');
+        $this->assertElementContainsText('//*[@id="content"]/div[2]/h1', 'accesstest');
+        $this->assertChecked('//input[@name="set_account"]');
+        $this->assertChecked('//input[@name="set_admin"]');
+        $this->assertChecked('//input[@name="set_resource_collections"]');
+        $this->assertChecked('//input[@name="set_workflow_unpublished_published"]');
+        $this->assertNotChecked('//input[@name="set_review"]');
+        $this->assertNotChecked('//input[@name="set_resource_languages"]');
+        $this->assertNotChecked('//input[@name="set_workflow_published_restricted"]');
+        
+        $this->logout();
+    }
+    
+    public function testListModulesCancel() {
+        $this->switchToEnglish();
+        $this->login();
+        $this->openAndWait('/admin/access/listmodule/roleid/16');
+        
+        $this->assertElementContainsText('//html/head/title', 'Edit user roles - access control');
+        $this->assertElementContainsText('//*[@id="content"]/div[2]/h1', 'accesstest');
+
+        $this->click('cancel_button');
+        $this->waitForPageToLoad();
+        
+        $this->assertElementContainsText('//html/head/title', 'Edit user roles - access control');
+        $this->assertElementContainsText('//*[@id="content"]/div[2]/h2', 'Operation canceled');
+        
+        $this->click('done_button');
+        $this->waitForPageToLoad();
+        
+        $this->assertElementContainsText('//html/head/title', 'Role');
+        $this->assertElementContainsText('//html/body', 'accesstest');
+        
+        $this->logout();
+    }
+    
+    public function testListRole() {
+        $this->switchToEnglish();
+        $this->login();
+        $this->openAndWait('/admin/access/listrole/docid/300');
+        
+        $this->assertElementContainsText('//html/head/title', 'Access to Document');
+        $this->assertElementContainsText('//html/body', '300');
+        $this->assertNotChecked('//input[@name="accesstest"]');
+        $this->assertNotChecked('//input[@name="reviewer"]');
+        
+        $this->click('accesstest');
+        $this->click('reviewer');
+        
+        $this->click('save_button');
+        $this->waitForPageToLoad();
+        
+        $this->assertElementContainsText('//html/body', 'Operation complete');
+                
+        $this->openAndWait('/admin/access/listrole/docid/300');
+        
+        $this->assertChecked('//input[@name="accesstest"]');
+        $this->assertChecked('//input[@name="reviewer"]');
+        
+        $this->click('accesstest');
+        $this->click('reviewer');
+        
+        $this->click('save_button');
+        $this->waitForPageToLoad();
+        
+        $this->assertElementContainsText('//html/body', 'Operation complete');
+        
+        $this->click('done_button');
+        $this->waitForPageToLoad();
+        
+        $this->assertElementContainsText('//html/head/title', 'Document');
+        $this->assertElementContainsText('//html/body', 'Document (300)');
+        
+        
+        $this->openAndWait('/admin/access/listrole/docid/300');
+        
+        $this->assertNotChecked('//input[@name="accesstest"]');
+        $this->assertNotChecked('//input[@name="reviewer"]');
+    }
+
+    public function testListRoleCancel() {
+        $this->switchToEnglish();
+        $this->login();
+        $this->openAndWait('/admin/access/listrole/docid/300');
+        
+        $this->assertElementContainsText('//html/head/title', 'Access to Document');
+        $this->assertElementContainsText('//html/body', 'Available roles');
+
+        $this->click('cancel_button');
+        $this->waitForPageToLoad();
+        
+        $this->assertElementContainsText('//html/head/title', 'Edit user roles - access control');
+        $this->assertElementContainsText('//*[@id="content"]/div[2]/h2', 'Operation canceled');
+        
+        $this->click('done_button');
+        $this->waitForPageToLoad();
+        
+        $this->assertElementContainsText('//html/head/title', 'Document');
+        $this->assertElementContainsText('//html/body', 'Document (300)');
+        
+        $this->logout();
+    }
+    
 }
