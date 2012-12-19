@@ -72,4 +72,21 @@ class TestCaseAuthorisation extends TestCase {
         $this->logout();
     }
     
+    protected function createIpRange($role = 'fulladmin') {
+        $this->login();
+        $this->openAndWait('/admin/iprange/new');
+        $this->type('id=name', 'clienthost');
+        $this->type('id=startingip', $this->clientIp);
+        $this->click("id=role$role");
+        $this->clickAndWait('id=submit');
+        $this->logout();
+    }
+    
+    protected function removeIpRange() {
+        $this->login();
+        $this->openAndWait('/admin/iprange');
+        $this->clickAndWait('//table/tbody/tr/td/div/a[text()="clienthost"]/../../../td/a[text()="Delete"]');
+        $this->logout();
+    }
+    
 }

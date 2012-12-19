@@ -82,24 +82,6 @@ class IpRangeTest extends TestCaseAuthorisation {
         $this->assertElementNotContainsText('//html/body', 'Accounts');
         $this->assertElementNotContainsText('//html/body', 'Access Control');
         $this->removeIpRange();
-    }
-    
-    private function createIpRange($role = 'fulladmin') {
-        $this->login();
-        $this->openAndWait('/admin/iprange/new');
-        $this->type('id=name', 'clienthost');
-        $this->type('id=startingip', $this->clientIp);
-        $this->click("id=role$role");
-        $this->clickAndWait('id=submit');
-        $this->logout();
-    }
-    
-    private function removeIpRange() {
-        $this->login();
-        $this->openAndWait('/admin/iprange');
-        $this->clickAndWait('//table/tbody/tr/td/div/a[text()="clienthost"]/../../../td/a[text()="Delete"]');
-        $this->logout();
-    }
-    
+    }    
     
 }
