@@ -523,6 +523,179 @@ class Opusvier2734Test extends TestCase {
         $this->click('abort');
     }
 
+    public function testMSCSelectionIfRequired() {
+        $this->goToSecondStepForDoctypeMatheon();
+
+        $this->type('PersonAuthorFirstName_1', 'PAFN1');
+        $this->type('PersonAuthorLastName_1', 'PALN1');
+        $this->type('TitleMain_1', 'TM1');
+        $this->type('TitleAbstract_1', 'TA1');
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
+
+        $this->click('browseDownInstitute');
+        $this->waitForPageToLoad();
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
+        
+        $this->select('Institute_1', 'value=15994');
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
+
+        $this->click('addMoreInstitute');
+        $this->waitForPageToLoad();
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
+
+        $this->click('deleteMoreInstitute');
+        $this->waitForPageToLoad();
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
+
+        $this->click('browseDownInstitute');
+        $this->waitForPageToLoad();
+
+        $this->select('collId2Institute_1', 'value=15999');
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
+
+        $this->click('browseDownInstitute');
+        $this->waitForPageToLoad();
+
+        $this->select('collId3Institute_1', 'value=16031');
+
+        $this->click('browseDownInstitute');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent('Sie haben das Ende dieser Sammlung erreicht.');
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
+
+        $this->select('SubjectMSC_1', 'value=7727');
+        
+        $this->goToThirdStep();
+        $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
+
+        $this->click('browseDownSubjectMSC');
+        $this->waitForPageToLoad();
+        
+        $this->select('collId2SubjectMSC_1', 'value=7729');
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
+        $this->assertTextPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
+        $this->goBackToSecondStep();
+
+        $this->click('browseDownSubjectMSC');
+        $this->waitForPageToLoad();
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
+        $this->assertTextPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
+        $this->goBackToSecondStep();
+
+        $this->click('browseUpSubjectMSC');
+        $this->waitForPageToLoad();
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
+        $this->assertTextPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
+        $this->goBackToSecondStep();
+
+        $this->click('addMoreSubjectMSC');
+        $this->waitForPageToLoad();
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
+
+        $this->select('SubjectMSC_2', 'value=7957');
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
+
+        $this->click('browseDownSubjectMSC');
+        $this->waitForPageToLoad();
+
+        $this->select('collId2SubjectMSC_2', 'value=7959');
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
+        $this->assertTextPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
+        $this->assertTextPresent('06-01 Instructional exposition (textbooks, tutorial papers, etc.)');
+        $this->goBackToSecondStep();
+
+        $this->click('deleteMoreSubjectMSC');
+        $this->waitForPageToLoad();
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
+        $this->assertTextPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
+        $this->assertTextNotPresent('06-01 Instructional exposition (textbooks, tutorial papers, etc.)');
+        $this->goBackToSecondStep();
+
+        $this->click('browseUpSubjectMSC');
+        $this->waitForPageToLoad();
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
+
+        $this->click('browseDownSubjectMSC');
+        $this->waitForPageToLoad();
+
+        $this->select('collId2SubjectMSC_1', 'value=7731');
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
+        $this->assertTextNotPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
+        $this->assertTextNotPresent('06-01 Instructional exposition (textbooks, tutorial papers, etc.)');
+        $this->assertTextPresent('03-03 Historical (must also be assigned at least one classification number from Section 01)');
+        $this->goBackToSecondStep();
+
+        $this->click('browseUpInstitute');
+        $this->waitForPageToLoad();
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
+        $this->assertTextNotPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
+        $this->assertTextNotPresent('06-01 Instructional exposition (textbooks, tutorial papers, etc.)');
+        $this->assertTextPresent('03-03 Historical (must also be assigned at least one classification number from Section 01)');
+        $this->goBackToSecondStep();
+
+        $this->click('browseUpInstitute');
+        $this->waitForPageToLoad();
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
+
+        $this->click('browseDownInstitute');
+        $this->waitForPageToLoad();
+
+        $this->select('collId3Institute_1', 'value=16065');
+        
+        $this->goToThirdStep();
+        $this->assertTextNotPresent('Zuverlässigkeitstechnik M-24');
+        $this->assertTextNotPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
+        $this->assertTextNotPresent('06-01 Instructional exposition (textbooks, tutorial papers, etc.)');
+        $this->assertTextPresent('03-03 Historical (must also be assigned at least one classification number from Section 01)');
+        $this->assertTextPresent('Metallkunde und Werkstofftechnik M-15');
+        $this->goBackToSecondStep();
+
+        $this->click('addMoreInstitute');
+        $this->waitForPageToLoad();
+
+        $this->goToThirdStep();
+        $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
+
+        $this->click('abort');
+    }
+
 }
 
 ?>
