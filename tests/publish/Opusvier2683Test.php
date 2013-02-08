@@ -65,7 +65,7 @@ class Opusvier2683Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTrue($this->isTextPresent("Bitte überprüfen Sie Ihre Eingaben."));
-        $this->assertTrue($this->isTextPresent("JEL Sachgruppen / Klassifikationen"));
+        $this->assertTrue($this->isTextPresent("JEL Klassifikation"));
         $this->assertTrue($this->isTextPresent("Sammlungseintrag"));
         $this->assertTrue($this->isTextPresent("A30 General"));
 
