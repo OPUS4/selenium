@@ -33,7 +33,7 @@
  */
 require_once 'TestCase.php';
 
-class ImageTest extends TestCase {
+class DocTypeImageTest extends TestCase {
 
     public function testDocTypImage() {
         $this->switchToEnglish();

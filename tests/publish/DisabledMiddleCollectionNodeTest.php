@@ -33,7 +33,7 @@
  */
 require_once 'TestCase.php';
 
-class DisabledMiddleCollectionNodesTest extends TestCase {
+class DisabledMiddleCollectionNodeTest extends TestCase {
 
     public function testDisabledMiddleAndRootCollectionNodes() {
         $this->switchToGerman();
