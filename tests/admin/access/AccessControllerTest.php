@@ -34,7 +34,7 @@
 
 require_once 'TestCase.php';
 
-class Admin_AccessControllerTest extends TestCase {
+class AccessControllerTest extends TestCase {
 
     public function testRegression2281TranslationAdminAccessStore() {
         $this->switchToEnglish();

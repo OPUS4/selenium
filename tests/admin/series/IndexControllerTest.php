@@ -34,7 +34,7 @@
 
 require_once 'TestCase.php';
 
-class Admin_Series_IndexControllerTest extends TestCase {
+class IndexControllerTest extends TestCase {
 
     /*
     public function setUp() {

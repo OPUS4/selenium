@@ -35,7 +35,7 @@
 
 require_once 'TestCase.php';
 
-class InvalidMscTest extends TestCase
+class InvalidMSCTest extends TestCase
 {
   public function testInvalidMscCase()
   {

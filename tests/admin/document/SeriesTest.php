@@ -34,7 +34,7 @@
 
 require_once 'TestCase.php';
 
-class Admin_Document_SeriesTest extends TestCase {
+class SeriesTest extends TestCase {
 
     public function testAddSeriesToDocument() {
         $this->markTestIncomplete('Not complete yet.');
