@@ -45,23 +45,24 @@ class ValidEnrichmentKeyTest extends TestCase {
         $this->click("id=rights");
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
-        $this->assertTrue($this->isElementPresent("id=addMoreEnrichmentvalidtestkey"));
-        try {
-            $this->assertEquals("", $this->getValue("id=Enrichmentvalidtestkey1"));
-        } catch (PHPUnit_Framework_AssertionFailedError $e) {
-            array_push($this->verificationErrors, $e->toString());
-        }
-        $this->type("id=Enrichmentvalidtestkey1", "testvalue");
+
+        $this->assertElementPresent("id=addMoreEnrichmentvalidtestkey");
+        $this->assertEquals("", $this->getValue("id=Enrichmentvalidtestkey_1"));
+        $this->type("id=Enrichmentvalidtestkey_1", "testvalue");
         $this->click("id=addMoreEnrichmentvalidtestkey");
         $this->waitForPageToLoad("30000");
-        $this->assertTrue($this->isElementPresent("id=deleteMoreEnrichmentvalidtestkey"));
-        $this->type("id=Enrichmentvalidtestkey2", "testvalue2");
+
+        $this->assertElementPresent("id=addMoreEnrichmentvalidtestkey");
+        $this->assertElementPresent("id=deleteMoreEnrichmentvalidtestkey");
+        $this->type("id=Enrichmentvalidtestkey_2", "testvalue2");
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
-        $this->assertTrue($this->isElementPresent("//div[@id='form-table-check']/table/tbody/tr[5]/td[2]"));
-        $this->assertTrue($this->isElementPresent("//div[@id='form-table-check']/table/tbody/tr[6]/td[2]"));
+        
+        $this->assertElementPresent("//div[@id='form-table-check']/table/tbody/tr[5]/td[2]");
+        $this->assertElementPresent("//div[@id='form-table-check']/table/tbody/tr[6]/td[2]");
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
+        
         $this->verifyTextPresent("wurde erfolgreich gespeichert");
     }
 
