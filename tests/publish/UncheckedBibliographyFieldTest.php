@@ -46,10 +46,13 @@ class UncheckedBibliographyFieldTest extends TestCase {
         $this->select("id=documentType", "label=Alle Felder (Testdokumenttyp)");        
         $this->click("id=rights");
         $this->click("id=send");
+        
         $this->waitForPageToLoad();
+        $this->click('id=LegalNotices');
         $this->click("id=send");
         $this->waitForPageToLoad();
-        $this->assertTrue($this->isTextPresent("Dokument wird nicht zur Bibliographie hinzugefügt."));
+        
+        $this->assertTextNotPresent("Dokument wird nicht zur Bibliographie hinzugefügt.");
     }
 
 }
