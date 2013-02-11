@@ -75,14 +75,14 @@ class SecurityAdminTest extends TestCaseAuthorisation {
         $this->login("security10", "security10pwd");
         $this->openAndWait('/admin/iprange');
         $this->assertElementContainsText('//html/head/title', 'Manage IP Ranges');
-        $this->assertElementContainsText('//html/body', 'Add IP Range');
+        $this->assertElementContainsText('//html/body', 'Add IP range');
     }
     
     public function testAccessAccessController() {
         $this->switchToEnglish();
         $this->login("security10", "security10pwd");
         $this->openAndWait('/admin/access/listmodule/roleid/2');
-        $this->assertElementContainsText('//html/head/title', 'Access to Modules/Controllers');
+        $this->assertElementContainsText('//html/head/title', 'Edit User Roles - access control');
     }
     
 }
