@@ -45,22 +45,28 @@ class CollectionBKLBrowseAndStoreTest extends TestCase {
         $this->click("id=rights");
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
-        $this->select("id=SubjectBKL1", "label=10 Geisteswissenschaften allgemein");
+        
+        $this->select("id=SubjectBKL_1", "label=10 Geisteswissenschaften allgemein");
         $this->click("id=browseDownSubjectBKL");
         $this->waitForPageToLoad("30000");
-        $this->select("id=collId2SubjectBKL1", "label=10.03 Methoden und Techniken der geisteswissenschaftlichen Forschung");
+
+        $this->select("id=collId2SubjectBKL_1", "label=10.03 Methoden und Techniken der geisteswissenschaftlichen Forschung");
         $this->click("id=addMoreSubjectBKL");
         $this->waitForPageToLoad("30000");
-        $this->select("id=SubjectBKL2", "label=31 Mathematik");
+
+        $this->select("id=SubjectBKL_2", "label=31 Mathematik");
         $this->click("id=browseDownSubjectBKL");
         $this->waitForPageToLoad("30000");
-        $this->select("id=collId2SubjectBKL2", "label=31.23 Ideale, Ringe, Moduln, Algebren");
+
+        $this->select("id=collId2SubjectBKL_2", "label=31.23 Ideale, Ringe, Moduln, Algebren");
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
+
         $this->verifyTextPresent("10.03 Methoden und Techniken der geisteswissenschaftlichen Forschung");
         $this->verifyTextPresent("31.23 Ideale, Ringe, Moduln, Algebren");
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
+
         $this->verifyTextPresent("wurde erfolgreich gespeichert");
     }
 
