@@ -82,7 +82,7 @@ class SecurityAdminTest extends TestCaseAuthorisation {
         $this->switchToEnglish();
         $this->login("security10", "security10pwd");
         $this->openAndWait('/admin/access/listmodule/roleid/2');
-        $this->assertElementContainsText('//html/head/title', 'Edit User Roles - access control');
+        $this->assertElementContainsText('//html/head/title', 'Edit user roles - access control');
     }
     
 }
