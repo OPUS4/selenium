@@ -37,6 +37,12 @@ require_once 'TestCase.php';
 class CheckedBibliographyFieldTest extends TestCase {
 
     public function testCheckedBibliographieField() {
+
+        // kann so nicht mehr getestet werden, da in der Standardauslieferung
+        // die Zuweisung zur Bibliographie auf der ersten Formularseite nicht
+        // mehr angeboten wird
+
+        /*
         $this->switchToGerman();
         $this->open("/publish");
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
@@ -51,6 +57,7 @@ class CheckedBibliographyFieldTest extends TestCase {
         $this->click("id=send");
         $this->waitForPageToLoad();
         $this->assertTrue($this->isTextPresent("Dokument wird zur Bibliographie hinzugefügt."));
+        */
     }
 
 }
