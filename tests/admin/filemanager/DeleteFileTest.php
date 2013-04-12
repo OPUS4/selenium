@@ -42,6 +42,7 @@ require_once 'TestCase.php';
 class DeleteFileTest extends TestCase {
 
     public function testDeleteFileConfirmNo() {
+        $this->switchToEnglish();
         $this->login();
 
         // check output
@@ -65,6 +66,7 @@ class DeleteFileTest extends TestCase {
     }
     
     public function testDeleteFileConfirmYes() {
+        $this->switchToEnglish();
         $this->login();
 
         // check output
@@ -91,7 +93,7 @@ class DeleteFileTest extends TestCase {
         $this->switchToEnglish();
         $this->login();
 
-        $this->open('/admin/filemanager/delete/docId/400/fileId/125');
+        $this->open('/admin/filemanager/delete/docId/1039/fileId/125');
         $this->waitForPageToLoad();
         
         $this->assertElementContainsText('//div[@class="failure"]', 'No valid document ID provided.');
