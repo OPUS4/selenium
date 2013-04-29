@@ -28,7 +28,7 @@
  * @category    Selenium Tests 
  * @package     Authorisation
  * @author      Jens Schwidder <schwidder@zib.de>
- * @copyright   Copyright (c) 2008-2012, OPUS 4 development team
+ * @copyright   Copyright (c) 2008-2013, OPUS 4 development team
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
  * @version     $Id$
  */
@@ -100,7 +100,7 @@ class FullAdminTest extends TestCaseAuthorisation {
         $this->switchToEnglish();
         $this->login("security1", "security1pwd");
         $this->openAndWait('/frontdoor/index/index/docId/92');
-        $this->assertElementContainsText('//html/body', 'Edit this document');
+        $this->assertElementPresent('//a[@id="admin-edit-document"]');
     }
 
 }
