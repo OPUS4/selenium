@@ -46,8 +46,7 @@ class DeleteFileTest extends TestCase {
         $this->login();
 
         // check output
-        $this->open('/admin/filemanager/delete/docId/124/fileId/125');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/filemanager/delete/docId/124/fileId/125');
         
         // check correct page
         $this->assertElementContainsText('//html/head/title', 'Delete this File');
@@ -70,8 +69,7 @@ class DeleteFileTest extends TestCase {
         $this->login();
 
         // check output
-        $this->open('/admin/filemanager/delete/docId/160/fileId/140');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/filemanager/delete/docId/160/fileId/140');
         
         // check correct page
         $this->assertElementContainsText('//html/head/title', 'Delete this File');
@@ -93,8 +91,7 @@ class DeleteFileTest extends TestCase {
         $this->switchToEnglish();
         $this->login();
 
-        $this->open('/admin/filemanager/delete/docId/1039/fileId/125');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/filemanager/delete/docId/1039/fileId/125');
         
         $this->assertElementContainsText('//div[@class="failure"]', 'No valid document ID provided.');
         
@@ -105,8 +102,7 @@ class DeleteFileTest extends TestCase {
         $this->switchToEnglish();
         $this->login();
 
-        $this->open('/admin/filemanager/delete/docId/124/fileId/400');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/filemanager/delete/docId/124/fileId/400');
         
         $this->assertElementContainsText('//div[@class="failure"]', 'No valid file ID provided.');
         
@@ -117,8 +113,7 @@ class DeleteFileTest extends TestCase {
         $this->switchToEnglish();
         $this->login();
 
-        $this->open('/admin/filemanager/delete/docId/146/fileId/125');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/filemanager/delete/docId/146/fileId/125');
         
         $this->assertElementContainsText('//div[@class="failure"]', 'File does not belong to document.');
         
@@ -129,8 +124,7 @@ class DeleteFileTest extends TestCase {
         $this->switchToEnglish();
         $this->login();
 
-        $this->open('/admin/filemanager/delete/docId/dummyDocId/fileId/125');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/filemanager/delete/docId/dummyDocId/fileId/125');
         
         $this->assertTextNotPresent('dummyDocId');
         
@@ -141,8 +135,7 @@ class DeleteFileTest extends TestCase {
         $this->switchToEnglish();
         $this->login();
 
-        $this->open('/admin/filemanager/delete/docId/124/fileId/dummyFileId');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/filemanager/delete/docId/124/fileId/dummyFileId');
         
         $this->assertTextNotPresent('dummyFieldId');
         
