@@ -42,6 +42,9 @@ class Opusvier2783Test extends TestCasePublish {
 
         $this->goToThirdStep();
 
+        $this->assertTextPresent('E-Mail-Adresse');
+        $this->assertTextPresent('doe@example.org');
+        
         $this->assertTextPresent('Titel verleihende Institution');
         $this->assertTextPresent('Foobar Universität');
         $this->assertTextPresent('Veröffentlichende Institution');
