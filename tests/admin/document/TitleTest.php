@@ -40,18 +40,28 @@ class TitleTest extends TestCase {
      * Test for OPUSVIER-2172.
      */
     public function testCreatingTitleWithValue0() {
+        $this->switchToEnglish();
         $this->login();
 
         // check output
-        $this->open('/admin/document/add/id/30/section/titles');
+        $this->openAndWait('/admin/document/edit/id/30');
+        
+        $this->assertElementNotPresent('Titles-Main-TitleMain1-Value');
+
+        $this->click('Titles-Main-add');
         $this->waitForPageToLoad();
-        $this->select('Opus_Title-Language', 'value=eng');
-        $this->select('Opus_Title-Type', 'value=main');
-        $this->type('Opus_Title-Value', '0');
-        $this->click('Opus_Title-submit_add');
+
+        $this->assertElementPresent('Titles-Main-TitleMain1-Value');
+        
+        $this->select('Titles-Main-TitleMain1-Language', 'value=eng');
+        $this->type('Titles-Main-TitleMain1-Value', '0');
+        
+        $this->click('save');
         $this->waitForPageToLoad();
-        $this->assertElementValueNotEquals('TitleMain[1][Value]', '');
-        $this->assertElementValueEquals('TitleMain[1][Value]', '0');
+        
+        $this->assertElementPresent('TitleMain1-element');
+        $this->assertElementContainsText('TitleMain1-element', 'English');
+        $this->assertElementContainsText('TitleMain1-element', '0');
     }
 
 }
