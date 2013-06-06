@@ -80,20 +80,24 @@ class SeriesTest extends TestCase {
     public function testRegression2355ModifySortOrderForDocument() {
         $this->login();
 
-        $this->open('/admin/document/edit/id/92/section/series');
-        $this->waitForPageToLoad('30000');
-        $this->assertElementValueEquals('Series-2-SortOrder', '1');
-        $this->type('Series-2-SortOrder', '2');
+        $this->openAndWait('/admin/document/edit/id/92');
+
+        $this->assertElementValueEquals('Series-Series2-SortOrder', '1');
+        $this->type('Series-Series2-SortOrder', '2');
         $this->click('save');
         $this->waitForPageToLoad('30000');
 
-        $this->assertElementValueEquals('Series-2-SortOrder', '2');
+        $this->openAndWait('/admin/document/edit/id/92');
 
-        $this->type('Series-2-SortOrder', '1');
+        $this->assertElementValueEquals('Series-Series2-SortOrder', '2');
+
+        $this->type('Series-Series2-SortOrder', '1');
         $this->click('save');
         $this->waitForPageToLoad('30000');
 
-        $this->assertElementValueEquals('Series-2-SortOrder', '1');
+        $this->openAndWait('/admin/document/edit/id/92');
+
+        $this->assertElementValueEquals('Series-Series2-SortOrder', '1');
 
         $this->logout();
     }
