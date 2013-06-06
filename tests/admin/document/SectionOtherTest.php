@@ -27,7 +27,7 @@
  * @category    Unit Test
  * @package     Module_Admin
  * @author      Jens Schwidder <schwidder@zib.de>
- * @copyright   Copyright (c) 2008-2011, OPUS 4 development team
+ * @copyright   Copyright (c) 2008-2013, OPUS 4 development team
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
  * @version     $Id$
  */
@@ -43,19 +43,18 @@ class SectionOtherTest extends TestCase {
         $this->login();
 
         // check output
-        $this->open('/admin/document/edit/id/30/section/other');
-        $this->waitForPageToLoad();
-        $this->type('Opus_Document-PageFirst', '0');
-        $this->type('Opus_Document-PageLast', '0');
-        $this->type('Opus_Document-PageNumber', '0');
+        $this->openAndWait('/admin/document/edit/id/30');
+        
+        $this->type('Bibliographic-PageFirst', '0');
+        $this->type('Bibliographic-PageLast', '0');
+        
         $this->click('save');
         $this->waitForPageToLoad();
-        $this->assertElementValueNotEquals('Opus_Document-PageFirst', '');
-        $this->assertElementValueEquals('Opus_Document-PageFirst', '0');
-        $this->assertElementValueNotEquals('Opus_Document-PageLast', '');
-        $this->assertElementValueEquals('Opus_Document-PageLast', '0');
-        $this->assertElementValueNotEquals('Opus_Document-PageNumber', '');
-        $this->assertElementValueEquals('Opus_Document-PageNumber', '0');
+        
+        $this->assertElementPresent('PageFirst');
+        $this->assertElementContainsText('PageFirst', '0');
+        $this->assertElementPresent('PageLast');
+        $this->assertElementContainsText('PageLast', '0');
     }
 
 }
