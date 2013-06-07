@@ -58,8 +58,8 @@ class ValidEnrichmentKeyTest extends TestCase {
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
         
-        $this->assertElementPresent("//div[@id='form-table-check']/table/tbody/tr[5]/td[2]");
         $this->assertElementPresent("//div[@id='form-table-check']/table/tbody/tr[6]/td[2]");
+        $this->assertElementPresent("//div[@id='form-table-check']/table/tbody/tr[7]/td[2]");
         $this->click("id=send");
         $this->waitForPageToLoad("30000");
         
