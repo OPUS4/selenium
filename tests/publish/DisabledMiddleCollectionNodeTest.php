@@ -46,6 +46,7 @@ class DisabledMiddleCollectionNodeTest extends TestCase {
         $this->click("id=rights");
         $this->click("id=send");
         $this->waitForPageToLoad();
+
         $this->type("id=PersonAuthorFirstName_1", "Susi");
         $this->type("id=PersonAuthorLastName_1", "Gottwald");
         $this->type("id=TitleMain_1", "Entenhausen");
@@ -54,25 +55,30 @@ class DisabledMiddleCollectionNodeTest extends TestCase {
         $this->select("id=SubjectMSC_1", "label=00-XX GENERAL");
         $this->click("id=browseDownInstitute");
         $this->waitForPageToLoad();
+
         $this->click("id=browseDownInstitute");
         $this->waitForPageToLoad();
+
         $this->click("id=browseDownSubjectMSC");
         $this->waitForPageToLoad();
+
         $this->select("id=collId2SubjectMSC_1", "label=00Axx General and miscellaneous specific topics");
         $this->click("id=browseDownSubjectMSC");
         $this->waitForPageToLoad();
+
         $this->assertFalse($this->isEditable("id=SubjectMSC_1"));
         $this->assertFalse($this->isEditable("id=collId2SubjectMSC_1"));
         $this->assertFalse($this->isEditable("id=Institute_1"));
         $this->assertFalse($this->isEditable("id=collId2Institute_1"));
         $this->click("id=send");
         $this->waitForPageToLoad();
-        $this->assertTrue($this->isTextPresent("00A05 General mathematics"));
-        $this->assertTrue($this->isTextPresent("Abwasserwirtschaft und Gewässerschutz B-2"));
-        $this->assertFalse($this->isTextPresent("Technische Universität Hamburg-Harburg"));
-        $this->assertFalse($this->isTextPresent("00-XX GENERAL"));
-        $this->assertFalse($this->isTextPresent("00Axx General and miscellaneous specific topics"));
-        $this->assertFalse($this->isTextPresent("Bauwesen"));
+
+        $this->assertTextPresent("00A05 General mathematics");
+        $this->assertTextPresent("Abwasserwirtschaft und Gewässerschutz B-2");
+        $this->assertTextNotPresent("Technische Universität Hamburg-Harburg");
+        $this->assertTextNotPresent("00-XX GENERAL");
+        $this->assertTextNotPresent("00Axx General and miscellaneous specific topics");
+        $this->assertTextNotPresent("Bauwesen");
     }
 
 }
