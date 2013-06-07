@@ -71,4 +71,27 @@ class Opusvier2820Test extends TestCase {
         $this->assertTextPresent('1970/01/01');
     }
 
+    public function testPatentInformationMultiple() {
+        $this->switchToEnglish();
+
+        $this->open("/frontdoor/index/index/docId/200");
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent('Patent Number:');
+        $this->assertTextPresent('1234');
+        $this->assertTextPresent('4321');
+        $this->assertTextPresent('Country of Patent Application:');
+        $this->assertTextPresent('DDR');
+        $this->assertTextPresent('BRD');
+        $this->assertTextPresent('Patent Application Year:');
+        $this->assertTextPresent('1970');
+        $this->assertTextPresent('1972');
+        $this->assertTextPresent('Patent Application:');
+        $this->assertTextPresent('The foo machine.');
+        $this->assertTextPresent('The bar machine.');
+        $this->assertTextPresent('Patent Grant Date:');
+        $this->assertTextPresent('1970/01/01');
+        $this->assertTextPresent('1972/01/01');
+    }
+
 }
