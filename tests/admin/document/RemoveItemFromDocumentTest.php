@@ -56,16 +56,16 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->openAndWait('/admin/document/edit/id/200');
 
         // Check correct page is shown
-        $this->assertElementValueEquals('Persons-author-person0-PersonId', '301');
+        $this->assertElementValueEquals('Document-Persons-author-Person0-PersonId', '301');
 
-        $this->click('Persons-author-person0-Remove');
+        $this->click('Document-Persons-author-Person0-Remove');
         $this->waitForPageToLoad();
 
         // Check author has been removed
-        $this->assertElementNotPresent('Persons-author-person0-PersonId'); // Keine Autoren übrig
+        $this->assertElementNotPresent('Document-Persons-author-Person0-PersonId'); // Keine Autoren übrig
         
         // Save document
-        $this->click('save');
+        $this->click('Document-save');
         $this->waitForPageToLoad();
         
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
@@ -81,14 +81,14 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->openAndWait('/admin/document/edit/id/200');
 
-        $this->assertElementValueEquals('Titles-Main-TitleMain0-Value', 'KOBV');
+        $this->assertElementValueEquals('Document-Titles-Main-TitleMain0-Value', 'KOBV');
 
-        $this->click('Titles-Main-TitleMain0-Remove');
+        $this->click('Document-Titles-Main-TitleMain0-Remove');
         $this->waitForPageToLoad();
 
-        $this->assertElementValueEquals('Titles-Main-TitleMain0-Value', 'COLN');
+        $this->assertElementValueEquals('Document-Titles-Main-TitleMain0-Value', 'COLN');
         
-        $this->click('save');
+        $this->click('Document-save');
         $this->waitForPageToLoad();
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
@@ -103,16 +103,16 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->openAndWait('/admin/document/edit/id/200');
 
-        $this->assertElementValueEquals('Content-Abstracts-TitleAbstract0-Value', 
+        $this->assertElementValueEquals('Document-Content-Abstracts-TitleAbstract0-Value', 
                 'Die KOBV-Zentrale in Berlin-Dahlem.');
 
-        $this->click('Content-Abstracts-TitleAbstract0-Remove');
+        $this->click('Document-Content-Abstracts-TitleAbstract0-Remove');
         $this->waitForPageToLoad();
 
-        $this->assertElementValueEquals('Content-Abstracts-TitleAbstract0-Value', 
+        $this->assertElementValueEquals('Document-Content-Abstracts-TitleAbstract0-Value', 
                 'Lorem impsum.');
 
-        $this->click('save');
+        $this->click('Document-save');
         $this->waitForPageToLoad();
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
@@ -127,16 +127,16 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->openAndWait('/admin/document/edit/id/200');
 
-        $this->assertElementValueEquals('Identifiers-Identifier1-Type', 'serial');
-        $this->assertElementValueEquals('Identifiers-Identifier1-Value', '123');
+        $this->assertElementValueEquals('Document-Identifiers-Identifier1-Type', 'serial');
+        $this->assertElementValueEquals('Document-Identifiers-Identifier1-Value', '123');
 
-        $this->click('Identifiers-Identifier1-Remove');
+        $this->click('Document-Identifiers-Identifier1-Remove');
         $this->waitForPageToLoad();
 
-        $this->assertElementValueEquals('Identifiers-Identifier1-Type', 'uuid');
-        $this->assertElementValueEquals('Identifiers-Identifier1-Value', '123');
+        $this->assertElementValueEquals('Document-Identifiers-Identifier1-Type', 'uuid');
+        $this->assertElementValueEquals('Document-Identifiers-Identifier1-Value', '123');
 
-        $this->click('save');
+        $this->click('Document-save');
         $this->waitForPageToLoad();
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
@@ -152,15 +152,15 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->openAndWait('/admin/document/edit/id/200');
 
-        $this->assertElementValueEquals('Content-Subjects-Uncontrolled-Subject0-Language', 'deu');
-        $this->assertElementValueEquals('Content-Subjects-Uncontrolled-Subject0-Value', 'Palmöl');
+        $this->assertElementValueEquals('Document-Content-Subjects-Uncontrolled-Subject0-Language', 'deu');
+        $this->assertElementValueEquals('Document-Content-Subjects-Uncontrolled-Subject0-Value', 'Palmöl');
 
-        $this->click('Content-Subjects-Uncontrolled-Subject0-Remove');
+        $this->click('Document-Content-Subjects-Uncontrolled-Subject0-Remove');
         $this->waitForPageToLoad();
         
-        $this->assertElementNotPresent('Content-Subjects-Uncontrolled-Subject0-Value');
+        $this->assertElementNotPresent('Document-Content-Subjects-Uncontrolled-Subject0-Value');
 
-        $this->click('save');
+        $this->click('Document-save');
         $this->waitForPageToLoad();
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
@@ -174,15 +174,15 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->openAndWait('/admin/document/edit/id/200');
 
-        $this->assertElementValueEquals('Series-Series1-SeriesId', '4');
-        $this->assertElementValueEquals('Series-Series1-Number', '6/6');
+        $this->assertElementValueEquals('Document-Series-Series1-SeriesId', '4');
+        $this->assertElementValueEquals('Document-Series-Series1-Number', '6/6');
 
-        $this->click('Series-Series1-Remove');
+        $this->click('Document-Series-Series1-Remove');
         $this->waitForPageToLoad();
 
-        $this->assertElementNotPresent('Series-Series1-SeriesId');
+        $this->assertElementNotPresent('Document-Series-Series1-SeriesId');
         
-        $this->click('save');
+        $this->click('Document-save');
         $this->waitForPageToLoad();
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
@@ -199,14 +199,14 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->openAndWait('/admin/document/edit/id/200');
 
-        $this->assertElementValueEquals('Patents-Patent1-Number', '4321');
+        $this->assertElementValueEquals('Document-Patents-Patent1-Number', '4321');
 
-        $this->click('Patents-Patent1-Remove');
+        $this->click('Document-Patents-Patent1-Remove');
         $this->waitForPageToLoad();
 
-        $this->assertElementNotPresent('Patents-Patent1-Number');
+        $this->assertElementNotPresent('Document-Patents-Patent1-Number');
 
-        $this->click('save');
+        $this->click('Document-save');
         $this->waitForPageToLoad();
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
@@ -223,15 +223,15 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->openAndWait('/admin/document/edit/id/200');
 
-        $this->assertElementValueEquals('Notes-Note1-Message', 'Für den Admin');
-        $this->assertElementValueEquals('Notes-Note1-Visibility', 'off');
+        $this->assertElementValueEquals('Document-Notes-Note1-Message', 'Für den Admin');
+        $this->assertElementValueEquals('Document-Notes-Note1-Visibility', 'off');
 
-        $this->click('Notes-Note1-Remove');
+        $this->click('Document-Notes-Note1-Remove');
         $this->waitForPageToLoad();
 
-        $this->assertElementNotPresent('Notes-Note1-Message');
+        $this->assertElementNotPresent('Document-Notes-Note1-Message');
 
-        $this->click('save');
+        $this->click('Document-save');
         $this->waitForPageToLoad();
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
@@ -247,15 +247,15 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->openAndWait('/admin/document/edit/id/200');
 
-        $this->assertElementValueEquals('Enrichments-Enrichment1-Value', 'Berlin');
-        $this->assertElementValueEquals('Enrichments-Enrichment1-KeyName', 'validtestkey');
+        $this->assertElementValueEquals('Document-Enrichments-Enrichment1-Value', 'Berlin');
+        $this->assertElementValueEquals('Document-Enrichments-Enrichment1-KeyName', 'validtestkey');
 
-        $this->click('Enrichments-Enrichment1-Remove');
+        $this->click('Document-Enrichments-Enrichment1-Remove');
         $this->waitForPageToLoad();
 
-        $this->assertElementNotPresent('Enrichments-Enrichment1-Value');
+        $this->assertElementNotPresent('Document-Enrichments-Enrichment1-Value');
 
-        $this->click('save');
+        $this->click('Document-save');
         $this->waitForPageToLoad();
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
