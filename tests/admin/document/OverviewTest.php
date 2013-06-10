@@ -40,6 +40,7 @@ class OverviewTest extends TestCase {
      * Test for OPUSVIER-1841.
      */
     public function testRegression1841() {
+        $this->switchToEnglish();
         $this->login();
 
         // Display metadata overview for test document (fully populated)
