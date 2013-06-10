@@ -39,22 +39,22 @@ class SectionOtherTest extends TestCase {
     /**
      * Test for OPUSVIER-2172.
      */
-    public function testSavinPageAttributesWithValue0() {
+    public function testSavingPageAttributesWithValue0() {
         $this->login();
 
         // check output
         $this->openAndWait('/admin/document/edit/id/30');
         
-        $this->type('Bibliographic-PageFirst', '0');
-        $this->type('Bibliographic-PageLast', '0');
+        $this->type('Document-Bibliographic-PageFirst', '0');
+        $this->type('Document-Bibliographic-PageLast', '0');
         
-        $this->click('save');
+        $this->click('Document-save');
         $this->waitForPageToLoad();
         
-        $this->assertElementPresent('PageFirst');
-        $this->assertElementContainsText('PageFirst', '0');
-        $this->assertElementPresent('PageLast');
-        $this->assertElementContainsText('PageLast', '0');
+        $this->assertElementPresent('Document-Bibliographic-PageFirst');
+        $this->assertElementContainsText('Document-Bibliographic-PageFirst', '0');
+        $this->assertElementPresent('Document-Bibliographic-PageLast');
+        $this->assertElementContainsText('Document-Bibliographic-PageLast', '0');
     }
 
 }
