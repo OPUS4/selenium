@@ -91,7 +91,7 @@ class DeleteFileTest extends TestCase {
         $this->switchToEnglish();
         $this->login();
 
-        $this->openAndWait('/admin/filemanager/delete/docId/1039/fileId/125');
+        $this->openAndWait('/admin/filemanager/delete/docId/9999/fileId/125');
         
         $this->assertElementContainsText('//div[@class="failure"]', 'No valid document ID provided.');
         
