@@ -46,22 +46,22 @@ class TitleTest extends TestCase {
         // check output
         $this->openAndWait('/admin/document/edit/id/30');
         
-        $this->assertElementNotPresent('Titles-Main-TitleMain1-Value');
+        $this->assertElementNotPresent('Document-Titles-Main-TitleMain1-Value');
 
-        $this->click('Titles-Main-add');
+        $this->click('Document-Titles-Main-add');
         $this->waitForPageToLoad();
 
-        $this->assertElementPresent('Titles-Main-TitleMain1-Value');
+        $this->assertElementPresent('Document-Titles-Main-TitleMain1-Value');
         
-        $this->select('Titles-Main-TitleMain1-Language', 'value=eng');
-        $this->type('Titles-Main-TitleMain1-Value', '0');
+        $this->select('Document-Titles-Main-TitleMain1-Language', 'value=eng');
+        $this->type('Document-Titles-Main-TitleMain1-Value', '0');
         
-        $this->click('save');
+        $this->click('Document-save');
         $this->waitForPageToLoad();
         
-        $this->assertElementPresent('TitleMain1-element');
-        $this->assertElementContainsText('TitleMain1-element', 'English');
-        $this->assertElementContainsText('TitleMain1-element', '0');
+        $this->assertElementPresent('Document-Titles-Main-TitleMain1-Value');
+        $this->assertElementContainsText('Document-Titles-Main-TitleMain1-Language', 'English');
+        $this->assertElementContainsText('Document-Titles-Main-TitleMain1-Value', '0');
     }
 
 }
