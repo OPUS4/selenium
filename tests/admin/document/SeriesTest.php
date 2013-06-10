@@ -82,22 +82,22 @@ class SeriesTest extends TestCase {
 
         $this->openAndWait('/admin/document/edit/id/92');
 
-        $this->assertElementValueEquals('Series-Series2-SortOrder', '1');
-        $this->type('Series-Series2-SortOrder', '2');
-        $this->click('save');
+        $this->assertElementValueEquals('Document-Series-Series2-SortOrder', '1');
+        $this->type('Document-Series-Series2-SortOrder', '2');
+        $this->click('Document-save');
         $this->waitForPageToLoad('30000');
 
         $this->openAndWait('/admin/document/edit/id/92');
 
-        $this->assertElementValueEquals('Series-Series2-SortOrder', '2');
+        $this->assertElementValueEquals('Document-Series-Series2-SortOrder', '2');
 
-        $this->type('Series-Series2-SortOrder', '1');
-        $this->click('save');
+        $this->type('Document-Series-Series2-SortOrder', '1');
+        $this->click('Document-save');
         $this->waitForPageToLoad('30000');
 
         $this->openAndWait('/admin/document/edit/id/92');
 
-        $this->assertElementValueEquals('Series-Series2-SortOrder', '1');
+        $this->assertElementValueEquals('Document-Series-Series2-SortOrder', '1');
 
         $this->logout();
     }
