@@ -59,7 +59,7 @@ class OverviewTest extends TestCase {
         
         // Lizenzen
         $this->assertElementContainsText('//fieldset[@id="fieldset-Licences"]/legend', 'Lizenzen');
-        $this->assertElementContainsText('//dt[@id="licence4"]', 'Creative Commons - Namensnennung');
+        $this->assertElementContainsText('//dt[@id="Document-Licences-licence4"]', 'Creative Commons - Namensnennung');
     }
     
     public function testIndexActionEnglish() {
@@ -70,7 +70,7 @@ class OverviewTest extends TestCase {
         
         // Lizenzen (Name der Lizenz nicht übersetzt)
         $this->assertElementContainsText('//fieldset[@id="fieldset-Licences"]/legend', 'Licences');
-        $this->assertElementContainsText('//dt[@id="licence4"]', 'Creative Commons - Namensnennung'); 
+        $this->assertElementContainsText('//dt[@id="Document-Licences-licence4"]', 'Creative Commons - Namensnennung'); 
     }
 
 }
