@@ -38,7 +38,7 @@ class PatentsTest extends TestCase {
     
     const SUCCESS_MESSAGE = 'Changes successfully saved.';
 
-    public function testModifyGeneralMetadata() {
+    public function testAddRemovePatent() {
         $this->switchToEnglish();
         $this->login();
         
