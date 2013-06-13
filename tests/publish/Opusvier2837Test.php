@@ -37,7 +37,7 @@ require_once 'TestCasePublish.php';
 class Opusvier2837Test extends TestCasePublish {
 
     public function testSeriesNumberWithoutSeries() {
-        $this->switchToEnglish();
+        $this->switchToGerman();
         $this->goToSecondStepForDoctypeAll();
         
         $this->assertElementPresent('SeriesNumber_1');
@@ -46,21 +46,31 @@ class Opusvier2837Test extends TestCasePublish {
         $this->click('send');
         $this->waitForPageToLoad();
 
-        $this->assertTextPresent('Bandnummer');
-        $this->assertTextPresent('2837-123');
-        $this->assertTextNotPresent('Schriftenreihe');
+        $this->assertTextPresent('Es sind Fehler aufgetreten.');
+
+        $this->assertElementPresent('Series_1');
+        $this->select('Series_1', 'value=1');
+
         $this->click('send');
         $this->waitForPageToLoad();
 
-        $this->assertTextPresent('Attempt to store model with invalid data. Title Value is required and can\'t be empty');
+        $this->assertTextPresent('Bandnummer');
+        $this->assertTextPresent('2837-123');
+        $this->assertTextPresent('Schriftenreihe');
+        $this->assertTextPresent('MySeries');
+        $this->click('send');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent('wurde erfolgreich gespeichert');
     }
 
     public function testSeriesNumberWithSeries() {
-        $this->switchToEnglish();
+        $this->switchToGerman();
         $this->goToSecondStepForDoctypeAll();
 
         $this->assertElementPresent('SeriesNumber_1');
         $this->type('SeriesNumber_1', '2837-456');
+        $this->assertElementPresent('Series_1');
         $this->select('Series_1', 'value=1');
 
         $this->click('send');
