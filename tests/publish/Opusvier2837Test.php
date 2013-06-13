@@ -37,7 +37,6 @@ require_once 'TestCasePublish.php';
 class Opusvier2837Test extends TestCasePublish {
 
     public function testSeriesNumberWithoutSeries() {
-        $this->switchToGerman();
         $this->goToSecondStepForDoctypeAll();
         
         $this->assertElementPresent('SeriesNumber_1');
@@ -65,7 +64,6 @@ class Opusvier2837Test extends TestCasePublish {
     }
 
     public function testSeriesNumberWithSeries() {
-        $this->switchToGerman();
         $this->goToSecondStepForDoctypeAll();
 
         $this->assertElementPresent('SeriesNumber_1');
