@@ -34,7 +34,7 @@
 
 require_once 'TestCase.php';
 
-class GeneralMetadataTest extends TestCase {
+class PatentsTest extends TestCase {
     
     const SUCCESS_MESSAGE = 'Changes successfully saved.';
 
