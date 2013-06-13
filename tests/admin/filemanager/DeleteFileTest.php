@@ -97,6 +97,17 @@ class DeleteFileTest extends TestCase {
         
         $this->logout();
     }
+
+    public function testSyntaxInvalidDocIdErrorMessage() {
+        $this->switchToEnglish();
+        $this->login();
+
+        $this->openAndWait('/admin/filemanager/delete/docId/foo/fileId/125');
+
+        $this->assertElementContainsText('//div[@class="failure"]', 'No valid document ID provided.');
+
+        $this->logout();
+    }
     
     public function testBadFileIdErrorMessage() {
         $this->switchToEnglish();
@@ -108,6 +119,18 @@ class DeleteFileTest extends TestCase {
         $this->assertElementContainsText('//div[@class="failure"]', 'No valid file ID provided.');
         
         $this->logout();        
+    }
+
+    public function testSyntaxInvalidFileIdErrorMessage() {
+        $this->switchToEnglish();
+        $this->login();
+
+        $this->openAndWait('/admin/filemanager/delete/docId/124/fileId/foo');
+
+        $this->assertElementPresent("//div[@class='failure']");
+        $this->assertElementContainsText('//div[@class="failure"]', 'No valid file ID provided.');
+
+        $this->logout();
     }
     
     public function testFileDoesNotBelongToDocErrorMessage() {
