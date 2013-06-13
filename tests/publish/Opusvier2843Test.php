@@ -87,7 +87,7 @@ class Opusvier2843Test extends TestCasePublish {
         $this->assertTextNotPresent('Diese Bandnummer wurde in der gewählten Schriftenreihe bereits vergeben');
 
         $this->assertTextPresent('Bandnummer');
-        $this->assertTextPresent('2843-123');
+        $this->assertTextPresent('2843-456');
         $this->assertTextPresent('Schriftenreihe');
         $this->assertTextPresent('OPUS No-Logo Series');
 
