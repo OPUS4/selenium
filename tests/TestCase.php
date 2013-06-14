@@ -53,18 +53,25 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
     public function setUp() {
         if(is_file('config.ini') && is_readable('config.ini')) {
             $config = parse_ini_file('config.ini');
-            $this->browserUrl = $config['browserUrl'];
-            $this->baseUrl = $config['baseUrl'];
-            $this->clientIp = $config['clientIp'];
-            $this->captureScreenshotOnFailure = $config['captureScreenshotOnFailure'];
-            $this->screenshotPath = $config['screenshotPath'];
-            $this->screenshotUrl = $config['screenshotUrl'];
-            $this->defaultMaxPeriodToWait = $config['defaultMaxPeriodToWait'];
-            $this->adminUsername = $config['adminUsername'];
-            $this->adminPassword = $config['adminPassword'];
+            $this->browserUrl = $this->getConfigOption($config, 'browserUrl');
+            $this->baseUrl = $this->getConfigOption($config, 'baseUrl');
+            $this->clientIp = $this->getConfigOption($config, 'clientIp');
+            $this->captureScreenshotOnFailure = $this->getConfigOption($config, 'captureScreenshotOnFailure');
+            $this->screenshotPath = $this->getConfigOption($config, 'screenshotPath');
+            $this->screenshotUrl = $this->getConfigOption($config, 'screenshotUrl');
+            $this->defaultMaxPeriodToWait = $this->getConfigOption($config, 'defaultMaxPeriodToWait');
+            $this->adminUsername = $this->getConfigOption($config, 'adminUsername');
+            $this->adminPassword = $this->getConfigOption($config, 'adminPassword');
         }
         $this->setBrowser("*firefox");
         $this->setBrowserUrl($this->browserUrl);
+    }
+
+    private function getConfigOption($config, $key) {
+        if (array_key_exists($key, $config)) {
+            return $config[$key];
+        }
+        return $this->$key;
     }
 
     public function login($user = null, $password = null) {
