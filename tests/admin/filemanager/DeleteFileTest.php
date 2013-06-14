@@ -115,7 +115,6 @@ class DeleteFileTest extends TestCase {
 
         $this->openAndWait('/admin/filemanager/delete/docId/124/fileId/400');
         
-        $this->assertElementPresent("//div[@class='failure']");
         $this->assertElementContainsText('//div[@class="failure"]', 'No valid file ID provided.');
         
         $this->logout();        
@@ -127,7 +126,6 @@ class DeleteFileTest extends TestCase {
 
         $this->openAndWait('/admin/filemanager/delete/docId/124/fileId/foo');
 
-        $this->assertElementPresent("//div[@class='failure']");
         $this->assertElementContainsText('//div[@class="failure"]', 'No valid file ID provided.');
 
         $this->logout();
