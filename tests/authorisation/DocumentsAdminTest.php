@@ -145,7 +145,15 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
         $this->assertElementContainsText('//html/head/title', 'Filebrowser');
         $this->assertElementContainsText('//html/body', 'Add files to document with id');
     }
-        
+
+    public function testAccessFrontdoorForUnpublishedDocumentRegression2815() {
+        $this->switchToEnglish();
+        $this->login('security8', 'security8pwd');
+        $this->openAndWait('/frontdoor/index/index/docId/101');
+        $this->assertTextNotPresent('Error displaying the document');
+        $this->assertTextNotPresent('Document with ID 101 has not been published yet!');
+    }
+    
     public function testAccessToFilesOfUnpublishedDocumentRegression2814() {
         $this->switchToEnglish();
         $this->login('security8', 'security8pwd');
