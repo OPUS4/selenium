@@ -145,5 +145,13 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
         $this->assertElementContainsText('//html/head/title', 'Filebrowser');
         $this->assertElementContainsText('//html/body', 'Add files to document with id');
     }
+        
+    public function testAccessToFilesOfUnpublishedDocumentRegression2814() {
+        $this->switchToEnglish();
+        $this->login('security8', 'security8pwd');
+        $this->openAndWait('/frontdoor/deliver/index/docId/124/file/bar.html');
+        $this->assertTextNotPresent('Error downloading file');
+        $this->assertTextNotPresent('Access to the requested document not granted');
+    }
 
 }
