@@ -41,11 +41,8 @@ class MoreThan10AuthorsTest extends TestCase {
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();
 
-        $this->open("/auth/login");
-        $this->type("login", "admin");
-        $this->type("password", "adminadmin");
-        $this->click("SubmitCredentials");
-        $this->waitForPageToLoad();
+        $this->login();
+
         $this->assertTrue($this->isElementPresent("link=English"));
         
         $this->click("//li[@id='primary-nav-publish']/a/span");
@@ -107,9 +104,9 @@ class MoreThan10AuthorsTest extends TestCase {
         $this->verifyTextPresent("nachname 9");
         $this->verifyTextPresent("nachname 10");
         $this->verifyTextPresent("nachname 11");
-        
-        $this->click("link=Logout (admin)");
-	$this->waitForPageToLoad("30000");
+
+        $this->logout();
+	$this->waitForPageToLoad();
     }
 
 }

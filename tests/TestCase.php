@@ -47,6 +47,9 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
     protected $screenshotUrl = 'http://opus4ci.zib.de:8080/screenshots';
     protected $defaultMaxPeriodToWait = '30000';
 
+    protected $adminUsername = "admin";
+    protected $adminPassword = "adminadmin";
+
     public function setUp() {
         if(is_file('config.ini') && is_readable('config.ini')) {
             $config = parse_ini_file('config.ini');
@@ -57,19 +60,27 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
             $this->screenshotPath = $config['screenshotPath'];
             $this->screenshotUrl = $config['screenshotUrl'];
             $this->defaultMaxPeriodToWait = $config['defaultMaxPeriodToWait'];
+            $this->adminUsername = $config['adminUsername'];
+            $this->adminPassword = $config['adminPassword'];
         }
         $this->setBrowser("*firefox");
         $this->setBrowserUrl($this->browserUrl);
     }
 
-    public function login($user = 'admin', $password = 'adminadmin') {
+    public function login($user = null, $password = null) {
         // make sure logged out
         $this->logout();
 
         // login
         $this->open('/auth/login');
         $this->waitForPageToLoad();
+        if (is_null($user)) {
+            $user = $this->adminUsername;
+        }
         $this->type('login', $user);
+        if (is_null($password)) {
+            $password = $this->adminPassword;
+        }
         $this->type('password', $password);
         $this->click('SubmitCredentials');
         $this->waitForPageToLoad();

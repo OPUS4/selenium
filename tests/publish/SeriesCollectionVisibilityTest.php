@@ -43,11 +43,8 @@ class SeriesCollectionVisibilityTest extends TestCase {
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();
 
-        $this->open("/auth/login");
-        $this->type("login", "admin");
-        $this->type("password", "adminadmin");
-        $this->click("SubmitCredentials");
-        $this->waitForPageToLoad();
+        $this->login();
+
         $this->assertTrue($this->isElementPresent("link=English"));
         
         $this->click("link=Administration");
@@ -90,7 +87,8 @@ class SeriesCollectionVisibilityTest extends TestCase {
         $this->click("send");
         $this->waitForPageToLoad();
         $this->assertFalse($this->isElementPresent("browseUpSeries"));
-        $this->click("link=Logout (admin)");
+
+        $this->logout();
         $this->waitForPageToLoad();
     }
 
