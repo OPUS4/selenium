@@ -184,7 +184,24 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//dd[@id="Document-Enrichments-Enrichment7-KeyName"]', 'Country');
         $this->assertElementContainsText('//dd[@id="Document-Enrichments-Enrichment7-Value"]', 'Opus4 OAI-Country');
         
-        // Collections TODO
+        // Collections
+        $this->assertElementPresent('//li[@id="Document-Collections-ddc-collection0-Name"]'); // Root Collection hat keinen Namen
+        $this->assertElementContainsText('//li[@id="Document-Collections-ddc-collection1-Name"]', '28 Christliche Konfessionen');
+        $this->assertElementContainsText('//li[@id="Document-Collections-ddc-collection2-Name"]', '51 Mathematik');
+        $this->assertElementContainsText('//li[@id="Document-Collections-ddc-collection3-Name"]', '433 Deutsche Wörterbücher');
+        
+        $this->assertElementPresent('//li[@id="Document-Collections-ccs-collection0-Name"]', ''); // Root Collection hat keinen Namen
+        
+        $this->assertElementContainsText('//li[@id="Document-Collections-pacs-collection0-Name"]', '12.15.Hh Determination of Kobayashi-Maskawa matrix elements');
+        
+        $this->assertElementPresent('//li[@id="Document-Collections-jel-collection0-Name"]'); // Root Collection hat keinen Namen
+        
+        $this->assertElementContainsText('//li[@id="Document-Collections-msc-collection0-Name"]', '05-XX COMBINATORICS (For finite fields, see 11Txx)');
+        
+        $this->assertElementContainsText('//li[@id="Document-Collections-bk-collection0-Name"]', '08.20 Geschichte der westlichen Philosophie: Allgemeines');
+        
+        $this->assertElementContainsText('//li[@id="Document-Collections-institutes-collection0-Name"]', 'Abwasserwirtschaft und Gewässerschutz B-2');
+        
         
         // Abstracts
         $this->assertElementContainsText('//dd[@id="Document-Content-Abstracts-TitleAbstract0-Language"]', 'German');
