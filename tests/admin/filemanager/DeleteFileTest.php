@@ -92,6 +92,7 @@ class DeleteFileTest extends TestCase {
         $this->login();
 
         $this->openAndWait('/admin/filemanager/delete/docId/9999/fileId/125');
+        sleep(5);
         
         $this->assertElementContainsText('//div[@class="failure"]', 'No valid document ID provided.');
         
@@ -103,6 +104,7 @@ class DeleteFileTest extends TestCase {
         $this->login();
 
         $this->openAndWait('/admin/filemanager/delete/docId/foo/fileId/125');
+        sleep(5);
 
         $this->assertElementContainsText('//div[@class="failure"]', 'No valid document ID provided.');
 
@@ -114,6 +116,7 @@ class DeleteFileTest extends TestCase {
         $this->login();
 
         $this->openAndWait('/admin/filemanager/delete/docId/124/fileId/400');
+        sleep(5);
         
         $this->assertElementContainsText('//div[@class="failure"]', 'No valid file ID provided.');
         
@@ -125,6 +128,7 @@ class DeleteFileTest extends TestCase {
         $this->login();
 
         $this->openAndWait('/admin/filemanager/delete/docId/124/fileId/foo');
+        sleep(5);
 
         $this->assertElementContainsText('//div[@class="failure"]', 'No valid file ID provided.');
 
@@ -136,6 +140,7 @@ class DeleteFileTest extends TestCase {
         $this->login();
 
         $this->openAndWait('/admin/filemanager/delete/docId/146/fileId/125');
+        sleep(5);
         
         $this->assertElementContainsText('//div[@class="failure"]', 'File does not belong to document.');
         
