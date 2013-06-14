@@ -155,6 +155,7 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
     }
     
     public function testAccessToFilesOfUnpublishedDocumentRegression2814() {
+        $this->markTestSkipped('Download Tests sind keine gute Idee mit Selenium.');
         $this->switchToEnglish();
         $this->login('security8', 'security8pwd');
         $this->openAndWait('/frontdoor/deliver/index/docId/124/file/bar.html');
