@@ -123,11 +123,11 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
         $this->switchToEnglish();
         $this->login('security8', 'security8pwd');
         $this->openAndWait('/admin/document/index/id/96');
-        $this->assertElementContainsText("//div[@id='docstateMenu']", 'Publish document');
-        $this->assertElementContainsText("//div[@id='docstateMenu']", 'Delete document');
-        $this->assertElementNotContainsText("//div[@id='docstateMenu']", 'Change state: Audited');
-        $this->assertElementNotContainsText("//div[@id='docstateMenu']", 'Change state: In Progress');
-        $this->assertElementNotContainsText("//div[@id='docstateMenu']", 'Restrict document');
+        $this->assertElementPresent("//*[@id='State-Link-published']", 'Publish document');
+        $this->assertElementPresent("//*[@id='State-Link-deleted']", 'Delete document');
+        $this->assertElementNotPresent("//*[@id='State-link-audited']", 'Change state: Audited');
+        $this->assertElementNotPresent("//*[@id='State-link-inprogress']", 'Change state: In Progress');
+        $this->assertElementNotPresent("//*[@id='State-Link-restricted']", 'Restrict document');
     }
     
     public function testDeleteDocument() {
