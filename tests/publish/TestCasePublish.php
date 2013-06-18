@@ -34,13 +34,15 @@
  */
 require_once 'TestCase.php';
 
-/**
- * 
- */
 class TestCasePublish extends TestCase {
     
-    protected function goToSecondStep($value) {
-        $this->switchToGerman();
+    protected function goToSecondStep($value, $useGermanVersion = true) {
+        if ($useGermanVersion) {
+            $this->switchToGerman();
+        }
+        else {
+            $this->switchToEnglish();
+        }
         $this->openAndWait('/publish');
         $this->select('documentType', "value=$value");
         $this->click('rights');
@@ -48,8 +50,8 @@ class TestCasePublish extends TestCase {
         $this->waitForPageToLoad();                
     }
 
-    protected function goToSecondStepForDoctypeAll() {
-        $this->goToSecondStep('all');
+    protected function goToSecondStepForDoctypeAll($useGermanVersion = true) {
+        $this->goToSecondStep('all', $useGermanVersion);
         $this->click('LegalNotices');
     }
 
