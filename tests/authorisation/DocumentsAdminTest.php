@@ -47,19 +47,19 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
         $this->switchToEnglish();
         $this->login("security8", "security8pwd");
         $this->openAndWait('/admin');
-        $this->assertTextPresent('Manage Documents');
-        $this->assertTextPresent('OAI Link Information');
-        $this->assertTextNotPresent('Licence types');
-        $this->assertTextNotPresent('Accounts');
-        $this->assertTextNotPresent('Access Control');
-        $this->assertTextNotPresent('Manage Collections');
-        $this->assertTextNotPresent('Manage Series');
-        $this->assertTextNotPresent('Languages');
-        $this->assertTextNotPresent('Publication statistics');
-        $this->assertTextNotPresent('Institution (dispersive body)');
-        $this->assertTextNotPresent('Manage Enrichmentkeys');
-        $this->assertTextNotPresent('System Information');
-        $this->assertTextNotPresent('Review');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/licence")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/oailink")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/documents")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/account")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/security")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/collectionroles")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/series")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/language")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/statistic")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/dnbinstitute")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/enrichmentkey")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/info")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/review")]');
     }
     
     /**
