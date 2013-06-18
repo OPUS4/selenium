@@ -62,9 +62,9 @@ class IpRangeTest extends TestCaseAuthorisation {
         $this->switchToEnglish();
         $this->createIpRange('licenceadmin');
         $this->openAndWait('/admin');
-        $this->assertElementContainsText('//html/body', 'Licence types');
-        $this->assertElementContainsText('//html/body', 'OAI Link Information');
-        $this->assertElementNotContainsText('//html/body', 'Manage Documents');
+        $this->assertElementPresent('//a[contains(@href, "/admin/licence")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/oailink")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/documents")]');
         $this->removeIpRange();
     }
     
@@ -76,11 +76,11 @@ class IpRangeTest extends TestCaseAuthorisation {
         $this->createIpRange('licenceadmin');
         $this->login('security8', 'security8pwd');
         $this->openAndWait('/admin');
-        $this->assertElementContainsText('//html/body', 'Licence types');
-        $this->assertElementContainsText('//html/body', 'Manage Documents');
-        $this->assertElementContainsText('//html/body', 'OAI Link Information');
-        $this->assertElementNotContainsText('//html/body', 'Accounts');
-        $this->assertElementNotContainsText('//html/body', 'Access Control');
+        $this->assertElementPresent('//a[contains(@href, "/admin/licence")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/oailink")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/documents")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/account")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/security")]');
         $this->removeIpRange();
     }    
     
