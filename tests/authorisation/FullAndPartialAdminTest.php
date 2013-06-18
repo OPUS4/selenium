@@ -47,21 +47,19 @@ class FullAndPartialAdminTest extends TestCaseAuthorisation {
         $this->switchToEnglish();
         $this->login("security6", "security6pwd");
         $this->openAndWait('/admin');
-        $this->assertTextPresent('Licence types');
-        $this->assertTextPresent('OAI Link Information');
-        $this->assertTextPresent('Manage Documents');
-        $this->assertTextPresent('Accounts');
-        $this->assertTextPresent('Access Control');
-        $this->assertTextPresent('Manage Collections');
-        $this->assertTextPresent('Manage Series');
-        $this->assertTextPresent('Languages');
-        $this->assertTextPresent('Publication statistics');
+        $this->assertElementPresent('//a[contains(@href, "/admin/licence")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/oailink")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/documents")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/account")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/security")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/collectionroles")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/series")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/language")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/statistic")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/dnbinstitute")]');
-        $this->assertTextPresent('Manage Enrichmentkeys');
-        $this->assertTextPresent('System Information');
-        $this->assertTextNotPresent('Review');
-        
-        //*[@id="adminMenuContainer"]/dl/dt[10]/a
+        $this->assertElementPresent('//a[contains(@href, "/admin/enrichmentkey")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/info")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/review")]');        
     }
     
     /**
