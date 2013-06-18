@@ -40,18 +40,19 @@ class Opusvier2850Test extends TestCasePublish {
         $this->goToSecondStepForDoctypeAll();
 
         $this->assertElementPresent('IdentifierUrn');
-        $this->type('IdentifierUrn', 'OPUSVIER2850-1');
+        $this->type('IdentifierUrn', 'OPUSVIER2850');
 
         $this->click('send');
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent('Es sind Fehler aufgetreten');
+        $this->assertTextNotPresent('Die eingegebene URN existiert bereits. Bitte wählen Sie eine andere URN.');
         $this->assertTextPresent('Bitte überprüfen Sie Ihre Eingaben.');
 
         $this->click('abort');
     }
 
-    public function testURNCollectionIsRecognizedInStep2() {
+    public function testURNCollectionIsRecognizedInStep2German() {
         $this->goToSecondStepForDoctypeAll();
 
         $this->assertElementPresent('IdentifierUrn');
@@ -61,18 +62,43 @@ class Opusvier2850Test extends TestCasePublish {
         $this->waitForPageToLoad();
 
         $this->assertTextPresent('Es sind Fehler aufgetreten');
+        $this->assertTextPresent('Die eingegebene URN existiert bereits. Bitte wählen Sie eine andere URN.');
 
-        $this->type('IdentifierUrn', 'OPUSVIER2850-2');
+        $this->type('IdentifierUrn', 'OPUSVIER2850');
                 
         $this->click('send');
         $this->waitForPageToLoad();
 
         $this->assertTextNotPresent('Es sind Fehler aufgetreten');
+        $this->assertTextNotPresent('Die eingegebene URN existiert bereits. Bitte wählen Sie eine andere URN.');
         $this->assertTextPresent('Bitte überprüfen Sie Ihre Eingaben.');
 
         $this->click('abort');
     }
 
+    public function testURNCollectionIsRecognizedInStep2English() {
+        $this->goToSecondStepForDoctypeAll(false);
+
+        $this->assertElementPresent('IdentifierUrn');
+        $this->type('IdentifierUrn', '123');
+
+        $this->click('send');
+        $this->waitForPageToLoad();
+
+        $this->assertTextPresent('Errors occurred. Please check the error messages beside the form fields.');
+        $this->assertTextPresent('The given URN already exists, please choose another one.');
+
+        $this->type('IdentifierUrn', 'OPUSVIER2850');
+
+        $this->click('send');
+        $this->waitForPageToLoad();
+
+        $this->assertTextNotPresent('Errors occurred. Please check the error messages beside the form fields.');
+        $this->assertTextNotPresent('The given URN already exists, please choose another one.');
+        $this->assertTextPresent('Please check your data.');
+
+        $this->click('abort');
+    }
 }
 
 ?>
