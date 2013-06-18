@@ -61,7 +61,9 @@ class OverviewTest extends TestCase {
         // Information in Actionbox
         $this->assertElementContainsText('//dd[@id="Document-ServerState"]', 'Freigegeben');
         $this->assertElementContainsText('//dd[@id="Document-ServerDatePublished"]', '03.01.2012');
-        $this->assertElementContainsText('//dd[@id="Document-ServerDateModified"]', '03.01.2012');
+        $this->assertElementPresent('//dd[@id="Document-ServerDateModified"]');
+        // TODO der Wert von ServerDateModified ändert sich jetzt bei jedem Testdurchlauf
+        // $this->assertElementContainsText('//dd[@id="Document-ServerDateModified"]', '03.01.2012');
         
         // General
         $this->assertElementContainsText('//dd[@id="Document-General-Language"]', 'Deutsch');
@@ -283,7 +285,9 @@ class OverviewTest extends TestCase {
         // Information in Actionbox
         $this->assertElementContainsText('//dd[@id="Document-ServerState"]', 'Published');
         $this->assertElementContainsText('//dd[@id="Document-ServerDatePublished"]', '2012/01/03');
-        $this->assertElementContainsText('//dd[@id="Document-ServerDateModified"]', '2012/01/03');
+        $this->assertElementPresent('//dd[@id="Document-ServerDateModified"]');
+        // TODO der Wert von ServerDateModified ändert sich jetzt bei jedem Testdurchlauf
+        // $this->assertElementContainsText('//dd[@id="Document-ServerDateModified"]', '2012/01/03');
         
         // General
         $this->assertElementContainsText('//dd[@id="Document-General-Language"]', 'German');
