@@ -126,7 +126,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function open($path) {
-        parent::open($this->baseUrl . $path);
+        parent::open($this->baseUrl . $path, 'true');
     }
 
     public function openAndWait($path) {
