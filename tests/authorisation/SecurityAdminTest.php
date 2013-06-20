@@ -47,18 +47,14 @@ class SecurityAdminTest extends TestCaseAuthorisation {
         $this->switchToEnglish();
         $this->login("security10", "security10pwd");
         $this->openAndWait('/admin');
-        $this->assertElementPresent('//a[contains(@href, "/admin/account")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/security")]');
-        $this->assertElementPresent('//a[contains(@href, "/admin/oailink")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/collectionroles")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/documents")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/licence")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/series")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/language")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/statistic")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/dnbinstitute")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/enrichmentkey")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/info")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/info")]'); // Untermenü für Informationen
         $this->assertElementNotPresent('//a[contains(@href, "/review")]');
     }
     
