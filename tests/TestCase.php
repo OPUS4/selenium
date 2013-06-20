@@ -134,4 +134,20 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
         $this->waitForPageToLoad();
     }
 
+    public function openWindow($path, $windowName) {
+        parent::openWindow($this->baseUrl . $path, $windowName);
+    }
+
+    public function selectWindow($windowName) {
+        parent::selectWindow($windowName);
+    }
+
+    public function enableScreenshots() {
+        $this->captureScreenshotOnFailure = TRUE;
+    }
+
+    public function disableScreenshots() {
+        $this->captureScreenshotOnFailure = FALSE;
+    }
+
 }
