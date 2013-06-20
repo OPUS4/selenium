@@ -48,16 +48,12 @@ class FullAdminTest extends TestCaseAuthorisation {
         $this->login("security1", "security1pwd");
         $this->openAndWait('/admin');
         $this->assertElementPresent('//a[contains(@href, "/admin/licence")]');
-        $this->assertElementPresent('//a[contains(@href, "/admin/oailink")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/documents")]');
-        $this->assertElementPresent('//a[contains(@href, "/admin/account")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/security")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/collectionroles")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/series")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/language")]');
-        $this->assertElementPresent('//a[contains(@href, "/admin/statistic")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/dnbinstitute")]');
-        $this->assertElementPresent('//a[contains(@href, "/admin/enrichmentkey")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/info")]');
         $this->assertElementNotPresent('//a[contains(@href, "/review")]');
     }
