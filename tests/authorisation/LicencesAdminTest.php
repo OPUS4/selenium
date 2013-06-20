@@ -47,17 +47,13 @@ class LicencesAdminTest extends TestCaseAuthorisation {
         $this->login("security2", "security2pwd");
         $this->openAndWait('/admin');
         $this->assertElementPresent('//a[contains(@href, "/admin/licence")]');
-        $this->assertElementPresent('//a[contains(@href, "/admin/oailink")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/info")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/documents")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/account")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/security")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/collectionroles")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/series")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/language")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/statistic")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/dnbinstitute")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/enrichmentkey")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/info")]');
         $this->assertElementNotPresent('//a[contains(@href, "/review")]');
     }
     
