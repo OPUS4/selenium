@@ -64,6 +64,7 @@ class Opusvier2852Test extends TestCasePublish {
 
         $this->restoreEnrichmentKey();
 
+        $this->assertTextNotPresent('Anwendungsfehler');
         $this->assertTextNotPresent('PDOException');
         $this->assertTextNotPresent('Integrity constraint violation');
 
@@ -96,6 +97,7 @@ class Opusvier2852Test extends TestCasePublish {
 
         $this->restoreEnrichmentKey();
 
+        $this->assertTextNotPresent('Anwendungsfehler');
         $this->assertTextNotPresent('Publish_Model_FormIncorrectEnrichmentKeyException');
 
         $this->enableScreenshots();
