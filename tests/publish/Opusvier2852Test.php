@@ -36,9 +36,18 @@ require_once 'TestCasePublish.php';
 
 class Opusvier2852Test extends TestCasePublish {
 
-    public function testDepositWithMissingEnrichmentKeyForDepositAction() {
+    public function setUp() {
+        parent::setUp();        
         $this->disableScreenshots();
-        
+    }
+
+    public function tearDown() {
+        parent::tearDown();
+        $this->enableScreenshots();
+    }
+
+    public function testDepositWithMissingEnrichmentKeyForDepositAction() {
+        $testing = $this->isApplicationEnvTesting();
         $this->goToSecondStep('demo');
         $this->type('Enrichmentfoobarbaz_1', 'OPUSVIER2852Deposit');
         $this->goToThirdStep();
@@ -64,16 +73,21 @@ class Opusvier2852Test extends TestCasePublish {
 
         $this->restoreEnrichmentKey();
 
-        $this->assertTextPresent('Anwendungsfehler');        
+        $this->assertTextPresent('Anwendungsfehler');
         $this->assertTextNotPresent('PDOException');
         $this->assertTextNotPresent('Integrity constraint violation');
-        $this->assertTextPresent('Es ist ein unerwarteter Fehler aufgetreten. Ihre Eingaben sind gelöscht. Bitte versuchen Sie es erneut oder wenden Sie sich an den Administrator.');
 
-        $this->enableScreenshots();
+        if (!$testing) {
+            $this->assertTextPresent('Es ist ein unerwarteter Fehler aufgetreten. Ihre Eingaben sind gelöscht. Bitte versuchen Sie es erneut oder wenden Sie sich an den Administrator.');
+        }
+        else {            
+            $this->assertTextPresent('Application_Exception');
+            $this->assertTextPresent('publish_error_unexpected');
+        }     
     }
 
     public function testDepositWithMissingEnrichmentKeyForCheckAction() {
-        $this->disableScreenshots();
+        $testing = $this->isApplicationEnvTesting();
 
         $this->goToSecondStep('demo');
         $this->type('Enrichmentfoobarbaz_1', 'OPUSVIER2852Check');
@@ -100,8 +114,13 @@ class Opusvier2852Test extends TestCasePublish {
 
         $this->assertTextPresent('Anwendungsfehler');
         $this->assertTextNotPresent('Publish_Model_FormIncorrectEnrichmentKeyException');
-
-        $this->enableScreenshots();
+        if (!$testing) {
+            $this->assertTextPresent('Es ist ein unerwarteter Fehler aufgetreten. Ihre Eingaben sind gelöscht. Bitte versuchen Sie es erneut oder wenden Sie sich an den Administrator.');            
+        }
+        else {
+            $this->assertTextPresent('Application_Exception');
+            $this->assertTextPresent('publish_error_unexpected');
+        }
     }
 
     private function restoreEnrichmentKey() {
