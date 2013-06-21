@@ -79,7 +79,8 @@ class Opusvier2861Test extends TestCasePublish {
         $this->click('send');
         $this->waitForPageToLoad();
 
-        $this->assertTextNotPresent('Anwendungsfehler');
+        $this->assertTextPresent('Anwendungsfehler');
+        
         $this->assertTextNotPresent('Opus_Model_NotFoundException');
         $this->assertTextNotPresent('No Opus_Db_DnbInstitutes with id 5 in database.');        
 
