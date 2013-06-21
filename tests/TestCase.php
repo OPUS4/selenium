@@ -150,4 +150,18 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
         $this->captureScreenshotOnFailure = FALSE;
     }
 
+    public function isApplicationEnvTesting() {
+        return $this->isMode('testing');
+    }
+
+    public function isApplicationEnvProduction() {
+        return $this->isMode('production');
+    }
+
+    private function isMode($mode) {
+        $this->open('/home');
+        $this->waitForPageToLoad();
+        return $this->isElementPresent('//div[@id="appmode-' . $mode . '"]');
+    }
+
 }
