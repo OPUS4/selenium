@@ -37,6 +37,7 @@ require_once 'TestCasePublish.php';
 class Opusvier2861Test extends TestCasePublish {
 
     public function testDepositWithMissingModelDnbInstitute() {
+        $testing = $this->isApplicationEnvTesting();
         $this->disableScreenshots();
         
         $this->switchToGerman();
@@ -80,9 +81,15 @@ class Opusvier2861Test extends TestCasePublish {
         $this->waitForPageToLoad();
 
         $this->assertTextPresent('Anwendungsfehler');
-        
         $this->assertTextNotPresent('Opus_Model_NotFoundException');
-        $this->assertTextNotPresent('No Opus_Db_DnbInstitutes with id 5 in database.');        
+        $this->assertTextNotPresent('No Opus_Db_DnbInstitutes with id 5 in database.');
+        if (!$testing) {
+            $this->assertTextPresent('Es ist ein unerwarteter Fehler aufgetreten. Ihre Eingaben sind gelöscht. Bitte versuchen Sie es erneut oder wenden Sie sich an den Administrator.');
+        }
+        else {
+            $this->assertTextPresent('Application_Exception');
+            $this->assertTextPresent('publish_error_unexpected');
+        }
 
         $this->enableScreenshots();                
     }
