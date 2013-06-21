@@ -115,11 +115,11 @@ class Opusvier2852Test extends TestCasePublish {
         $this->assertTextPresent('Anwendungsfehler');
         $this->assertTextNotPresent('Publish_Model_FormIncorrectEnrichmentKeyException');
         if (!$testing) {
-            $this->assertTextPresent('Es ist ein unerwarteter Fehler aufgetreten. Ihre Eingaben sind gelöscht. Bitte versuchen Sie es erneut oder wenden Sie sich an den Administrator.');            
+            $this->assertTextPresent('Das Enrichmentfeld foobarbaz wurde noch nicht in der Administration angelegt und darf nicht verwendet werden.');
         }
         else {
             $this->assertTextPresent('Application_Exception');
-            $this->assertTextPresent('publish_error_unexpected');
+            $this->assertTextPresent('Das Enrichmentfeld foobarbaz wurde noch nicht in der Administration angelegt und darf nicht verwendet werden.');
         }
     }
 
