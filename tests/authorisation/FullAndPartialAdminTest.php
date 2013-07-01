@@ -95,7 +95,7 @@ class FullAndPartialAdminTest extends TestCaseAuthorisation {
         $this->switchToEnglish();
         $this->login("security6", "security6pwd");
         $this->openAndWait('/frontdoor/index/index/docId/92');
-        $this->assertElementPresent('//a[@id="admin-edit-document"]');
+        $this->assertElementPresent('//div[@id="actionboxContainer"]');
     }
 
 }
