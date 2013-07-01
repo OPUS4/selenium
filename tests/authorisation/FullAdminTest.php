@@ -92,11 +92,11 @@ class FullAdminTest extends TestCaseAuthorisation {
     /**
      * Prüft, ob fuer Nutzer mit vollem Zugriff auf Admin Modul der Edit Link in der Frontdoor angezeigt wird.
      */
-    public function testEditLinkInFrontdoorPresent() {
+    public function testActionBoxInFrontdoorPresent() {
         $this->switchToEnglish();
         $this->login("security1", "security1pwd");
         $this->openAndWait('/frontdoor/index/index/docId/92');
-        $this->assertElementPresent('//a[@id="admin-edit-document"]');
+        $this->assertElementPresent('//div[@id="actionboxContainer"]');
     }
 
 }
