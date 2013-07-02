@@ -48,9 +48,8 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
         $this->login("security8", "security8pwd");
         $this->openAndWait('/admin');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/licence")]');
-        $this->assertElementPresent('//a[contains(@href, "/admin/oailink")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/info/menu")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/documents")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/account")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/security")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/collectionroles")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/series")]');
@@ -58,7 +57,6 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
         $this->assertElementNotPresent('//a[contains(@href, "/admin/statistic")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/dnbinstitute")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/enrichmentkey")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/info")]');
         $this->assertElementNotPresent('//a[contains(@href, "/review")]');
     }
     
@@ -84,13 +82,13 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
     }
     
     /**
-     * Prüft, ob fuer Nutzer mit Zugriff auf die Verwaltung der Dokumente ein Edit Link in der Frontdoor angezeigt wird.
+     * Prüft, ob dem Nutzer die Actionbox für Administratoren angezeigt wird.
      */
     public function testEditLinkInFrontdoorPresent() {
         $this->switchToEnglish();
         $this->login("security8", "security8pwd");
         $this->openAndWait('/frontdoor/index/index/docId/92');
-        $this->assertElementPresent('//a[@id="admin-edit-document"]');
+        $this->assertElementPresent('//div[@id="actionboxContainer"]');
     }
     
     /**
@@ -109,7 +107,7 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
         $this->login("security8", "security8pwd");
         $this->openAndWait('/admin/collection/assign/document/92');
         $this->assertElementContainsText('//html/head/title', 'Assign Collection');
-        $this->assertElementContainsText('//html/body', 'Manage Collections');
+        $this->assertElementContainsText('//div[@id="breadcrumbsContainer"]', 'Assign Collection');
     }
     
     public function testNoAccessCollectionControllerShowAction() {
