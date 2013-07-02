@@ -63,10 +63,10 @@ class Regression2540Test extends TestCase {
         $this->open('/admin/collectionroles');
         $this->waitForPageToLoad();
 
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
+        $this->click("xpath=//table[@class='collections']/tbody/tr/th/a"); // klick Sammlungsnamen (1. Spalte)
         $this->waitForPageToLoad();
 
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
+        $this->click("xpath=//table[@class='collections']/tbody/tr/th/a"); // klick Sammlungsnamen (1. Spalte)
         $this->waitForPageToLoad();
 
         $this->type("id=Opus_Model_Filter-Name-1", "collfoobar");
