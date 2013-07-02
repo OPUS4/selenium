@@ -63,7 +63,7 @@ class CollectionsAdminTest extends TestCaseAuthorisation {
         $this->login("security9", "security9pwd");
         $this->openAndWait('/admin/collection/show/id/4');
         $this->assertElementContainsText('//html/head/title', 'List Collection Entries');
-        $this->assertElementContainsText('//div[@id="breadcrumbsContainer"]', 'List Collection Entries');
+        $this->assertElementContainsText('//div[@class="breadcrumbsContainer"]', 'List Collection Entries');
     }
     
     public function testNoAccessCollectionControllerAssignAction() {

@@ -107,7 +107,7 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
         $this->login("security8", "security8pwd");
         $this->openAndWait('/admin/collection/assign/document/92');
         $this->assertElementContainsText('//html/head/title', 'Assign Collection');
-        $this->assertElementContainsText('//div[@id="breadcrumbsContainer"]', 'Assign Collection');
+        $this->assertElementContainsText('//div[@class="breadcrumbsContainer"]', 'Assign Collection');
     }
     
     public function testNoAccessCollectionControllerShowAction() {
