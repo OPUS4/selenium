@@ -48,7 +48,7 @@ class TitleTest extends TestCase {
         
         $this->assertElementNotPresent('Document-Titles-Main-TitleMain1-Value');
 
-        $this->click('Document-Titles-Main-add');
+        $this->click('Document-Titles-Main-Add');
         $this->waitForPageToLoad();
 
         $this->assertElementPresent('Document-Titles-Main-TitleMain1-Value');
@@ -56,7 +56,7 @@ class TitleTest extends TestCase {
         $this->select('Document-Titles-Main-TitleMain1-Language', 'value=eng');
         $this->type('Document-Titles-Main-TitleMain1-Value', '0');
         
-        $this->click('Document-save');
+        $this->click('Document-ActionBox-Save');
         $this->waitForPageToLoad();
         
         $this->assertElementPresent('Document-Titles-Main-TitleMain1-Value');
