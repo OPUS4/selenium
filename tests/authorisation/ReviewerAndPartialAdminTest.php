@@ -58,9 +58,9 @@ class ReviewerAndPartialAdminTest extends TestCaseAuthorisation {
         $this->switchToEnglish();
         $this->login("security5", "security5pwd");
         $this->openAndWait('/admin');
-        $this->assertElementContainsText('//html/body', 'Review');
-        $this->assertElementContainsText('//html/body', 'Licence types');
-        $this->assertElementContainsText('//html/body', 'OAI Link Information');
+        $this->assertElementPresent('//a[contains(@href, "/review")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/licence")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/info/menu")]');
     }
     
     /**
@@ -90,7 +90,7 @@ class ReviewerAndPartialAdminTest extends TestCaseAuthorisation {
         $this->switchToEnglish();
         $this->login("security5", "security5pwd");
         $this->openAndWait('/admin/oailink');
-        $this->assertElementContainsText('//html/head/title', 'OAI Link Information');
+        $this->assertElementContainsText('//html/head/title', 'OAI Links');
     }
     
     /**
