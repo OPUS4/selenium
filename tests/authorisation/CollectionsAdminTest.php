@@ -48,15 +48,13 @@ class CollectionsAdminTest extends TestCaseAuthorisation {
         $this->login("security9", "security9pwd");
         $this->openAndWait('/admin');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/licence")]');
-        $this->assertElementPresent('//a[contains(@href, "/admin/menu/info")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/info/menu")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/documents")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/security")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/collectionroles")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/series")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/language")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/statistic")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/dnbinstitute")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/enrichmentkey")]');
         $this->assertElementNotPresent('//a[contains(@href, "/review")]');
     }
     
@@ -65,7 +63,7 @@ class CollectionsAdminTest extends TestCaseAuthorisation {
         $this->login("security9", "security9pwd");
         $this->openAndWait('/admin/collection/show/id/4');
         $this->assertElementContainsText('//html/head/title', 'List Collection Entries');
-        $this->assertElementContainsText('//div[@id="breadcrumbsContainer]', 'List Collection Entries');
+        $this->assertElementContainsText('//div[@id="breadcrumbsContainer"]', 'List Collection Entries');
     }
     
     public function testNoAccessCollectionControllerAssignAction() {
