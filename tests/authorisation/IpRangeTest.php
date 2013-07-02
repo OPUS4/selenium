@@ -63,7 +63,7 @@ class IpRangeTest extends TestCaseAuthorisation {
         $this->createIpRange('licenceadmin');
         $this->openAndWait('/admin');
         $this->assertElementPresent('//a[contains(@href, "/admin/licence")]');
-        $this->assertElementPresent('//a[contains(@href, "/admin/oailink")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/info/menu")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/documents")]');
         $this->removeIpRange();
     }
@@ -77,9 +77,9 @@ class IpRangeTest extends TestCaseAuthorisation {
         $this->login('security8', 'security8pwd');
         $this->openAndWait('/admin');
         $this->assertElementPresent('//a[contains(@href, "/admin/licence")]');
-        $this->assertElementPresent('//a[contains(@href, "/admin/oailink")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/info/menu")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/documents")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/account")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/language")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/security")]');
         $this->removeIpRange();
     }    
