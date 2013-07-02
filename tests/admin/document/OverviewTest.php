@@ -59,9 +59,9 @@ class OverviewTest extends TestCase {
         $this->openAndWait('/admin/document/index/id/146');
         
         // Information in Actionbox
-        $this->assertElementContainsText('//dd[@id="Document-ServerState"]', 'Freigegeben');
-        $this->assertElementContainsText('//dd[@id="Document-ServerDatePublished"]', '03.01.2012');
-        $this->assertElementPresent('//dd[@id="Document-ServerDateModified"]');
+        $this->assertElementContainsText('//*[@id="Document-ServerState"]/dd/ul/li[1]', 'Freigegeben');
+        $this->assertElementContainsText('//dd[@id="Document-ServerDatePublished-value"]', '03.01.2012');
+        $this->assertElementPresent('//dd[@id="Document-ServerDateModified-value"]');
         // TODO der Wert von ServerDateModified ändert sich jetzt bei jedem Testdurchlauf
         // $this->assertElementContainsText('//dd[@id="Document-ServerDateModified"]', '03.01.2012');
         
@@ -283,9 +283,9 @@ class OverviewTest extends TestCase {
         $this->openAndWait('/admin/document/index/id/146');
         
         // Information in Actionbox
-        $this->assertElementContainsText('//dd[@id="Document-ServerState"]', 'Published');
-        $this->assertElementContainsText('//dd[@id="Document-ServerDatePublished"]', '2012/01/03');
-        $this->assertElementPresent('//dd[@id="Document-ServerDateModified"]');
+        $this->assertElementContainsText('//*[@id="Document-ServerState"]/dd/ul/li[1]', 'Published');
+        $this->assertElementContainsText('//dd[@id="Document-ServerDatePublished-value"]', '2012/01/03');
+        $this->assertElementPresent('//dd[@id="Document-ServerDateModified-value"]');
         // TODO der Wert von ServerDateModified ändert sich jetzt bei jedem Testdurchlauf
         // $this->assertElementContainsText('//dd[@id="Document-ServerDateModified"]', '2012/01/03');
         
