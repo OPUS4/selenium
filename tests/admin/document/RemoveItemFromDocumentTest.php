@@ -189,7 +189,7 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->assertElementNotPresent('Document-Series-Series1-SeriesId');
         $this->assertElementContainsText('Document-Series-Series0-SeriesId', 'MySeries');
-        $this->assertElementContainsText('Document-Series-Series0-Number', '7');
+        $this->assertElementContainsText('Document-Series-Series0-SortOrder', '7');
 
         $this->afterTest();
     }

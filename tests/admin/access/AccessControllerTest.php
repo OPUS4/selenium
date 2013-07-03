@@ -137,7 +137,7 @@ class AccessControllerTest extends TestCase {
         $this->openAndWait('/admin/access/listmodule/roleid/16');
         
         $this->assertElementContainsText('//html/head/title', 'Edit user roles - access control');
-        $this->assertElementContainsText('////div[@id="content"]/div[@class="wrapper"]/h1', 'accesstest');
+        $this->assertElementContainsText('//*[@id="content"]//h1', 'accesstest');
 
         $this->click('cancel_button');
         $this->waitForPageToLoad();

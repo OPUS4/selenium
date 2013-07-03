@@ -34,6 +34,9 @@
 
 require_once 'TestCase.php';
 
+/**
+ * TODO Tests auf IDs umstellen, da die Tests sonst sehr empfindlich auf HTML Änderungen reagieren
+ */
 class Regression2540Test extends TestCase {
 
     public function testCreateCollectionRole() {
@@ -60,20 +63,15 @@ class Regression2540Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles');
 
-        $this->click("xpath=//table[@class='collections']/tbody/tr/th/a"); // klick Sammlungsnamen (1. Spalte)
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td/a"); // klick Sammlung einfügen (1. Spalte)
-        $this->waitForPageToLoad();
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/th/a"); // klick Sammlungsnamen (1. Spalte)
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td/a"); // klick Sammlung einfügen (1. Spalte)
 
         $this->type("id=Opus_Model_Filter-Name-1", "collfoobar");
         $this->type("id=Opus_Model_Filter-Number-1", "12345");
         $this->type("id=Opus_Model_Filter-OaiSubset-1", "collfoobar");
-        $this->click("submit");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("submit");
 
         $this->assertTextNotPresent('Insert successful');
         $this->assertTextPresent("Sammlungseintrag '12345 collfoobar' wurde erfolgreich angelegt.");
@@ -104,7 +102,7 @@ class Regression2540Test extends TestCase {
 
         $this->openAndWait('/admin/collectionroles');
 
-        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td/a");
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/th/a");
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr[2]/td[1]/a");
         $this->clickAndWait("submit");
 
@@ -122,11 +120,11 @@ class Regression2540Test extends TestCase {
         $this->open('/admin/collectionroles');
         $this->waitForPageToLoad();
 
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
+        $this->click("xpath=//table[@class='collections']/tbody/tr/th/a");
         $this->waitForPageToLoad();
 
         $this->chooseOkOnNextConfirmation();
-        $this->click("//table[@class='collections']/tbody/tr[2]/td[7]/a");
+        $this->click("//table[@class='collections']/tbody/tr[2]/td[6]/a");
         $this->assertConfirmationPresent("Sind Sie sicher?");
         $this->getConfirmation();
         $this->waitForPageToLoad();
@@ -134,7 +132,7 @@ class Regression2540Test extends TestCase {
         $this->assertTextNotPresent('Operation completed successfully.');
         $this->assertTextPresent("Sammlungseintrag '12345 collfoobar' wurde erfolgreich gelöscht.");
     }
-
+    
     /**
      * @depends testDeleteCollection
      */
@@ -146,7 +144,7 @@ class Regression2540Test extends TestCase {
         $this->waitForPageToLoad();
 
         $this->chooseOkOnNextConfirmation();
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td[7]/a");
+        $this->click("xpath=//table[@class='collections']/tbody/tr/td[6]/a");
         $this->assertConfirmationPresent("Sind Sie sicher?");
         $this->getConfirmation();
         $this->waitForPageToLoad();
