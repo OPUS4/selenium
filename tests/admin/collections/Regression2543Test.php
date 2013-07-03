@@ -35,19 +35,21 @@
 require_once 'TestCase.php';
 
 class Regression2543Test extends TestCase {
+    
+    const COL_ROLE_NAME = 'foobar2';
+    
+    const COL_NAME = 'collfoobar2';
 
     public function testCreateCollectionRole() {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles/new');
-        $this->waitForPageToLoad();
-
-        $this->type("id=Opus_Model_Filter-Name-1", "foobar");
-        $this->type("id=Opus_Model_Filter-OaiName-1", "foobar");
+        $this->openAndWait('/admin/collectionroles/new');
+        
+        $this->type("id=Opus_Model_Filter-Name-1", self::COL_ROLE_NAME);
+        $this->type("id=Opus_Model_Filter-OaiName-1", self::COL_ROLE_NAME);
         $this->select("id=Opus_Model_Filter-Position-1", "0");
-        $this->click("submit");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("submit");
 
         $this->assertTextPresent("Sammlung 'foobar' wurde erfolgreich angelegt.");
     }
@@ -59,22 +61,17 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles');
 
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/th/a");
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td/a");
 
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
-        $this->waitForPageToLoad();
-
-        $this->type("id=Opus_Model_Filter-Name-1", "collfoobar");
+        $this->type("id=Opus_Model_Filter-Name-1", self::COL_NAME);
         $this->type("id=Opus_Model_Filter-Number-1", "12345");
-        $this->type("id=Opus_Model_Filter-OaiSubset-1", "collfoobar");
-        $this->click("submit");
-        $this->waitForPageToLoad();
+        $this->type("id=Opus_Model_Filter-OaiSubset-1", self::COL_NAME);
+        $this->clickAndWait("submit");
 
-        $this->assertTextPresent("Sammlungseintrag '12345 collfoobar' wurde erfolgreich angelegt.");
+        $this->assertTextPresent("Sammlungseintrag '12345 " . self::COL_NAME ."' wurde erfolgreich angelegt.");
     }
 
     /**
@@ -84,20 +81,14 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles');
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles');
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td/a");
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td/a");
 
         $this->type("id=Opus_Model_Filter-Name-1", "collbaz");
         $this->type("id=Opus_Model_Filter-Number-1", "56789");
         $this->type("id=Opus_Model_Filter-OaiSubset-1", "collbaz");
-        $this->click("submit");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("submit");
 
         $this->assertTextPresent("Sammlungseintrag '56789 collbaz' wurde erfolgreich angelegt.");
     }
@@ -109,14 +100,9 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles');
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr[2]/td[3]/a");
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles');
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td/a");
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr[2]/td[3]/a");
 
         $this->assertTextNotPresent("Operation completed successfully.");
         $this->assertTextPresent("Sichtbarkeit des Sammlungseintrags '56789 collbaz' wurde erfolgreich geändert.");
@@ -129,14 +115,9 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles');
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr[2]/td[3]/a");
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles');
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td/a");
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr[2]/td[3]/a");
 
         $this->assertTextNotPresent("Operation completed successfully.");
         $this->assertTextPresent("Sichtbarkeit des Sammlungseintrags '56789 collbaz' wurde erfolgreich geändert.");
@@ -149,11 +130,8 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles');
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td[3]/a");
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles');
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td[@class='hide']/a");
 
         $this->assertTextNotPresent("Operation completed successfully.");
         $this->assertTextPresent("Sichtbarkeit der Sammlung 'foobar' wurde erfolgreich geändert.");
@@ -166,11 +144,8 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles');
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td[3]/a");
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles');
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td[2]/a");
 
         $this->assertTextNotPresent("Operation completed successfully.");
         $this->assertTextPresent("Sichtbarkeit der Sammlung 'foobar' wurde erfolgreich geändert.");
@@ -183,14 +158,9 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles');
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr[4]/td[4]/a");
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles');
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/th/a");
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr[4]/td[3]/a");
 
         $this->assertTextNotPresent("Operation completed successfully.");
         $this->assertTextPresent("Sammlungseintrag '12345 collfoobar' wurde erfolgreich verschoben.");
@@ -203,14 +173,9 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles');
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr[2]/td[5]/a");
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles');
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/th/a");
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr[2]/td[4]/a");
 
         $this->assertTextNotPresent("Operation completed successfully.");
         $this->assertTextPresent("Sammlungseintrag '12345 collfoobar' wurde erfolgreich verschoben.");
@@ -223,11 +188,8 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles');
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td[5]/a");
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles');
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td[4]/a");
 
         $this->assertTextNotPresent("Operation completed successfully.");
         $this->assertTextPresent("Sammlung 'foobar' wurde erfolgreich verschoben.");
@@ -240,11 +202,8 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles');
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr[2]/td[4]/a");
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles');
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr[2]/td[3]/a");
 
         $this->assertTextNotPresent("Operation completed successfully.");
         $this->assertTextPresent("Sammlung 'foobar' wurde erfolgreich verschoben.");
@@ -257,16 +216,15 @@ class Regression2543Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles');
 
         $this->chooseOkOnNextConfirmation();
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td[7]/a");
+        $this->click("xpath=//table[@class='collections']/tbody/tr/td[6]/a");
         $this->assertConfirmationPresent("Das zu löschende Element hat Unterelemente. Der Löschvorgang führt dazu, dass auch diese Elemente gelöscht werden. Wollen Sie den Löschvorgang wirklich durchführen?");
         $this->getConfirmation();
         $this->waitForPageToLoad();
 
-        $this->assertTextPresent("Sammlung 'foobar' wurde erfolgreich gelöscht.");
+        $this->assertTextPresent("Sammlung '" . self::COL_ROLE_NAME . "' wurde erfolgreich gelöscht.");
     }
 
 }
