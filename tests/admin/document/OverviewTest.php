@@ -77,7 +77,7 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-FirstName"]', 'John');
         $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-LastName"]', 'Doe');
         $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-Email"]', 'doe@example.org');
-        $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-AllowContact"]', 'E-Mail-Kontakt erlaubt');
+        $this->assertElementPresent('//*[@id="Document-Persons-author-AuthorPerson0-AllowContact"]');
 
         $this->assertElementContainsText('//*[@id="Document-Persons-editor-EditorPerson0-FirstName"]', 'Jane');
         $this->assertElementContainsText('//*[@id="Document-Persons-editor-EditorPerson0-LastName"]', 'Doe');
@@ -301,7 +301,7 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-FirstName"]', 'John');
         $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-LastName"]', 'Doe');
         $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-Email"]', 'doe@example.org');
-        $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-AllowContact"]', 'E-Mail contact allowed');
+        $this->assertElementPresent('//*[@id="Document-Persons-author-AuthorPerson0-AllowContact"]');
 
         $this->assertElementContainsText('//*[@id="Document-Persons-editor-EditorPerson0-FirstName"]', 'Jane');
         $this->assertElementContainsText('//*[@id="Document-Persons-editor-EditorPerson0-LastName"]', 'Doe');
