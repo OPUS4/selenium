@@ -93,7 +93,7 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
 
-        $this->assertElementContainsText('TitleMain0-element', 'COLN');
+        $this->assertElementContainsText('Document-Titles-Main-TitleMain0-Value', 'COLN');
 
         $this->afterTest();
     }
@@ -117,7 +117,7 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
 
-        $this->assertElementContainsText('TitleAbstract0-element', 'Lorem impsum.');
+        $this->assertElementContainsText('Document-Content-Abstracts-TitleAbstract0-Value', 'Lorem impsum.');
 
         $this->afterTest();
     }
@@ -141,8 +141,8 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
 
-        $this->assertElementContainsText('Identifier1-element', 'Uuid');
-        $this->assertElementContainsText('Identifier1-element', '123');
+        $this->assertElementContainsText('Document-Identifiers-Identifier1-Type', 'Uuid');
+        $this->assertElementContainsText('Document-Identifiers-Identifier1-Value', '123');
 
         $this->afterTest();
     }
@@ -187,9 +187,9 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
 
-        $this->assertElementNotPresent('Series1-element');
-        $this->assertElementContainsText('Series0-element', 'MySeries');
-        $this->assertElementContainsText('Series0-element', '7');
+        $this->assertElementNotPresent('Document-Series-Series1-SeriesId');
+        $this->assertElementContainsText('Document-Series-Series0-SeriesId', 'MySeries');
+        $this->assertElementContainsText('Document-Series-Series0-Number', '7');
 
         $this->afterTest();
     }
@@ -211,9 +211,9 @@ class RemoveItemFromDocumentTest extends TestCase {
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
         
-        $this->assertElementNotPresent('Patent1-element');
-        $this->assertElementContainsText('Patent0-element', 'The foo machine.');
-        $this->assertElementContainsText('Patent0-element', '1234');
+        $this->assertElementNotPresent('Document-Patents-Patent1-Number'); // nur noch ein Patent
+        $this->assertElementContainsText('Document-Patents-Patent0-Application', 'The foo machine.');
+        $this->assertElementContainsText('Document-Patents-Patent0-Number', '1234');
 
         $this->afterTest();
     }
@@ -235,9 +235,9 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
-        $this->assertElementNotPresent('Note1-element');
-        $this->assertElementContainsText('Note0-element', 'Für die Öffentlichkeit');
-        $this->assertElementContainsText('Note0-element', 'Public');
+        $this->assertElementNotPresent('Document-Notes-Note1-Message'); // Nur noch eine Notiz
+        $this->assertElementContainsText('Document-Notes-Note0-Message', 'Für die Öffentlichkeit');
+        $this->assertElementContainsText('Document-Notes-Note0-Visibility', 'Public');
 
         $this->afterTest();
     }
@@ -259,9 +259,9 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
-        $this->assertElementNotPresent('Enrichment1-element');
-        $this->assertElementContainsText('Enrichment0-element', 'validtestkey');
-        $this->assertElementContainsText('Enrichment0-element', 'Köln');
+        $this->assertElementNotPresent('Document-Enrichments-Enrichment1-Value');
+        $this->assertElementContainsText('Document-Enrichments-Enrichment0-KeyName', 'validtestkey');
+        $this->assertElementContainsText('Document-Enrichments-Enrichment0-Value', 'Köln');
 
         $this->afterTest();
     }

@@ -47,8 +47,7 @@ class SeriesTest extends TestCase {
         $this->type('Opus_Series-Number', 'III');
         $this->type('Opus_Series-SortOrder', '8');
         $this->type('Opus_Title-Series', 'value=2');
-        $this->click('Opus_Series-submit_add');
-        $this->waitForPageToLoad('30000');
+        $this->clickAndWait('Opus_Series-submit_add');
         $this->assertElementValueEquals('Series-0-Number', 'III');
         $this->assertElementValueEquals('Series-0-Series', '2');
         $this->assertElementValueEquals('Series-0-Number', 'III');
@@ -84,16 +83,14 @@ class SeriesTest extends TestCase {
 
         $this->assertElementValueEquals('Document-Series-Series2-SortOrder', '1');
         $this->type('Document-Series-Series2-SortOrder', '2');
-        $this->click('Document-save');
-        $this->waitForPageToLoad('30000');
+        $this->clickAndWait('Document-ActionBox-Save');
 
         $this->openAndWait('/admin/document/edit/id/92');
 
         $this->assertElementValueEquals('Document-Series-Series2-SortOrder', '2');
 
         $this->type('Document-Series-Series2-SortOrder', '1');
-        $this->click('Document-save');
-        $this->waitForPageToLoad('30000');
+        $this->click('Document-ActionBox-Save');
 
         $this->openAndWait('/admin/document/edit/id/92');
 

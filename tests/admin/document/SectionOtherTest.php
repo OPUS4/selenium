@@ -48,8 +48,7 @@ class SectionOtherTest extends TestCase {
         $this->type('Document-Bibliographic-PageFirst', '0');
         $this->type('Document-Bibliographic-PageLast', '0');
         
-        $this->click('Document-save');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('Document-ActionBox-Save');
         
         $this->assertElementPresent('Document-Bibliographic-PageFirst');
         $this->assertElementContainsText('Document-Bibliographic-PageFirst', '0');

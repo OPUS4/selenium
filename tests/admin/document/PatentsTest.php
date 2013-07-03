@@ -49,8 +49,7 @@ class PatentsTest extends TestCase {
         
         $this->assertElementNotPresent('Document-Patents-Patent0-Id'); // keine Patente
         
-        $this->click('Document-Patents-add');
-        $this->waitForPageToLoad(30000);
+        $this->clickAndWait('Document-Patents-Add');
         
         $this->assertElementPresent('Document-Patents-Patent0-Id');
         $this->assertElementNotPresent('Document-Patents-Patent1-Id'); // ein Patent Formular vorhanden
@@ -61,8 +60,8 @@ class PatentsTest extends TestCase {
         $this->type('Document-Patents-Patent0-DateGranted', '2003/10/21');
         $this->type('Document-Patents-Patent0-Countries', 'Deutschland');
 
-        $this->click('Document-save');
-        $this->waitForPageToLoad(30000);
+        $this->clickAndWait('Document-ActionBox-Save');
+
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
         
         $this->assertElementContainsText('Document-Patents-Patent0-Number', '1234');
@@ -75,13 +74,11 @@ class PatentsTest extends TestCase {
         
         $this->assertElementPresent('Document-Patents-Patent0-Number');
         
-        $this->click('Document-Patents-Patent0-Remove');
-        $this->waitForPageToLoad(30000);
+        $this->clickAndWait('Document-Patents-Patent0-Remove');
         
         $this->assertElementNotPresent('Document-Patents-Patent0-Number');
         
-        $this->click('Document-save');
-        $this->waitForPageToLoad(30000);
+        $this->clickAndWait('Document-ActionBox-Save');
         
         $this->assertTextPresent(self::SUCCESS_MESSAGE);
         $this->assertElementNotPresent('Document-Patents-Patent0-Number');

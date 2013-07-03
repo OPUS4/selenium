@@ -35,8 +35,6 @@ require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
 class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
     
-    // public $name = "test";
-
     protected $browserUrl = 'http://opus4web.zib.de';
     protected $baseUrl = '/opus4-selenium';
     
@@ -131,6 +129,11 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
 
     public function openAndWait($path) {
         $this->open($path);
+        $this->waitForPageToLoad();
+    }
+    
+    public function clickAndWait($path) {
+        $this->click($path);
         $this->waitForPageToLoad();
     }
 

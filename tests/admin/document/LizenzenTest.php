@@ -46,8 +46,7 @@ class LizenzenTest extends TestCase {
         $this->assertElementContainsText('//div[@id="docinfo"]', '250');
         
         $this->check('Document-Licences-licence4');
-        $this->click('Document-save');
-        $this->waitForPageToLoad(30000);
+        $this->clickAndWait('Document-ActionBox-Save');
         
         $this->assertElementPresent('Document-Licences-licence4');
         $this->assertElementNotPresent('Document-Licences-licence20');
@@ -55,8 +54,7 @@ class LizenzenTest extends TestCase {
         $this->openAndWait('/admin/document/edit/id/250');
         
         $this->check('Document-Licences-licence20');
-        $this->click('Document-save');
-        $this->waitForPageToLoad(30000);
+        $this->clickAndWait('Document-ActionBox-Save');
         
         $this->assertElementPresent('Document-Licences-licence4');
         $this->assertElementPresent('Document-Licences-licence20');
@@ -64,8 +62,7 @@ class LizenzenTest extends TestCase {
         $this->openAndWait('/admin/document/edit/id/250');
         
         $this->uncheck('Document-Licences-licence4');
-        $this->click('Document-save');
-        $this->waitForPageToLoad(30000);
+        $this->clickAndWait('Document-ActionBox-Save');
         
         $this->assertElementNotPresent('Document-Licences-licence4');
         $this->assertElementPresent('Document-Licences-licence20');

@@ -74,38 +74,38 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//*[@id="Document-General-CompletedYear"]', '2009');
         
         // Persons
-        $this->assertElementContainsText('//*[@id="Document-Persons-author-Person0-FirstName"]', 'John');
-        $this->assertElementContainsText('//*[@id="Document-Persons-author-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-author-Person0-Email"]', 'doe@example.org');
-        $this->assertElementContainsText('//*[@id="Document-Persons-author-Person0-AllowContact"]', 'E-Mail-Kontakt erlaubt');
+        $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-FirstName"]', 'John');
+        $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-Email"]', 'doe@example.org');
+        $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-AllowContact"]', 'E-Mail-Kontakt erlaubt');
 
-        $this->assertElementContainsText('//*[@id="Document-Persons-editor-Person0-FirstName"]', 'Jane');
-        $this->assertElementContainsText('//*[@id="Document-Persons-editor-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-editor-Person0-AcademicTitle"]', 'PhD');
+        $this->assertElementContainsText('//*[@id="Document-Persons-editor-EditorPerson0-FirstName"]', 'Jane');
+        $this->assertElementContainsText('//*[@id="Document-Persons-editor-EditorPerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-editor-EditorPerson0-AcademicTitle"]', 'PhD');
         
-        $this->assertElementContainsText('//*[@id="Document-Persons-translator-Person0-FirstName"]', 'Jane');
-        $this->assertElementContainsText('//*[@id="Document-Persons-translator-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-translator-Person0-AcademicTitle"]', 'PhD');
+        $this->assertElementContainsText('//*[@id="Document-Persons-translator-TranslatorPerson0-FirstName"]', 'Jane');
+        $this->assertElementContainsText('//*[@id="Document-Persons-translator-TranslatorPerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-translator-TranslatorPerson0-AcademicTitle"]', 'PhD');
         
-        $this->assertElementContainsText('//*[@id="Document-Persons-contributor-Person0-FirstName"]', 'Jane');
-        $this->assertElementContainsText('//*[@id="Document-Persons-contributor-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-contributor-Person0-AcademicTitle"]', 'PhD');
+        $this->assertElementContainsText('//*[@id="Document-Persons-contributor-ContributorPerson0-FirstName"]', 'Jane');
+        $this->assertElementContainsText('//*[@id="Document-Persons-contributor-ContributorPerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-contributor-ContributorPerson0-AcademicTitle"]', 'PhD');
         
-        $this->assertElementContainsText('//*[@id="Document-Persons-other-Person0-FirstName"]', 'Jane');
-        $this->assertElementContainsText('//*[@id="Document-Persons-other-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-other-Person0-AcademicTitle"]', 'PhD');
+        $this->assertElementContainsText('//*[@id="Document-Persons-other-OtherPerson0-FirstName"]', 'Jane');
+        $this->assertElementContainsText('//*[@id="Document-Persons-other-OtherPerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-other-OtherPerson0-AcademicTitle"]', 'PhD');
         
-        $this->assertElementContainsText('//*[@id="Document-Persons-advisor-Person0-FirstName"]', 'Jane');
-        $this->assertElementContainsText('//*[@id="Document-Persons-advisor-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-advisor-Person0-AcademicTitle"]', 'PhD');
+        $this->assertElementContainsText('//*[@id="Document-Persons-advisor-AdvisorPerson0-FirstName"]', 'Jane');
+        $this->assertElementContainsText('//*[@id="Document-Persons-advisor-AdvisorPerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-advisor-AdvisorPerson0-AcademicTitle"]', 'PhD');
         
-        $this->assertElementContainsText('//*[@id="Document-Persons-referee-Person0-FirstName"]', 'Jane');
-        $this->assertElementContainsText('//*[@id="Document-Persons-referee-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-referee-Person0-AcademicTitle"]', 'PhD');
+        $this->assertElementContainsText('//*[@id="Document-Persons-referee-RefereePerson0-FirstName"]', 'Jane');
+        $this->assertElementContainsText('//*[@id="Document-Persons-referee-RefereePerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-referee-RefereePerson0-AcademicTitle"]', 'PhD');
         
-        $this->assertElementContainsText('//*[@id="Document-Persons-submitter-Person0-FirstName"]', 'Jane');
-        $this->assertElementContainsText('//*[@id="Document-Persons-submitter-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-submitter-Person0-AcademicTitle"]', 'PhD');
+        $this->assertElementContainsText('//*[@id="Document-Persons-submitter-SubmitterPerson0-FirstName"]', 'Jane');
+        $this->assertElementContainsText('//*[@id="Document-Persons-submitter-SubmitterPerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-submitter-SubmitterPerson0-AcademicTitle"]', 'PhD');
         
         // Titles
         $this->assertElementContainsText('//*[@id="Document-Titles-Main-TitleMain0-Language"]', 'Deutsch');
@@ -298,38 +298,38 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//*[@id="Document-General-CompletedYear"]', '2009');
         
         // Persons
-        $this->assertElementContainsText('//*[@id="Document-Persons-author-Person0-FirstName"]', 'John');
-        $this->assertElementContainsText('//*[@id="Document-Persons-author-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-author-Person0-Email"]', 'doe@example.org');
-        $this->assertElementContainsText('//*[@id="Document-Persons-author-Person0-AllowContact"]', 'E-Mail contact allowed');
+        $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-FirstName"]', 'John');
+        $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-Email"]', 'doe@example.org');
+        $this->assertElementContainsText('//*[@id="Document-Persons-author-AuthorPerson0-AllowContact"]', 'E-Mail contact allowed');
 
-        $this->assertElementContainsText('//*[@id="Document-Persons-editor-Person0-FirstName"]', 'Jane');
-        $this->assertElementContainsText('//*[@id="Document-Persons-editor-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-editor-Person0-AcademicTitle"]', 'PhD');
+        $this->assertElementContainsText('//*[@id="Document-Persons-editor-EditorPerson0-FirstName"]', 'Jane');
+        $this->assertElementContainsText('//*[@id="Document-Persons-editor-EditorPerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-editor-EditorPerson0-AcademicTitle"]', 'PhD');
         
-        $this->assertElementContainsText('//*[@id="Document-Persons-translator-Person0-FirstName"]', 'Jane');
-        $this->assertElementContainsText('//*[@id="Document-Persons-translator-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-translator-Person0-AcademicTitle"]', 'PhD');
+        $this->assertElementContainsText('//*[@id="Document-Persons-translator-TranslatorPerson0-FirstName"]', 'Jane');
+        $this->assertElementContainsText('//*[@id="Document-Persons-translator-TranslatorPerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-translator-TranslatorPerson0-AcademicTitle"]', 'PhD');
         
-        $this->assertElementContainsText('//*[@id="Document-Persons-contributor-Person0-FirstName"]', 'Jane');
-        $this->assertElementContainsText('//*[@id="Document-Persons-contributor-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-contributor-Person0-AcademicTitle"]', 'PhD');
+        $this->assertElementContainsText('//*[@id="Document-Persons-contributor-ContributorPerson0-FirstName"]', 'Jane');
+        $this->assertElementContainsText('//*[@id="Document-Persons-contributor-ContributorPerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-contributor-ContributorPerson0-AcademicTitle"]', 'PhD');
         
-        $this->assertElementContainsText('//*[@id="Document-Persons-other-Person0-FirstName"]', 'Jane');
-        $this->assertElementContainsText('//*[@id="Document-Persons-other-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-other-Person0-AcademicTitle"]', 'PhD');
+        $this->assertElementContainsText('//*[@id="Document-Persons-other-OtherPerson0-FirstName"]', 'Jane');
+        $this->assertElementContainsText('//*[@id="Document-Persons-other-OtherPerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-other-OtherPerson0-AcademicTitle"]', 'PhD');
         
-        $this->assertElementContainsText('//*[@id="Document-Persons-advisor-Person0-FirstName"]', 'Jane');
-        $this->assertElementContainsText('//*[@id="Document-Persons-advisor-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-advisor-Person0-AcademicTitle"]', 'PhD');
+        $this->assertElementContainsText('//*[@id="Document-Persons-advisor-AdvisorPerson0-FirstName"]', 'Jane');
+        $this->assertElementContainsText('//*[@id="Document-Persons-advisor-AdvisorPerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-advisor-AdvisorPerson0-AcademicTitle"]', 'PhD');
         
-        $this->assertElementContainsText('//*[@id="Document-Persons-referee-Person0-FirstName"]', 'Jane');
-        $this->assertElementContainsText('//*[@id="Document-Persons-referee-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-referee-Person0-AcademicTitle"]', 'PhD');
+        $this->assertElementContainsText('//*[@id="Document-Persons-referee-RefereePerson0-FirstName"]', 'Jane');
+        $this->assertElementContainsText('//*[@id="Document-Persons-referee-RefereePerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-referee-RefereePerson0-AcademicTitle"]', 'PhD');
         
-        $this->assertElementContainsText('//*[@id="Document-Persons-submitter-Person0-FirstName"]', 'Jane');
-        $this->assertElementContainsText('//*[@id="Document-Persons-submitter-Person0-LastName"]', 'Doe');
-        $this->assertElementContainsText('//*[@id="Document-Persons-submitter-Person0-AcademicTitle"]', 'PhD');
+        $this->assertElementContainsText('//*[@id="Document-Persons-submitter-SubmitterPerson0-FirstName"]', 'Jane');
+        $this->assertElementContainsText('//*[@id="Document-Persons-submitter-SubmitterPerson0-LastName"]', 'Doe');
+        $this->assertElementContainsText('//*[@id="Document-Persons-submitter-SubmitterPerson0-AcademicTitle"]', 'PhD');
         
         // Titles
         $this->assertElementContainsText('//*[@id="Document-Titles-Main-TitleMain0-Language"]', 'German');

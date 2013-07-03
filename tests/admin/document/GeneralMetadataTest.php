@@ -51,8 +51,7 @@ class GeneralMetadataTest extends TestCase {
         $this->type('Document-General-PublishedYear', '2001');
         $this->type('Document-General-CompletedDate', '1992/06/21');
         $this->type('Document-General-CompletedYear', '2002');
-        $this->click('Document-save');
-        $this->waitForPageToLoad(30000);
+        $this->clickAndWait('Document-ActionBox-Save');
 
         $this->assertElementContainsText('Document-General-Language', 'English');
         $this->assertElementContainsText('Document-General-Type', 'Master\'s Thesis' );
@@ -69,8 +68,7 @@ class GeneralMetadataTest extends TestCase {
         $this->type('Document-General-PublishedYear', '2005');
         $this->type('Document-General-CompletedDate', '1990/06/21');
         $this->type('Document-General-CompletedYear', '');
-        $this->click('Document-save');
-        $this->waitForPageToLoad(30000);
+        $this->clickAndWait('Document-ActionBox-Save');
 
         $this->assertElementContainsText('Document-General-Language', 'German');
         $this->assertElementContainsText('Document-General-Type', 'Article' );

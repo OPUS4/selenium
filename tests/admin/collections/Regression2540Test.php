@@ -86,14 +86,10 @@ class Regression2540Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles');
 
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td[2]/a");
-        $this->waitForPageToLoad();
-
-        $this->click("submit");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td[1]/a");
+        $this->clickAndWait("submit");
 
         $this->assertTextNotPresent("Collection role 'foobar' successfully edited.");
         $this->assertTextPresent("Sammlung 'foobar' wurde erfolgreich bearbeitet.");
@@ -106,17 +102,11 @@ class Regression2540Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles');
 
-        $this->click("xpath=//table[@class='collections']/tbody/tr/td/a");
-        $this->waitForPageToLoad();
-
-        $this->click("xpath=//table[@class='collections']/tbody/tr[2]/td[2]/a");
-        $this->waitForPageToLoad();
-
-        $this->click("submit");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td/a");
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr[2]/td[1]/a");
+        $this->clickAndWait("submit");
 
         $this->assertTextNotPresent("Edit successful");
         $this->assertTextPresent("Sammlungseintrag '12345 collfoobar' wurde erfolgreich bearbeitet.");
