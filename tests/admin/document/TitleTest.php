@@ -36,6 +36,9 @@ require_once 'TestCase.php';
 
 class TitleTest extends TestCase {
 
+    const SUCCESS_MESSAGE = 'Changes successfully saved.';
+
+    
     /**
      * Test for OPUSVIER-2172.
      */
@@ -108,6 +111,31 @@ class TitleTest extends TestCase {
         $this->assertElementPresent('xpath=//div[@id="Document-Titles-Main-TitleMain2-Value-element"]/ul/li');
         $this->assertElementContainsText('xpath=//div[@id="Document-Titles-Main-TitleMain2-Value-element"]/ul/li',
                 'Value is required and can\'t be empty.');   
+    }
+    
+    public function testAddTitle() {
+        $this->switchToEnglish();
+        $this->login();
+        
+        $this->openAndWait('/admin/document/edit/id/250');
+        
+        $this->assertElementPresent('Document-Titles-Main-TitleMain0-Value');
+        $this->assertElementValueEquals('Document-Titles-Main-TitleMain0-Language', 'deu');
+        $this->assertElementPresent('Document-Titles-Main-Add');
+        
+        $this->clickAndWait('Document-Titles-Main-Add');
+        
+        $this->assertElementPresent('Document-Titles-Main-TitleMain1-Language');
+        $this->select('Document-Titles-Main-TitleMain1-Language', 'English');
+        $this->type('Document-Titles-Main-TitleMain1-Value', 'Title 2');
+        
+        $this->clickAndWait('Document-ActionBox-Save');
+        
+        $this->assertElementContainsText('//*[@id="content"]/div[@class="messages"]/div[@class="notice"]', 
+                self::SUCCESS_MESSAGE);
+
+        $this->assertElementPresent('Document-Titles-Main-TitleMain1-Value');
+        $this->assertElementContainsText('Document-Titles-Main-TitleMain1-Value', 'Title 2');
     }
 
 }
