@@ -76,6 +76,9 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->afterTest();
     }
 
+    /**
+     * TODO notwendigkeit zum setzen der Sprache eliminieren
+     */
     public function testRemoveTitle() {
         $this->beforeTest();
 
@@ -87,6 +90,7 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->waitForPageToLoad();
 
         $this->assertElementValueEquals('Document-Titles-Main-TitleMain0-Value', 'COLN');
+        $this->select('Document-Titles-Main-TitleMain0-Language', 'German'); // muss Titel in Dokumentsprache geben
         
         $this->click('Document-ActionBox-Save');
         $this->waitForPageToLoad();

@@ -36,6 +36,9 @@ require_once 'TestCase.php';
 
 class GeneralMetadataTest extends TestCase {
     
+    /**
+     * TODO notwendigkeit zum setzen der Sprache eliminieren
+     */
     public function testModifyGeneralMetadata() {
         $this->switchToEnglish();
         $this->login();
@@ -51,6 +54,7 @@ class GeneralMetadataTest extends TestCase {
         $this->type('Document-General-PublishedYear', '2001');
         $this->type('Document-General-CompletedDate', '1992/06/21');
         $this->type('Document-General-CompletedYear', '2002');
+        $this->select('Document-Titles-Main-TitleMain0-Language', 'English'); // Must match Document-General-Language
         $this->clickAndWait('Document-ActionBox-Save');
 
         $this->assertElementContainsText('Document-General-Language', 'English');
@@ -68,6 +72,7 @@ class GeneralMetadataTest extends TestCase {
         $this->type('Document-General-PublishedYear', '2005');
         $this->type('Document-General-CompletedDate', '1990/06/21');
         $this->type('Document-General-CompletedYear', '');
+        $this->select('Document-Titles-Main-TitleMain0-Language', 'German'); // Must match Document-General-Language
         $this->clickAndWait('Document-ActionBox-Save');
 
         $this->assertElementContainsText('Document-General-Language', 'German');
