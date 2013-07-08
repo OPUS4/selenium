@@ -126,7 +126,7 @@ class TitleTest extends TestCase {
         $this->clickAndWait('Document-Titles-Main-Add');
         
         $this->assertElementPresent('Document-Titles-Main-TitleMain1-Language');
-        $this->select('Document-Titles-Main-TitleMain1-Language', 'English');
+        $this->select('Document-Titles-Main-TitleMain1-Language', 'Spanish');
         $this->type('Document-Titles-Main-TitleMain1-Value', 'Title 2');
         
         $this->clickAndWait('Document-ActionBox-Save');
@@ -135,6 +135,7 @@ class TitleTest extends TestCase {
                 self::SUCCESS_MESSAGE);
 
         $this->assertElementPresent('Document-Titles-Main-TitleMain1-Value');
+        $this->assertElementContainsText('Document-Titles-Main-TitleMain1-Language', 'Spanish');
         $this->assertElementContainsText('Document-Titles-Main-TitleMain1-Value', 'Title 2');
     }
 
