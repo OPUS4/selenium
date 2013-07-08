@@ -63,5 +63,51 @@ class TitleTest extends TestCase {
         $this->assertElementContainsText('Document-Titles-Main-TitleMain1-Language', 'English');
         $this->assertElementContainsText('Document-Titles-Main-TitleMain1-Value', '0');
     }
+    
+    public function testTitleValidation() {
+        $this->switchToEnglish();
+        $this->login();
+        
+        $this->openAndWait('/admin/document/edit/id/250');
+        
+        $this->assertElementPresent('Document-Titles-Main-TitleMain0-Value');
+        $this->assertElementValueEquals('Document-Titles-Main-TitleMain0-Language', 'deu');
+        $this->assertElementPresent('Document-Titles-Main-Add');
+        
+        $this->clickAndWait('Document-Titles-Main-Add');
+        
+        $this->assertElementPresent('Document-Titles-Main-TitleMain1-Language');
+        
+        $this->clickAndWait('Document-Titles-Main-Add');
+        
+        $this->assertElementPresent('Document-Titles-Main-TitleMain2-Language');
+        
+        $this->select('Document-General-Language', 'Russian');
+        $this->select('Document-Titles-Main-TitleMain1-Language', 'German');
+        $this->type('Document-Titles-Main-TitleMain1-Value', 'Titel 2');
+        $this->select('Document-Titles-Main-TitleMain2-Language', 'English');
+        
+        $this->clickAndWait('Document-ActionBox-Save');
+        
+        // Globale Validerungsfehler-Nachricht
+        $this->assertElementPresent('xpath=//div[@class="messagesContainer"]/div[@class="messages"]');
+        $this->assertElementContainsText('xpath=//div[@class="messagesContainer"]/div[@class="messages"]', 
+                'Document cannot be saved, because some input is not valid.');
+        
+        // Fehlermeldung für fehlenden Titel in Russisch (Dokumentensprache)
+        $this->assertElementPresent('xpath=//ul[@class="form-errors"]/li/ul[@class="errors"]/li');
+        $this->assertElementContainsText('xpath=//ul[@class="form-errors"]/li/ul[@class="errors"]/li', 
+                'A title in the document language \'Russian\' is required.');
+        
+        // Fehlermeldung für zweiten Titel in Deutsch
+        $this->assertElementPresent('xpath=//*[@id="Document-Titles-Main-TitleMain1-Language-element"]/ul/li');
+        $this->assertElementContainsText('xpath=//*[@id="Document-Titles-Main-TitleMain1-Language-element"]/ul/li',
+                'Languages can only be used once.');
+
+        // Fehlermeldung für leeren Titel
+        $this->assertElementPresent('xpath=//div[@id="Document-Titles-Main-TitleMain2-Value-element"]/ul/li');
+        $this->assertElementContainsText('xpath=//div[@id="Document-Titles-Main-TitleMain2-Value-element"]/ul/li',
+                'Value is required and can\'t be empty.');   
+    }
 
 }
