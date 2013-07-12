@@ -56,13 +56,13 @@ class RemoveItemFromDocumentTest extends TestCase {
         $this->openAndWait('/admin/document/edit/id/200');
 
         // Check correct page is shown
-        $this->assertElementValueEquals('Document-Persons-author-AuthorPerson0-PersonId', '301');
+        $this->assertElementValueEquals('Document-Persons-author-PersonAuthor0-PersonId', '301');
 
-        $this->click('Document-Persons-author-AuthorPerson0-Remove');
+        $this->click('Document-Persons-author-PersonAuthor0-Remove');
         $this->waitForPageToLoad();
 
         // Check author has been removed
-        $this->assertElementNotPresent('Document-Persons-author-AuthorPerson0-PersonId'); // Keine Autoren übrig
+        $this->assertElementNotPresent('Document-Persons-author-PersonAuthor0-PersonId'); // Keine Autoren übrig
         
         // Save document
         $this->click('Document-ActionBox-Save');
