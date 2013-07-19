@@ -110,7 +110,8 @@ class AdministratorRoleTest extends TestCaseAuthorisation {
     public function testAccessSetupModuleHelpPage() {
         $this->loginAsSuperUser();
         $this->openAndWait('/setup/help-page');
-        $this->assertElementContainsText('//html/head/title', 'Edit FAQ');
+        $this->assertTextPresent('Please make sure that the web server has write access to the respective directory.');
+        $this->assertElementContainsText('//*[@id="content"]/div[3]/a', 'Back');
     }
     
         
