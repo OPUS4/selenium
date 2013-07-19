@@ -54,10 +54,9 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
         $this->assertElementNotPresent('//a[contains(@href, "/admin/collectionroles")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/series")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/language")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/statistic")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/dnbinstitute")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/enrichmentkey")]');
         $this->assertElementNotPresent('//a[contains(@href, "/review")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/setup")]');
     }
     
     /**

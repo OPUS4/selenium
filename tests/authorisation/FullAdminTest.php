@@ -54,8 +54,9 @@ class FullAdminTest extends TestCaseAuthorisation {
         $this->assertElementPresent('//a[contains(@href, "/admin/series")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/language")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/dnbinstitute")]');
-        $this->assertElementPresent('//a[contains(@href, "/admin/info")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/info")]');        
         $this->assertElementNotPresent('//a[contains(@href, "/review")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/setup")]');
     }
     
     /**
@@ -88,7 +89,48 @@ class FullAdminTest extends TestCaseAuthorisation {
         $this->assertElementContainsText('//html/head/title', 'Login');
         $this->assertElementContainsText('//html/body', 'Logout security1');
     }
+        
+    /**
+     * Voller Zugriff auf Admin Modul schließt nicht Zugriff auf Setup Modul mit ein.
+     */
+    public function testNoAccessSetupModuleTranslations() {
+        $this->switchToEnglish();
+        $this->login("security1", "security1pwd");
+        $this->openAndWait('/setup/language');
+        $this->assertElementContainsText('//html/head/title', 'Login');
+        $this->assertElementContainsText('//html/body', 'Logout security1');
+    }
+
+    /**
+     * Voller Zugriff auf Admin Modul schließt nicht Zugriff auf Setup Modul mit ein.
+     */
+    public function testNoAccessSetupModuleStaticPage() {
+        $this->switchToEnglish();
+        $this->login("security1", "security1pwd");
+        $this->openAndWait('/setup/static-page');
+        $this->assertElementContainsText('//html/head/title', 'Login');
+        $this->assertElementContainsText('//html/body', 'Logout security1');
+    }
+
+    /**
+     * Voller Zugriff auf Admin Modul schließt nicht Zugriff auf Setup Modul mit ein.
+     */
+    public function testNoAccessSetupModuleHelpPage() {
+        $this->switchToEnglish();
+        $this->login("security1", "security1pwd");
+        $this->openAndWait('/setup/help-page');
+        $this->assertElementContainsText('//html/head/title', 'Login');
+        $this->assertElementContainsText('//html/body', 'Logout security1');
+    }    
     
+    public function testNoAccessSetupMenu() {
+        $this->switchToEnglish();
+        $this->login("security1", "security1pwd");
+        $this->openAndWait('/admin/setup');
+        $this->assertElementContainsText('//html/head/title', 'Login');
+        $this->assertElementContainsText('//html/body', 'Logout security1');
+    }    
+        
     /**
      * Prüft, ob fuer Nutzer mit vollem Zugriff auf Admin Modul der Edit Link in der Frontdoor angezeigt wird.
      */

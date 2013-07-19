@@ -55,6 +55,7 @@ class LicencesAdminTest extends TestCaseAuthorisation {
         $this->assertElementNotPresent('//a[contains(@href, "/admin/language")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/dnbinstitute")]');
         $this->assertElementNotPresent('//a[contains(@href, "/review")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/setup")]');
     }
     
     /**

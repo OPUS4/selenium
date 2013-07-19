@@ -55,7 +55,8 @@ class FullAndPartialAdminTest extends TestCaseAuthorisation {
         $this->assertElementPresent('//a[contains(@href, "/admin/language")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/dnbinstitute")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/info")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/review")]');        
+        $this->assertElementNotPresent('//a[contains(@href, "/review")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/setup")]');
     }
     
     /**

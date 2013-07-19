@@ -56,6 +56,7 @@ class SecurityAdminTest extends TestCaseAuthorisation {
         $this->assertElementNotPresent('//a[contains(@href, "/admin/dnbinstitute")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/info")]'); // Untermenü für Informationen
         $this->assertElementNotPresent('//a[contains(@href, "/review")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/setup")]');
     }
     
     public function testAccessAccountController() {
