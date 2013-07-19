@@ -38,6 +38,10 @@ require_once 'TestCase.php';
  * Base class for authorisation tests
  */
 class TestCaseAuthorisation extends TestCase {
+    
+    protected $username;
+    
+    protected $password;
 
     public function createUser($name, $password) {
         $this->login();
@@ -87,6 +91,20 @@ class TestCaseAuthorisation extends TestCase {
         $this->openAndWait('/admin/iprange');
         $this->clickAndWait('//table/tbody/tr/td/div/a[text()="clienthost"]/../../../td/a[text()="Delete"]');
         $this->logout();
+    }
+    
+    protected function loginAndOpenPage($page) {
+        $this->switchToEnglish();
+        $this->login($this->username, $this->password);
+        $this->openAndWait($page);        
+    }    
+    
+    protected function setUsername($username) {
+        $this->username = $username;
+    }
+    
+    protected function setPassword($password) {
+        $this->password = $password;
     }
     
 }
