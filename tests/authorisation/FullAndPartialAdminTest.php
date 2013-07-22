@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of OPUS. The software OPUS has been originally developed
  * at the University of Stuttgart with funding from the German Research Net,
@@ -35,9 +34,6 @@
 
 require_once 'authorisation/TestCaseAuthorisation.php';
 
-/**
- * 
- */
 class FullAndPartialAdminTest extends TestCaseAuthorisation {
     
     /**
@@ -55,8 +51,8 @@ class FullAndPartialAdminTest extends TestCaseAuthorisation {
         $this->assertElementPresent('//a[contains(@href, "/admin/language")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/dnbinstitute")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/info")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/review")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/setup")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/setup")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/review")]');        
     }
     
     /**

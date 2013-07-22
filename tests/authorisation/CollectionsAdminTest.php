@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of OPUS. The software OPUS has been originally developed
  * at the University of Stuttgart with funding from the German Research Net,
@@ -35,9 +34,6 @@
 
 require_once 'authorisation/TestCaseAuthorisation.php';
 
-/**
- * 
- */
 class CollectionsAdminTest extends TestCaseAuthorisation {
     
     /**
@@ -54,9 +50,9 @@ class CollectionsAdminTest extends TestCaseAuthorisation {
         $this->assertElementPresent('//a[contains(@href, "/admin/collectionroles")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/series")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/language")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/dnbinstitute")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/admin/dnbinstitute")]');        
         $this->assertElementNotPresent('//a[contains(@href, "/review")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/setup")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/setup")]');
     }
     
     public function testAccessCollectionControllerShowAction() {

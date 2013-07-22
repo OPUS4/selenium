@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of OPUS. The software OPUS has been originally developed
  * at the University of Stuttgart with funding from the German Research Net,
@@ -35,9 +34,6 @@
 
 require_once 'authorisation/TestCaseAuthorisation.php';
 
-/**
- * 
- */
 class FullAdminTest extends TestCaseAuthorisation {
     
     /**
@@ -54,9 +50,9 @@ class FullAdminTest extends TestCaseAuthorisation {
         $this->assertElementPresent('//a[contains(@href, "/admin/series")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/language")]');
         $this->assertElementPresent('//a[contains(@href, "/admin/dnbinstitute")]');
-        $this->assertElementPresent('//a[contains(@href, "/admin/info")]');        
-        $this->assertElementNotPresent('//a[contains(@href, "/review")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/setup")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/info")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/setup")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/review")]');        
     }
     
     /**
@@ -123,12 +119,14 @@ class FullAdminTest extends TestCaseAuthorisation {
         $this->assertElementContainsText('//html/body', 'Logout security1');
     }    
     
-    public function testNoAccessSetupMenu() {
+    public function testAccessSetupMenu() {
         $this->switchToEnglish();
         $this->login("security1", "security1pwd");
         $this->openAndWait('/admin/setup');
-        $this->assertElementContainsText('//html/head/title', 'Login');
-        $this->assertElementContainsText('//html/body', 'Logout security1');
+        $this->assertElementPresent('//a[contains(@href, "/admin/enrichmentkey")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/setup/help-page")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/setup/static-page")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/setup/language")]');        
     }    
         
     /**

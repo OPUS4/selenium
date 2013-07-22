@@ -34,9 +34,6 @@
 
 require_once 'authorisation/TestCaseAuthorisation.php';
 
-/**
- * 
- */
 class LicencesAdminTest extends TestCaseAuthorisation {
     
     /**
@@ -54,8 +51,8 @@ class LicencesAdminTest extends TestCaseAuthorisation {
         $this->assertElementNotPresent('//a[contains(@href, "/admin/series")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/language")]');
         $this->assertElementNotPresent('//a[contains(@href, "/admin/dnbinstitute")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/review")]');
-        $this->assertElementNotPresent('//a[contains(@href, "/admin/setup")]');
+        $this->assertElementPresent('//a[contains(@href, "/admin/setup")]');
+        $this->assertElementNotPresent('//a[contains(@href, "/review")]');        
     }
     
     /**
