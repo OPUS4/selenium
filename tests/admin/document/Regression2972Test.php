@@ -39,7 +39,7 @@ class Regression2972Test extends TestCase {
     /**
      * Regression test for OPUSVIER-2972.
      */
-    public function testSavingValueThatExceedsMaxValueLengthInDB() {
+    public function testStoredDocumentPostOnlyUsedOnContinueEdit() {
         $this->switchToEnglish();
         $this->login();
 
