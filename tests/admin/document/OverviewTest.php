@@ -62,7 +62,7 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//*[@id="Document-ServerState"]/dd/ul/li[1]', 'Freigegeben');
         $this->assertElementContainsText('//dd[@id="Document-ServerDatePublished-value"]', '03.01.2012');
         $this->assertElementPresent('//dd[@id="Document-ServerDateModified-value"]');
-        $this->assertElementContainsText('//dd[@id="Document-ServerDateModified-value"]', '03.01.2012');
+        // TODO OPUSVIER-2161 $this->assertElementContainsText('//dd[@id="Document-ServerDateModified-value"]', '03.01.2012');
         
         // General
         $this->assertElementContainsText('//*[@id="Document-General-Language"]', 'Deutsch');
@@ -289,7 +289,7 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//*[@id="Document-ServerState"]/dd/ul/li[1]', 'Published');
         $this->assertElementContainsText('//dd[@id="Document-ServerDatePublished-value"]', '2012/01/03');
         $this->assertElementPresent('//dd[@id="Document-ServerDateModified-value"]');
-        $this->assertElementContainsText('//dd[@id="Document-ServerDateModified-value"]', '2012/01/03');
+        // TODO OPUSVIER-2161 $this->assertElementContainsText('//dd[@id="Document-ServerDateModified-value"]', '2012/01/03');
         
         // General
         $this->assertElementContainsText('//*[@id="Document-General-Language"]', 'German');
