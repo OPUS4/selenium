@@ -24,8 +24,8 @@
  * along with OPUS; if not, write to the Free Software Foundation, Inc., 51
  * Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
- * @category    TODO
- * @package     TODO
+ * @category    Selenium Test
+ * @package     Module_Admin
  * @author      Jens Schwidder <schwidder@zib.de>
  * @copyright   Copyright (c) 2008-2013, OPUS 4 development team
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
@@ -54,6 +54,8 @@ class Regression2575Test extends TestCase {
         // Breadcrumbs werden ohne Inhalt angezeigt
         $this->assertElementPresent('//div[@class="breadcrumbsContainer"]');
         $this->assertElementContainsText('//div[@class="breadcrumbsContainer"]', 'Administration');
+        $this->assertElementContainsText('//div[@class="breadcrumbsContainer"]', 'Series');
+        $this->assertElementContainsText('//div[@class="breadcrumbsContainer"]', 'Edit Series');
     }
 
 }
