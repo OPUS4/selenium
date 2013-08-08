@@ -141,7 +141,7 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//*[@id="Document-Bibliographic-CreatingCorporation"]', 'Bar University');
         $this->assertElementContainsText('//*[@id="Document-Bibliographic-ThesisDateAccepted"]', '02.11.2010');
         $this->assertElementContainsText('//*[@id="Document-Bibliographic-ThesisYearAccepted"]', '1999');
-        $this->assertElementContainsText('//*[@id="Document-Bibliographic-BelongsToBibliography"]', 'Gehört zur Bibliographie');
+        $this->assertElementContainsText('//*[@id="Document-Bibliographic-BelongsToBibliography"]', 'Ja');
         
         $this->assertElementContainsText('//*[@id="Document-Bibliographic-Publishers-ThesisPublisher0-Institute"]', 'Foobar Universitätsbibliothek');
         $this->assertElementContainsText('//*[@id="Document-Bibliographic-Publishers-ThesisPublisher1-Institute"]', 'Institute with DNB contact ID');
@@ -370,7 +370,7 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//*[@id="Document-Bibliographic-CreatingCorporation"]', 'Bar University');
         $this->assertElementContainsText('//*[@id="Document-Bibliographic-ThesisDateAccepted"]', '2010/11/02');
         $this->assertElementContainsText('//*[@id="Document-Bibliographic-ThesisYearAccepted"]', '1999');
-        $this->assertElementContainsText('//*[@id="Document-Bibliographic-BelongsToBibliography"]', 'Belongs to Bibliography');
+        $this->assertElementContainsText('//*[@id="Document-Bibliographic-BelongsToBibliography"]', 'Yes');
         
         $this->assertElementContainsText('//*[@id="Document-Bibliographic-Publishers-ThesisPublisher0-Institute"]', 'Foobar Universitätsbibliothek');
         $this->assertElementContainsText('//*[@id="Document-Bibliographic-Publishers-ThesisPublisher1-Institute"]', 'Institute with DNB contact ID');
