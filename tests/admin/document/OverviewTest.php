@@ -277,6 +277,14 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//*[@id="Document-Notes-Note0-Message"]', 'Für die Öffentlichkeit');
         $this->assertElementNotPresent('//*[@id="Document-Notes-Note1-Visibility"]');
         $this->assertElementContainsText('//*[@id="Document-Notes-Note1-Message"]', 'Für den Admin');
+
+        // Files
+        $this->assertElementContainsText('//*[@id="Document-Files-File0-Label"]', 'foo-pdf');
+        $this->assertElementContainsText('//*[@id="Document-Files-File0-FileSize"]', '8.61 KB');
+        $this->assertElementContainsText('//*[@id="Document-Files-File0-MimeType"]', 'application/pdf');
+        $this->assertElementContainsText('//*[@id="Document-Files-File0-Language"]', 'Deutsch');
+        $this->assertElementContainsText('//*[@id="Document-Files-File0-VisibleInFrontdoor"]', 'Ja');
+        $this->assertElementContainsText('//*[@id="Document-Files-File0-VisibleInOai"]', 'Ja');
     }
     
     public function testIndexActionEnglish() {
@@ -506,6 +514,14 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//*[@id="Document-Notes-Note0-Message"]', 'Für die Öffentlichkeit');
         $this->assertElementNotPresent('//*[@id="Document-Notes-Note1-Visibility"]');
         $this->assertElementContainsText('//*[@id="Document-Notes-Note1-Message"]', 'Für den Admin');
+
+        // Files
+        $this->assertElementContainsText('//*[@id="Document-Files-File0-Label"]', 'foo-pdf');
+        $this->assertElementContainsText('//*[@id="Document-Files-File0-FileSize"]', '8.61 KB');
+        $this->assertElementContainsText('//*[@id="Document-Files-File0-MimeType"]', 'application/pdf');
+        $this->assertElementContainsText('//*[@id="Document-Files-File0-Language"]', 'German');
+        $this->assertElementContainsText('//*[@id="Document-Files-File0-VisibleInFrontdoor"]', 'Yes');
+        $this->assertElementContainsText('//*[@id="Document-Files-File0-VisibleInOai"]', 'Yes');
     }
 
 }
