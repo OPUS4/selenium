@@ -179,16 +179,16 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//*[@id="Document-Enrichments-Enrichment7-Value"]', 'Opus4 OAI-Country');
         
         // Collections
-        $this->assertElementPresent('//*[@id="Document-Collections-ddc-collection0-Name"]'); // Root Collection hat keinen Namen
+        $this->assertElementContainsText('//*[@id="Document-Collections-ddc-collection0-Name"]', 'DDC-Klassifikation'); // Verknüpfung mit Root-Collection
         $this->assertElementContainsText('//*[@id="Document-Collections-ddc-collection1-Name"]', '28 Christliche Konfessionen');
         $this->assertElementContainsText('//*[@id="Document-Collections-ddc-collection2-Name"]', '51 Mathematik');
         $this->assertElementContainsText('//*[@id="Document-Collections-ddc-collection3-Name"]', '433 Deutsche Wörterbücher');
         
-        $this->assertElementPresent('//*[@id="Document-Collections-ccs-collection0-Name"]', ''); // Root Collection hat keinen Namen
+        $this->assertElementContainsText('//*[@id="Document-Collections-ccs-collection0-Name"]', 'CCS-Klassifikation'); // Verknüpfung mit Root-Collection
         
         $this->assertElementContainsText('//*[@id="Document-Collections-pacs-collection0-Name"]', '12.15.Hh Determination of Kobayashi-Maskawa matrix elements');
         
-        $this->assertElementPresent('//*[@id="Document-Collections-jel-collection0-Name"]'); // Root Collection hat keinen Namen
+        $this->assertElementContainsText('//*[@id="Document-Collections-jel-collection0-Name"]', 'JEL-Klassifikation'); // Verknüpfung mit Root-Collection
         
         $this->assertElementContainsText('//*[@id="Document-Collections-msc-collection0-Name"]', '05-XX COMBINATORICS (For finite fields, see 11Txx)');
         
@@ -416,16 +416,16 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//*[@id="Document-Enrichments-Enrichment7-Value"]', 'Opus4 OAI-Country');
         
         // Collections
-        $this->assertElementPresent('//*[@id="Document-Collections-ddc-collection0-Name"]'); // Root Collection hat keinen Namen
+        $this->assertElementContainsText('//*[@id="Document-Collections-ddc-collection0-Name"]', 'Dewey Decimal Classification'); // Verknüpfung mit Root-Collection
         $this->assertElementContainsText('//*[@id="Document-Collections-ddc-collection1-Name"]', '28 Christliche Konfessionen');
         $this->assertElementContainsText('//*[@id="Document-Collections-ddc-collection2-Name"]', '51 Mathematik');
         $this->assertElementContainsText('//*[@id="Document-Collections-ddc-collection3-Name"]', '433 Deutsche Wörterbücher');
         
-        $this->assertElementPresent('//*[@id="Document-Collections-ccs-collection0-Name"]', ''); // Root Collection hat keinen Namen
+        $this->assertElementContainsText('//*[@id="Document-Collections-ccs-collection0-Name"]', 'CCS-Classification'); // Verknüpfung mit Root-Collection
         
         $this->assertElementContainsText('//*[@id="Document-Collections-pacs-collection0-Name"]', '12.15.Hh Determination of Kobayashi-Maskawa matrix elements');
         
-        $this->assertElementPresent('//*[@id="Document-Collections-jel-collection0-Name"]'); // Root Collection hat keinen Namen
+        $this->assertElementContainsText('//*[@id="Document-Collections-jel-collection0-Name"]', 'JEL-Classification'); // Verknüpfung mit Root-Collection
         
         $this->assertElementContainsText('//*[@id="Document-Collections-msc-collection0-Name"]', '05-XX COMBINATORICS (For finite fields, see 11Txx)');
         
