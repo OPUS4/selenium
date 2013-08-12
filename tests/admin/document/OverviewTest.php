@@ -275,7 +275,7 @@ class OverviewTest extends TestCase {
         // Notes
         $this->assertElementContainsText('//*[@id="Document-Notes-Note0-Visibility"]', 'Öffentlich');
         $this->assertElementContainsText('//*[@id="Document-Notes-Note0-Message"]', 'Für die Öffentlichkeit');
-        $this->assertElementNotPresent('//*[@id="Document-Notes-Note1-Visibility"]');
+        $this->assertElementContainsText('//*[@id="Document-Notes-Note1-Visibility"]', 'Intern');
         $this->assertElementContainsText('//*[@id="Document-Notes-Note1-Message"]', 'Für den Admin');
 
         // Files
@@ -512,7 +512,7 @@ class OverviewTest extends TestCase {
         // Notes
         $this->assertElementContainsText('//*[@id="Document-Notes-Note0-Visibility"]', 'Public');
         $this->assertElementContainsText('//*[@id="Document-Notes-Note0-Message"]', 'Für die Öffentlichkeit');
-        $this->assertElementNotPresent('//*[@id="Document-Notes-Note1-Visibility"]');
+        $this->assertElementContainsText('//*[@id="Document-Notes-Note1-Visibility"]', 'Private');
         $this->assertElementContainsText('//*[@id="Document-Notes-Note1-Message"]', 'Für den Admin');
 
         // Files
