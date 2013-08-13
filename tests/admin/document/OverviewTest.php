@@ -279,7 +279,7 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//*[@id="Document-Notes-Note1-Message"]', 'Für den Admin');
 
         // Files
-        $this->assertElementContainsText('//*[@id="Document-Files-File0-Label"]', 'foo-pdf');
+        $this->assertElementContainsText('//*[@id="Document-Files-File0-Label"]/a', 'foo-pdf');
         $this->assertElementContainsText('//*[@id="Document-Files-File0-FileSize"]', '8.61 KB');
         $this->assertElementContainsText('//*[@id="Document-Files-File0-MimeType"]', 'application/pdf');
         $this->assertElementContainsText('//*[@id="Document-Files-File0-Language"]', 'Deutsch');
@@ -516,7 +516,7 @@ class OverviewTest extends TestCase {
         $this->assertElementContainsText('//*[@id="Document-Notes-Note1-Message"]', 'Für den Admin');
 
         // Files
-        $this->assertElementContainsText('//*[@id="Document-Files-File0-Label"]', 'foo-pdf');
+        $this->assertElementContainsText('//*[@id="Document-Files-File0-Label"]/a', 'foo-pdf');
         $this->assertElementContainsText('//*[@id="Document-Files-File0-FileSize"]', '8.61 KB');
         $this->assertElementContainsText('//*[@id="Document-Files-File0-MimeType"]', 'application/pdf');
         $this->assertElementContainsText('//*[@id="Document-Files-File0-Language"]', 'German');
