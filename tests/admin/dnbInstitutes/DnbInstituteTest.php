@@ -37,24 +37,27 @@ require_once 'TestCase.php';
 class DnbInstituteTest extends TestCase {
 
     /**
+     * Test for OPUSVIER-3041
      */
     public function testDepartmentIsEditable() {
 
         $this->login();
 
-        $this->open("/admin/dnbinstitute/edit/id/4");
+        /* prevent name clashes with existing entries */
+        $uniqueInstituteName = uniqid('University');
+        
+        $this->open("/admin/dnbinstitute/new");
+        $this->type("id=Opus_DnbInstitute-Name-1", $uniqueInstituteName);
         $this->type("id=Opus_DnbInstitute-Department-1", "Paranormal Research Center");
+        $this->type("id=Opus_DnbInstitute-City-1", "Berlin");
         $this->click("id=submit");
         $this->waitForPageToLoad();
-        $this->open("/admin/dnbinstitute/show/id/4");
+        $this->clickAndWait("//a[text()='$uniqueInstituteName']");
         $this->assertTrue($this->isTextPresent("Department Paranormal Research Center"));
 
-        $this->open("/admin/dnbinstitute/edit/id/4");
-        $this->type("id=Opus_DnbInstitute-Department-1", "");
-        $this->click("id=submit");
-        $this->open("/admin/dnbinstitute/show/id/4");
-        $this->assertTrue($this->isTextPresent("Department"));
-        $this->assertFalse($this->isTextPresent("Department Paranormal Research Center"));
+        // clean up
+        $this->open("/admin/dnbinstitute");
+        $this->clickAndWait("//a[text()='$uniqueInstituteName']/../../td/form/input[@name='actionDelete']");
         
     }
 
