@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="opus4selenium" default="build">
+    
+    <target name="build" depends="prepare,lint,update-webapp,phpunit"/>
+
+    <target name="clean">
+        <delete dir="${basedir}/build/logs" />
+    </target>
+  
+    <target name="prepare" depends="clean">
+      <!-- TODO make sure server is running -->
+    </target>
+  
+    <target name="lint">
+        <apply executable="php" dir="${basedir}" failonerror="on" logerror="on">
+            <arg line="-l"/>
+            <fileset dir="${basedir}">
+                <include name="**/*.php"/>
+            </fileset>
+        </apply>
+    </target>
+
+    <target name="update-webapp" depends="checkout">
+        <sshexec host="130.73.63.61" username="selenium" command="~/update-instance.sh opus4-selenium ${svn.revision}" 
+                 keyfile="/home/opus4ci/.ssh/id_rsa" failonerror="on" output="${basedir}/build/logs/sshexec.log"/>
+    </target>
+
+    <target name="phpunit">
+        <exec executable="phpunit" dir="${basedir}" failonerror="on">
+            <arg line="--log-junit ${basedir}/build/logs/phpunit.xml" />
+            <arg value="${testpath}" />
+        </exec>
+    </target>
+    
+</project>
