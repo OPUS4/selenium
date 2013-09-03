@@ -43,8 +43,8 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
     
     protected $clientIp = '130.73.102.181';
 
-    protected $captureScreenshotOnFailure = false;
-    protected $screenshotPath = '';
+    protected $captureScreenshotOnFailure = true;
+    protected $screenshotPath = '.';
     protected $screenshotUrl = '';
     protected $defaultMaxPeriodToWait = '30000';
 
