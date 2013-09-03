@@ -28,6 +28,8 @@
     </target>
 
     <target name="update-webapp">
+        <echo message="REVISION = ${env.SVN_REVISION}" />
+        <echo message="WORKSPACE = ${env.WORKSPACE}" />
         <sshexec host="${seleniumHost}"
                  username="${seleniumUser}"
                  command="~/update-instance.sh opus4-selenium ${env.SVN_REVISION}"
