@@ -6,6 +6,7 @@
     <property name="seleniumHost" value="130.73.63.61" /> <!-- opus4web.zib.de -->
     <property name="seleniumUser" value="selenium" />
     <property name="testpath" value="." />
+    <property name="revision" value="${env.SVN_REVISION_1}" />
     
     <target name="build" depends="prepare,lint,update-webapp,phpunit"/>
 
@@ -28,11 +29,10 @@
     </target>
 
     <target name="update-webapp">
-        <echo message="REVISION = ${env.SVN_REVISION}" />
-        <echo message="WORKSPACE = ${env.WORKSPACE}" />
+        <echo message="Update Selenium Test Instanz zu REVISION = ${revision}" />
         <sshexec host="${seleniumHost}"
                  username="${seleniumUser}"
-                 command="~/update-instance.sh opus4-selenium ${env.SVN_REVISION}"
+                 command="~/update-instance.sh opus4-selenium ${revision}"
                  keyfile="${keyfile}"
                  failonerror="on"
                  output="${basedir}/build/logs/sshexec.log"/>
