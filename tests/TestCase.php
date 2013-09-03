@@ -69,7 +69,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
                 $this->setConfigOption($config, $configOption);
             }
         }
-        $this->setBrowser("*firefox /usr/bin/firefox");
+        $this->setBrowser("*googlechrome /usr/bin/chromium-browser");
         $this->setBrowserUrl($this->browserUrl);
     }
 
