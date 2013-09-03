@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="opus4selenium" default="build">
 
+    <property environment="env" />
     <property name="keyfile" location="/home/opus4ci/jenkins/certs/id_rsa" />
     <property name="seleniumHost" value="130.73.63.61" /> <!-- opus4web.zib.de -->
     <property name="seleniumUser" value="selenium" />
@@ -29,7 +30,7 @@
     <target name="update-webapp">
         <sshexec host="${seleniumHost}"
                  username="${seleniumUser}"
-                 command="~/update-instance.sh opus4-selenium ${svn.revision}"
+                 command="~/update-instance.sh opus4-selenium ${env.SVN_REVISION}"
                  keyfile="${keyfile}"
                  failonerror="on"
                  output="${basedir}/build/logs/sshexec.log"/>
