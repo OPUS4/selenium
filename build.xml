@@ -44,7 +44,6 @@
     </target>
 
     <target name="phpunit">
-        <echo message="executing phpunit in ${basedir}/tests" />
         <exec executable="phpunit" dir="${basedir}/tests" failonerror="on">
             <arg line="--log-junit ${basedir}/build/logs/phpunit.xml" />
             <arg value="${testpath}" />
