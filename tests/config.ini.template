@@ -28,14 +28,14 @@
 ; @license     http://www.gnu.org/licenses/gpl.html General Public License
 ; @version     $Id$
 
-
-browserUrl = 'http://localhost'
-baseUrl = '/opus4-devel'
+; Die folgenden Variablen überschreiben die Defaultwerte in tests/TestCase.php:
+; browserUrl = 'http://localhost'
+; baseUrl = '/opus4-devel'
 ; IP Adresse der Client Machine fuer IP Range Tests
-clientIp = 127.0.0.1
-captureScreenshotOnFailure = false
-screenshotPath =
-screenshotUrl =
-defaultMaxPeriodToWait = 30000
-adminUsername = admin
-adminPassword = adminadmin
+; clientIp = 127.0.0.1
+; captureScreenshotOnFailure = false
+; screenshotPath =
+; screenshotUrl =
+; defaultMaxPeriodToWait = 30000
+; adminUsername = admin
+; adminPassword = adminadmin

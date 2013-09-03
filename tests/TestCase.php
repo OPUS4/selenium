@@ -35,14 +35,16 @@ require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
 class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
     
+    public $name = "test";
+    
     protected $browserUrl = 'http://opus4web.zib.de';
     protected $baseUrl = '/opus4-selenium';
     
-    protected $clientIp = '130.73.63.60';
+    protected $clientIp = '130.73.102.181';
 
-    protected $captureScreenshotOnFailure = TRUE;
-    protected $screenshotPath = '/home/opus4ci/cruisecontrol/webapps/screenshots';
-    protected $screenshotUrl = 'http://opus4ci.zib.de:8080/screenshots';
+    protected $captureScreenshotOnFailure = false;
+    protected $screenshotPath = '';
+    protected $screenshotUrl = '';
     protected $defaultMaxPeriodToWait = '30000';
 
     protected $adminUsername = "admin";
@@ -146,17 +148,25 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function enableScreenshots() {
-        $this->captureScreenshotOnFailure = TRUE;
+        $this->captureScreenshotOnFailure = true;
     }
 
     public function disableScreenshots() {
-        $this->captureScreenshotOnFailure = FALSE;
+        $this->captureScreenshotOnFailure = false;
     }
 
+    /**
+     * Prüft, ob die Testinstanz mit APPLICATION_ENV = 'testing' läuft.
+     * @return bool
+     */
     public function isApplicationEnvTesting() {
         return $this->isMode('testing');
     }
 
+    /**
+     * Prüft, ob die Testinstanz mit APPLICATION_ENV = 'production' läuft.
+     * @return bool
+     */
     public function isApplicationEnvProduction() {
         return $this->isMode('production');
     }

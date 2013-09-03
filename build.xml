@@ -10,6 +10,11 @@
     
     <target name="build" depends="prepare,lint,update-webapp,phpunit"/>
 
+    <target name="setup">
+        <copy file="${basedir}/tests/config.ini.template" tofile="${basedir}/tests/config.ini" overwrite="true"
+              failonerror="false" />
+    </target>
+
     <target name="clean">
         <delete dir="${basedir}/build/logs" />
     </target>
