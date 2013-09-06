@@ -35,7 +35,11 @@
 require_once 'TestCase.php';
 
 class LizenzenTest extends TestCase {
-    
+
+    /**
+     * Bei den Lizenzen werden in der Metadaten-Übersicht nur die Label angezeigt, daher wird auf IDs mit "-label"
+     * geprüft.
+     */
     public function testModifyDocumentLicence() {
         $this->switchToEnglish();
         $this->login();
@@ -48,24 +52,24 @@ class LizenzenTest extends TestCase {
         $this->check('Document-Licences-licence4');
         $this->clickAndWait('Document-ActionBox-Save');
         
-        $this->assertElementPresent('Document-Licences-licence4');
-        $this->assertElementNotPresent('Document-Licences-licence20');
+        $this->assertElementPresent('Document-Licences-licence4-label');
+        $this->assertElementNotPresent('Document-Licences-licence20-label');
         
         $this->openAndWait('/admin/document/edit/id/250');
         
         $this->check('Document-Licences-licence20');
         $this->clickAndWait('Document-ActionBox-Save');
         
-        $this->assertElementPresent('Document-Licences-licence4');
-        $this->assertElementPresent('Document-Licences-licence20');
+        $this->assertElementPresent('Document-Licences-licence4-label');
+        $this->assertElementPresent('Document-Licences-licence20-label');
         
         $this->openAndWait('/admin/document/edit/id/250');
         
         $this->uncheck('Document-Licences-licence4');
         $this->clickAndWait('Document-ActionBox-Save');
         
-        $this->assertElementNotPresent('Document-Licences-licence4');
-        $this->assertElementPresent('Document-Licences-licence20');
+        $this->assertElementNotPresent('Document-Licences-licence4-label');
+        $this->assertElementPresent('Document-Licences-licence20-label');
     }
     
 
