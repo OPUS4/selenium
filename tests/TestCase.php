@@ -24,8 +24,8 @@
  * along with OPUS; if not, write to the Free Software Foundation, Inc., 51
  * Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
- * @category  TODO
- * @package   TODO
+ * @category  Application Selenium Test
+ * @package
  * @author    Sascha Szott <szott@zib.de>
  * @author    Jens Schwidder <schwidder@zib.de>
  * @copyright Copyright (c) 2008-2012, OPUS 4 development team
@@ -37,11 +37,12 @@ require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
     
     public $name = "test";
-    
+
+    protected $browser = '*firefox';
     protected $browserUrl = 'http://opus4web.zib.de';
     protected $baseUrl = '/opus4-selenium';
     
-    protected $clientIp = '130.73.102.181';
+    protected $clientIp = '130.73.63.60';
 
     protected $captureScreenshotOnFailure = true;
     protected $screenshotPath = '.';
@@ -69,7 +70,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
                 $this->setConfigOption($config, $configOption);
             }
         }
-        $this->setBrowser("*googlechrome /usr/bin/chromium-browser");
+        $this->setBrowser($this->browser);
         $this->setBrowserUrl($this->browserUrl);
     }
 

@@ -29,6 +29,7 @@
 ; @version     $Id$
 
 ; Die folgenden Variablen überschreiben die Defaultwerte in tests/TestCase.php:
+; browser = *firefox
 ; browserUrl = 'http://localhost'
 ; baseUrl = '/opus4-devel'
 ; IP Adresse der Client Machine fuer IP Range Tests
