@@ -163,7 +163,7 @@ class PublishAllFieldsTest extends TestCase {
         $this->assertTrue($this->isElementPresent("ThesisDateAccepted"));
         $this->type("ThesisDateAccepted", "19.03.2008");
         $this->assertTrue($this->isElementPresent("ThesisGrantor_1"));
-        $this->select("ThesisGrantor_1", "label=Foobar Universität");
+        $this->select("ThesisGrantor_1", "label=Foobar Universität, Testwissenschaftliche Fakultät");
         $this->assertTrue($this->isElementPresent("ThesisPublisher_1"));
         $this->select("ThesisPublisher_1", "label=Foobar Universitätsbibliothek");
         $this->assertTrue($this->isElementPresent("PersonRefereeFirstName_1"));

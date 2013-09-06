@@ -52,12 +52,12 @@ class DnbInstituteTest extends TestCase {
         $this->type("id=Opus_DnbInstitute-City-1", "Berlin");
         $this->click("id=submit");
         $this->waitForPageToLoad();
-        $this->clickAndWait("//a[text()='$uniqueInstituteName']");
+        $this->clickAndWait("//a[text()='$uniqueInstituteName, Paranormal Research Center']");
         $this->assertTrue($this->isTextPresent("Department Paranormal Research Center"));
 
         // clean up
         $this->open("/admin/dnbinstitute");
-        $this->clickAndWait("//a[text()='$uniqueInstituteName']/../../td/form/input[@name='actionDelete']");
+        $this->clickAndWait("//a[text()='$uniqueInstituteName, Paranormal Research Center']/../../td/form/input[@name='actionDelete']");
         
     }
 
