@@ -70,9 +70,8 @@ class Opusvier2861Test extends TestCasePublish {
         $this->selectWindow('admin-window');
 
         $this->open('/admin/dnbinstitute');
-        $this->click('//tbody/tr[5]//form/input[2]');
-        $this->waitForPageToLoad();        
-        
+        $this->clickAndWait("//a[text()='OPUSVIER-2861-DnbInstitute']/../../td/form/input[@name='actionDelete']");
+
         $this->assertElementPresent('//div[@class="messages"]/div[@class="notice"]');
 
         // try to submit document in first window: selected DNB institute does not exist anymore
