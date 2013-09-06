@@ -92,7 +92,7 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
     public function testAccessFilemanagerController() {
         $this->switchToEnglish();
         $this->login("security8", "security8pwd");
-        $this->openAndWait('/admin/filemanager/index/docId/92');
+        $this->openAndWait('/admin/filemanager/index/id/92');
         $this->assertElementContainsText('//html/head/title', 'Files');
         $this->assertElementContainsText('//html/body', 'test.xhtml');
     }
@@ -134,7 +134,7 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
     public function testAccessFilebrowserController() {
         $this->switchToEnglish();
         $this->login("security8", "security8pwd");
-        $this->openAndWait('/admin/filebrowser/index/docId/92');
+        $this->openAndWait('/admin/filebrowser/index/id/92');
         $this->assertElementContainsText('//html/head/title', 'Filebrowser');
         $this->assertElementContainsText('//html/body', 'Add files to document with id');
     }
