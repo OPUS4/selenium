@@ -77,7 +77,7 @@ class CheckPreprintMatheonMscSelectionTest extends TestCase {
             sleep(1);
         }
 
-        $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
+        $this->assertTrue($this->isElementPresent("//div[@class='form-hint form-errors']"));
         $this->select("id=SubjectMSC_1", "label=01-XX HISTORY AND BIOGRAPHY [See also the classification number -03 in the other sections]");
         $this->click("id=browseDownSubjectMSC");
         $this->waitForPageToLoad();

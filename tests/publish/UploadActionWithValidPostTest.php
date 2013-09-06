@@ -38,15 +38,17 @@ class UploadActionWithValidPostTest extends TestCase {
 
     public function testUploadActionWithValidFormData() {
         $this->switchToGerman();
-        $this->open("/publish");
-        $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad();
-        $this->assertTrue($this->isElementPresent("link=English"));
+
+        $this->openAndWait("/publish");
+
+        $this->assertElementPresent("link=English");
+
         $this->select("documentType", "label=Preprint für MATHEON");
         $this->click("rights");
-        $this->click("send");
-        $this->waitForPageToLoad();
-        $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/h3"));
+        $this->clickAndWait("send");
+
+        $this->assertElementPresent("//h3[@class='document-type']");
+        $this->assertElementContainsText("//h3[@class='document-type']", "Preprint für MATHEON");
     }
 
 }

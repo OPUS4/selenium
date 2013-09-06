@@ -51,7 +51,7 @@ class MissingErrorWithRequiredCollectionTest extends TestCase {
         $this->type("id=TitleAbstract_1", "Testabstract");
         $this->click("id=send");
         $this->waitForPageToLoad();
-        $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
+        $this->assertTrue($this->isElementPresent("//div[@class='form-hint form-errors']"));
     }
 
 }

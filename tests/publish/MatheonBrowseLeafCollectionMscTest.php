@@ -52,7 +52,7 @@ class MatheonBrowseLeafCollectionMscTest extends TestCase {
         $this->type("TitleAbstract_1", "Testabstract");
         $this->click("send");
         $this->waitForPageToLoad();
-        $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
+        $this->assertTrue($this->isElementPresent("//div[@class='form-hint form-errors']"));
         $this->assertTrue($this->isElementPresent("//fieldset[@id='groupInstitute']/div[2]/div/div[@class='form-errors']"));
         $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
         $this->select("Institute_1", "label=Technische Universität Hamburg-Harburg");
@@ -64,12 +64,12 @@ class MatheonBrowseLeafCollectionMscTest extends TestCase {
         $this->select("collId3Institute_1", "label=Abwasserwirtschaft und Gewässerschutz B-2");
         $this->click("send");
         $this->waitForPageToLoad();
-        $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
+        $this->assertTrue($this->isElementPresent("//div[@class='form-hint form-errors']"));
         $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
         $this->select("SubjectMSC_1", "label=00-XX GENERAL");
         $this->click("send");
         $this->waitForPageToLoad();
-        $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
+        $this->assertTrue($this->isElementPresent("//div[@class='form-hint form-errors']"));
         $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
         $this->click("browseDownSubjectMSC");
         $this->waitForPageToLoad();

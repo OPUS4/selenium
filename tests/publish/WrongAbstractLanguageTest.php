@@ -37,13 +37,13 @@ class WrongAbstractLanguageTest extends TestCase {
 
     public function testWrongAbstractLanguage() {
         $this->switchToGerman();
-        $this->open("/publish");
-        $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad();
+
+        $this->openAndWait("/publish");
+
         $this->select("id=documentType", "label=Preprint für MATHEON");
         $this->click("id=rights");
-        $this->click("id=send");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("id=send");
+
         $this->type("id=PersonAuthorFirstName_1", "Susi");
         $this->type("id=PersonAuthorLastName_1", "Gottwald");
         $this->type("id=TitleMain_1", "Entenhausen");
@@ -51,7 +51,8 @@ class WrongAbstractLanguageTest extends TestCase {
         $this->select("id=TitleAbstractLanguage_1", "label=Französisch");
         $this->click("id=send");
         $this->waitForPageToLoad();
-        $this->assertTrue($this->isElementPresent("//div[@id='content']/div[2]/div/div[@class='form-hint form-errors']"));
+        $this->assertElementPresent("//div[@class='form-hint form-errors']");
+        $this->assertElementContainsText("//div[@class='form-hint form-errors']", "Es sind Fehler aufgetreten.");
     }
 
 }
