@@ -98,8 +98,8 @@ class TitleTest extends TestCase {
                 'Document cannot be saved, because some input is not valid.');
         
         // Fehlermeldung für fehlenden Titel in Russisch (Dokumentensprache)
-        $this->assertElementPresent('xpath=//ul[@class="form-errors"]/ul[@class="errors"]/li');
-        $this->assertElementContainsText('xpath=//ul[@class="form-errors"]/ul[@class="errors"]/li', 
+        $this->assertElementPresent('xpath=//div[@class="form-errors"]/ul[@class="errors"]/li');
+        $this->assertElementContainsText('xpath=//div[@class="form-errors"]/ul[@class="errors"]/li',
                 'A title in the document language \'Russian\' is required.');
         
         // Fehlermeldung für zweiten Titel in Deutsch
