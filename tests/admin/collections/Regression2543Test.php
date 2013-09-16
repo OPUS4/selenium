@@ -104,7 +104,7 @@ class Regression2543Test extends TestCase {
 
         $this->openAndWait('/admin/collectionroles');
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/th/a");
-        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr[2]/td[@class='hide']/a");
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr[2]/td[contains(@class, 'hide')]/a");
 
         $this->assertTextNotPresent("Operation completed successfully.");
         $this->assertTextPresent("Sichtbarkeit des Sammlungseintrags '56789 collbaz' wurde erfolgreich geändert.");
@@ -133,7 +133,7 @@ class Regression2543Test extends TestCase {
         $this->switchToGerman();
 
         $this->openAndWait('/admin/collectionroles');
-        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td[@class='hide']/a");
+        $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td[contains(@class,'hide')]/a");
 
         $this->assertTextNotPresent("Operation completed successfully.");
         $this->assertTextPresent("Sichtbarkeit der Sammlung '". self::COL_ROLE_NAME . "' wurde erfolgreich geändert.");
