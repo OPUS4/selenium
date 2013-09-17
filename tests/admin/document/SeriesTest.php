@@ -36,44 +36,48 @@ require_once 'TestCase.php';
 
 class SeriesTest extends TestCase {
 
+    /**
+     * Schriftenreihe zu einem Dokument hinzufügen und wieder entfernen. DocSortOrder wird automatisch gesetzt.
+     */
     public function testAddSeriesToDocument() {
-        $this->markTestIncomplete('Not complete yet.');
-
+        $this->switchToEnglish();
         $this->login();
 
-        // check output
-        $this->open('/admin/document/add/id/50/section/series');
-        $this->waitForPageToLoad('30000');
-        $this->type('Opus_Series-Number', 'III');
-        $this->type('Opus_Series-SortOrder', '8');
-        $this->type('Opus_Title-Series', 'value=2');
-        $this->clickAndWait('Opus_Series-submit_add');
-        $this->assertElementValueEquals('Series-0-Number', 'III');
-        $this->assertElementValueEquals('Series-0-Series', '2');
-        $this->assertElementValueEquals('Series-0-Number', 'III');
-        $this->assertElementValueEquals('Series-0-SortOrder', '8');
-        $this->assertElementPresent('save');
-    }
+        $this->openAndWait('/admin/document/edit/id/250');
 
-    /**
-     * @dependsOn testAddSeriesToDocument
-     *
-     * TODO add specific test document for removing a series
-     */
-    public function testRemoveSeriesFromDocument() {
-        $this->markTestIncomplete('Not complete yet.');
-    }
+        $this->assertElementContainsText('//div[@id="docinfo"]', 'Testdokument fuer ');
+        $this->assertElementContainsText('//div[@id="docinfo"]', '250');
 
-    public function testTryToAddSeriesWithoutNumber() {
-        $this->markTestIncomplete('Not complete yet.');
-    }
+        $this->assertElementNotPresent('Document-Series-Series0-SeriesId');
 
-    public function testTryToAddSeriesWithoutSortOrder() {
-        $this->markTestIncomplete('Not complete yet.');
-    }
+        $this->clickAndWait('Document-Series-Add');
 
-    public function testTryToAddSeriesWithInvalidInput() {
-        $this->markTestIncomplete('Not complete yet.');
+        $this->assertElementPresent('Document-Series-Series0-SeriesId');
+
+        $this->select('Document-Series-Series0-SeriesId', 'Foobar Series');
+        $this->type('Document-Series-Series0-Number', 'T9');
+
+        $this->clickAndWait('Document-ActionBox-Save');
+
+        $this->assertElementContainsText('//div[@class="notice"]', 'Changes successfully saved.');
+        $this->assertElementContainsText('Document-Series-Series0-SeriesId', 'Foobar Series');
+        $this->assertElementContainsText('Document-Series-Series0-Number', 'T9');
+        $this->assertElementContainsText('Document-Series-Series0-SortOrder', '4');
+
+        $this->openAndWait('/admin/document/edit/id/250');
+
+        $this->assertElementPresent('Document-Series-Series0-SeriesId');
+        $this->assertElementValueEquals('Document-Series-Series0-SeriesId', 2);
+
+        $this->clickAndWait('Document-Series-Series0-Remove');
+
+        $this->assertElementNotPresent('Document-Series-Series0-SeriesId');
+
+        $this->clickAndWait('Document-ActionBox-Save');
+
+        $this->assertElementContainsText('//div[@class="notice"]', 'Changes successfully saved.');
+        $this->assertElementNotPresent('fieldset-Series');
+        $this->assertElementNotPresent('Document-Series-Series0-SeriesId');
     }
 
     public function testRegression2355ModifySortOrderForDocument() {
