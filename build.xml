@@ -6,7 +6,7 @@
     <property name="seleniumHost" value="130.73.63.61" /> <!-- opus4web.zib.de -->
     <property name="seleniumUser" value="selenium" />
     <property name="testpath" value="." />
-    <property name="revision" value="${env.SVN_REVISION_1}" />
+    <property name="revision" value="${env.SVN_REVISION_4}" />
     
     <target name="build" depends="prepare,lint,update-webapp,phpunit"/>
 
