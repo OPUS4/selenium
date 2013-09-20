@@ -79,11 +79,24 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
     /**
      * Prüft, ob dem Nutzer die Actionbox für Administratoren angezeigt wird.
      */
-    public function testEditLinkInFrontdoorPresent() {
+    public function testAdminLinksInFrontdoorPresent() {
         $this->switchToEnglish();
         $this->login("security8", "security8pwd");
         $this->openAndWait('/frontdoor/index/index/docId/92');
+
+        $baseUri = $this->baseUrl;
+
         $this->assertElementPresent('//div[@id="actionboxContainer"]');
+        $this->assertElementPresent("//a[@href=\"$baseUri/admin/document/edit/id/92\"]");
+        $this->assertElementContainsText("//a[@href=\"$baseUri/admin/document/edit/id/92\"]", 'Edit');
+        $this->assertElementPresent("//a[@href=\"$baseUri/admin/filemanager/index/id/92\"]");
+        $this->assertElementContainsText("//a[@href=\"$baseUri/admin/filemanager/index/id/92\"]", 'Files');
+        $this->assertElementPresent("//a[@href=\"$baseUri/admin/document/index/id/92\"]");
+        $this->assertElementContainsText("//a[@href=\"$baseUri/admin/document/index/id/92\"]", 'Administration');
+
+        $this->assertElementPresent("//a[@href=\"$baseUri/admin/workflow/changestate/docId/92/targetState/restricted\"]");
+        $this->assertElementContainsText("//a[@href=\"$baseUri/admin/workflow/changestate/docId/92/targetState/restricted\"]",
+            'Restrict document');
     }
     
     /**
