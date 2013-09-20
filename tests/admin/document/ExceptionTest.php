@@ -42,23 +42,9 @@ class ExceptionTest extends TestCase {
 
         $this->openAndWait('/admin/document/edit/id/250');
 
-        $this->assertElementNotPresent('Document-Identifiers-Identifier0-Type');
+        $this->assertElementPresent('Document-Bibliographic-Edition');
 
-        $this->clickAndWait('Document-Identifiers-Add');
-
-        $this->assertElementPresent('Document-Identifiers-Identifier0-Type');
-        $this->assertElementNotPresent('Document-Identifiers-Identifier1-Type');
-
-        $this->clickAndWait('Document-Identifiers-Add');
-
-        $this->assertElementPresent('Document-Identifiers-Identifier0-Type');
-        $this->assertElementPresent('Document-Identifiers-Identifier1-Type');
-
-        $this->select('Document-Identifiers-Identifier0-Type', 'URN');
-        $this->select('Document-Identifiers-Identifier1-Type', 'URN');
-
-        $this->type('Document-Identifiers-Identifier0-Value', 'TestURN');
-        $this->type('Document-Identifiers-Identifier1-Value', 'TestURN');
+        $this->type('Document-Bibliographic-Edition', '012345678901234567890123456789');
 
         $this->clickAndWait('Document-ActionBox-Save');
 
@@ -66,7 +52,7 @@ class ExceptionTest extends TestCase {
 
         $this->assertElementPresent($xpath);
         $this->assertElementContainsText($xpath, 'unexpected exception occurred while saving the document');
-        $this->assertElementContainsText($xpath, 'urn collision (documents 250)');
+        $this->assertElementContainsText($xpath, '\'edition\' has been truncated by 5');
     }
 
 }
