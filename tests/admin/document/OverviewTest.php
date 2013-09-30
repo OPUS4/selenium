@@ -145,7 +145,7 @@ class OverviewTest extends TestCase {
         
         $this->assertElementContainsText('//*[@id="Document-Bibliographic-Publishers-ThesisPublisher0-Institute"]', 'Foobar Universitätsbibliothek');
         $this->assertElementContainsText('//*[@id="Document-Bibliographic-Publishers-ThesisPublisher1-Institute"]', 'Institute with DNB contact ID');
-        $this->assertElementContainsText('//*[@id="Document-Bibliographic-Grantors-ThesisGrantor0-Institute"]', 'Foobar Universität');
+        $this->assertElementContainsText('//*[@id="Document-Bibliographic-Grantors-ThesisGrantor0-Institute"]', 'Foobar Universität, Testwissenschaftliche Fakultät');
         $this->assertElementContainsText('//*[@id="Document-Bibliographic-Grantors-ThesisGrantor1-Institute"]', 'School of Life');
         
         // Series
