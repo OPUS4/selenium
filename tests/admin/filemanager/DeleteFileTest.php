@@ -43,131 +43,59 @@ class DeleteFileTest extends TestCase {
 
     public function setUp() {
         parent::setUp();
-
-        $this->markTestSkipped('Tests müssen für neuen Filemanager überarbeitet werden.');
     }
 
-    public function testDeleteFileConfirmNo() {
+    /**
+     * Dateien entfernen und dann abbrechen.
+     */
+    public function testDeleteFileCancel() {
         $this->switchToEnglish();
         $this->login();
 
-        // check output
-        $this->openAndWait('/admin/filemanager/delete/docId/124/fileId/125');
-        
-        // check correct page
-        $this->assertElementContainsText('//html/head/title', 'Delete this File');
+        $this->openAndWait('/admin/document/index/id/124');
+
+        $this->assertElementPresent('FileLink-125');
+
+        $this->openAndWait('/admin/filemanager/index/id/124');
+
+        $this->assertElementContainsText('//div[@class="breadcrumbsContainer"]', 'Files');
         $this->assertElementContainsText('//div[@id="docinfo"]', '124');
-        
-        // click no
-        $this->click('sureno');
-        $this->waitForPageToLoad();
-        
-        // check back to file manager
-        $this->assertElementContainsText('//html/head/title', 'Files');
-        $this->assertElementContainsText('//div[@id="docinfo"]', '124');
-        $this->assertElementPresent("//a[@href='{$this->browserUrl}{$this->baseUrl}/files/124/bar.html']");
 
-        $this->logout();
+        $this->clickAndWait('FileManager-Action-Cancel');
+
+        $this->assertElementPresent('FileLink-125');
+        $this->assertElementNotPresent('FileManager-Files-Import'); // not in FileManager anymore
     }
-    
-    public function testDeleteFileConfirmYes() {
+
+    /**
+     * Dateien entfernen und speichern.
+     */
+    public function testDeleteFileSave() {
         $this->switchToEnglish();
         $this->login();
 
-        // check output
-        $this->openAndWait('/admin/filemanager/delete/docId/160/fileId/140');
-        
-        // check correct page
-        $this->assertElementContainsText('//html/head/title', 'Delete this File');
+        $this->openAndWait('/admin/document/index/id/160');
+
+        $this->assertElementPresent('FileLink-140');
+
+        $this->openAndWait('/admin/filemanager/index/id/160');
+
+        $this->assertElementContainsText('//div[@class="breadcrumbsContainer"]', 'Files');
         $this->assertElementContainsText('//div[@id="docinfo"]', '160');
-        
-        // click yes
-        $this->click('sureyes');
-        $this->waitForPageToLoad();
-        
-        // check back to file manager
-        $this->assertElementContainsText('//html/head/title', 'Files');
-        $this->assertElementContainsText('//div[@id="docinfo"]', '160');
-        $this->assertElementNotPresent("//a[@href='{$this->browserUrl}{$this->baseUrl}/files/140/bar.html']");
 
-        $this->logout();
-    }
-    
-    public function testBadDocIdErrorMessage() {
-        $this->switchToEnglish();
-        $this->login();
+        $this->assertElementPresent('FileManager-Files-File0-Remove');
+        $this->assertElementNotPresent('FileManager-Files-File1-Remove'); // only one file
 
-        $this->openAndWait('/admin/filemanager/delete/docId/9999/fileId/125');
-        
-        $this->assertElementContainsText('//div[@class="failure"]', 'No valid document ID provided.');
-        
-        $this->logout();
-    }
+        $this->clickAndWait('FileManager-Files-File0-Remove');
 
-    public function testSyntaxInvalidDocIdErrorMessage() {
-        $this->switchToEnglish();
-        $this->login();
+        $this->assertElementNotPresent('FileManager-Files-File0-Remove');
 
-        $this->openAndWait('/admin/filemanager/delete/docId/foo/fileId/125');
+        $this->clickAndWait('FileManager-Action-Save');
 
-        $this->assertElementContainsText('//div[@class="failure"]', 'No valid document ID provided.');
-
-        $this->logout();
-    }
-    
-    public function testBadFileIdErrorMessage() {
-        $this->switchToEnglish();
-        $this->login();
-
-        $this->openAndWait('/admin/filemanager/delete/docId/124/fileId/400');
-        
-        $this->assertElementContainsText('//div[@class="failure"]', 'No valid file ID provided.');
-        
-        $this->logout();        
-    }
-
-    public function testSyntaxInvalidFileIdErrorMessage() {
-        $this->switchToEnglish();
-        $this->login();
-
-        $this->openAndWait('/admin/filemanager/delete/docId/124/fileId/foo');
-
-        $this->assertElementContainsText('//div[@class="failure"]', 'No valid file ID provided.');
-
-        $this->logout();
-    }
-    
-    public function testFileDoesNotBelongToDocErrorMessage() {
-        $this->switchToEnglish();
-        $this->login();
-
-        $this->openAndWait('/admin/filemanager/delete/docId/146/fileId/125');
-        
-        $this->assertElementContainsText('//div[@class="failure"]', 'File does not belong to document.');
-        
-        $this->logout();
-    }
-    
-    public function testBadDocIdNotDisplayedOnPage() {
-        $this->switchToEnglish();
-        $this->login();
-
-        $this->openAndWait('/admin/filemanager/delete/docId/dummyDocId/fileId/125');
-        
-        $this->assertTextNotPresent('dummyDocId');
-        
-        $this->logout();        
-    }
-    
-    public function testBadFileIdNotDisplayedOnPage() {
-        $this->switchToEnglish();
-        $this->login();
-
-        $this->openAndWait('/admin/filemanager/delete/docId/124/fileId/dummyFileId');
-        
-        $this->assertTextNotPresent('dummyFieldId');
-        
-        $this->logout();        
-    }
+        $this->assertElementContainsText('//div[@class="notice"]', 'File information successfully stored!');
+        $this->assertElementNotPresent('FileLink-140');
+        $this->assertElementNotPresent('fieldset-Files'); // not in FileManager anymore
+        $this->assertElementNotPresent('FileManager-Files-Import'); // not in FileManager anymore
+   }
 
 }
