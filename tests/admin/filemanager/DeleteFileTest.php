@@ -61,6 +61,8 @@ class DeleteFileTest extends TestCase {
         $this->assertElementPresent('FileManager-Files-File0-Remove');
         $this->assertElementNotPresent('FileManager-Files-File1-Remove'); // only one file
 
+        $this->type('FileManager-Files-File0-Comment', 'Testkommentar');
+
         $this->clickAndWait('FileManager-Files-File0-Remove');
 
         $this->assertElementContainsText('//legend', 'Delete File');
@@ -73,6 +75,8 @@ class DeleteFileTest extends TestCase {
 
         $this->assertElementContainsText('FileManager-Files-File0-FileSize-element', '847 Byte');
         $this->assertElementPresent('FileManager-Files-File0-Remove');
+
+        $this->assertElementValueEquals('FileManager-Files-File0-Comment', 'Testkommentar'); // Änderung erhalten
 
         $this->logout();
     }
