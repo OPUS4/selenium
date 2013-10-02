@@ -34,6 +34,11 @@
 
 require_once 'TestCase.php';
 
+/**
+ * Class FilemanagerTest
+ *
+ * Keinen Weg für Upload-Tests gefunden.
+ */
 class FilemanagerTest extends TestCase {
 
     /**
@@ -47,7 +52,8 @@ class FilemanagerTest extends TestCase {
         $this->openAndWait('/admin/filemanager/index/id/122');
 
         $this->assertElementPresent('FileManager-Files-File0-FileLink');
-        $this->assertElementContainsText('FileManager-Files-File0-FileLink-element', 'Datei_unsichtaber_in_Frontdoor.pdf');
+        $this->assertElementContainsText('FileManager-Files-File0-FileLink-element',
+            'Datei_unsichtaber_in_Frontdoor.pdf');
         $this->assertElementPresent('FileManager-Files-File0-FileSize-element');
         $this->assertElementContainsText('FileManager-Files-File0-FileSize-element', '70.9 KB');
 
@@ -55,6 +61,33 @@ class FilemanagerTest extends TestCase {
 
         $this->assertElementNotPresent('FileManager-Files-File0-FileSize-element');
         $this->assertElementContainsText('//div[@class="notice"]', 'File information successfully stored!');
+
+        $this->logout();
+    }
+
+    public function testKeepChangesWhenAddCancel() {
+        $this->switchToEnglish();
+        $this->login();
+
+        $this->openAndWait('/admin/filemanager/index/id/91');
+
+        $this->assertElementValueEquals('FileManager-Files-File0-Label', 'test.pdf');
+        $this->assertElementPresent('FileManager-Files-File0-Remove');
+
+        $this->type('FileManager-Files-File0-Label', 'newlabel.pdf');
+
+        $this->clickAndWait('FileManager-Files-Add');
+
+        $this->assertElementContainsText('//label', 'File to upload');
+        $this->assertElementPresent('File');
+        $this->assertElementPresent('Cancel');
+
+        $this->clickAndWait('Cancel');
+
+        $this->assertElementValueEquals('FileManager-Files-File0-Label', 'newlabel.pdf');
+        $this->assertElementPresent('FileManager-Files-File0-Remove');
+
+        $this->logout();
     }
 
 }
