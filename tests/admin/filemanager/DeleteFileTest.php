@@ -41,14 +41,10 @@ require_once 'TestCase.php';
  */
 class DeleteFileTest extends TestCase {
 
-    public function setUp() {
-        parent::setUp();
-    }
-
     /**
      * Dateien entfernen und dann abbrechen.
      */
-    public function testDeleteFileCancel() {
+    public function testDeleteFileConfirmNo() {
         $this->switchToEnglish();
         $this->login();
 
@@ -61,16 +57,30 @@ class DeleteFileTest extends TestCase {
         $this->assertElementContainsText('//div[@class="breadcrumbsContainer"]', 'Files');
         $this->assertElementContainsText('//div[@id="docinfo"]', '124');
 
-        $this->clickAndWait('FileManager-Action-Cancel');
+        $this->assertElementContainsText('FileManager-Files-File0-FileSize-element', '847 Byte');
+        $this->assertElementPresent('FileManager-Files-File0-Remove');
+        $this->assertElementNotPresent('FileManager-Files-File1-Remove'); // only one file
 
-        $this->assertElementPresent('FileLink-125');
-        $this->assertElementNotPresent('FileManager-Files-Import'); // not in FileManager anymore
+        $this->clickAndWait('FileManager-Files-File0-Remove');
+
+        $this->assertElementContainsText('//legend', 'Delete File');
+        $this->assertElementPresent('ConfirmNo');
+
+        $this->clickAndWait('ConfirmNo');
+
+        $this->assertElementContainsText('//div[@class="breadcrumbsContainer"]', 'Files');
+        $this->assertElementContainsText('//div[@id="docinfo"]', '124');
+
+        $this->assertElementContainsText('FileManager-Files-File0-FileSize-element', '847 Byte');
+        $this->assertElementPresent('FileManager-Files-File0-Remove');
+
+        $this->logout();
     }
 
     /**
      * Dateien entfernen und speichern.
      */
-    public function testDeleteFileSave() {
+    public function testDeleteFileConfirmYes() {
         $this->switchToEnglish();
         $this->login();
 
@@ -83,19 +93,45 @@ class DeleteFileTest extends TestCase {
         $this->assertElementContainsText('//div[@class="breadcrumbsContainer"]', 'Files');
         $this->assertElementContainsText('//div[@id="docinfo"]', '160');
 
+        $this->assertElementContainsText('FileManager-Files-File0-FileSize-element', '8.61 KB');
         $this->assertElementPresent('FileManager-Files-File0-Remove');
         $this->assertElementNotPresent('FileManager-Files-File1-Remove'); // only one file
 
         $this->clickAndWait('FileManager-Files-File0-Remove');
 
-        $this->assertElementNotPresent('FileManager-Files-File0-Remove');
+        $this->assertElementContainsText('//legend', 'Delete File');
+        $this->assertElementPresent('ConfirmYes');
 
-        $this->clickAndWait('FileManager-Action-Save');
+        $this->clickAndWait('ConfirmYes');
 
-        $this->assertElementContainsText('//div[@class="notice"]', 'File information successfully stored!');
-        $this->assertElementNotPresent('FileLink-140');
-        $this->assertElementNotPresent('fieldset-Files'); // not in FileManager anymore
-        $this->assertElementNotPresent('FileManager-Files-Import'); // not in FileManager anymore
-   }
+        $this->assertElementContainsText('//div[@class="notice"]', 'Successfully deleted file!');
+        $this->assertElementContainsText('//div[@class="breadcrumbsContainer"]', 'Files');
+        $this->assertElementContainsText('//div[@id="docinfo"]', '160');
+        $this->assertElementNotPresent('FileManager-Files-File0-Remove'); // no file left
+
+        $this->logout();
+    }
+
+    public function testBadDocIdNotDisplayedOnPage() {
+        $this->switchToEnglish();
+        $this->login();
+
+        $this->openAndWait('/admin/filemanager/delete/id/dummyDocId/fileId/125');
+
+        $this->assertTextNotPresent('dummyDocId');
+
+        $this->logout();
+    }
+
+    public function testBadFileIdNotDisplayedOnPage() {
+        $this->switchToEnglish();
+        $this->login();
+
+        $this->openAndWait('/admin/filemanager/delete/id/124/fileId/dummyFileId');
+
+        $this->assertTextNotPresent('dummyFieldId');
+
+        $this->logout();
+    }
 
 }
