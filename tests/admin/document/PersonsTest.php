@@ -268,4 +268,87 @@ class PersonsTest extends TestCase {
         $this->assertElementValueEquals('Document-Titles-Main-TitleMain0-Value', 'Neuer Titel');
     }
 
+    public function testAssignValidationMessages() {
+        $this->switchToEnglish();
+        $this->login();
+
+        $this->openAndWait('/admin/person/assign/role/advisor/document/160');
+
+        $this->assertElementContainsText('//h2', 'Add Person to Document');
+        $this->assertElementPresent('Save');
+
+        $this->type('Email', 'Test');
+        $this->type('DateOfBirth', 'Date');
+        $this->type('Document-SortOrder', 'bla');
+
+        $this->clickAndWait('Save');
+
+        $this->assertElementPresent('//div[@id="LastName-element"]/ul[@class="errors"]');
+        $this->assertElementContainsText('//div[@id="LastName-element"]/ul[@class="errors"]/li',
+            'Value is required and can\'t be empty');
+
+        $this->assertElementPresent('//div[@id="Email-element"]/ul[@class="errors"]');
+        $this->assertElementContainsText('//div[@id="Email-element"]/ul[@class="errors"]/li',
+            'Invalid Email Address');
+
+        $this->assertElementPresent('//div[@id="DateOfBirth-element"]/ul[@class="errors"]');
+        $this->assertElementContainsText('//div[@id="DateOfBirth-element"]/ul[@class="errors"]/li',
+            'Please change Date to fit the date format yyyy/MM/dd.');
+
+        $this->assertElementPresent('//div[@id="Document-SortOrder-element"]/ul[@class="errors"]');
+        $this->assertElementContainsText('//div[@id="Document-SortOrder-element"]/ul[@class="errors"]/li',
+            'Please provide a number.');
+
+        $this->type('DateOfBirth', '2013/02/30');
+        $this->type('Document-SortOrder', '-1');
+
+        $this->clickAndWait('Save');
+
+        $this->assertElementPresent('//div[@id="DateOfBirth-element"]/ul[@class="errors"]');
+        $this->assertElementContainsText('//div[@id="DateOfBirth-element"]/ul[@class="errors"]/li',
+            'Error: 2013/02/30 does not appear to be a valid date.');
+
+        $this->assertElementPresent('//div[@id="Document-SortOrder-element"]/ul[@class="errors"]');
+        $this->assertElementContainsText('//div[@id="Document-SortOrder-element"]/ul[@class="errors"]/li',
+            'Please provide a positive number (0...n).');
+   }
+
+    public function testEditLinkedValidationMessages() {
+        $this->switchToEnglish();
+        $this->login();
+
+        $this->openAndWait('/admin/person/editlinked/personId/258/document/160');
+
+        $this->assertElementValueEquals('AcademicTitle', 'PhD');
+        $this->assertElementValueEquals('LastName', 'Doe');
+        $this->assertElementValueEquals('DateOfBirth', '1970/01/01');
+        $this->assertElementPresent('Save');
+
+        $this->type('LastName', ' ');
+        $this->type('Email', 'Test');
+        $this->type('DateOfBirth', 'Date');
+
+        $this->clickAndWait('Save');
+
+        $this->assertElementPresent('//div[@id="LastName-element"]/ul[@class="errors"]');
+        $this->assertElementContainsText('//div[@id="LastName-element"]/ul[@class="errors"]/li',
+            'Value is required and can\'t be empty');
+
+        $this->assertElementPresent('//div[@id="Email-element"]/ul[@class="errors"]');
+        $this->assertElementContainsText('//div[@id="Email-element"]/ul[@class="errors"]/li',
+            'Invalid Email Address');
+
+        $this->assertElementPresent('//div[@id="DateOfBirth-element"]/ul[@class="errors"]');
+        $this->assertElementContainsText('//div[@id="DateOfBirth-element"]/ul[@class="errors"]/li',
+            'Please change Date to fit the date format yyyy/MM/dd.');
+
+        $this->type('DateOfBirth', '2013/02/30');
+
+        $this->clickAndWait('Save');
+
+        $this->assertElementPresent('//div[@id="DateOfBirth-element"]/ul[@class="errors"]');
+        $this->assertElementContainsText('//div[@id="DateOfBirth-element"]/ul[@class="errors"]/li',
+            'Error: 2013/02/30 does not appear to be a valid date.');
+    }
+
 }
