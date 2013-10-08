@@ -169,4 +169,42 @@ class DocumentsAdminTest extends TestCaseAuthorisation {
         $this->assertTextNotPresent('Access to the requested document not granted');
     }
 
+    public function testAccessToMetadatenOverview() {
+        $this->switchToEnglish();
+        $this->login('security8', 'security8pwd');
+        $this->openAndWait('/admin/document/index/id/146');
+        $this->assertElementNotPresent('//div[@class="messages"]/div[@class="failure"]');
+        $this->assertElementPresent('//h2/span[@class="docid"]');
+        $this->assertElementContainsText('//h2/span[@class="docid"]', '146');
+    }
+
+    public function testNoAccessToMetadatenOverview() {
+        $this->switchToEnglish();
+        $this->login('security9', 'security9pwd');
+        $this->openAndWait('/admin/document/index/id/146');
+        $this->assertElementPresent('//div[@class="messages"]/div[@class="failure"]');
+        $this->assertElementContainsText('//div[@class="messages"]/div[@class="failure"]',
+            'You need another identity to access this page.');
+    }
+
+    public function testAccessToMetadatenFormular() {
+        $this->switchToEnglish();
+        $this->login('security8', 'security8pwd');
+        $this->openAndWait('/admin/document/edit/id/146');
+        $this->assertElementNotPresent('//div[@class="messages"]/div[@class="failure"]');
+        $this->assertElementPresent('//h2/span[@class="docid"]');
+        $this->assertElementContainsText('//h2/span[@class="docid"]', '146');
+        $this->assertElementPresent('Document-General-Language');
+        $this->assertElementPresent('Document-ActionBox-Save');
+    }
+
+    public function testNoAccessToMetadatenFormular() {
+        $this->switchToEnglish();
+        $this->login('security9', 'security9pwd');
+        $this->openAndWait('/admin/document/edit/id/146');
+        $this->assertElementPresent('//div[@class="messages"]/div[@class="failure"]');
+        $this->assertElementContainsText('//div[@class="messages"]/div[@class="failure"]',
+            'You need another identity to access this page.');
+    }
+
 }
