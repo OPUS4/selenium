@@ -40,11 +40,13 @@ class ExceptionTest extends TestCase {
         $this->switchToEnglish();
         $this->login();
 
-        $this->openAndWait('/admin/document/edit/id/250');
+        $this->openAndWait('/admin/document/edit/id/200');
 
         $this->assertElementPresent('Document-Bibliographic-Edition');
 
-        $this->type('Document-Bibliographic-Edition', '012345678901234567890123456789');
+        $value = str_pad('Edition', 256, '0123456789');
+
+        $this->type('Document-Bibliographic-Edition', $value);
 
         $this->clickAndWait('Document-ActionBox-Save');
 
