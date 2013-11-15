@@ -44,7 +44,7 @@ class ExceptionTest extends TestCase {
 
         $this->assertElementPresent('Document-Bibliographic-Edition');
 
-        $value = str_pad('Edition', 256, '0123456789');
+        $value = str_pad('Edition', 257, '0123456789');
 
         $this->type('Document-Bibliographic-Edition', $value);
 
@@ -54,7 +54,7 @@ class ExceptionTest extends TestCase {
 
         $this->assertElementPresent($xpath);
         $this->assertElementContainsText($xpath, 'unexpected exception occurred while saving the document');
-        $this->assertElementContainsText($xpath, '\'edition\' has been truncated by 5');
+        $this->assertElementContainsText($xpath, '\'edition\' has been truncated by 2');
     }
 
 }
