@@ -56,7 +56,7 @@ class Opusvier2850Test extends TestCasePublish {
         $this->goToSecondStepForDoctypeAll();
 
         $this->assertElementPresent('IdentifierUrn');
-        $this->type('IdentifierUrn', '123');
+        $this->type('IdentifierUrn', 'urn:nbn:op:123');
 
         $this->click('send');
         $this->waitForPageToLoad();
@@ -80,7 +80,7 @@ class Opusvier2850Test extends TestCasePublish {
         $this->goToSecondStepForDoctypeAll(false);
 
         $this->assertElementPresent('IdentifierUrn');
-        $this->type('IdentifierUrn', '123');
+        $this->type('IdentifierUrn', 'urn:nbn:op:123');
 
         $this->click('send');
         $this->waitForPageToLoad();
