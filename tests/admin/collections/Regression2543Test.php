@@ -66,10 +66,10 @@ class Regression2543Test extends TestCase {
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/th/a");
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td/a");
 
-        $this->type("id=Opus_Model_Filter-Name-1", self::COL_NAME);
-        $this->type("id=Opus_Model_Filter-Number-1", "12345");
-        $this->type("id=Opus_Model_Filter-OaiSubset-1", self::COL_NAME);
-        $this->clickAndWait("submit");
+        $this->type("id=Name", self::COL_NAME);
+        $this->type("id=Number", "12345");
+        $this->type("id=OaiSubset", self::COL_NAME);
+        $this->clickAndWait("Save");
 
         $this->assertTextPresent("Sammlungseintrag '12345 " . self::COL_NAME ."' wurde erfolgreich angelegt.");
     }
@@ -87,10 +87,10 @@ class Regression2543Test extends TestCase {
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/th/a");
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td/a");
 
-        $this->type("id=Opus_Model_Filter-Name-1", "collbaz");
-        $this->type("id=Opus_Model_Filter-Number-1", "56789");
-        $this->type("id=Opus_Model_Filter-OaiSubset-1", "collbaz");
-        $this->clickAndWait("submit");
+        $this->type("id=Name", "collbaz");
+        $this->type("id=Number", "56789");
+        $this->type("id=OaiSubset", "collbaz");
+        $this->clickAndWait("Save");
 
         $this->assertTextPresent("Sammlungseintrag '56789 collbaz' wurde erfolgreich angelegt.");
     }

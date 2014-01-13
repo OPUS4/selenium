@@ -68,10 +68,10 @@ class Regression2540Test extends TestCase {
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/th/a"); // klick Sammlungsnamen (1. Spalte)
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td/a"); // klick Sammlung einfügen (1. Spalte)
 
-        $this->type("id=Opus_Model_Filter-Name-1", "collfoobar");
-        $this->type("id=Opus_Model_Filter-Number-1", "12345");
-        $this->type("id=Opus_Model_Filter-OaiSubset-1", "collfoobar");
-        $this->clickAndWait("submit");
+        $this->type("id=Name", "collfoobar");
+        $this->type("id=Number", "12345");
+        $this->type("id=OaiSubset", "collfoobar");
+        $this->clickAndWait("Save");
 
         $this->assertTextNotPresent('Insert successful');
         $this->assertTextPresent("Sammlungseintrag '12345 collfoobar' wurde erfolgreich angelegt.");
@@ -104,7 +104,7 @@ class Regression2540Test extends TestCase {
 
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/th/a");
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr[2]/td[1]/a");
-        $this->clickAndWait("submit");
+        $this->clickAndWait("Save");
 
         $this->assertTextNotPresent("Edit successful");
         $this->assertTextPresent("Sammlungseintrag '12345 collfoobar' wurde erfolgreich bearbeitet.");
