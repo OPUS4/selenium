@@ -45,8 +45,8 @@ class CollectionTest extends TestCase {
         // check output
         $this->open('/admin/collection/edit/id/3');
         $this->waitForPageToLoad();
-        $this->assertElementValueNotEquals('Opus_Model_Filter-Number-1', '');
-        $this->assertElementValueNotEquals('Opus_Model_Filter-OaiSubset-1', '');
+        $this->assertElementValueNotEquals('Number', '');
+        $this->assertElementValueNotEquals('OaiSubset', '');
     }
 
 }
