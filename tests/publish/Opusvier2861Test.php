@@ -49,11 +49,11 @@ class Opusvier2861Test extends TestCasePublish {
         // create a new DNB institute for the purpose of this test only
         $this->login();
         $this->open('/admin/dnbinstitute/new');
-        $this->type('Opus_DnbInstitute-Name-1', 'OPUSVIER-2861-DnbInstitute');
-        $this->type('Opus_DnbInstitute-City-1', 'Berlin');
-        $this->click('Opus_DnbInstitute-IsGrantor-1');
-        $this->click('Opus_DnbInstitute-IsPublisher-1');
-        $this->click('submit');
+        $this->type('Name', 'OPUSVIER-2861-DnbInstitute');
+        $this->type('City', 'Berlin');
+        $this->click('IsGrantor');
+        $this->click('IsPublisher');
+        $this->click('Save');
         $this->waitForPageToLoad();
 
         // select recently created DNB institute in publish form
@@ -70,7 +70,8 @@ class Opusvier2861Test extends TestCasePublish {
         $this->selectWindow('admin-window');
 
         $this->open('/admin/dnbinstitute');
-        $this->clickAndWait("//a[text()='OPUSVIER-2861-DnbInstitute']/../../td/form/input[@name='actionDelete']");
+        $this->clickAndWait("//a[text()='OPUSVIER-2861-DnbInstitute']/../../td[@class='remove']/a");
+        $this->clickAndWait('ConfirmYes');
 
         $this->assertElementPresent('//div[@class="messages"]/div[@class="notice"]');
 
@@ -83,7 +84,8 @@ class Opusvier2861Test extends TestCasePublish {
         $this->assertTextNotPresent('Opus_Model_NotFoundException');
         $this->assertTextNotPresent('No Opus_Db_DnbInstitutes with id 5 in database.');
         if (!$testing) {
-            $this->assertTextPresent('Es ist ein unerwarteter Fehler aufgetreten. Ihre Eingaben sind gelöscht. Bitte versuchen Sie es erneut oder wenden Sie sich an den Administrator.');
+            $this->assertTextPresent('Es ist ein unerwarteter Fehler aufgetreten. Ihre Eingaben sind gelöscht.'
+                . ' Bitte versuchen Sie es erneut oder wenden Sie sich an den Administrator.');
         }
         else {
             $this->assertTextPresent('Application_Exception');
@@ -94,5 +96,3 @@ class Opusvier2861Test extends TestCasePublish {
     }
 
 }
-
-?>
