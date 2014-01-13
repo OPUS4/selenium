@@ -40,25 +40,23 @@ class DnbInstituteTest extends TestCase {
      * Test for OPUSVIER-3041
      */
     public function testDepartmentIsEditable() {
-
         $this->login();
 
         /* prevent name clashes with existing entries */
         $uniqueInstituteName = uniqid('University');
         
         $this->open("/admin/dnbinstitute/new");
-        $this->type("id=Opus_DnbInstitute-Name-1", $uniqueInstituteName);
-        $this->type("id=Opus_DnbInstitute-Department-1", "Paranormal Research Center");
-        $this->type("id=Opus_DnbInstitute-City-1", "Berlin");
-        $this->click("id=submit");
-        $this->waitForPageToLoad();
-        $this->clickAndWait("//a[text()='$uniqueInstituteName, Paranormal Research Center']");
-        $this->assertTrue($this->isTextPresent("Department Paranormal Research Center"));
+        $this->type("id=Name", $uniqueInstituteName);
+        $this->type("id=Department", "Paranormal Research Center");
+        $this->type("id=City", "Berlin");
+        $this->clickAndWait("id=Save");
+
+        $this->assertElementContainsText('id=Department', 'Paranormal Research Center');
 
         // clean up
         $this->open("/admin/dnbinstitute");
-        $this->clickAndWait("//a[text()='$uniqueInstituteName, Paranormal Research Center']/../../td/form/input[@name='actionDelete']");
-        
+        $this->assertElementPresent("//a[text()='$uniqueInstituteName, Paranormal Research Center']/../../td[@class='remove']");
+        $this->clickAndWait("//a[text()='$uniqueInstituteName, Paranormal Research Center']/../../td[@class='remove']/a");
     }
 
 }
