@@ -37,14 +37,14 @@ class DocTypeImageTest extends TestCase {
 
     public function testDocTypImage() {
         $this->switchToEnglish();
-        $this->open("/publish");
-        $this->waitForPageToLoad();
+        $this->openAndWait("/publish");
+
         $this->assertTrue($this->isTextPresent("Publish"));
         $this->assertTrue($this->isTextPresent("Choose document type and file"));
         $this->select("documentType", "label=Image");
         $this->click("rights");
-        $this->click("send");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("send");
+
         $this->assertTrue($this->isTextPresent("Publish"));
         $this->assertTrue($this->isTextPresent("Image"));
         $this->type("PersonSubmitterFirstName_1", "Donald");
@@ -55,11 +55,12 @@ class DocTypeImageTest extends TestCase {
         $this->type("CompletedDate", "2004/03/12");
         $this->select("Language", "label=English");
         $this->select("Licence", "label=Creative Commons - Namensnennung");
-        $this->click("send");
-        $this->waitForPageToLoad();
+        $this->select("ThesisPublisher_1", "label=School of Life");
+        $this->clickAndWait("send");
+
         $this->assertTrue($this->isTextPresent("Please check your data."));
-        $this->click("send");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("send");
+
         $this->assertTrue($this->isTextPresent("Document "));
         $this->assertTrue($this->isTextPresent(" was successfully published."));
     }

@@ -37,13 +37,13 @@ class DocTypeSoundTest extends TestCase {
 
     public function testDocTypeSound() {
         $this->switchToEnglish();
-        $this->open("/publish");
-        $this->waitForPageToLoad();
+
+        $this->openAndWait("/publish");
         $this->assertTrue($this->isTextPresent("Publish"));
         $this->select("documentType", "label=Sound");
         $this->click("rights");
-        $this->click("send");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("send");
+
         $this->assertTrue($this->isTextPresent("Sound"));
         $this->type("PersonSubmitterFirstName_1", "Donald");
         $this->type("PersonSubmitterLastName_1", "Trump");
@@ -56,11 +56,12 @@ class DocTypeSoundTest extends TestCase {
         $this->type("CompletedDate", "2004/03/24");
         $this->select("Language", "label=German");
         $this->select("Licence", "label=Creative Commons - Namensnennung");
-        $this->click("send");
-        $this->waitForPageToLoad();
+        $this->select("ThesisPublisher_1", "label=School of Life");
+        $this->clickAndWait("send");
+
         $this->assertTrue($this->isTextPresent("Please check your data."));
-        $this->click("send");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("send");
+
         $this->assertTrue($this->isTextPresent("Document "));
         $this->assertTrue($this->isTextPresent(" was successfully published."));
     }
