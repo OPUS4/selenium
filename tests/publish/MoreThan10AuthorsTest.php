@@ -35,62 +35,37 @@ require_once 'TestCase.php';
 
 class MoreThan10AuthorsTest extends TestCase {
 
-    public function testDocumentWithMoreThan10Authors() {
+    public function testDocumentWithMoreThan10Authors()
+    {
         $this->switchToGerman();
-        $this->open("/publish");
-        $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad();
 
         $this->login();
 
         $this->assertTrue($this->isElementPresent("link=English"));
-        
-        $this->click("//li[@id='primary-nav-publish']/a/span");
-        $this->waitForPageToLoad();
+
+        $this->openAndWait("/publish");
+
         $this->select("id=documentType", "label=Arbeitspapier");
         $this->click("id=rights");
-        $this->click("id=send");
-        $this->waitForPageToLoad("30000");
+        $this->clickAndWait("id=send");
+
         $this->type("id=PersonSubmitterLastName_1", "Doe");
         $this->type("id=TitleMain_1", "Entenhausen");
-        $this->type("id=PersonAuthorLastName_1", "nachname 1");
-        $this->click("id=addMorePersonAuthor");
-        $this->waitForPageToLoad("30000");
-        $this->type("id=PersonAuthorLastName_2", "nachname 2");
-        $this->click("id=addMorePersonAuthor");
-        $this->waitForPageToLoad("30000");
-        $this->type("id=PersonAuthorLastName_3", "nachname 3");
-        $this->click("id=addMorePersonAuthor");
-        $this->waitForPageToLoad("30000");
-        $this->type("id=PersonAuthorLastName_4", "nachname 4");
-        $this->click("id=addMorePersonAuthor");
-        $this->waitForPageToLoad("30000");
-        $this->type("id=PersonAuthorLastName_5", "nachname 5");
-        $this->click("id=addMorePersonAuthor");
-        $this->waitForPageToLoad("30000");
-        $this->type("id=PersonAuthorLastName_6", "nachname 6");
-        $this->click("id=addMorePersonAuthor");
-        $this->waitForPageToLoad("30000");
-        $this->type("id=PersonAuthorLastName_7", "nachname 7");
-        $this->click("id=addMorePersonAuthor");
-        $this->waitForPageToLoad("30000");
-        $this->type("id=PersonAuthorLastName_8", "nachname 8");
-        $this->click("id=addMorePersonAuthor");
-        $this->waitForPageToLoad("30000");
-        $this->type("id=PersonAuthorLastName_9", "nachname 9");
-        $this->click("id=addMorePersonAuthor");
-        $this->waitForPageToLoad("30000");
-        $this->type("id=PersonAuthorLastName_10", "nachname 10");
-        $this->click("id=addMorePersonAuthor");
-        $this->waitForPageToLoad("30000");
+        $this->select("ThesisPublisher_1", "label=School of Life");
+
+        for ($index = 1; $index <= 10; $index++) {
+            $this->type("id=PersonAuthorLastName_$index", "nachname $index");
+            $this->clickAndWait("id=addMorePersonAuthor");
+        }
+
         $this->type("id=PersonAuthorLastName_11", "nachname 11");
+
         $this->select("id=Licence", "label=Veröffentlichungsvertrag für Publikationen mit Print on Demand");
-        $this->click("id=send");
-        $this->waitForPageToLoad("30000");
-        $this->click("id=send");
-        $this->waitForPageToLoad("30000");
-        $this->click("link=Dokument betrachten.");
-        $this->waitForPageToLoad("30000");
+        $this->clickAndWait("id=send");
+
+        $this->clickAndWait("id=send");
+
+        $this->clickAndWait("link=Dokument betrachten.");
 
         $this->verifyTextPresent("exact:Verfasserangaben:");
         $this->verifyTextPresent("nachname 1");
@@ -106,7 +81,6 @@ class MoreThan10AuthorsTest extends TestCase {
         $this->verifyTextPresent("nachname 11");
 
         $this->logout();
-	$this->waitForPageToLoad();
     }
 
 }

@@ -85,8 +85,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
         $this->logout();
 
         // login
-        $this->open('/auth/login');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/auth/login');
         if (is_null($user)) {
             $user = $this->adminUsername;
         }
@@ -95,8 +94,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
             $password = $this->adminPassword;
         }
         $this->type('password', $password);
-        $this->click('SubmitCredentials');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('SubmitCredentials');
     }
 
     public function logout() {
