@@ -43,28 +43,13 @@ class AccountModuleAccessTest extends TestCaseAuthorisation {
     /**
      * Prüft, ob nur die erlaubten Einträge im Admin Menu angezeigt werden.
      */
-    public function testShowAccountLinkForUsersWithModuleAccess() {
-        $this->switchToEnglish();
-        $this->login("security7", "security7pwd");
-        $this->openAndWait('/home');
-        $this->assertElementContainsText("//div[@id='login-bar']", 'Account');
-    }
-    
     public function testHideAccountLinkForUsersWithoutModuleAccess() {
         $this->switchToEnglish();
         $this->login("security1", "security1pwd");
         $this->openAndWait('/home');
         $this->assertElementNotContainsText("//div[@id='login-bar']", 'Account');
     }
-    
-    public function testAccessAccountModule() {
-        $this->switchToEnglish();
-        $this->login("security7", "security7pwd");
-        $this->openAndWait('/account');
-        $this->assertElementContainsText('//html/head/title', 'Account');
-        $this->assertElementValueEquals("//input[@id='username']", 'security7');
-    }
-    
+
     public function testNoAccessAccountModule() {
         $this->switchToEnglish();
         $this->login("security1", "security1pwd");
@@ -72,8 +57,6 @@ class AccountModuleAccessTest extends TestCaseAuthorisation {
         $this->assertElementContainsText('//html/head/title', 'Login');
         $this->assertElementContainsText('//html/body', 'Logout security1');
     }
-    
-
 }
 
 
