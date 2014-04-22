@@ -116,26 +116,5 @@ class DeleteFileTest extends TestCase {
         $this->logout();
     }
 
-    public function testBadDocIdNotDisplayedOnPage() {
-        $this->switchToEnglish();
-        $this->login();
-
-        $this->openAndWait('/admin/filemanager/delete/id/dummyDocId/fileId/125');
-
-        $this->assertTextNotPresent('dummyDocId');
-
-        $this->logout();
-    }
-
-    public function testBadFileIdNotDisplayedOnPage() {
-        $this->switchToEnglish();
-        $this->login();
-
-        $this->openAndWait('/admin/filemanager/delete/id/124/fileId/dummyFileId');
-
-        $this->assertTextNotPresent('dummyFieldId');
-
-        $this->logout();
-    }
 
 }
