@@ -98,8 +98,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     public function logout() {
-        $this->open('/auth/logout');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/auth/logout');
     }
 
     public function waitForPageToLoad($period = null) {
@@ -113,16 +112,14 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
      * Changes language to English.
      */
     public function switchToEnglish() {
-        $this->open('/home/index/language/language/en');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/home/index/language/language/en');
     }
 
     /**
      * Changes language to German.
      */
     public function switchToGerman() {
-        $this->open('/home/index/language/language/de');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/home/index/language/language/de');
     }
 
     public function open($path) {
@@ -172,8 +169,7 @@ class TestCase extends PHPUnit_Extensions_SeleniumTestCase {
     }
 
     private function isMode($mode) {
-        $this->open('/home');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/home');
         return $this->isElementPresent('//div[@id="appmode-' . $mode . '"]');
     }
 

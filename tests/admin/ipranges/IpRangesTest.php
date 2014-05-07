@@ -44,8 +44,7 @@ class IpRangesTest extends TestCase {
         $this->switchToEnglish();
 
         // check output
-        $this->open('/admin/iprange/new');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/iprange/new');
 
         $description = 'My IP Range (1)'; // contains spaces and brackets
         $iprange = '127.0.0.1';
@@ -53,8 +52,7 @@ class IpRangesTest extends TestCase {
         $this->type('name', $description);
         $this->type('startingip', $iprange);
 
-        $this->click('submit');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('submit');
 
         // Test for negative result
         $this->assertElementNotPresent('css=ul.errors');
@@ -73,8 +71,7 @@ class IpRangesTest extends TestCase {
         $this->login();
         $this->switchToEnglish();
 
-        $this->open('/admin/iprange/new');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/iprange/new');
 
         $description = 'My IP Range'; // contains spaces and brackets
         $iprange = 'www.foobar.com';
@@ -82,8 +79,7 @@ class IpRangesTest extends TestCase {
         $this->type('name', $description);
         $this->type('startingip', $iprange);
 
-        $this->click('submit');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('submit');
 
         // Test for negative result
         $this->assertElementNotPresent('css=div.exceptionMessage');
@@ -104,8 +100,7 @@ class IpRangesTest extends TestCase {
         $this->switchToEnglish();
 
         // check output
-        $this->open('/admin/iprange/new');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/iprange/new');
 
         $description = 'My IP Range (3)'; // contains spaces and brackets
         $iprange = '127.0.0.3';
@@ -113,8 +108,7 @@ class IpRangesTest extends TestCase {
         $this->type('name', $description);
         $this->type('startingip', $iprange);
 
-        $this->click('submit');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('submit');
 
         // Test for positive result
         $this->assertElementContainsText('//html/head/title', 'Manage IP Ranges');
