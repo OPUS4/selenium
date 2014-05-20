@@ -37,6 +37,7 @@ require_once 'TestCase.php';
 class FrontdoorLaTeXTest extends TestCase {
 
     public function testLatexPlugin() {
+        $this->markTestSkipped('Test can only be verified with LaTeX file present (OPUSVIER-1156)');
         $this->login();
         $this->switchToGerman();
         $this->openAndWait('/frontdoor/index/index/docId/305');
