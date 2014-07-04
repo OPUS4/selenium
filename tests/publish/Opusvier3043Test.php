@@ -33,11 +33,11 @@
  */
 require_once 'TestCase.php';
 
-class Opusvier3034Test extends TestCase {
+class Opusvier3043Test extends TestCase {
 
     /**
-     * Collections with the property visible_publish==0 (like 'Serviceeinrichtungen') should not be shown in the
-     * select-boxes of publish form.
+     * Collections with the property visible_publish==0 (like 'Serviceeinrichtungen') and visible==0 (like 'Maschinenbau)
+     * should not be shown in the select-boxes of publish form.
      */
     public function testVisiblePublishFalseCollectionsNotShown() {
         $this->switchToEnglish();
@@ -52,10 +52,10 @@ class Opusvier3034Test extends TestCase {
         $this->click('browseDownInstitute');
         $this->waitForPageToLoad();
 
-        $this->assertTrue($this->isTextPresent("Maschinenbau"));
         $this->assertTrue($this->isTextPresent("Bauwesen"));
         $this->assertTrue($this->isTextPresent("Verfahrenstechnik"));
         $this->assertFalse($this->isTextPresent("Serviceeinrichtungen"));
+        $this->assertFalse($this->isTextPresent("Maschinenbau"));
     }
 
 
