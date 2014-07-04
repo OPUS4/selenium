@@ -55,7 +55,7 @@ class Opusvier3043Test extends TestCase {
         $this->assertTrue($this->isTextPresent("Bauwesen"));
         $this->assertTrue($this->isTextPresent("Verfahrenstechnik"));
         $this->assertFalse($this->isTextPresent("Serviceeinrichtungen"));
-        $this->assertFalse($this->isTextPresent("Maschinenbau"));
+        $this->assertFalse($this->isTextPresent("Elektrotechnik und Informationstechnik"));
     }
 
 
