@@ -60,26 +60,26 @@ class EnrichmentTest extends TestCase {
         $this->type('Document-Enrichments-Enrichment0-Value', 'Testwert');
         $this->type('Document-Enrichments-Enrichment1-Value', 'Testwert');
 
-        $this->select('Document-Enrichments-Enrichment0-KeyName', 'City');
-        $this->select('Document-Enrichments-Enrichment1-KeyName', 'City');
+        $this->select('Document-Enrichments-Enrichment0-KeyName', 'City of event');
+        $this->select('Document-Enrichments-Enrichment1-KeyName', 'City of event');
 
         $this->clickAndWait('Document-ActionBox-Save'); // zweimal selben KeyName und Wert abspeichern
 
         $this->assertElementContainsText('//div[@class="notice"]', 'Changes successfully saved.');
         $this->assertElementPresent('Document-Enrichments-Enrichment0-Value');
-        $this->assertElementContainsText('Document-Enrichments-Enrichment0-KeyName', 'City');
+        $this->assertElementContainsText('Document-Enrichments-Enrichment0-KeyName', 'City of event');
         $this->assertElementContainsText('Document-Enrichments-Enrichment0-Value', 'Testwert');
         $this->assertElementPresent('Document-Enrichments-Enrichment1-Value');
-        $this->assertElementContainsText('Document-Enrichments-Enrichment1-KeyName', 'City');
+        $this->assertElementContainsText('Document-Enrichments-Enrichment1-KeyName', 'City of event');
         $this->assertElementContainsText('Document-Enrichments-Enrichment1-Value', 'Testwert');
 
         $this->openAndWait('/admin/document/edit/id/250');
 
         $this->assertElementPresent('Document-Enrichments-Enrichment0-Value');
-        $this->assertElementValueEquals('Document-Enrichments-Enrichment0-KeyName', 'City');
+        $this->assertElementValueEquals('Document-Enrichments-Enrichment0-KeyName', 'City of event');
         $this->assertElementValueEquals('Document-Enrichments-Enrichment0-Value', 'Testwert');
         $this->assertElementPresent('Document-Enrichments-Enrichment1-Value');
-        $this->assertElementValueEquals('Document-Enrichments-Enrichment1-KeyName', 'City');
+        $this->assertElementValueEquals('Document-Enrichments-Enrichment1-KeyName', 'City of event');
         $this->assertElementValueEquals('Document-Enrichments-Enrichment1-Value', 'Testwert');
 
         $this->select('Document-Enrichments-Enrichment0-KeyName', 'BibtexRecord');
@@ -93,7 +93,7 @@ class EnrichmentTest extends TestCase {
         $this->assertElementContainsText('Document-Enrichments-Enrichment0-KeyName', 'BibtexRecord');
         $this->assertElementContainsText('Document-Enrichments-Enrichment0-Value', 'Testwert 1');
         $this->assertElementPresent('Document-Enrichments-Enrichment1-Value');
-        $this->assertElementContainsText('Document-Enrichments-Enrichment1-KeyName', 'City');
+        $this->assertElementContainsText('Document-Enrichments-Enrichment1-KeyName', 'City of event');
         $this->assertElementContainsText('Document-Enrichments-Enrichment1-Value', 'Testwert 2');
 
         $this->openAndWait('/admin/document/edit/id/250');
@@ -102,13 +102,13 @@ class EnrichmentTest extends TestCase {
         $this->assertElementValueEquals('Document-Enrichments-Enrichment0-KeyName', 'BibtexRecord');
         $this->assertElementValueEquals('Document-Enrichments-Enrichment0-Value', 'Testwert 1');
         $this->assertElementPresent('Document-Enrichments-Enrichment1-Value');
-        $this->assertElementValueEquals('Document-Enrichments-Enrichment1-KeyName', 'City');
+        $this->assertElementValueEquals('Document-Enrichments-Enrichment1-KeyName', 'City of event');
         $this->assertElementValueEquals('Document-Enrichments-Enrichment1-Value', 'Testwert 2');
 
         $this->clickAndWait('Document-Enrichments-Enrichment0-Remove');
 
         $this->assertElementPresent('Document-Enrichments-Enrichment0-Value');
-        $this->assertElementValueEquals('Document-Enrichments-Enrichment0-KeyName', 'City');
+        $this->assertElementValueEquals('Document-Enrichments-Enrichment0-KeyName', 'City of event');
         $this->assertElementValueEquals('Document-Enrichments-Enrichment0-Value', 'Testwert 2');
         $this->assertElementNotPresent('Document-Enrichments-Enrichment1-Value');
 
