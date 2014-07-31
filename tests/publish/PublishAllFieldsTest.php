@@ -56,6 +56,12 @@ class PublishAllFieldsTest extends TestCase {
         $this->type("PersonAuthorDateOfBirth_1", "01.01.1965");
         $this->assertTrue($this->isElementPresent("PersonAuthorPlaceOfBirth_1"));
         $this->type("PersonAuthorPlaceOfBirth_1", "Berlin");
+        $this->assertTrue($this->isElementPresent("PersonAuthorIdentifierGnd_1"));
+        $this->type("PersonAuthorIdentifierGnd_1", "abcd");
+        $this->assertTrue($this->isElementPresent("PersonAuthorIdentifierOrcid_1"));
+        $this->type("PersonAuthorIdentifierOrcid_1", "abcd");
+        $this->assertTrue($this->isElementPresent("PersonAuthorIdentifierMisc_1"));
+        $this->type("PersonAuthorIdentifierMisc_1", "abcd");
         $this->assertTrue($this->isElementPresent("Language"));
         $this->assertTrue($this->isElementPresent("TitleMain_1"));
         $this->type("TitleMain_1", "Testdokument mit allen Feldern");
