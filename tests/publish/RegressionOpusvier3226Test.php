@@ -36,7 +36,7 @@ require_once 'TestCase.php';
 
 class RegressionOpusvier3226Test extends TestCase {
 
-    public function testDepositWithMissingModelDnbInstitute() {
+    public function testNewDocumentWithDocumentTypAfterValidationFail() {
         $this->switchToEnglish();
         $this->login();
 
