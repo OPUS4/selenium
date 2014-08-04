@@ -43,8 +43,8 @@ class CollectionTest extends TestCase {
         $this->login();
 
         // check output
-        $this->open('/admin/collection/edit/id/3');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collection/edit/id/3');
+
         $this->assertElementValueNotEquals('Number', '');
         $this->assertElementValueNotEquals('OaiSubset', '');
     }

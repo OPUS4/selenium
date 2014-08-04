@@ -43,14 +43,12 @@ class Regression2540Test extends TestCase {
         $this->login();
         $this->switchToGerman();
 
-        $this->open('/admin/collectionroles/new');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/collectionroles/new');
 
-        $this->type("id=Opus_Model_Filter-Name-1", "foobar");
-        $this->type("id=Opus_Model_Filter-OaiName-1", "foobar");
-        $this->select("id=Opus_Model_Filter-Position-1", "0");
-        $this->click("submit");
-        $this->waitForPageToLoad();
+        $this->type("Name", "foobar");
+        $this->type("OaiName", "foobar");
+        $this->select("Position", "value=1");
+        $this->clickAndWait("Save");
 
         $this->assertTextNotPresent("Collection role 'foobar' successfully created.");
         $this->assertTextPresent("Sammlung 'foobar' wurde erfolgreich angelegt.");
@@ -68,9 +66,9 @@ class Regression2540Test extends TestCase {
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/th/a"); // klick Sammlungsnamen (1. Spalte)
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td/a"); // klick Sammlung einfügen (1. Spalte)
 
-        $this->type("id=Name", "collfoobar");
-        $this->type("id=Number", "12345");
-        $this->type("id=OaiSubset", "collfoobar");
+        $this->type("Name", "collfoobar");
+        $this->type("Number", "12345");
+        $this->type("OaiSubset", "collfoobar");
         $this->clickAndWait("Save");
 
         $this->assertTextNotPresent('Insert successful');
@@ -87,7 +85,7 @@ class Regression2540Test extends TestCase {
         $this->openAndWait('/admin/collectionroles');
 
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td[1]/a");
-        $this->clickAndWait("submit");
+        $this->clickAndWait("Save");
 
         $this->assertTextNotPresent("Collection role 'foobar' successfully edited.");
         $this->assertTextPresent("Sammlung 'foobar' wurde erfolgreich bearbeitet.");

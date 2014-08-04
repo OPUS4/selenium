@@ -32,6 +32,10 @@
  * @version     $Id$
  */
 
+/**
+ * TODO in Unit Tests umwandeln (post = {}, dispatch())
+ */
+
 require_once 'TestCase.php';
 
 class Regression2543Test extends TestCase {
@@ -46,10 +50,10 @@ class Regression2543Test extends TestCase {
 
         $this->openAndWait('/admin/collectionroles/new');
         
-        $this->type("id=Opus_Model_Filter-Name-1", self::COL_ROLE_NAME);
-        $this->type("id=Opus_Model_Filter-OaiName-1", self::COL_ROLE_NAME);
-        $this->select("id=Opus_Model_Filter-Position-1", "0");
-        $this->clickAndWait("submit");
+        $this->type("Name", self::COL_ROLE_NAME);
+        $this->type("OaiName", self::COL_ROLE_NAME);
+        $this->select("Position", "value=1");
+        $this->clickAndWait("Save");
 
         $this->assertTextPresent("Sammlung '" . self::COL_ROLE_NAME . "' wurde erfolgreich angelegt.");
     }
@@ -66,9 +70,9 @@ class Regression2543Test extends TestCase {
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/th/a");
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td/a");
 
-        $this->type("id=Name", self::COL_NAME);
-        $this->type("id=Number", "12345");
-        $this->type("id=OaiSubset", self::COL_NAME);
+        $this->type("Name", self::COL_NAME);
+        $this->type("Number", "12345");
+        $this->type("OaiSubset", self::COL_NAME);
         $this->clickAndWait("Save");
 
         $this->assertTextPresent("Sammlungseintrag '12345 " . self::COL_NAME ."' wurde erfolgreich angelegt.");
@@ -87,9 +91,9 @@ class Regression2543Test extends TestCase {
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/th/a");
         $this->clickAndWait("xpath=//table[@class='collections']/tbody/tr/td/a");
 
-        $this->type("id=Name", "collbaz");
-        $this->type("id=Number", "56789");
-        $this->type("id=OaiSubset", "collbaz");
+        $this->type("Name", "collbaz");
+        $this->type("Number", "56789");
+        $this->type("OaiSubset", "collbaz");
         $this->clickAndWait("Save");
 
         $this->assertTextPresent("Sammlungseintrag '56789 collbaz' wurde erfolgreich angelegt.");
