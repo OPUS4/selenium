@@ -90,4 +90,21 @@ class FilemanagerTest extends TestCase {
         $this->logout();
     }
 
+    /**
+     * Testet, ob die Seite noch korrekt angezeigt wird, wenn im Admin-Filemanager keine Datei beim Upload ausgewählt wird.
+     * Regressiontest OPUSVIER-3277.
+     */
+    public function testNoUploadFile() {
+        $this->switchToEnglish();
+        $this->login();
+
+        $this->openAndWait('/admin/filemanager/upload/id/146');
+
+        $this->assertElementContainsText('//span[@class="docid"]', '146');
+
+        $this->clickAndWait('Save');
+
+        $this->assertElementContainsText('//ul[@class="errors"]/li', 'File upload is required.');
+    }
+
 }
