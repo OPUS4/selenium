@@ -67,5 +67,3 @@ class BrowseCollectionDdcTest extends TestCase {
     }
 
 }
-
-?>
