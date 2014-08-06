@@ -107,4 +107,52 @@ class FrontdoorLinkForAdminsTest extends TestCase {
         $this->assertElementNotPresent('frontdoor-link');
     }
 
+    public function testFrontdoorLinkForFullAdmin() {
+        $this->switchToGerman();
+        $this->login('security1', 'security1pwd');
+
+        $this->openAndWait("/publish");
+
+        // Page one of Publish
+        $this->select('documentType', 'value=all');
+        $this->click('rights');
+
+        $this->clickAndWait('send');
+
+        // Page two of Publish
+        $this->click('LegalNotices');
+
+        $this->clickAndWait('send');
+
+        // Confirmation page of Publish
+        $this->clickAndWait('send');
+
+        // Check link
+        $this->assertElementPresent('frontdoor-link');
+    }
+
+    public function testFrontdoorLinkForLicenceAdmin() {
+        $this->switchToGerman();
+        $this->login('security2', 'security2pwd');
+
+        $this->openAndWait("/publish");
+
+        // Page one of Publish
+        $this->select('documentType', 'value=all');
+        $this->click('rights');
+
+        $this->clickAndWait('send');
+
+        // Page two of Publish
+        $this->click('LegalNotices');
+
+        $this->clickAndWait('send');
+
+        // Confirmation page of Publish
+        $this->clickAndWait('send');
+
+        // Check link
+        $this->assertElementNotPresent('frontdoor-link');
+    }
+
 }
