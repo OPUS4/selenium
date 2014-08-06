@@ -26,14 +26,14 @@
  *
  * @category    Application
  * @package     Selenium Test
- * @author      Sascha Szott <szott@zib.de>
- * @copyright   Copyright (c) 2008-2012, OPUS 4 development team
+ * @author      Michael Lang <lang@zib.de>
+ * @copyright   Copyright (c) 2008-2014, OPUS 4 development team
  * @license     http://www.gnu.org/licenses/gpl.html General Public License
  * @version     $Id$
  */
 require_once 'TestCase.php';
 
-class CollectionTest extends TestCase {
+class Regression3344Test extends TestCase {
 
     public function testDDCCollectionLeaf() {
         $this->switchToEnglish();
@@ -55,5 +55,4 @@ class CollectionTest extends TestCase {
         $this->assertElementContainsText('//div[@class="form-hint form-errors"]/p', 'Errors occurred. Please check the error messages beside the form fields.');
         $this->assertElementContainsText('//div[@class="form-errors"]/ul/li', 'This collection accepts only those entries which cannot be specified futhermore.');
     }
-
-} 
+}
