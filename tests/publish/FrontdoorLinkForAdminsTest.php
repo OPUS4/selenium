@@ -34,6 +34,10 @@
 
 require_once 'TestCase.php';
 
+/**
+ * Class FrontdoorLinkForAdminsTest.
+ * TODO Nach Umbau von Publish, Entscheidung über Anzeige von Link in Unit Tests prüfen.
+ */
 class FrontdoorLinkForAdminsTest extends TestCase {
 
     public function testFrontdoorLinkForAdmin() {
