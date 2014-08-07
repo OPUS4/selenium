@@ -37,22 +37,25 @@ class Regression3344Test extends TestCase {
 
     public function testDDCCollectionLeaf() {
         $this->switchToEnglish();
-        $this->openAndWait("/publish");
+        $this->openAndWait('/publish');
 
-        $this->assertTrue($this->isTextPresent("Publish"));
-        $this->assertTrue($this->isTextPresent("Choose document type and file"));
-        $this->select("documentType", "label=All fields (testing documenttype)");
-        $this->click("rights");
-        $this->clickAndWait("send");
+        $this->assertTextPresent('Publish');
+        $this->assertTextPresent('Choose document type and file');
+        $this->select('documentType', 'value=all');
+        $this->click('rights');
+        $this->clickAndWait('send');
 
-        $this->assertTrue($this->isTextPresent("Publish"));
-        $this->assertTrue($this->isTextPresent("All fields (testing documenttype)"));
+        $this->assertTextPresent('Publish');
+        $this->assertTextPresent('All fields (testing documenttype)');
 
-        $this->select('id=SubjectDDC_1', 'label=0 Informatik, Informationswissenschaft, allgemeine Werke');
+        $this->select('id=SubjectDDC_1', 'value=3');
         $this->click('LegalNotices');
         $this->clickAndWait('send');
 
-        $this->assertElementContainsText('//div[@class="form-hint form-errors"]/p', 'Errors occurred. Please check the error messages beside the form fields.');
-        $this->assertElementContainsText('//div[@class="form-errors"]/ul/li', 'This collection accepts only those entries which cannot be specified futhermore.');
+        $this->assertElementContainsText('//div[@class="form-hint form-errors"]/p',
+            'Errors occurred. Please check the error messages beside the form fields.');
+        $this->assertElementContainsText('//div[@class="form-errors"]/ul/li',
+            'This collection accepts only those entries which cannot be specified futhermore.');
     }
+
 }
