@@ -40,7 +40,8 @@
                  command="~/update-instance.sh opus4-selenium ${revision}"
                  keyfile="${keyfile}"
                  failonerror="on"
-                 output="${basedir}/build/logs/sshexec.log"/>
+                 output="${basedir}/build/logs/sshexec.log"
+                 knownhosts="${user.home}/.ssh/known_hosts.java"/> <!-- File has different format. -->
     </target>
 
     <target name="phpunit">
