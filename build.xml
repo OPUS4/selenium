@@ -3,7 +3,7 @@
 
     <property environment="env" />
     <property name="keyfile" location="/home/opus4ci/jenkins/certs/id_rsa" />
-    <property name="seleniumHost" value="130.73.63.61" /> <!-- opus4web.zib.de -->
+    <property name="seleniumHost" value="opus4web.zib.de" />
     <property name="seleniumUser" value="selenium" />
     <property name="testpath" value="." />
     <property name="revision" value="${env.SVN_REVISION_4}" />
