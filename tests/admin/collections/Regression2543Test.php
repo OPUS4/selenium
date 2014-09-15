@@ -175,7 +175,7 @@ class Regression2543Test extends TestCase {
     /**
      * @depends testMoveUpCollection
      */
-    public function testDownUpCollection() {
+    public function testMoveDownCollection() {
         $this->login();
         $this->switchToGerman();
 
