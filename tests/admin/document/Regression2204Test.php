@@ -40,7 +40,6 @@ class Regression2204Test extends TestCase {
      * Regression test for OPUSVIER-2204.
      */
     public function testSavingValueThatExceedsMaxValueLengthInDB() {
-        $this->markTestSkipped('Regression test for OPUSVIER-2204 (not yet fixed).');
         $this->login();
 
         // check output
