@@ -37,7 +37,7 @@ require_once 'TestCasePublish.php';
 class Opusvier2852Test extends TestCasePublish {
 
     public function setUp() {
-        parent::setUp();        
+        parent::setUp();
         $this->disableScreenshots();
     }
 
@@ -52,8 +52,8 @@ class Opusvier2852Test extends TestCasePublish {
         $this->type('Enrichmentfoobarbaz_1', 'OPUSVIER2852Deposit');
         $this->goToThirdStep();
         $this->waitForPageToLoad();
-        
-        // open administration in another window        
+
+        // open administration in another window
         $this->openWindow('/admin', 'admin-window');
         $this->selectWindow('admin-window');
 
@@ -62,10 +62,12 @@ class Opusvier2852Test extends TestCasePublish {
         $this->open('/admin/enrichmentkey');
         $this->waitForPageToLoad();
         $this->assertTextPresent('foobarbaz');
-        
-        $this->open('/admin/enrichmentkey/delete/name/foobarbaz');
-        $this->waitForPageToLoad();        
-        
+
+        $this->open('/admin/enrichmentkey/delete/id/foobarbaz');
+        $this->waitForPageToLoad();
+
+        $this->clickAndWait('ConfirmYes');
+
         // try to submit document in first window: enrichment key does not exist anymore
         $this->selectWindow(null);
         $this->click('send');
@@ -80,10 +82,10 @@ class Opusvier2852Test extends TestCasePublish {
         if (!$testing) {
             $this->assertTextPresent('Es ist ein unerwarteter Fehler aufgetreten. Ihre Eingaben sind gelöscht. Bitte versuchen Sie es erneut oder wenden Sie sich an den Administrator.');
         }
-        else {            
+        else {
             $this->assertTextPresent('Application_Exception');
             $this->assertTextPresent('publish_error_unexpected');
-        }     
+        }
     }
 
     public function testDepositWithMissingEnrichmentKeyForCheckAction() {
@@ -102,8 +104,9 @@ class Opusvier2852Test extends TestCasePublish {
         $this->waitForPageToLoad();
         $this->assertTextPresent('foobarbaz');
 
-        $this->open('/admin/enrichmentkey/delete/name/foobarbaz');
+        $this->open('/admin/enrichmentkey/delete/id/foobarbaz');
         $this->waitForPageToLoad();
+        $this->clickAndWait('ConfirmYes');
 
         // try to submit document in first window: enrichment key does not exist anymore
         $this->selectWindow(null);
@@ -126,17 +129,13 @@ class Opusvier2852Test extends TestCasePublish {
     private function restoreEnrichmentKey() {
         $this->selectWindow('admin-window');
 
-        $this->open('/admin/enrichmentkey');
-        $this->waitForPageToLoad();
+        $this->openAndWait('/admin/enrichmentkey/new');
+        $this->type('Name', 'foobarbaz');
+        $this->clickAndWait('Save');
 
-        $this->open('/admin/enrichmentkey/new');
-        $this->type('name', 'foobarbaz');
-        $this->click('submit');
-        $this->waitForPageToLoad();
-
-        $this->selectWindow(null);        
+        $this->selectWindow(null);
     }
-    
+
 }
 
 ?>
