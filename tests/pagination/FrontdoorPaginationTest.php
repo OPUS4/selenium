@@ -38,7 +38,7 @@ class FrontdoorPaginationTest extends TestCase {
 
     public function testSolrsearchHitLinkContainsSearchParameters() {
 
-        $frontdoorLink = "/frontdoor/index/index/searchtype/all/start/4/rows/1";
+        $frontdoorLink = "/frontdoor/index/index/searchtype/all/docId/150/start/4/rows/10";
 
         $this->open("/solrsearch/index/search/searchtype/all");
         $this->waitForPageToLoad();
@@ -52,7 +52,7 @@ class FrontdoorPaginationTest extends TestCase {
 
     public function testBrowsingHitLinkContainsSearchParameters() {
 
-        $frontdoorLink = "/frontdoor/index/index/searchtype/collection/id/63/start/1/rows/1";
+        $frontdoorLink = "/frontdoor/index/index/searchtype/collection/id/63/docId/8/start/1/rows/10";
 
         $this->open("/solrsearch/index/search/searchtype/collection/id/63");
         $this->waitForPageToLoad();
@@ -64,15 +64,15 @@ class FrontdoorPaginationTest extends TestCase {
     }
 
     public function testFrontdoorDisplayDocumentWithSearchUrl() {
-        $this->open("/frontdoor/index/index/searchtype/all/start/7/rows/1");
+        $this->open("/frontdoor/index/index/searchtype/all/start/6/rows/10");
         $this->waitForPageToLoad();
         $this->assertTextPresent('urn:nbn:de:foo:123-bar-456');
     }
 
     public function testFrontdoorDisplayDocumentWithAdvancedSearchUrl() {
-        $this->open("/frontdoor/index/index/start/1/rows/1/sortfield/score/sortorder/desc/searchtype/advanced/author/Doe/authormodifier/contains_all/title/test/titlemodifier/contains_all/fulltext/Unwort/fulltextmodifier/contains_none/year/2008/yearmodifier/contains_all");
+        $this->open("/frontdoor/index/index/start/1/rows/10/sortfield/score/sortorder/desc/searchtype/advanced/author/Doe/authormodifier/contains_all/title/test/titlemodifier/contains_all/fulltext/Unwort/fulltextmodifier/contains_none/year/2008/yearmodifier/contains_all");
         $this->waitForPageToLoad();
-        $this->assertTextPresent('This is a postscript test document');
+        $this->assertTextPresent('This is a html test document');
     }
 
     public function testFrontdoorBacklinkRespectsCurrentPagePosition() {
@@ -87,6 +87,32 @@ class FrontdoorPaginationTest extends TestCase {
         $this->clickAndWait('//li[@id="pagination-previous"]/a');
         $this->assertText('//span[@id="pagination-current-hit"]', '10');
         $this->isElementPresent('a[@id="pagination-link-hitlist" and @href="' . $previousPageUrl . '"]');
+    }
+
+    public function testFirstEntryInListContainsNavigation() {
+
+        $frontdoorLink = "/frontdoor/index/index/searchtype/all/start/0/rows/10/docId/305";
+        $this->openAndWait($frontdoorLink);
+        $this->assertText('//span[@id="pagination-current-hit"]', '1');
+        $this->assertText('//span[@id="pagination-num-hits"]', '142');
+    }
+
+    public function testClickPreviousOnSecondEntryShowsFirstEntry() {
+
+        $frontdoorLink = "/frontdoor/index/index/searchtype/all/start/1/rows/10/docId/305";
+        $this->openAndWait($frontdoorLink);
+        $this->clickAndWait('//li[@id="pagination-previous"]/a');
+        $this->assertText('//span[@id="pagination-current-hit"]', '1');
+        $this->assertText('//span[@id="pagination-num-hits"]', '142');
+    }
+
+    public function testLatestSearch() {
+        $this->switchToGerman();
+        $frontdoorLink = "/frontdoor/index/index/searchtype/latest/docId/150/start/4/rows/10";
+        $this->openAndWait($frontdoorLink);
+        $this->assertTextNotPresent("Das Suchergebnis hat sich seit Ihrer Suchanfrage verändert. Eventuell werden Dokumente in anderer Reihenfolge angezeigt.");
+        $this->assertText('//span[@id="pagination-current-hit"]', '5');
+        $this->assertText('//span[@id="pagination-num-hits"]', '10');
     }
 
     protected function frontdoorLinkExists($number, $href) {
