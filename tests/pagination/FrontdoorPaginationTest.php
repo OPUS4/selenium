@@ -64,7 +64,7 @@ class FrontdoorPaginationTest extends TestCase {
     }
 
     public function testFrontdoorDisplayDocumentWithSearchUrl() {
-        $this->open("/frontdoor/index/index/searchtype/all/start/6/rows/10");
+        $this->open("/frontdoor/index/index/searchtype/all/start/7/rows/10");
         $this->waitForPageToLoad();
         $this->assertTextPresent('urn:nbn:de:foo:123-bar-456');
     }
