@@ -114,6 +114,35 @@ class FrontdoorPaginationTest extends TestCase {
         $this->assertText('//span[@id="pagination-current-hit"]', '5');
         $this->assertText('//span[@id="pagination-num-hits"]', '10');
     }
+    
+    public function testClickNextUrlContainsParameterNavWithValueNext() {
+
+        $frontdoorLink = "/frontdoor/index/index/searchtype/all/start/1/rows/10/docId/305";
+        $this->openAndWait($frontdoorLink);
+        $this->clickAndWait('//li[@id="pagination-next"]/a');
+        $url = $this->getLocation();
+        $this->assertTrue(strpos($url, 'nav/next') !== false, "Parameter 'nav' with value 'next' not present");
+
+    }
+
+    public function testClickPreviousUrlContainsParameterNavWithValuePrev() {
+
+        $frontdoorLink = "/frontdoor/index/index/searchtype/all/start/1/rows/10/docId/305";
+        $this->openAndWait($frontdoorLink);
+        $this->clickAndWait('//li[@id="pagination-previous"]/a');
+        $url = $this->getLocation();
+        $this->assertTrue(strpos($url, 'nav/prev') !== false, "Parameter 'nav' with value 'prev' not present");
+
+    }
+
+    public function testClickNextUrlContainsDocId() {
+
+        $frontdoorLink = "/frontdoor/index/index/searchtype/all/start/1/rows/10/docId/305";
+        $this->openAndWait($frontdoorLink);
+        $this->clickAndWait('//li[@id="pagination-next"]/a');
+        $url = $this->getLocation();
+        $this->assertTrue(strpos($url, 'docId') !== false, "Parameter 'docId' not present");
+    }
 
     protected function frontdoorLinkExists($number, $href) {
         return $this->isElementPresent('//dl[contains(concat(" ", normalize-space(@class), " "), " result_box ")][' . $number . ']/dt[contains(concat(" ", normalize-space(@class), " "), " results_title ")]/a[contains(@href,"' . $href . '")]');
