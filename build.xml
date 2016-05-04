@@ -22,7 +22,7 @@
     <target name="lint">
         <apply executable="php" dir="${basedir}" failonerror="on" logerror="on">
             <arg line="-l"/>
-            <fileset dir="${basedir}">
+            <fileset dir="${basedir}/tests">
                 <include name="**/*.php"/>
                 <modified />
             </fileset>
