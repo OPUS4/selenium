@@ -8,7 +8,6 @@
     <target name="setup">
         <copy file="${basedir}/tests/config.ini.template" tofile="${basedir}/tests/config.ini" overwrite="false"
               failonerror="false" />
-        <exec executable="${basedir}/bin/install-composer.sh" dir="${basedir}" failonerror="on" />
     </target>
 
     <target name="clean">
@@ -17,6 +16,7 @@
 
     <target name="prepare" depends="clean">
         <mkdir dir="${basedir}/build/logs" />
+        <exec executable="${basedir}/bin/install-composer.sh" dir="${basedir}" failonerror="on" />
     </target>
 
     <target name="lint">
