@@ -1,0 +1,21 @@
+{
+  "name": "opus4-repo/tests-selenium",
+  "description": "Selenium Tests for Opus 4",
+  "license": "GPL-2.0+",
+  "type": "library",
+  "keywords": [
+    "opus4",
+    "framework",
+    "test",
+    "selenium"
+  ],
+  "homepage": "http://opus4.kobv.de",
+  "require-dev": {
+    "phpunit/phpunit": "4.8.5",
+    "phpunit/dbunit": "1.4.*",
+    "phpunit/phpunit-story": "1.0.*",
+    "phpunit/php-invoker": "1.1.*",
+    "phpunit/phpunit-selenium": "1.4.2",
+    "doctrine/instantiator": "1.0.5"
+  }
+}
