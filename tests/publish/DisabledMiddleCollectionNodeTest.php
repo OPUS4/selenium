@@ -37,15 +37,13 @@ class DisabledMiddleCollectionNodeTest extends TestCase {
 
     public function testDisabledMiddleAndRootCollectionNodes() {
         $this->switchToGerman();
-        $this->open("/publish");
-        $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad();
+        $this->openAndWait("/publish");
+
         $this->assertTrue($this->isElementPresent("link=English"));
 
-        $this->select("id=documentType", "label=Preprint für MATHEON");
+        $this->select("id=documentType", "value=all");
         $this->click("id=rights");
-        $this->click("id=send");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("id=send");
 
         $this->type("id=PersonAuthorFirstName_1", "Susi");
         $this->type("id=PersonAuthorLastName_1", "Gottwald");
@@ -53,25 +51,21 @@ class DisabledMiddleCollectionNodeTest extends TestCase {
         $this->type("id=TitleAbstract_1", "bla");
         $this->select("id=Institute_1", "label=Technische Universität Hamburg-Harburg");
         $this->select("id=SubjectMSC_1", "label=00-XX GENERAL");
-        $this->click("id=browseDownInstitute");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("id=browseDownInstitute");
 
-        $this->click("id=browseDownInstitute");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("id=browseDownInstitute");
 
-        $this->click("id=browseDownSubjectMSC");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("id=browseDownSubjectMSC");
 
         $this->select("id=collId2SubjectMSC_1", "label=00Axx General and miscellaneous specific topics");
-        $this->click("id=browseDownSubjectMSC");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("id=browseDownSubjectMSC");
 
         $this->assertFalse($this->isEditable("id=SubjectMSC_1"));
         $this->assertFalse($this->isEditable("id=collId2SubjectMSC_1"));
         $this->assertFalse($this->isEditable("id=Institute_1"));
         $this->assertFalse($this->isEditable("id=collId2Institute_1"));
-        $this->click("id=send");
-        $this->waitForPageToLoad();
+        $this->click("id=LegalNotices");
+        $this->clickAndWait("id=send");
 
         $this->assertTextPresent("00A05 General mathematics");
         $this->assertTextPresent("Abwasserwirtschaft und Gewässerschutz B-2");

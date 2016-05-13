@@ -43,12 +43,12 @@ class UploadActionWithValidPostTest extends TestCase {
 
         $this->assertElementPresent("link=English");
 
-        $this->select("documentType", "label=Preprint für MATHEON");
+        $this->select("documentType", "value=all");
         $this->click("rights");
         $this->clickAndWait("send");
 
         $this->assertElementPresent("//h3[@class='document-type']");
-        $this->assertElementContainsText("//h3[@class='document-type']", "Preprint für MATHEON");
+        $this->assertElementContainsText("//h3[@class='document-type']", "Alle Felder (Testdokumenttyp)");
     }
 
 }

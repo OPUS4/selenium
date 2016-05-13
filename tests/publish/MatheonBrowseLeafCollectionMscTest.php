@@ -38,52 +38,56 @@ class MatheonBrowseLeafCollectionMscTest extends TestCase {
 
     public function testMscAndInstituteLeafCollectionBrowsingAndCheckPage() {
         $this->switchToGerman();
-        $this->open("/publish");
-        $this->click("//li[@id='primary-nav-publish']/a/em/span");
-        $this->waitForPageToLoad();
+        $this->openAndWait("/publish");
+
         $this->assertTrue($this->isElementPresent("link=English"));
-        $this->select("documentType", "label=Preprint für MATHEON");
+
+        $this->select("documentType", "value=all");
         $this->click("rights");
-        $this->click("send");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("send");
+
         $this->type("PersonAuthorFirstName_1", "Susi");
         $this->type("PersonAuthorLastName_1", "Gottwald");
         $this->type("TitleMain_1", "Entenhausen");
         $this->type("TitleAbstract_1", "Testabstract");
-        $this->click("send");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("send");
+
         $this->assertTrue($this->isElementPresent("//div[@class='form-hint form-errors']"));
-        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupInstitute']/div[2]/div/div[@class='form-errors']"));
-        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
+        // TODO following checks applied to 'Preprint for Matheon' document type
+        // $this->assertTrue($this->isElementPresent("//fieldset[@id='groupInstitute']/div[2]/div/div[@class='form-errors']"));
+        // $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
         $this->select("Institute_1", "label=Technische Universität Hamburg-Harburg");
-        $this->click("browseDownInstitute");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("browseDownInstitute");
+
         $this->select("collId2Institute_1", "label=Bauwesen");
-        $this->click("browseDownInstitute");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("browseDownInstitute");
+
         $this->select("collId3Institute_1", "label=Abwasserwirtschaft und Gewässerschutz B-2");
-        $this->click("send");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("send");
+
         $this->assertTrue($this->isElementPresent("//div[@class='form-hint form-errors']"));
-        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
+        // TODO following check applied to 'Preprint for Matheon' document type
+        // $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
         $this->select("SubjectMSC_1", "label=00-XX GENERAL");
-        $this->click("send");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("send");
+
         $this->assertTrue($this->isElementPresent("//div[@class='form-hint form-errors']"));
-        $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
-        $this->click("browseDownSubjectMSC");
-        $this->waitForPageToLoad();
+        // TODO following check applied to 'Preprint for Matheon' document type
+        // $this->assertTrue($this->isElementPresent("//fieldset[@id='groupSubjectMSC']/div[2]/div/div[@class='form-errors']"));
+        $this->clickAndWait("browseDownSubjectMSC");
+
         $this->select("collId2SubjectMSC_1", "label=00-02 Research exposition (monographs, survey articles)");
-        $this->click("send");
-        $this->waitForPageToLoad();
+        $this->click('id=LegalNotices');
+        $this->clickAndWait("send");
+
         try {
             $this->assertTrue($this->isTextPresent("00-02"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
         $this->assertTrue($this->isElementPresent("//div[@id='form-table-check']/fieldset"));
-        $this->click("send");
-        $this->waitForPageToLoad();
+        $this->clickAndWait("send");
+
         $this->assertTrue($this->isTextPresent("erfolgreich gespeichert"));
     }
 

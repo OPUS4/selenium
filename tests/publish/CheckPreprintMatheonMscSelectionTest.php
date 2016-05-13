@@ -48,12 +48,12 @@ class CheckPreprintMatheonMscSelectionTest extends TestCase {
                 if ("OPUS 4 | Veröffentlichen" == $this->getTitle())
                     break;
             } catch (Exception $e) {
-                
+
             }
             sleep(1);
         }
 
-        $this->select("id=documentType", "label=Preprint für MATHEON");
+        $this->select("id=documentType", "value=all");
         $this->click("id=rights");
         $this->click("id=send");
         $this->waitForPageToLoad();
@@ -72,7 +72,7 @@ class CheckPreprintMatheonMscSelectionTest extends TestCase {
                 if ($this->isTextPresent("MSC"))
                     break;
             } catch (Exception $e) {
-                
+
             }
             sleep(1);
         }

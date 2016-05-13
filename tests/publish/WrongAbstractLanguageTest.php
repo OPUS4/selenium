@@ -40,7 +40,7 @@ class WrongAbstractLanguageTest extends TestCase {
 
         $this->openAndWait("/publish");
 
-        $this->select("id=documentType", "label=Preprint für MATHEON");
+        $this->select("id=documentType", "value=all");
         $this->click("id=rights");
         $this->clickAndWait("id=send");
 

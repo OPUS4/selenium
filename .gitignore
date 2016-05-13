@@ -1,3 +1,13 @@
+tests/config.ini
+
+# Local build files
+build
+
 # IDE files
 .idea
 *.iml
+
+# Composer files
+composer.lock
+composer.phar
+vendor

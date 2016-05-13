@@ -35,7 +35,7 @@
 require_once 'TestCase.php';
 
 class TestCasePublish extends TestCase {
-    
+
     protected function goToSecondStep($value, $useGermanVersion = true) {
         if ($useGermanVersion) {
             $this->switchToGerman();
@@ -47,7 +47,7 @@ class TestCasePublish extends TestCase {
         $this->select('documentType', "value=$value");
         $this->click('rights');
         $this->click('send');
-        $this->waitForPageToLoad();                
+        $this->waitForPageToLoad();
     }
 
     protected function goToSecondStepForDoctypeAll($useGermanVersion = true) {
@@ -56,7 +56,7 @@ class TestCasePublish extends TestCase {
     }
 
     protected function goToSecondStepForDoctypeMatheon() {
-        $this->goToSecondStep('preprintmatheon');
+        $this->goToSecondStep('all');
     }
 
     protected function goToThirdStep() {
@@ -69,5 +69,5 @@ class TestCasePublish extends TestCase {
         $this->waitForPageToLoad();
     }
 
-    
+
 }

@@ -41,7 +41,7 @@ class DisabledTextFieldForLeafCollectionNodeTest extends TestCase {
         $this->click("//li[@id='primary-nav-publish']/a/em/span");
         $this->waitForPageToLoad();
 
-        $this->select("id=documentType", "label=Preprint für MATHEON");
+        $this->select("id=documentType", "value=all");
         $this->click("rights");
         $this->click("send");
         $this->waitForPageToLoad();

@@ -42,7 +42,7 @@ class Regression2611DeleteBrowsingFieldsTest extends TestCase {
         $this->open("/publish");
         $this->waitForPageToLoad();
 
-        $this->select("id=documentType", "label=Preprint für MATHEON");
+        $this->select("id=documentType", "value=all");
         $this->click("id=rights");
         $this->click("id=send");
         $this->waitForPageToLoad();
