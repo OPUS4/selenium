@@ -38,7 +38,7 @@ class Opusvier2734Test extends TestCasePublish {
 
     public function testAddAndDeleteButton() {
         $this->goToSecondStepForDoctypeAll();
-        
+
         $this->assertElementPresent('PersonAuthorFirstName_1');
         $this->type('PersonAuthorFirstName_1', 'PAFN1');
         $this->type('PersonAuthorLastName_1', 'PALN1');
@@ -47,7 +47,7 @@ class Opusvier2734Test extends TestCasePublish {
         $this->assertTextPresent('PAFN1');
         $this->assertTextPresent('PALN1');
         $this->goBackToSecondStep();
-        
+
         $this->click('addMorePersonAuthor');
         $this->waitForPageToLoad();
         $this->assertElementPresent('PersonAuthorFirstName_1');
@@ -108,7 +108,7 @@ class Opusvier2734Test extends TestCasePublish {
         $this->assertTextNotPresent('PAFN3');
         $this->assertTextNotPresent('PALN3');
         $this->goBackToSecondStep();
-        
+
         $this->click('addMorePersonAuthor');
         $this->waitForPageToLoad();
         $this->assertElementPresent('PersonAuthorFirstName_1');
@@ -151,16 +151,15 @@ class Opusvier2734Test extends TestCasePublish {
     public function testBrowseUpAndDownButton() {
         $this->goToSecondStepForDoctypeAll();
 
-        $this->select('SubjectMSC_1', 'value=7653');                
+        $this->select('SubjectMSC_1', 'value=7653');
 
         $this->goToThirdStep();
         $this->assertTextPresent('00-XX GENERAL');
         $this->goBackToSecondStep();
 
         $this->assertSelectedValue('SubjectMSC_1', '7653');
-        
-        $this->click('browseDownSubjectMSC');
-        $this->waitForPageToLoad();
+
+        $this->clickAndWait('browseDownSubjectMSC');
         $this->assertElementValueEquals('//select[@id="SubjectMSC_1"]/@disabled', "1");
 
         $this->goToThirdStep();
@@ -180,7 +179,7 @@ class Opusvier2734Test extends TestCasePublish {
 
         $this->assertSelectedValue('SubjectMSC_1', '7653');
         $this->assertSelectedValue('collId2SubjectMSC_1', '7655');
-        
+
         $this->click('browseDownSubjectMSC');
         $this->waitForPageToLoad();
 
@@ -197,10 +196,10 @@ class Opusvier2734Test extends TestCasePublish {
 
         $this->assertSelectedValue('SubjectMSC_1', '7653');
         $this->assertSelectedValue('collId2SubjectMSC_1', '7655');
-        
+
         $this->click('addMoreSubjectMSC');
         $this->waitForPageToLoad();
-        
+
         $this->goToThirdStep();
         $this->assertTextNotPresent('00-XX GENERAL');
         $this->assertTextNotPresent('00-01 Instructional exposition (textbooks, tutorial papers, etc.)');
@@ -211,7 +210,7 @@ class Opusvier2734Test extends TestCasePublish {
         $this->assertSelectedValue('collId2SubjectMSC_1', '7655');
         $this->assertSelectedValue('SubjectMSC_2', '');
 
-        
+
         $this->select('SubjectMSC_2', 'value=7871');
 
         $this->goToThirdStep();
@@ -224,12 +223,12 @@ class Opusvier2734Test extends TestCasePublish {
         $this->assertSelectedValue('SubjectMSC_1', '7653');
         $this->assertSelectedValue('collId2SubjectMSC_1', '7655');
         $this->assertSelectedValue('SubjectMSC_2', '7871');
-        
+
         $this->click('browseDownSubjectMSC');
         $this->waitForPageToLoad();
 
         $this->assertElementValueEquals('//select[@id="SubjectMSC_2"]/@disabled', "1");
-        
+
         $this->select('collId2SubjectMSC_2', 'value=7873');
 
         $this->goToThirdStep();
@@ -239,18 +238,18 @@ class Opusvier2734Test extends TestCasePublish {
         $this->assertTextNotPresent('05-XX COMBINATORICS (For finite fields, see 11Txx)');
         $this->assertTextPresent('05-01 Instructional exposition (textbooks, tutorial papers, etc.)');
         $this->goBackToSecondStep();
-      
+
         $this->assertSelectedValue('SubjectMSC_1', '7653');
         $this->assertSelectedValue('collId2SubjectMSC_1', '7655');
         $this->assertSelectedValue('SubjectMSC_2', '7871');
         $this->assertSelectedValue('collId2SubjectMSC_2', '7873');
-        
+
         $this->click('browseDownSubjectMSC');
         $this->waitForPageToLoad();
 
         $this->assertElementValueEquals('//select[@id="SubjectMSC_2"]/@disabled', "1");
         $this->assertElementValueEquals('//select[@id="collId2SubjectMSC_2"]/@disabled', "1");
-        
+
         $this->assertTextPresent('Sie haben das Ende dieser Sammlung erreicht.');
 
         $this->goToThirdStep();
@@ -265,7 +264,7 @@ class Opusvier2734Test extends TestCasePublish {
         $this->assertSelectedValue('collId2SubjectMSC_1', '7655');
         $this->assertSelectedValue('SubjectMSC_2', '7871');
         $this->assertSelectedValue('collId2SubjectMSC_2', '7873');
-        
+
         $this->click('addMoreSubjectMSC');
         $this->waitForPageToLoad();
 
@@ -304,10 +303,10 @@ class Opusvier2734Test extends TestCasePublish {
         $this->waitForPageToLoad();
 
         $this->assertElementPresent('//div[contains(@class, "odd")]/div/select[@id="SubjectMSC_5"]');
-        
+
         $this->assertElementValueEquals('//select[@id="SubjectMSC_4"]/@disabled', "1");
 
-        
+
         $this->click('browseDownSubjectMSC');
         $this->waitForPageToLoad();
 
@@ -334,7 +333,7 @@ class Opusvier2734Test extends TestCasePublish {
         $this->waitForPageToLoad();
 
         $this->assertElementValueEquals('//select[@id="SubjectMSC_5"]/@disabled', "1");
-       
+
         $this->goToThirdStep();
         $this->assertTextNotPresent('00-XX GENERAL');
         $this->assertTextNotPresent('00-01 Instructional exposition (textbooks, tutorial papers, etc.)');
@@ -363,7 +362,7 @@ class Opusvier2734Test extends TestCasePublish {
 
         $this->assertElementPresent('//select[@id="SubjectMSC_3"]');
         $this->assertElementNotPresent('//select[@id="SubjectMSC_3"][@disabled="1"]');
-        
+
         $this->goToThirdStep();
         $this->assertTextNotPresent('00-XX GENERAL');
         $this->assertTextNotPresent('00-01 Instructional exposition (textbooks, tutorial papers, etc.)');
@@ -417,7 +416,7 @@ class Opusvier2734Test extends TestCasePublish {
 
         $this->click('browseDownSubjectMSC');
         $this->waitForPageToLoad();
-        
+
         $this->select('collId3SubjectMSC_2', 'value=7880');
 
         $this->goToThirdStep();
@@ -428,7 +427,7 @@ class Opusvier2734Test extends TestCasePublish {
         $this->assertTextNotPresent('05-01 Instructional exposition (textbooks, tutorial papers, etc.)');
         $this->assertTextNotPresent('05Axx Enumerative combinatorics For enumeration in graph theory, see 05C30');
         $this->assertTextPresent('05A10 Factorials, binomial coefficients, combinatorial functions [See also 11B65, 33Cxx]');
-        $this->goBackToSecondStep();        
+        $this->goBackToSecondStep();
 
         $this->click('browseDownSubjectMSC');
         $this->waitForPageToLoad();
@@ -561,44 +560,38 @@ class Opusvier2734Test extends TestCasePublish {
         $this->goToThirdStep();
         $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
 
-        $this->click('browseDownInstitute');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('browseDownInstitute');
 
         $this->goToThirdStep();
         $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
-        
+
         $this->select('Institute_1', 'value=15994');
 
         $this->goToThirdStep();
         $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
 
-        $this->click('addMoreInstitute');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('addMoreInstitute');
 
         $this->goToThirdStep();
         $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
 
-        $this->click('deleteMoreInstitute');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('deleteMoreInstitute');
 
         $this->goToThirdStep();
         $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
 
-        $this->click('browseDownInstitute');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('browseDownInstitute');
 
         $this->select('collId2Institute_1', 'value=15999');
 
         $this->goToThirdStep();
         $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
 
-        $this->click('browseDownInstitute');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('browseDownInstitute');
 
         $this->select('collId3Institute_1', 'value=16031');
 
-        $this->click('browseDownInstitute');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('browseDownInstitute');
 
         $this->assertTextPresent('Sie haben das Ende dieser Sammlung erreicht.');
 
@@ -606,39 +599,37 @@ class Opusvier2734Test extends TestCasePublish {
         $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
 
         $this->select('SubjectMSC_1', 'value=7727');
-        
+
         $this->goToThirdStep();
         $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
 
-        $this->click('browseDownSubjectMSC');
-        $this->waitForPageToLoad();
-        
+        $this->clickAndWait('browseDownSubjectMSC');
+
         $this->select('collId2SubjectMSC_1', 'value=7729');
 
+        $this->click('id=LegalNotices');
         $this->goToThirdStep();
         $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
         $this->assertTextPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
         $this->goBackToSecondStep();
 
-        $this->click('browseDownSubjectMSC');
-        $this->waitForPageToLoad();
-
-        $this->goToThirdStep();
-        $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
-        $this->assertTextPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
-        $this->goBackToSecondStep();
-
-        $this->click('browseUpSubjectMSC');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('browseDownSubjectMSC');
 
         $this->goToThirdStep();
         $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
         $this->assertTextPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
         $this->goBackToSecondStep();
 
-        $this->click('addMoreSubjectMSC');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('browseUpSubjectMSC');
 
+        $this->goToThirdStep();
+        $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
+        $this->assertTextPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
+        $this->goBackToSecondStep();
+
+        $this->clickAndWait('addMoreSubjectMSC');
+
+        $this->uncheck('id=LegalNotices');
         $this->goToThirdStep();
         $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
 
@@ -647,19 +638,18 @@ class Opusvier2734Test extends TestCasePublish {
         $this->goToThirdStep();
         $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
 
-        $this->click('browseDownSubjectMSC');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('browseDownSubjectMSC');
 
         $this->select('collId2SubjectMSC_2', 'value=7959');
 
+        $this->check('id=LegalNotices');
         $this->goToThirdStep();
         $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
         $this->assertTextPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
         $this->assertTextPresent('06-01 Instructional exposition (textbooks, tutorial papers, etc.)');
         $this->goBackToSecondStep();
 
-        $this->click('deleteMoreSubjectMSC');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('deleteMoreSubjectMSC');
 
         $this->goToThirdStep();
         $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
@@ -667,17 +657,17 @@ class Opusvier2734Test extends TestCasePublish {
         $this->assertTextNotPresent('06-01 Instructional exposition (textbooks, tutorial papers, etc.)');
         $this->goBackToSecondStep();
 
-        $this->click('browseUpSubjectMSC');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('browseUpSubjectMSC');
 
+        $this->uncheck('id=LegalNotices');
         $this->goToThirdStep();
         $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
 
-        $this->click('browseDownSubjectMSC');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('browseDownSubjectMSC');
 
         $this->select('collId2SubjectMSC_1', 'value=7731');
 
+        $this->check('id=LegalNotices');
         $this->goToThirdStep();
         $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
         $this->assertTextNotPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
@@ -685,8 +675,7 @@ class Opusvier2734Test extends TestCasePublish {
         $this->assertTextPresent('03-03 Historical (must also be assigned at least one classification number from Section 01)');
         $this->goBackToSecondStep();
 
-        $this->click('browseUpInstitute');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('browseUpInstitute');
 
         $this->goToThirdStep();
         $this->assertTextPresent('Zuverlässigkeitstechnik M-24');
@@ -695,17 +684,17 @@ class Opusvier2734Test extends TestCasePublish {
         $this->assertTextPresent('03-03 Historical (must also be assigned at least one classification number from Section 01)');
         $this->goBackToSecondStep();
 
-        $this->click('browseUpInstitute');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('browseUpInstitute');
 
+        $this->uncheck('id=LegalNotices');
         $this->goToThirdStep();
         $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
 
-        $this->click('browseDownInstitute');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('browseDownInstitute');
 
         $this->select('collId3Institute_1', 'value=16065');
-        
+
+        $this->check('id=LegalNotices');
         $this->goToThirdStep();
         $this->assertTextNotPresent('Zuverlässigkeitstechnik M-24');
         $this->assertTextNotPresent('03-01 Instructional exposition (textbooks, tutorial papers, etc.)');
@@ -714,9 +703,9 @@ class Opusvier2734Test extends TestCasePublish {
         $this->assertTextPresent('Metallkunde und Werkstofftechnik M-15');
         $this->goBackToSecondStep();
 
-        $this->click('addMoreInstitute');
-        $this->waitForPageToLoad();
+        $this->clickAndWait('addMoreInstitute');
 
+        $this->uncheck('id=LegalNotices');
         $this->goToThirdStep();
         $this->assertTextPresent('Es sind Fehler aufgetreten. Bitte beachten Sie die Fehlermeldungen an den Formularfeldern.');
 
